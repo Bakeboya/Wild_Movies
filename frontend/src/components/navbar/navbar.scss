@@ -1,0 +1,11 @@
+.Navbar {
+  background-color: yellow;
+
+  .WildMovies {
+    background-color: green;
+
+    &:hover {
+      background-color: red;
+    }
+  }
+}
