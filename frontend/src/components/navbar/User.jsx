@@ -3,8 +3,10 @@ import BisUser from "@meronex/icons/bi/BisUser";
 
 function User() {
   return (
-    <div className="User">
-      <BisUser />
+    <div className="UserDiv">
+      <div className="User">
+        <BisUser className="BisUser" />
+      </div>
     </div>
   );
 }

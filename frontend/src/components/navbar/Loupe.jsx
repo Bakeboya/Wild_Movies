@@ -3,8 +3,10 @@ import GoSearch from "@meronex/icons/go/GoSearch";
 
 function Loupe() {
   return (
-    <div className="Loupe">
-      <GoSearch />
+    <div className="LoupeDiv">
+      <div className="Loupe">
+        <GoSearch className="GoSearch" />
+      </div>
     </div>
   );
 }

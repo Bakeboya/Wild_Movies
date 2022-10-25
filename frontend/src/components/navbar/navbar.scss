@@ -1,11 +1,97 @@
 .Navbar {
-  background-color: yellow;
+  background-color: $primary-color;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 80px;
 
-  .WildMovies {
-    background-color: green;
+  .WildMoviesDiv {
+    // background-color: yellow;
+    width: 100%;
+    // &:hover {
+    //   background-color: red;
+    // }
 
-    &:hover {
-      background-color: red;
+    .WildMovies {
+      display: flex;
+      justify-content: flex-start;
+
+      .WildTitle {
+        width: 250px;
+        margin-left: 20px;
+      }
+
+      .WildLogo {
+        display: none;
+      }
+    }
+  }
+
+  .LoupeDiv {
+    // background-color: pink;
+    width: 100%;
+
+    .Loupe {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+
+      .GoSearch {
+        display: none;
+        color: $tertiary-color;
+        height: 100%;
+        width: 40px;
+      }
+    }
+  }
+
+  .UserDiv {
+    // background-color: blue;
+    width: 100%;
+
+    .User {
+      display: flex;
+      justify-content: flex-end;
+      margin-right: 30px;
+      ;
+
+      .BisUser {
+        // background-color: green;
+        color: $tertiary-color;
+        height: 100%;
+        width: 40px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .Navbar {
+    .WildMoviesDiv {
+      .WildMovies {
+        .WildTitle {
+          display: none;
+        }
+
+        .WildLogo {
+          display: flex;
+          width: 60px;
+          margin-left: 20px;
+        }
+      }
+    }
+
+    .LoupeDiv {
+      .Loupe {
+        display: flex;
+        justify-content: center;
+
+        .GoSearch {
+          display: flex;
+        }
+      }
     }
   }
 }
