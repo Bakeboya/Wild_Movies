@@ -4,12 +4,19 @@ import User from "./User";
 import WildMovies from "./WildMovies";
 
 function Navbar() {
+  const [fixed, setFixed] = React.useState(true);
+
+  const handleScroll = () => {
+    setFixed(!fixed);
+  };
+
   return (
-    <div className="Navbar">
+    <navbar className={!fixed ? "Navbar" : "Navbar Bottom"}>
       <WildMovies />
       <Loupe />
       <User />
-    </div>
+      {/* <button className="Button" onClick={handleScroll}>Clic</button> */}
+    </navbar>
   );
 }
 
