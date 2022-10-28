@@ -1,0 +1,198 @@
+.cardText {
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+  padding: 10px;
+  gap: 20px;
+}
+
+.titleFilm {
+  font-size: 2em;
+  font-weight: 1000;
+}
+
+.filtreFilm {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+
+  h4 {
+    font-size: 1.1em;
+    font-weight: 600;
+  }
+
+  .pegiFilm img {
+    width: 30px;
+  }
+}
+
+.avisFilm {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+
+  .diagramAvis {
+    display: flex;
+    align-items: center;
+    width: auto;
+    gap: 5px;
+
+    span {
+      font-weight: 600;
+      font-size: 1.25em;
+    }
+
+    .diagram_note {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      border: solid 5px;
+    }
+
+    .good {
+      transform: rotate(-45deg);
+      border-bottom-color: rgb(55, 196, 30);
+      border-left-color: rgb(55, 196, 30);
+      border-top-color: rgb(55, 196, 30);
+
+      span {
+        transform: rotate(45deg);
+      }
+    }
+
+    .bof {
+      transform: rotate(-45deg);
+      border-bottom-color: gold;
+      border-left-color: gold;
+
+      span {
+        transform: rotate(45deg);
+      }
+    }
+
+    .nul {
+      transform: rotate(-45deg);
+      border-bottom-color: red;
+
+      span {
+        transform: rotate(45deg);
+      }
+    }
+  }
+
+  #logoFavoris {
+    width: 50px;
+    height: 50px;
+  }
+
+  .bande_annonce {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    a {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      text-decoration: none;
+      color: $primary-color;
+
+      #logoLecteur {
+        width: 50px;
+        height: 50px;
+      }
+    }
+  }
+}
+
+.synopsisFilm {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  h3 {
+    font-size: 1.5em;
+    font-weight: 700;
+  }
+
+  p {
+    font-size: 0.9em;
+    font-weight: 100;
+    line-height: 1.5em;
+  }
+}
+
+.actorFilm {
+  ul {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+    grid-auto-rows: minmax(75px, auto);
+
+    li {
+      background-color: aqua;
+      display: flex;
+      align-items: center;
+    }
+  }
+}
+
+.categorieFilm {
+  display: flex;
+  flex-direction: row;
+
+  h4 {
+    display: flex;
+    gap: 10px;
+  }
+}
+
+.actorCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .actorFilm {
+    display: flex;
+    flex-wrap: wrap;
+    width: auto;
+    padding: 10px;
+    justify-content: space-around;
+
+    .actors {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 15px;
+      padding: 5px;
+      width: 20%;
+      margin-bottom: 25px;
+
+      img {
+        width: 50%;
+        border-radius: 5px;
+      }
+
+      .actorName {
+        font-size: 1em;
+        font-weight: 800;
+      }
+
+      .actorCharacter {
+        font-size: 0.85em;
+      }
+    }
+  }
+
+  #btnCrew {
+    border: solid 2px;
+    border-radius: 5px;
+    background-color: $tertiary-color;
+    width: 100px;
+    height: 30px;
+  }
+}

@@ -1,0 +1,35 @@
+.cardImg {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  padding: 10px;
+  gap: 20px;
+}
+
+.imgFilm {
+  display: flex;
+
+  img {
+    width: 100%;
+    border-radius: 5px;
+    box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.5);
+  }
+}
+
+.streaming {
+  width: 100%;
+  display: flex;
+
+  img {
+    width: 30%;
+    height: auto;
+    border-radius: 5px;
+  }
+
+  .streamingLink {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 5px;
+  }
+}
