@@ -48,6 +48,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: 40px;
   background-color: rgba($color: #000000, $alpha: 0.2);
   height: 500px;
@@ -91,6 +92,7 @@ h1 {
   width: 260px;
   height: 60px;
   border-radius: 45px;
+  border: none;
 }
 
 // Input desktop
@@ -136,9 +138,11 @@ h1 {
   color: $primary-color;
   background-color: $tertiary-color;
   width: 150px;
-  height: 42.8px;
+  height: 43px;
+  border: none;
   border-radius: 0px 45px 45px 0px;
   cursor: pointer;
+  transition: 0.3s ease-in-out;
 }
 
 // Medias queries
@@ -146,6 +150,9 @@ h1 {
 @media screen and (min-width: 600px) {
   .searchButtonDesktop {
     display: flex;
+    &:hover {
+        color: $secondary-color;
+    }
   }
 
   .slide {
@@ -159,21 +166,25 @@ h1 {
   }
 
   .header {
-    height: 250px;
+    height: 300px;
+  }
+
+  .headerTitle {
+    width: 90%;
+    margin: 0 auto;
   }
 
   .slide img {
     width: 100%;
-    height: 250px;
+    height: 300px;
   }
 
   .smartBox {
-    height: 250px;
-    gap: 30px;
+    height: 300px;
   }
 
   .slider {
-    height: 250px;
+    height: 300px;
   }
 
   .wildMovies {
@@ -189,14 +200,13 @@ h1 {
   }
 
   .headerTitle {
-    margin-top: 20px;
     font-size: 48px;
   }
 }
 
 @media screen and (min-width: 1355px) {
   .header {
-    height: 250px;
+    height: 350px;
   }
   .slide {
     transform: translateX(100%);
@@ -210,16 +220,15 @@ h1 {
 
   .slide img {
     width: 100%;
-    height: 250px;
+    height: 350px;
   }
 
   .smartBox {
-    height: 250px;
-    gap: 30px;
+    height: 350px;
   }
 
   .slider {
-    height: 250px;
+    height: 350px;
   }
 
   .wildMovies {
@@ -235,14 +244,13 @@ h1 {
   }
 
   .headerTitle {
-    margin-top: 50px;
     font-size: 50px;
   }
 }
 
 @media screen and (min-width: 1500px) {
   .header {
-    height: 250px;
+    height: 400px;
   }
   .slide {
     transform: translateX(100%);
@@ -256,16 +264,15 @@ h1 {
 
   .slide img {
     width: 100%;
-    height: 250px;
+    height: 400px;
   }
 
   .smartBox {
-    height: 250px;
-    gap: 2em;
+    height: 400px;
   }
 
   .slider {
-    height: 250px;
+    height: 400px;
   }
 
   .wildMovies {
@@ -281,7 +288,6 @@ h1 {
   }
 
   .headerTitle {
-    margin-top: 50px;
     font-size: 60px;
   }
 }

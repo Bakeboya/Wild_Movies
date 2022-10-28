@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { useMoviesCategories } from "../../../data/DataFetch";
 import { onWheel, usePreventBodyScroll } from "../../../data/ScrollFunction";
 import ContentCard from "./ContentCard";
+import CgScrollH from '@meronex/icons/cg/CgScrollH';
 
 export default function ContentList({ title, hook }) {
   const { moviesCategories } = useMoviesCategories();
@@ -10,7 +11,7 @@ export default function ContentList({ title, hook }) {
 
   return (
     <div className="listContainer">
-      <h2>{title}</h2>
+      <h2>{title} <span><CgScrollH /></span></h2>
       <hr />
       <ul
         className="movieList"

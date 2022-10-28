@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 import CardImg from "./CardImg";
 import CardText from "./CardText";
 
 function FicheFilm() {
+  let { name } = useParams()
+
   const [film, setFilm] = useState([]);
   const [filmCrew, setFilmCrew] = useState([]);
   const [watchProviders, setWatchProviders] = useState([]);

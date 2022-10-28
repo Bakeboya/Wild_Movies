@@ -4,7 +4,6 @@
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  padding: 2rem;
 
   .WildMoviesDiv {
     width: 100%;
@@ -14,7 +13,7 @@
       justify-content: flex-start;
 
       .WildTitle {
-        width: 250px;
+        width: 200px;
       }
 
       .WildLogo {
@@ -71,9 +70,12 @@
 
 @media screen and (max-width: 600px) {
   .Navbar {
+    position: relative;
     border: 5px none #1c6ea4;
     border-radius: 0px 0px 40px 40px;
     height: 70px;
+    width: 100%;
+    z-index: 100;
 
     &.Bottom {
       position: fixed;

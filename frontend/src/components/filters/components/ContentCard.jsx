@@ -1,15 +1,16 @@
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom"
 
 export default function ContentCard({ c }) {
   const imgPath = "https://image.tmdb.org/t/p/w200";
 
   return (
     <li>
-      <div className="imgPoster">
+      <Link to={`${c.title}`} className="imgPoster">
         <img src={`${imgPath}${c.poster_path}`} alt={c.title} loading="lazy" />
         <p
           style={{
-            color: (() => {
+            backgroundColor: (() => {
               if (c.vote_average > 8) {
                 return "green";
               }
@@ -22,7 +23,7 @@ export default function ContentCard({ c }) {
         >
           {c.vote_average}
         </p>
-      </div>
+      </Link>
     </li>
   );
 }

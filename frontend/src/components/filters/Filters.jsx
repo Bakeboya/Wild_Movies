@@ -119,61 +119,6 @@ export default function Filters() {
     setMoviesDiscoverDuration(`${durationMinQuery}${durationMaxQuery}`);
   };
 
-  const [sortToggle, setSortToggle] = useState(true);
-  const handleSortName = () => {
-    setSortToggle(!sortToggle);
-    if (sortToggle) {
-      const sorted = [...results].sort((a, b) => {
-        if (a.title > b.title) {
-          return 1;
-        }
-        if (b.title > a.title) {
-          return -1;
-        }
-        return 0;
-      });
-      setResults(sorted);
-    } else if (!sortToggle) {
-      const sorted = [...results].sort((a, b) => {
-        if (a.title < b.title) {
-          return 1;
-        }
-        if (b.title < a.title) {
-          return -1;
-        }
-        return 0;
-      });
-      setResults(sorted);
-    }
-  };
-
-  const handleSortPop = () => {
-    setSortToggle(!sortToggle);
-    if (sortToggle) {
-      const sorted = [...results].sort((a, b) => {
-        if (a.popularity < b.popularity) {
-          return 1;
-        }
-        if (b.popularity < a.popularity) {
-          return -1;
-        }
-        return 0;
-      });
-      setResults(sorted);
-    } else if (!sortToggle) {
-      const sorted = [...results].sort((a, b) => {
-        if (a.popularity > b.popularity) {
-          return 1;
-        }
-        if (b.popularity > a.popularity) {
-          return -1;
-        }
-        return 0;
-      });
-      setResults(sorted);
-    }
-  };
-
   const handlePrevPage = () => {
     window.scrollTo(0, 0);
     setSearchPage(searchPage - 1);
@@ -213,47 +158,45 @@ export default function Filters() {
           />
         </div>
         <div className="filtersInner">
-          <div className="selectContainer">
-            <Select
-              isMulti
-              isClearable
-              closeMenuOnSelect={false}
-              name="genres"
-              options={genreOptions}
-              className="react-select-container"
-              classNamePrefix="react-select"
-              styles={customStyles}
-              placeholder="Genre"
-              getOptionValue={(option) => option.id}
-              onChange={(option) => handleSelectGenres(option)}
-            />
-            <Select
-              isMulti
-              isClearable
-              closeMenuOnSelect={false}
-              name="providers"
-              options={providerOptions}
-              className="react-select-container"
-              classNamePrefix="react-select"
-              styles={customStyles}
-              placeholder="Plateforme"
-              getOptionValue={(option) => option.id}
-              onChange={(option) => handleSelectProvider(option)}
-            />
-            <Select
-              isClearable
-              closeMenuOnSelect={false}
-              name="certifications"
-              options={certificationOptions}
-              className="react-select-container"
-              classNamePrefix="react-select"
-              styles={customStyles}
-              placeholder="Age"
-              getOptionValue={(option) => option.id}
-              onChange={(option) => handleSelectCertification(option)}
-            />
-          </div>
-          <div className="sliderContainer">
+          <Select
+            isMulti
+            isClearable
+            closeMenuOnSelect={false}
+            name="genres"
+            options={genreOptions}
+            className="react-select-container"
+            classNamePrefix="react-select"
+            styles={customStyles}
+            placeholder="Genre"
+            getOptionValue={(option) => option.id}
+            onChange={(option) => handleSelectGenres(option)}
+          />
+          <Select
+            isMulti
+            isClearable
+            closeMenuOnSelect={false}
+            name="providers"
+            options={providerOptions}
+            className="react-select-container"
+            classNamePrefix="react-select"
+            styles={customStyles}
+            placeholder="Plateforme"
+            getOptionValue={(option) => option.id}
+            onChange={(option) => handleSelectProvider(option)}
+          />
+          <Select
+            isClearable
+            closeMenuOnSelect={false}
+            name="certifications"
+            options={certificationOptions}
+            className="react-select-container"
+            classNamePrefix="react-select"
+            styles={customStyles}
+            placeholder="Age"
+            getOptionValue={(option) => option.id}
+            onChange={(option) => handleSelectCertification(option)}
+          />
+          <div>
             <p>Note</p>
             <MultiRangeSlider
               min={0}
@@ -268,6 +211,8 @@ export default function Filters() {
                 handleRatingInput(e);
               }}
             />
+          </div>
+          <div>
             <p>Décennie</p>
             <MultiRangeSlider
               min={1900}
@@ -283,6 +228,8 @@ export default function Filters() {
                 handleDecadeInput(e);
               }}
             />
+          </div>
+          <div>
             <p>Durée (en minutes)</p>
             <MultiRangeSlider
               min={0}
@@ -304,26 +251,21 @@ export default function Filters() {
       {search === "" ? (
         <main>
           {moviesDiscover.length !== 0 && (
-            <ContentList title="Discover" hook={moviesDiscover} />
+            <ContentList title="Votre sélection" hook={moviesDiscover} />
           )}
-          <ContentList title="Top Rated Movies" hook={moviesTop} />
-          <ContentList title="Upcoming Movies" hook={moviesUpcoming} />
-          <ContentList title="Top Rated Series" hook={seriesTop} />
-          <ContentList title="Popular Series" hook={seriesPopular} />
+          <ContentList title="Films les mieux notés" hook={moviesTop} />
+          <ContentList title="Films à venir" hook={moviesUpcoming} />
+          <ContentList title="Séries les mieux notés" hook={seriesTop} />
+          <ContentList title="Séries les plus populaires" hook={seriesPopular} />
         </main>
       ) : (
         <main>
           {resultsTotal.total_results === 10000 ? (
-            <p>{resultsTotal.total_results}+ results</p>
+            <p className="resultsCount">{resultsTotal.total_results}+ résultats</p>
           ) : (
-            <p>{resultsTotal.total_results} results</p>
+            <p className="resultsCount">{resultsTotal.total_results} résultats</p>
           )}
-          <button type="button" onClick={handleSortName}>
-            {sortToggle ? "Asc" : "Desc"}
-          </button>
-          <button type="button" onClick={handleSortPop}>
-            {sortToggle ? "Least popular" : "Most popular"}
-          </button>
+
           <ul className="resultsList">
             {results.map((r) => (
               <ContentCard
@@ -337,12 +279,12 @@ export default function Filters() {
             <>
               {searchPage > 1 && (
                 <button type="button" onClick={handlePrevPage}>
-                  Previous
+                  Précedent
                 </button>
               )}
               {searchPage < 500 && (
                 <button type="button" onClick={handleNextPage}>
-                  Next
+                  Suivant
                 </button>
               )}
             </>
