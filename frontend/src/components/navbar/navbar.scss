@@ -1,0 +1,141 @@
+.App {
+  // height: 1200px;
+
+  .Navbar {
+    background-color: $primary-color;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 80px;
+
+    .WildMoviesDiv {
+      width: 100%;
+      // &:hover {
+      // background-color: red;
+      // }
+
+      .WildMovies {
+        display: flex;
+        justify-content: flex-start;
+
+        .WildTitle {
+          // background-color: pink;
+          width: 250px;
+          margin-left: 20px;
+        }
+
+        .WildLogo {
+          display: none;
+        }
+      }
+    }
+
+    .LoupeDiv {
+      // background-color: pink;
+      width: 100%;
+
+      .Loupe {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+
+        .GoSearch {
+          display: none;
+          color: $tertiary-color;
+          height: 100%;
+          width: 40px;
+        }
+      }
+    }
+
+    .UserDiv {
+      // background-color: blue;
+      width: 100%;
+
+      .User {
+        display: flex;
+        justify-content: flex-end;
+        margin-right: 30px;
+
+        .BisUser {
+          // background-color: green;
+          color: $tertiary-color;
+          height: 100%;
+          width: 40px;
+          transition: all 500ms ease-in;
+
+          &:hover {
+            transition: all 300ms ease-in;
+            transform: scale(1.4);
+          }
+        }
+      }
+    }
+
+    .Button {
+      margin-top: 500px;
+      width: 100px;
+      height: 30px;
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    .Navbar {
+      border: 5px none #1c6ea4;
+      border-radius: 0px 0px 40px 40px;
+      height: 70px;
+
+      &.Bottom {
+        // background-color: red;
+        position: fixed;
+        bottom: 0px;
+        -webkit-border-radius: 40px 40px 0px 0px;
+        -moz-border-radius: 40px 40px 0px 0px;
+        border-radius: 40px 40px 0px 0px;
+      }
+
+      .WildMoviesDiv {
+        .WildMovies {
+          .WildTitle {
+            display: none;
+          }
+
+          .WildLogo {
+            display: flex;
+            width: 60px;
+            margin-left: 20px;
+            width: 50px;
+          }
+        }
+      }
+
+      .LoupeDiv {
+        .Loupe {
+          display: flex;
+          justify-content: center;
+
+          .GoSearch {
+            display: flex;
+          }
+        }
+      }
+
+      .UserDiv {
+        .User {
+          margin-right: 20px;
+
+          .BisUser {
+            width: 40px;
+
+            &:hover {
+              transition: all 200ms ease-in;
+              transform: scale(1);
+            }
+          }
+        }
+      }
+    }
+  }
+}
