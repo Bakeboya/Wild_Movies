@@ -15,7 +15,6 @@ function Navbar() {
       <WildMovies />
       <Loupe />
       <User />
-      {/* <button className="Button" onClick={handleScroll}>Clic</button> */}
     </navbar>
   );
 }

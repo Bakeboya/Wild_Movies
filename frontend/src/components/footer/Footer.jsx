@@ -9,12 +9,6 @@ function Footer() {
     <div className="footerApp">
       <img src={logoWildmovies} alt="logoW" id="logoW" />
       <div className="textLogo">
-        <p className="text">
-          Relicta ora maritima in Lycaoniam adnexam Isauriae intersaepientes
-          itinera qrgfqergesrg <br />
-          et Serenianus dignus exsecratione cunctorum, innoxius, modo non{" "}
-        </p>
-
         <div className="logos">
           <a href="https://fr-fr.facebook.com/">
             <img src={logoFacebook} alt="logoF" />
@@ -26,6 +20,11 @@ function Footer() {
             <img src={logoInstagram} alt="logoI" />
           </a>
         </div>
+        <p className="text">
+          Relicta ora maritima in Lycaoniam adnexam Isauriae intersaepientes
+          itinera qrgfqergesrg <br />
+          et Serenianus dignus exsecratione cunctorum, innoxius, modo non{" "}
+        </p>
       </div>
     </div>
   );

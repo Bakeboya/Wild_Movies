@@ -38,7 +38,6 @@ function Header() {
 
   const nextSlide = () => {
     setCurrentSlide(currentSlide === slideLength - 1 ? 0 : currentSlide + 1);
-
   };
 
   function auto() {
@@ -77,7 +76,9 @@ function Header() {
         </div>
 
         <div>
-          <p>Le meilleur moteur de recherche de films et de séries</p>
+          <p className="headerTitle">
+            Le meilleur moteur de recherche de films et de séries
+          </p>
         </div>
 
         <div>

@@ -1,4 +1,7 @@
 @import "./variables.scss";
-@import "./navbar/navbar.scss";
 @import "./reset.scss";
-@import "./app.scss";
+
+@import "./navbar/navbar.scss";
+@import "./header/header.scss";
+@import "./filters/filters.scss";
+@import "./footer/footer.scss";
