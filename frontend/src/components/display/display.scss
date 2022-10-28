@@ -1,0 +1,114 @@
+.displayDiv {
+  .changeDisplay {
+    // color: red;
+    display: flex;
+
+    .displayPoster {
+      display: flex;
+      margin-left: 20px;
+    }
+
+    .displayImage {
+      display: none;
+    }
+
+    .dataDetails {
+      .dataTitle {
+        display: flex;
+        text-align: center;
+      }
+
+      .dataNote {
+        display: none;
+      }
+
+      .dataGenre {
+        display: none;
+      }
+
+      .dataYear {
+        display: none;
+      }
+    }
+
+    .dataMovieDiv {
+      // background-color: yellow;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    &.displayList {
+      color: blue;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+
+      .displayPoster {
+        display: none;
+      }
+
+      .displayImage {
+        display: flex;
+        margin: 20px;
+      }
+
+      .dataDetails {
+        background-color: aqua;
+        display: flex;
+        height: 100px;
+
+        .dataTitle {
+          display: flex;
+          margin: 0;
+          padding: 0;
+        }
+
+        .dataNote {
+          display: flex;
+          margin: 0 20px 0 0;
+          padding: 0;
+        }
+
+        .dataGenre {
+          display: flex;
+          margin: 0;
+          padding: 0;
+          gap: 10px;
+        }
+
+        .dataYear {
+          display: flex;
+          margin: 0;
+          padding: 0;
+        }
+      }
+
+      .resultMovie {
+        // background-color: bisque;
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        margin: 10px;
+        font-size: 10px;
+
+        .displayImage {
+          width: 100px;
+        }
+      }
+
+      .dataMovieDiv {
+        // background-color: green;
+        display: flex;
+        flex-direction: row;
+        margin-top: 20px;
+        height: 100px;
+      }
+    }
+  }
+
+  .buttonDisplay {
+    height: 30px;
+    width: 60px;
+  }
+}
