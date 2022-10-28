@@ -1,0 +1,14 @@
+@import "./CardImg.scss";
+@import "./CardText.scss";
+
+.ficheFilm {
+  display: flex;
+  width: fit-content;
+  font-family: $font-text;
+  background-color: $secondary-color;
+  margin: 2%;
+  padding: 0.5%;
+  border-radius: 10px;
+  color: $primary-color;
+  box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.5);
+}
