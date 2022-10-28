@@ -1,0 +1,41 @@
+.footerApp {
+  background-color: #38383d;
+  margin-top: 1rem;
+  padding: 2rem;
+  border-radius: 3px;
+  display: grid;
+  grid-template-columns: 1fr 4fr 1fr;
+  justify-items: center;
+  align-items: center;
+  #logoW {
+    width: 70px;
+  }
+  .textLogo {
+    .text {
+      margin-top: 2rem;
+      color: #f5f5f5;
+      font-size: 1.3rem;
+      font-family: $font-text;
+      font-weight: 400;
+      line-height: 1.5;
+    }
+    .logos {
+      display: flex;
+      justify-content: center;
+      gap: 70px;
+      a {
+        display: block;
+        img {
+          width: 35px;
+          height: 35px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .footerApp {
+    display: none;
+  }
+}
