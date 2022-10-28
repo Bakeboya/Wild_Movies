@@ -38,17 +38,44 @@ export const useSearch = () => {
 export const useMoviesDiscover = () => {
   const [moviesDiscover, setMoviesDiscover] = useState([]);
   const [moviesDiscoverGenre, setMoviesDiscoverGenre] = useState("");
+  const [moviesDiscoverRating, setMoviesDiscoverRating] = useState("");
+  const [moviesDiscoverDecade, setMoviesDiscoverDecade] = useState("");
+  const [moviesDiscoverDuration, setMoviesDiscoverDuration] = useState("");
+  const [moviesDiscoverProvider, setMoviesDiscoverProvider] = useState("");
+  const [moviesDiscoverCertification, setMoviesDiscoverCertification] =
+    useState("");
 
   useEffect(() => {
     axios
       .get(
-        `https://api.themoviedb.org/3/discover/movie?api_key=ac1108de3648bb230bb19e261e8497cb&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1${moviesDiscoverGenre}&with_watch_monetization_types=flatrate`
+        `https://api.themoviedb.org/3/discover/movie?api_key=ac1108de3648bb230bb19e261e8497cb&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1${moviesDiscoverGenre}${moviesDiscoverRating}${moviesDiscoverDecade}${moviesDiscoverDuration}${moviesDiscoverProvider}${moviesDiscoverCertification}&vote_count.gte=10&with_watch_monetization_types=flatrate`
       )
       .then((res) => {
         setMoviesDiscover(res.data.results);
       });
-  }, [moviesDiscoverGenre]);
-  return { moviesDiscover, moviesDiscoverGenre, setMoviesDiscoverGenre };
+  }, [
+    moviesDiscoverGenre,
+    moviesDiscoverRating,
+    moviesDiscoverDecade,
+    moviesDiscoverDuration,
+    moviesDiscoverProvider,
+    moviesDiscoverCertification,
+  ]);
+  return {
+    moviesDiscover,
+    moviesDiscoverGenre,
+    setMoviesDiscoverGenre,
+    moviesDiscoverRating,
+    setMoviesDiscoverRating,
+    moviesDiscoverDecade,
+    setMoviesDiscoverDecade,
+    moviesDiscoverDuration,
+    setMoviesDiscoverDuration,
+    moviesDiscoverProvider,
+    setMoviesDiscoverProvider,
+    moviesDiscoverCertification,
+    setMoviesDiscoverCertification,
+  };
 };
 
 export const useMoviesTop = () => {
@@ -84,22 +111,6 @@ export const useSeriesTop = () => {
   }, [seriesTopPage, lang]);
   return { seriesTop, seriesTopPage, setSeriesTopPage };
 };
-
-/*export const useTopTrailer = () => {
-  const [movieId, setMovieId] = useState();
-  const [trailer, setTrailer] = useState([]);
-
-  useEffect(() => {
-    axios
-      .get(
-        `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=ac1108de3648bb230bb19e261e8497cb&language=en-US`
-      )
-      .then((res) => {
-        setTrailer(res.data.results);
-      });
-  }, [movieId]);
-  return { movieId, setMovieId, trailer };
-};*/
 
 export const useUpcoming = () => {
   const [moviesUpcomingPage, setMoviesUpcomingPage] = useState(1);
