@@ -1,0 +1,179 @@
+.userDiv {
+  background-color: $secondary-color;
+  padding: 0;
+  margin: 0;
+  height: 150px;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+
+  .close {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    background-color: transparent;
+    border: 0;
+    margin: 8px 8px auto auto;
+    transition: all 200ms ease-in;
+    transform: scale(1.4);
+
+    &:hover {
+      transition: all 100ms ease-in;
+      transform: scale(2);
+    }
+  }
+
+  .userMain {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 32px;
+    height: 100%;
+    width: 100%;
+    gap: 50px;
+  }
+
+  &.hide {
+    display: none;
+  }
+}
+
+.buttonUser {
+  height: 40px;
+  width: 30%;
+}
+
+.connectDiv {
+  background-color: $secondary-color;
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+
+  .close {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    background-color: transparent;
+    border: 0;
+    margin: 8px 8px auto auto;
+    transition: all 200ms ease-in;
+    transform: scale(1.4);
+
+    &:hover {
+      transition: all 100ms ease-in;
+      transform: scale(2);
+    }
+  }
+
+  .connectMain {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 300px;
+    width: 100%;
+    font-size: 14px;
+  }
+
+  .userForm {
+    width: 50%;
+    height: 30px;
+  }
+
+  #enteteConnect {
+    margin-top: 30px;
+  }
+
+  .link {
+    border: 0;
+    background-color: transparent;
+    text-decoration: underline;
+    color: blue;
+
+    &:hover {
+      text-decoration: none;
+      color: blueviolet;
+      cursor: pointer;
+    }
+  }
+}
+
+.inscriptionDiv {
+  background-color: $secondary-color;
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+
+  .close {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    background-color: transparent;
+    border: 0;
+    margin: 8px 8px auto auto;
+    transition: all 200ms ease-in;
+    transform: scale(1.4);
+
+    &:hover {
+      transition: all 100ms ease-in;
+      transform: scale(2);
+    }
+  }
+
+  .inscriptionMain {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 300px;
+    width: 100%;
+    font-size: 14px;
+  }
+
+  .userForm {
+    width: 50%;
+    height: 30px;
+  }
+
+  .checkBoxDiv {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .checkBox {
+    display: flex;
+    align-items: center;
+    margin-left: 0px;
+    gap: 10px;
+
+    .box {
+      transition: all 200ms ease-in;
+      transform: scale(1.4);
+
+      &:hover {
+        transition: all 100ms ease-in;
+        transform: scale(1.8);
+      }
+    }
+  }
+
+  #enteteIns {
+    margin-top: 30px;
+  }
+
+  .link {
+    border: 0;
+    background-color: transparent;
+    text-decoration: underline;
+    color: blue;
+
+    &:hover {
+      text-decoration: none;
+      color: blueviolet;
+      cursor: pointer;
+    }
+  }
+}
