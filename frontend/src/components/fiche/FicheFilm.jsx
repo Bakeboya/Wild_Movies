@@ -5,7 +5,7 @@ import CardImg from "./CardImg";
 import CardText from "./CardText";
 
 function FicheFilm() {
-  let { name } = useParams()
+  const { name } = useParams();
 
   const [film, setFilm] = useState([]);
   const [filmCrew, setFilmCrew] = useState([]);

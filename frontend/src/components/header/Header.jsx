@@ -28,7 +28,6 @@ const sliderData = [
 ];
 
 function Header() {
-
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const slideLength = sliderData.length;
@@ -89,14 +88,8 @@ function Header() {
         </div>
 
         <form className="searchBarBox">
-          <input
-            className="searchBar"
-            placeholder="Commencer ma recherche"
-          />
-          <button
-            type="submit"
-            className="searchButtonDesktop"
-          >
+          <input className="searchBar" placeholder="Commencer ma recherche" />
+          <button type="submit" className="searchButtonDesktop">
             RECHERCHER
           </button>
         </form>

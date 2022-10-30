@@ -10,13 +10,25 @@ function Footer() {
       <img src={logoWildmovies} alt="logoW" id="logoW" />
       <div className="textLogo">
         <div className="logos">
-          <a href="https://www.facebook.com/profile.php?id=100086913807582" target="_blank">
+          <a
+            href="https://www.facebook.com/profile.php?id=100086913807582"
+            target="_blank"
+            rel="noreferrer"
+          >
             <img src={logoFacebook} alt="logoF" />
           </a>
-          <a href="https://twitter.com/Wild_M0vies" target="_blank">
+          <a
+            href="https://twitter.com/Wild_M0vies"
+            target="_blank"
+            rel="noreferrer"
+          >
             <img src={logoTwitter} alt="logoT" />
           </a>
-          <a href="https://www.instagram.com/wild_m0vies/" target="_blank">
+          <a
+            href="https://www.instagram.com/wild_m0vies/"
+            target="_blank"
+            rel="noreferrer"
+          >
             <img src={logoInstagram} alt="logoI" />
           </a>
         </div>
