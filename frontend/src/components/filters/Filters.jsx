@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Select from "react-select";
 import MultiRangeSlider from "multi-range-slider-react";
+import ReactPaginate from "react-paginate";
 import ContentCard from "./components/ContentCard";
 import ContentList from "./components/ContentList";
 import {
@@ -9,15 +10,17 @@ import {
   useMoviesTop,
   useSeriesTop,
   useSeriesPopular,
-  useMoviesDiscover,
+  useMoviesPopular,
   useMoviesCategories,
   useSeriesCategories,
+  useTrending,
 } from "../../data/DataFetch";
 import {
   genreOptions,
   providerOptions,
   certificationOptions,
 } from "../../data/FiltersArrays";
+import ButtonsChoice from "./components/ButtonsChoice";
 
 export default function Filters() {
   const { moviesCategories } = useMoviesCategories();
@@ -33,15 +36,17 @@ export default function Filters() {
   } = useSearch();
   const { moviesTop } = useMoviesTop();
   const {
-    moviesDiscover,
-    setMoviesDiscoverGenre,
-    setMoviesDiscoverRating,
-    setMoviesDiscoverDecade,
-    setMoviesDiscoverDuration,
-    setMoviesDiscoverProvider,
-    setMoviesDiscoverCertification,
-  } = useMoviesDiscover();
+    moviesPopular,
+    moviesPopularGenre,
+    setMoviesPopularGenre,
+    setMoviesPopularRating,
+    setMoviesPopularDecade,
+    setMoviesPopularDuration,
+    setMoviesPopularProvider,
+    setMoviesPopularCertification,
+  } = useMoviesPopular();
   const { moviesUpcoming } = useUpcoming();
+  const { trending, trendingTime, setTrendingTime } = useTrending();
   const { seriesTop } = useSeriesTop();
   const { seriesPopular } = useSeriesPopular();
 
@@ -52,10 +57,10 @@ export default function Filters() {
       if (i < option.length) {
         genresQuery += ",";
       }
-      return setMoviesDiscoverGenre(genresQuery);
+      return setMoviesPopularGenre(genresQuery);
     });
     if (option.length === 0) {
-      setMoviesDiscoverGenre("");
+      setMoviesPopularGenre("");
     }
   };
 
@@ -66,10 +71,10 @@ export default function Filters() {
       if (i < option.length) {
         providersQuery += ",";
       }
-      return setMoviesDiscoverProvider(providersQuery);
+      return setMoviesPopularProvider(providersQuery);
     });
     if (option.length === 0) {
-      setMoviesDiscoverProvider("");
+      setMoviesPopularProvider("");
     }
   };
 
@@ -77,9 +82,9 @@ export default function Filters() {
     let certificationsQuery = "&certification_country=FR&certification=";
     if (option !== null) {
       certificationsQuery += option.id;
-      setMoviesDiscoverCertification(`${certificationsQuery}`);
+      setMoviesPopularCertification(`${certificationsQuery}`);
     } else if (option === null) {
-      setMoviesDiscoverCertification("");
+      setMoviesPopularCertification("");
     }
   };
 
@@ -92,7 +97,7 @@ export default function Filters() {
     setMaxRatingValue(e.maxValue);
     ratingMaxQuery += maxRatingValue;
     ratingMinQuery += minRatingValue;
-    setMoviesDiscoverRating(`${ratingMinQuery}${ratingMaxQuery}`);
+    setMoviesPopularRating(`${ratingMinQuery}${ratingMaxQuery}`);
   };
 
   const [minDecadeValue, setMinDecadeValue] = useState(1900);
@@ -104,7 +109,7 @@ export default function Filters() {
     setMaxDecadeValue(e.maxValue);
     decadeMaxQuery += maxDecadeValue;
     decadeMinQuery += minDecadeValue;
-    setMoviesDiscoverDecade(`${decadeMinQuery}${decadeMaxQuery}`);
+    setMoviesPopularDecade(`${decadeMinQuery}${decadeMaxQuery}`);
   };
 
   const [minDurationValue, setMinDurationValue] = useState(0);
@@ -116,17 +121,12 @@ export default function Filters() {
     setMaxDurationValue(e.maxValue);
     durationMaxQuery += maxDurationValue;
     durationMinQuery += minDurationValue;
-    setMoviesDiscoverDuration(`${durationMinQuery}${durationMaxQuery}`);
+    setMoviesPopularDuration(`${durationMinQuery}${durationMaxQuery}`);
   };
 
-  const handlePrevPage = () => {
+  const handleSearchPage = (data) => {
     window.scrollTo(0, 0);
-    setSearchPage(searchPage - 1);
-  };
-
-  const handleNextPage = () => {
-    window.scrollTo(0, 0);
-    setSearchPage(searchPage + 1);
+    setSearchPage(data.selected + 1);
   };
 
   const customStyles = {
@@ -142,9 +142,11 @@ export default function Filters() {
     }),
   };
 
+  const moviesTopId = moviesTop.map((mt) => mt.id);
+
   return (
-    <div className="filters">
-      <div className="filtersContainer">
+    <main className="filters">
+      {/* <section className="filtersContainer">
         <div className="searchContainer">
           <input
             type="text"
@@ -247,25 +249,46 @@ export default function Filters() {
             />
           </div>
         </div>
-      </div>
+      </section> */}
       {search === "" ? (
-        <main>
-          {moviesDiscover.length !== 0 && (
-            <ContentList title="Votre sélection" hook={moviesDiscover} />
-          )}
-          <ContentList title="Films les mieux notés" hook={moviesTop} />
-          <ContentList title="Films à venir" hook={moviesUpcoming} />
-          <ContentList title="Séries les mieux notés" hook={seriesTop} />
-          <ContentList title="Séries les plus populaires" hook={seriesPopular} />
-        </main>
+        <>
+          <ButtonsChoice movies={moviesPopular} series={seriesPopular} />
+          <section className="homeList">
+            {moviesPopular.length !== 0 && (
+              <ContentList
+                title="Films les plus populaires"
+                hook={moviesPopular}
+              />
+            )}
+            <ContentList
+              title="Séries les plus populaires"
+              hook={seriesPopular}
+            />
+            <ContentList
+              title="Films à venir"
+              hook={moviesUpcoming}
+              background={moviesUpcoming?.[0]?.backdrop_path}
+            />
+            <ContentList title="Films les mieux notés" hook={moviesTop} />
+            <ContentList title="Séries les mieux notées" hook={seriesTop} />
+            <ContentList
+              title="Tendances"
+              hook={trending}
+              background={trending?.[0]?.backdrop_path}
+            />
+          </section>
+        </>
       ) : (
-        <main>
+        <section className="homeList">
           {resultsTotal.total_results === 10000 ? (
-            <p className="resultsCount">{resultsTotal.total_results}+ résultats</p>
+            <p className="resultsCount">
+              {resultsTotal.total_results}+ résultats
+            </p>
           ) : (
-            <p className="resultsCount">{resultsTotal.total_results} résultats</p>
+            <p className="resultsCount">
+              {resultsTotal.total_results} résultats
+            </p>
           )}
-
           <ul className="resultsList">
             {results.map((r) => (
               <ContentCard
@@ -275,22 +298,18 @@ export default function Filters() {
               />
             ))}
           </ul>
-          {results.length === 20 && (
-            <>
-              {searchPage > 1 && (
-                <button type="button" onClick={handlePrevPage}>
-                  Précedent
-                </button>
-              )}
-              {searchPage < 500 && (
-                <button type="button" onClick={handleNextPage}>
-                  Suivant
-                </button>
-              )}
-            </>
-          )}
-        </main>
+          <ReactPaginate
+            breakLabel="..."
+            onPageChange={handleSearchPage}
+            nextLabel=">"
+            className="paginationList"
+            pageRangeDisplayed={5}
+            pageCount={resultsTotal.total_pages}
+            previousLabel="<"
+            renderOnZeroPageCount={null}
+          />
+        </section>
       )}
-    </div>
+    </main>
   );
 }

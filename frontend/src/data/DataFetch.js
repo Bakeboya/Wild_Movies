@@ -2,28 +2,29 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 export const useLanguage = () => {
-  const [lang, setLang] = useState("en-US");
+  const [lang, setLang] = useState("fr-FR");
   return { lang, setLang };
 };
 
 export const useSearch = () => {
+  const { lang } = useLanguage();
   const [search, setSearch] = useState("");
   const [results, setResults] = useState([]);
-  const [resultsTotal, setResultsTotal] = useState([]);
+  const [resultsTotal, setResultsTotal] = useState("");
   const [searchPage, setSearchPage] = useState(1);
 
   useEffect(() => {
     if (search !== "") {
       axios
         .get(
-          `https://api.themoviedb.org/3/search/movie?api_key=ac1108de3648bb230bb19e261e8497cb&language=en-US&page=${searchPage}&include_adult=false&query=${search}`
+          `https://api.themoviedb.org/3/search/movie?api_key=ac1108de3648bb230bb19e261e8497cb&language=${lang}&page=${searchPage}&include_adult=false&query=${search}`
         )
         .then((res) => {
           setResultsTotal(res.data);
           setResults(res.data.results);
         });
     }
-  }, [search, searchPage]);
+  }, [search, searchPage, lang]);
   return {
     search,
     setSearch,
@@ -35,47 +36,64 @@ export const useSearch = () => {
   };
 };
 
-export const useMoviesDiscover = () => {
-  const [moviesDiscover, setMoviesDiscover] = useState([]);
-  const [moviesDiscoverGenre, setMoviesDiscoverGenre] = useState("");
-  const [moviesDiscoverRating, setMoviesDiscoverRating] = useState("");
-  const [moviesDiscoverDecade, setMoviesDiscoverDecade] = useState("");
-  const [moviesDiscoverDuration, setMoviesDiscoverDuration] = useState("");
-  const [moviesDiscoverProvider, setMoviesDiscoverProvider] = useState("");
-  const [moviesDiscoverCertification, setMoviesDiscoverCertification] =
+export const useMoviesPopular = () => {
+  const { lang } = useLanguage();
+  const [moviesPopular, setMoviesPopular] = useState([]);
+  const [moviesPopularGenre, setMoviesPopularGenre] = useState("");
+  const [moviesPopularRating, setMoviesPopularRating] = useState("");
+  const [moviesPopularDecade, setMoviesPopularDecade] = useState("");
+  const [moviesPopularDuration, setMoviesPopularDuration] = useState("");
+  const [moviesPopularProvider, setMoviesPopularProvider] = useState("");
+  const [moviesPopularCertification, setMoviesPopularCertification] =
     useState("");
 
   useEffect(() => {
     axios
       .get(
-        `https://api.themoviedb.org/3/discover/movie?api_key=ac1108de3648bb230bb19e261e8497cb&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1${moviesDiscoverGenre}${moviesDiscoverRating}${moviesDiscoverDecade}${moviesDiscoverDuration}${moviesDiscoverProvider}${moviesDiscoverCertification}&vote_count.gte=10&with_watch_monetization_types=flatrate`
+        `https://api.themoviedb.org/3/discover/movie?api_key=ac1108de3648bb230bb19e261e8497cb&language=${lang}&sort_by=popularity.desc&include_adult=false&include_video=false&page=1${moviesPopularGenre}${moviesPopularRating}${moviesPopularDecade}${moviesPopularDuration}${moviesPopularProvider}${moviesPopularCertification}&vote_count.gte=10&with_watch_monetization_types=flatrate`
       )
       .then((res) => {
-        setMoviesDiscover(res.data.results);
+        setMoviesPopular(res.data.results);
       });
   }, [
-    moviesDiscoverGenre,
-    moviesDiscoverRating,
-    moviesDiscoverDecade,
-    moviesDiscoverDuration,
-    moviesDiscoverProvider,
-    moviesDiscoverCertification,
+    moviesPopularGenre,
+    moviesPopularRating,
+    moviesPopularDecade,
+    moviesPopularDuration,
+    moviesPopularProvider,
+    moviesPopularCertification,
   ]);
   return {
-    moviesDiscover,
-    moviesDiscoverGenre,
-    setMoviesDiscoverGenre,
-    moviesDiscoverRating,
-    setMoviesDiscoverRating,
-    moviesDiscoverDecade,
-    setMoviesDiscoverDecade,
-    moviesDiscoverDuration,
-    setMoviesDiscoverDuration,
-    moviesDiscoverProvider,
-    setMoviesDiscoverProvider,
-    moviesDiscoverCertification,
-    setMoviesDiscoverCertification,
+    moviesPopular,
+    moviesPopularGenre,
+    setMoviesPopularGenre,
+    moviesPopularRating,
+    setMoviesPopularRating,
+    moviesPopularDecade,
+    setMoviesPopularDecade,
+    moviesPopularDuration,
+    setMoviesPopularDuration,
+    moviesPopularProvider,
+    setMoviesPopularProvider,
+    moviesPopularCertification,
+    setMoviesPopularCertification,
   };
+};
+
+export const useTrending = () => {
+  const [trending, setTrending] = useState([]);
+  const [trendingTime, setTrendingTime] = useState("day");
+
+  useEffect(() => {
+    axios
+      .get(
+        `https://api.themoviedb.org/3/trending/all/${trendingTime}?api_key=ac1108de3648bb230bb19e261e8497cb`
+      )
+      .then((res) => {
+        setTrending(res.data.results);
+      });
+  }, [trendingTime]);
+  return { trending, trendingTime, setTrendingTime };
 };
 
 export const useMoviesTop = () => {
@@ -86,7 +104,7 @@ export const useMoviesTop = () => {
   useEffect(() => {
     axios
       .get(
-        `https://api.themoviedb.org/3/movie/top_rated?api_key=ac1108de3648bb230bb19e261e8497cb&language=${lang}&page=${moviesTopPage}`
+        `https://api.themoviedb.org/3/discover/movie?api_key=ac1108de3648bb230bb19e261e8497cb&language=${lang}&sort_by=vote_average.desc&include_adult=false&include_video=false&page=${moviesTopPage}&vote_count.gte=300&with_watch_monetization_types=flatrate`
       )
       .then((res) => {
         setMoviesTop(res.data.results);
@@ -103,7 +121,7 @@ export const useSeriesTop = () => {
   useEffect(() => {
     axios
       .get(
-        `https://api.themoviedb.org/3/tv/top_rated?api_key=ac1108de3648bb230bb19e261e8497cb&language=${lang}&page=${seriesTopPage}`
+        `https://api.themoviedb.org/3/discover/tv?api_key=ac1108de3648bb230bb19e261e8497cb&language=${lang}&sort_by=vote_average.desc&page=${seriesTopPage}&vote_count.gte=100&include_null_first_air_dates=false&with_watch_monetization_types=flatrate`
       )
       .then((res) => {
         setSeriesTop(res.data.results);
@@ -113,12 +131,13 @@ export const useSeriesTop = () => {
 };
 
 export const useUpcoming = () => {
+  const { lang } = useLanguage();
   const [moviesUpcomingPage, setMoviesUpcomingPage] = useState(1);
   const [moviesUpcoming, setMoviesUpcoming] = useState([]);
   useEffect(() => {
     axios
       .get(
-        `https://api.themoviedb.org/3/movie/upcoming?api_key=ac1108de3648bb230bb19e261e8497cb&language=en-US&page=1`
+        `https://api.themoviedb.org/3/movie/upcoming?api_key=ac1108de3648bb230bb19e261e8497cb&language=${lang}&page=1`
       )
       .then((res) => {
         setMoviesUpcoming(res.data.results);
@@ -128,11 +147,12 @@ export const useUpcoming = () => {
 };
 
 export const useSeriesPopular = () => {
+  const { lang } = useLanguage();
   const [seriesPopular, setSeriesPopular] = useState([]);
   useEffect(() => {
     axios
       .get(
-        ` https://api.themoviedb.org/3/tv/popular?api_key=ac1108de3648bb230bb19e261e8497cb&language=en-US&page=1`
+        ` https://api.themoviedb.org/3/tv/popular?api_key=ac1108de3648bb230bb19e261e8497cb&language=${lang}&page=1`
       )
       .then((res) => {
         setSeriesPopular(res.data.results);
