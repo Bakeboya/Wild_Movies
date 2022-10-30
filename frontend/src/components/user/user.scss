@@ -78,7 +78,7 @@
   }
 
   .userForm {
-    width: 50%;
+    width: 60%;
     height: 30px;
   }
 
@@ -133,7 +133,7 @@
   }
 
   .userForm {
-    width: 50%;
+    width: 60%;
     height: 30px;
   }
 
@@ -175,5 +175,49 @@
       color: blueviolet;
       cursor: pointer;
     }
+  }
+}
+
+.userPasswordDiv {
+  background-color: $secondary-color;
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  height: 200px;
+
+  &.hide {
+    display: none;
+  }
+
+  .close {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    background-color: transparent;
+    border: 0;
+    margin: 8px 8px auto auto;
+    transition: all 200ms ease-in;
+    transform: scale(1.4);
+
+    &:hover {
+      transition: all 100ms ease-in;
+      transform: scale(2);
+    }
+  }
+
+  .userPassword {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    gap: 40px;
+  }
+
+  .userForm {
+    width: 60%;
+    height: 30px;
   }
 }
