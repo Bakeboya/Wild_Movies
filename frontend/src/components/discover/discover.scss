@@ -1,0 +1,77 @@
+.discover {
+  .filtersContainer {
+    position: relative;
+    .searchContainer {
+      margin-left: 35%;
+      .searchBar {
+        width: 100%;
+        display: block;
+        outline: none;
+        background-color: transparent;
+        border: 1px solid $primary-color;
+        border-radius: 15px;
+        padding: 0.5rem 0.3rem;
+        text-transform: capitalize;
+      }
+    }
+    .filtersInner {
+      width: 25%;
+      padding: 1.5rem;
+      position: absolute;
+      border-radius: 4px;
+      background-color: $secondary-color;
+      top: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      font-size: 1.5rem;
+      font-weight: 700;
+      .react-select-container {
+        width: 100%;
+        cursor: pointer;
+        margin-bottom: 2.5rem;
+        &:last-of-type {
+          margin-bottom: 0;
+        }
+        .react-select__menu {
+          position: absolute;
+          z-index: 100;
+        }
+      }
+      .multi-range-slider {
+        margin-bottom: 2.5rem;
+        box-shadow: none;
+        border: none;
+        .bar-left,
+        .bar-right {
+          background-color: $primary-color !important;
+          box-shadow: none !important;
+        }
+        .bar-inner {
+          background-color: $tertiary-color !important;
+          box-shadow: none !important;
+        }
+        .thumb::before {
+          box-shadow: none !important;
+          background-color: $secondary-color !important;
+          &:active {
+            background-color: $tertiary-color !important;
+          }
+        }
+        .caption {
+          span {
+            background-color: $tertiary-color !important;
+          }
+        }
+        .ruler-rule {
+          border-color: $tertiary-color !important;
+        }
+      }
+    }
+  }
+  a {
+    position: absolute;
+    bottom: 1rem;
+    font-size: 5rem;
+  }
+}
