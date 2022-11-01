@@ -33,6 +33,10 @@ function Discover() {
     setDiscoverCertification,
   } = useDiscover();
 
+  const handleSorting = (option) => {
+    setSorting(`${option.id}`);
+  };
+
   const handleSelectGenres = (option) => {
     let genresQuery = "&with_genres=";
     option.map((o, i) => {
@@ -160,7 +164,7 @@ function Discover() {
               styles={customStyles}
               placeholder={`${placeholder}`}
               getOptionValue={(option) => option.id}
-              onChange={(option) => handleSelectCertification(option)}
+              onChange={(option) => handleSorting(option)}
             />
           </div>
           <div className="filtersInner">

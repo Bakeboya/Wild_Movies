@@ -37,19 +37,19 @@ function ButtonsChoice({ movies, series }) {
         <nav>
           <Link
             to="/films/populaires"
-            state={{ title: "Films populaires", placeholder: "Popularité ↑" }}
+            state={{ title: "Films populaires", placeholder: "Popularité ↓" }}
           >
             Populaires
           </Link>
           <Link
             to="/films/meilleures-notes"
-            state={{ title: "Films les mieux notés", placeholder: "Notes ↑" }}
+            state={{ title: "Films les mieux notés", placeholder: "Notes ↓" }}
           >
             Les mieux notés
           </Link>
           <Link
             to="/films/a-venir"
-            state={{ title: "Films à venir", placeholder: "Date de sortie ↑" }}
+            state={{ title: "Films à venir", placeholder: "Date de sortie ↓" }}
           >
             A venir
           </Link>

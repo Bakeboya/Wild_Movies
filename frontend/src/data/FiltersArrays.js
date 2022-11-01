@@ -36,10 +36,18 @@ export const certificationOptions = [
 ];
 
 export const sortingOptions = [
-  { value: "Popularité ↑", label: "Popularité ↑" },
-  { value: "Popularité ↓", label: "Popularité ↓" },
-  { value: "Notes ↑", label: "Notes ↑" },
-  { value: "Notes ↓", label: "Notes ↓" },
-  { value: "Date de sortie ↑", label: "Date de sortie ↑" },
-  { value: "Date de sortie ↓", label: "Date de sortie ↓" },
+  { value: "Popularité ↓", label: "Popularité ↓", id: "popularity.desc" },
+  { value: "Popularité ↑", label: "Popularité ↑", id: "popularity.asc" },
+  { value: "Notes ↓", label: "Notes ↓", id: "vote_average.desc" },
+  { value: "Notes ↑", label: "Notes ↑", id: "vote_average.asc" },
+  {
+    value: "Date de sortie ↓",
+    label: "Date de sortie ↓",
+    id: "release_date.desc",
+  },
+  {
+    value: "Date de sortie ↑",
+    label: "Date de sortie ↑",
+    id: "release_date.asc",
+  },
 ];

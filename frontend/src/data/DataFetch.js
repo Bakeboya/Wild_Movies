@@ -59,6 +59,7 @@ export const useDiscover = () => {
         setDiscover(res.data.results);
       });
   }, [
+    sorting,
     filtersPage,
     discoverGenre,
     discoverRating,
