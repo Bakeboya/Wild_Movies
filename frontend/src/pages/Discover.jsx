@@ -1,28 +1,37 @@
 import React, { useState } from "react";
 import Select from "react-select";
+import ReactPaginate from "react-paginate";
 import MultiRangeSlider from "multi-range-slider-react";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
+import ContentCard from "@components/filters/components/ContentCard";
+import Navbar from "@components/navbar/Navbar";
+import Footer from "@components/footer/Footer";
+import { useDiscover, useSearch } from "../data/DataFetch";
 import {
   genreOptions,
   providerOptions,
   certificationOptions,
+  sortingOptions,
 } from "../data/FiltersArrays";
-import { useMoviesPopular, useSearch } from "../data/DataFetch";
 
 function Discover() {
   const location = useLocation();
-  const { title } = location.state;
+  const { title, placeholder } = location.state;
 
   const { setSearch, setSearchPage } = useSearch();
   const {
-    setMoviesPopularGenre,
-    setMoviesPopularRating,
-    setMoviesPopularDecade,
-    setMoviesPopularDuration,
-    setMoviesPopularProvider,
-    setMoviesPopularCertification,
-  } = useMoviesPopular();
+    setSorting,
+    filtersTotal,
+    setFiltersPage,
+    discover,
+    setDiscoverGenre,
+    setDiscoverRating,
+    setDiscoverDecade,
+    setDiscoverDuration,
+    setDiscoverProvider,
+    setDiscoverCertification,
+  } = useDiscover();
 
   const handleSelectGenres = (option) => {
     let genresQuery = "&with_genres=";
@@ -31,10 +40,10 @@ function Discover() {
       if (i < option.length) {
         genresQuery += ",";
       }
-      return setMoviesPopularGenre(genresQuery);
+      return setDiscoverGenre(genresQuery);
     });
     if (option.length === 0) {
-      setMoviesPopularGenre("");
+      setDiscoverGenre("");
     }
   };
 
@@ -45,10 +54,10 @@ function Discover() {
       if (i < option.length) {
         providersQuery += ",";
       }
-      return setMoviesPopularProvider(providersQuery);
+      return setDiscoverProvider(providersQuery);
     });
     if (option.length === 0) {
-      setMoviesPopularProvider("");
+      setDiscoverProvider("");
     }
   };
 
@@ -56,9 +65,9 @@ function Discover() {
     let certificationsQuery = "&certification_country=FR&certification=";
     if (option !== null) {
       certificationsQuery += option.id;
-      setMoviesPopularCertification(`${certificationsQuery}`);
+      setDiscoverCertification(`${certificationsQuery}`);
     } else if (option === null) {
-      setMoviesPopularCertification("");
+      setDiscoverCertification("");
     }
   };
 
@@ -71,7 +80,7 @@ function Discover() {
     setMaxRatingValue(e.maxValue);
     ratingMaxQuery += maxRatingValue;
     ratingMinQuery += minRatingValue;
-    setMoviesPopularRating(`${ratingMinQuery}${ratingMaxQuery}`);
+    setDiscoverRating(`${ratingMinQuery}${ratingMaxQuery}`);
   };
 
   const [minDecadeValue, setMinDecadeValue] = useState(1900);
@@ -83,7 +92,7 @@ function Discover() {
     setMaxDecadeValue(e.maxValue);
     decadeMaxQuery += maxDecadeValue;
     decadeMinQuery += minDecadeValue;
-    setMoviesPopularDecade(`${decadeMinQuery}${decadeMaxQuery}`);
+    setDiscoverDecade(`${decadeMinQuery}${decadeMaxQuery}`);
   };
 
   const [minDurationValue, setMinDurationValue] = useState(0);
@@ -95,7 +104,12 @@ function Discover() {
     setMaxDurationValue(e.maxValue);
     durationMaxQuery += maxDurationValue;
     durationMinQuery += minDurationValue;
-    setMoviesPopularDuration(`${durationMinQuery}${durationMaxQuery}`);
+    setDiscoverDuration(`${durationMinQuery}${durationMaxQuery}`);
+  };
+
+  const handleFiltersPage = (data) => {
+    window.scrollTo(0, 0);
+    setFiltersPage(data.selected + 1);
   };
 
   const customStyles = {
@@ -109,117 +123,162 @@ function Discover() {
         boxShadow: state.isFocused ? "0 0 0 1 #E66D38" : "none",
       },
     }),
+    dropdownIndicator: (provided, state) => ({
+      ...provided,
+      transform: state.selectProps.menuIsOpen && "rotate(180deg)",
+    }),
   };
 
   return (
-    <main className="discover">
-      <h2>{title}</h2>
-      <section className="filtersContainer">
-        <div className="searchContainer">
-          <input
-            type="text"
-            name="search"
-            className="searchBar"
-            id="searchBar"
-            placeholder="Recherche"
-            onChange={(e) => {
-              setSearch(e.target.value);
-            }}
-          />
-        </div>
-        <div className="filtersInner">
-          <Select
-            isMulti
-            isClearable
-            closeMenuOnSelect={false}
-            name="genres"
-            options={genreOptions}
-            className="react-select-container"
-            classNamePrefix="react-select"
-            styles={customStyles}
-            placeholder="Genre"
-            getOptionValue={(option) => option.id}
-            onChange={(option) => handleSelectGenres(option)}
-          />
-          <Select
-            isMulti
-            isClearable
-            closeMenuOnSelect={false}
-            name="providers"
-            options={providerOptions}
-            className="react-select-container"
-            classNamePrefix="react-select"
-            styles={customStyles}
-            placeholder="Plateforme"
-            getOptionValue={(option) => option.id}
-            onChange={(option) => handleSelectProvider(option)}
-          />
-          <Select
-            isClearable
-            closeMenuOnSelect={false}
-            name="certifications"
-            options={certificationOptions}
-            className="react-select-container"
-            classNamePrefix="react-select"
-            styles={customStyles}
-            placeholder="Age"
-            getOptionValue={(option) => option.id}
-            onChange={(option) => handleSelectCertification(option)}
-          />
-          <div>
-            <p>Note</p>
-            <MultiRangeSlider
-              min={0}
-              max={10}
-              step={1}
-              ruler
-              label
-              preventWheel={false}
-              minValue={minRatingValue}
-              maxValue={maxRatingValue}
+    <>
+      <Navbar />
+      <main className="discover">
+        <section className="filtersContainer">
+          <h2>{title}</h2>
+          {/* <div className="searchContainer">
+            <input
+              type="text"
+              name="search"
+              className="searchBar"
+              id="searchBar"
+              placeholder="Recherche"
               onChange={(e) => {
-                handleRatingInput(e);
+                setSearch(e.target.value);
               }}
             />
-          </div>
-          <div>
-            <p>Décennie</p>
-            <MultiRangeSlider
-              min={1900}
-              max={2030}
-              step={10}
-              stepOnly
-              ruler
-              label
-              preventWheel={false}
-              minValue={minDecadeValue}
-              maxValue={maxDecadeValue}
-              onChange={(e) => {
-                handleDecadeInput(e);
-              }}
+          </div> */}
+          <div className="filtersInner">
+            <h3>Trier</h3>
+            <hr />
+            <Select
+              isClearable
+              closeMenuOnSelect={false}
+              name="trier"
+              options={sortingOptions}
+              className="react-select-container"
+              classNamePrefix="react-select"
+              styles={customStyles}
+              placeholder={`${placeholder}`}
+              getOptionValue={(option) => option.id}
+              onChange={(option) => handleSelectCertification(option)}
             />
           </div>
-          <div>
-            <p>Durée (en minutes)</p>
-            <MultiRangeSlider
-              min={0}
-              max={300}
-              step={15}
-              stepOnly
-              ruler
-              label
-              preventWheel={false}
-              minValue={minDurationValue}
-              maxValue={maxDurationValue}
-              onChange={(e) => {
-                handleDurationInput(e);
-              }}
+          <div className="filtersInner">
+            <h3>Filtrer</h3>
+            <hr />
+            <Select
+              isMulti
+              isClearable
+              closeMenuOnSelect={false}
+              name="genres"
+              options={genreOptions}
+              className="react-select-container"
+              classNamePrefix="react-select"
+              styles={customStyles}
+              placeholder="Genre"
+              getOptionValue={(option) => option.id}
+              onChange={(option) => handleSelectGenres(option)}
             />
+            <Select
+              isMulti
+              isClearable
+              closeMenuOnSelect={false}
+              name="providers"
+              options={providerOptions}
+              className="react-select-container"
+              classNamePrefix="react-select"
+              styles={customStyles}
+              placeholder="Plateforme"
+              getOptionValue={(option) => option.id}
+              onChange={(option) => handleSelectProvider(option)}
+            />
+            <Select
+              isClearable
+              closeMenuOnSelect={false}
+              name="certifications"
+              options={certificationOptions}
+              className="react-select-container"
+              classNamePrefix="react-select"
+              styles={customStyles}
+              placeholder="Age"
+              getOptionValue={(option) => option.id}
+              onChange={(option) => handleSelectCertification(option)}
+            />
+            <div>
+              <p>Note</p>
+              <MultiRangeSlider
+                min={0}
+                max={10}
+                step={1}
+                ruler
+                label
+                preventWheel={false}
+                minValue={minRatingValue}
+                maxValue={maxRatingValue}
+                onChange={(e) => {
+                  handleRatingInput(e);
+                }}
+              />
+            </div>
+            <div>
+              <p>Décennie</p>
+              <MultiRangeSlider
+                min={1900}
+                max={2030}
+                step={10}
+                stepOnly
+                ruler
+                label
+                preventWheel={false}
+                minValue={minDecadeValue}
+                maxValue={maxDecadeValue}
+                onChange={(e) => {
+                  handleDecadeInput(e);
+                }}
+              />
+            </div>
+            <div>
+              <p>Durée (en minutes)</p>
+              <MultiRangeSlider
+                min={0}
+                max={300}
+                step={15}
+                stepOnly
+                ruler
+                label
+                preventWheel={false}
+                minValue={minDurationValue}
+                maxValue={maxDurationValue}
+                onChange={(e) => {
+                  handleDurationInput(e);
+                }}
+              />
+            </div>
           </div>
-        </div>
-      </section>
-      <Link to="/">Retour</Link>
-    </main>
+        </section>
+        <section className="filtered">
+          <p className="filteredCount">
+            {filtersTotal.total_results} résultats
+          </p>
+          <ul className="filteredList">
+            {discover.map((r) => (
+              <ContentCard c={r} />
+            ))}
+          </ul>
+          <ReactPaginate
+            breakLabel="..."
+            onPageChange={handleFiltersPage}
+            nextLabel=">"
+            className="paginationList"
+            pageRangeDisplayed={5}
+            pageCount={filtersTotal.total_pages}
+            previousLabel="<"
+            renderOnZeroPageCount={null}
+          />
+        </section>
+      </main>
+      <Footer />
+    </>
   );
 }
 

@@ -8,19 +8,17 @@ import {
   useMoviesTop,
   useSeriesTop,
   useSeriesPopular,
-  useMoviesPopular,
-  useMoviesCategories,
-  useSeriesCategories,
+  useDiscover,
   useTrending,
+  useMoviesPopular,
 } from "../../data/DataFetch";
 import ButtonsChoice from "./components/ButtonsChoice";
 
 export default function Filters() {
-  const { moviesCategories } = useMoviesCategories();
-  const { seriesCategories } = useSeriesCategories();
   const { search, results, resultsTotal, setSearchPage } = useSearch();
-  const { moviesTop } = useMoviesTop();
   const { moviesPopular } = useMoviesPopular();
+  const { moviesTop } = useMoviesTop();
+  const { discover } = useDiscover();
   const { moviesUpcoming } = useUpcoming();
   const { trending } = useTrending();
   const { seriesTop } = useSeriesTop();
@@ -37,14 +35,12 @@ export default function Filters() {
     <main className="home">
       {search === "" ? (
         <>
-          <ButtonsChoice movies={moviesPopular} series={seriesPopular} />
+          <ButtonsChoice movies={discover} series={seriesPopular} />
           <section className="homeList">
-            {moviesPopular.length !== 0 && (
-              <ContentList
-                title="Films les plus populaires"
-                hook={moviesPopular}
-              />
-            )}
+            <ContentList
+              title="Films les plus populaires"
+              hook={moviesPopular}
+            />
             <ContentList
               title="Séries les plus populaires"
               hook={seriesPopular}
@@ -76,11 +72,7 @@ export default function Filters() {
           )}
           <ul className="resultsList">
             {results.map((r) => (
-              <ContentCard
-                c={r}
-                moviesCategories={moviesCategories}
-                seriesCategories={seriesCategories}
-              />
+              <ContentCard c={r} />
             ))}
           </ul>
           <ReactPaginate

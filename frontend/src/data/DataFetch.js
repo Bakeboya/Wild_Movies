@@ -36,48 +36,72 @@ export const useSearch = () => {
   };
 };
 
-export const useMoviesPopular = () => {
+export const useDiscover = () => {
   const { lang } = useLanguage();
-  const [moviesPopular, setMoviesPopular] = useState([]);
-  const [moviesPopularGenre, setMoviesPopularGenre] = useState("");
-  const [moviesPopularRating, setMoviesPopularRating] = useState("");
-  const [moviesPopularDecade, setMoviesPopularDecade] = useState("");
-  const [moviesPopularDuration, setMoviesPopularDuration] = useState("");
-  const [moviesPopularProvider, setMoviesPopularProvider] = useState("");
-  const [moviesPopularCertification, setMoviesPopularCertification] =
-    useState("");
+  const [sorting, setSorting] = useState("popularity.desc");
+  const [discover, setDiscover] = useState([]);
+  const [discoverGenre, setDiscoverGenre] = useState("");
+  const [discoverRating, setDiscoverRating] = useState("");
+  const [discoverDecade, setDiscoverDecade] = useState("");
+  const [discoverDuration, setDiscoverDuration] = useState("");
+  const [discoverProvider, setDiscoverProvider] = useState("");
+  const [discoverCertification, setDiscoverCertification] = useState("");
+  const [filtersPage, setFiltersPage] = useState(1);
+  const [filtersTotal, setFiltersTotal] = useState("");
 
   useEffect(() => {
     axios
       .get(
-        `https://api.themoviedb.org/3/discover/movie?api_key=ac1108de3648bb230bb19e261e8497cb&language=${lang}&sort_by=popularity.desc&include_adult=false&include_video=false&page=1${moviesPopularGenre}${moviesPopularRating}${moviesPopularDecade}${moviesPopularDuration}${moviesPopularProvider}${moviesPopularCertification}&vote_count.gte=10&with_watch_monetization_types=flatrate`
+        `https://api.themoviedb.org/3/discover/movie?api_key=ac1108de3648bb230bb19e261e8497cb&language=${lang}&sort_by=${sorting}&include_adult=false&include_video=false&page=${filtersPage}${discoverGenre}${discoverRating}${discoverDecade}${discoverDuration}${discoverProvider}${discoverCertification}&vote_count.gte=10&with_watch_monetization_types=flatrate`
+      )
+      .then((res) => {
+        setFiltersTotal(res.data);
+        setDiscover(res.data.results);
+      });
+  }, [
+    filtersPage,
+    discoverGenre,
+    discoverRating,
+    discoverDecade,
+    discoverDuration,
+    discoverProvider,
+    discoverCertification,
+  ]);
+  return {
+    setSorting,
+    filtersTotal,
+    setFiltersPage,
+    discover,
+    discoverGenre,
+    setDiscoverGenre,
+    discoverRating,
+    setDiscoverRating,
+    discoverDecade,
+    setDiscoverDecade,
+    discoverDuration,
+    setDiscoverDuration,
+    discoverProvider,
+    setDiscoverProvider,
+    discoverCertification,
+    setDiscoverCertification,
+  };
+};
+
+export const useMoviesPopular = () => {
+  const { lang } = useLanguage();
+  const [moviesPopular, setMoviesPopular] = useState([]);
+  const [moviesPopularPage, setMoviesPopularPage] = useState(1);
+
+  useEffect(() => {
+    axios
+      .get(
+        `https://api.themoviedb.org/3/discover/movie?api_key=ac1108de3648bb230bb19e261e8497cb&language=${lang}&sort_by=popularity.desc&include_adult=false&include_video=false&page=${moviesPopularPage}&vote_count.gte=10&with_watch_monetization_types=flatrate`
       )
       .then((res) => {
         setMoviesPopular(res.data.results);
       });
-  }, [
-    moviesPopularGenre,
-    moviesPopularRating,
-    moviesPopularDecade,
-    moviesPopularDuration,
-    moviesPopularProvider,
-    moviesPopularCertification,
-  ]);
-  return {
-    moviesPopular,
-    moviesPopularGenre,
-    setMoviesPopularGenre,
-    moviesPopularRating,
-    setMoviesPopularRating,
-    moviesPopularDecade,
-    setMoviesPopularDecade,
-    moviesPopularDuration,
-    setMoviesPopularDuration,
-    moviesPopularProvider,
-    setMoviesPopularProvider,
-    moviesPopularCertification,
-    setMoviesPopularCertification,
-  };
+  }, []);
+  return { moviesPopular };
 };
 
 export const useTrending = () => {

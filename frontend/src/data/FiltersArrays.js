@@ -34,3 +34,12 @@ export const certificationOptions = [
   { value: "16", label: "16", id: "16" },
   { value: "18", label: "18", id: "18" },
 ];
+
+export const sortingOptions = [
+  { value: "Popularité ↑", label: "Popularité ↑" },
+  { value: "Popularité ↓", label: "Popularité ↓" },
+  { value: "Notes ↑", label: "Notes ↑" },
+  { value: "Notes ↓", label: "Notes ↓" },
+  { value: "Date de sortie ↑", label: "Date de sortie ↑" },
+  { value: "Date de sortie ↓", label: "Date de sortie ↓" },
+];

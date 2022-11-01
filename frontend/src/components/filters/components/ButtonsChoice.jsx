@@ -35,16 +35,22 @@ function ButtonsChoice({ movies, series }) {
       </div>
       {toggleType === 1 && (
         <nav>
-          <Link to="/films/populaires" state={{ title: "Populaires" }}>
+          <Link
+            to="/films/populaires"
+            state={{ title: "Films populaires", placeholder: "Popularité ↑" }}
+          >
             Populaires
           </Link>
           <Link
             to="/films/meilleures-notes"
-            state={{ title: "Meilleures notes" }}
+            state={{ title: "Films les mieux notés", placeholder: "Notes ↑" }}
           >
             Les mieux notés
           </Link>
-          <Link to="/films/a-venir" state={{ title: "A venir" }}>
+          <Link
+            to="/films/a-venir"
+            state={{ title: "Films à venir", placeholder: "Date de sortie ↑" }}
+          >
             A venir
           </Link>
         </nav>
