@@ -274,7 +274,7 @@ function Discover() {
             onPageChange={handleFiltersPage}
             nextLabel=">"
             className="paginationList"
-            pageRangeDisplayed={5}
+            pageRangeDisplayed={4}
             pageCount={filtersTotal.total_pages}
             previousLabel="<"
             renderOnZeroPageCount={null}

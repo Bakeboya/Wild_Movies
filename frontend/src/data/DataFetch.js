@@ -17,7 +17,9 @@ export const useSearch = () => {
     if (search !== "") {
       axios
         .get(
-          `https://api.themoviedb.org/3/search/movie?api_key=ac1108de3648bb230bb19e261e8497cb&language=${lang}&page=${searchPage}&include_adult=false&query=${search}`
+          `https://api.themoviedb.org/3/search/movie?api_key=${
+            import.meta.env.VITE_API_KEY
+          }&language=${lang}&page=${searchPage}&include_adult=false&query=${search}`
         )
         .then((res) => {
           setResultsTotal(res.data);
@@ -52,7 +54,9 @@ export const useDiscover = () => {
   useEffect(() => {
     axios
       .get(
-        `https://api.themoviedb.org/3/discover/movie?api_key=ac1108de3648bb230bb19e261e8497cb&language=${lang}&sort_by=${sorting}&include_adult=false&include_video=false&page=${filtersPage}${discoverGenre}${discoverRating}${discoverDecade}${discoverDuration}${discoverProvider}${discoverCertification}&vote_count.gte=10&with_watch_monetization_types=flatrate`
+        `https://api.themoviedb.org/3/discover/movie?api_key=${
+          import.meta.env.VITE_API_KEY
+        }&language=${lang}&sort_by=${sorting}&include_adult=false&include_video=false&page=${filtersPage}${discoverGenre}${discoverRating}${discoverDecade}${discoverDuration}${discoverProvider}${discoverCertification}&vote_count.gte=10&with_watch_monetization_types=flatrate`
       )
       .then((res) => {
         setFiltersTotal(res.data);
@@ -96,7 +100,9 @@ export const useMoviesPopular = () => {
   useEffect(() => {
     axios
       .get(
-        `https://api.themoviedb.org/3/discover/movie?api_key=ac1108de3648bb230bb19e261e8497cb&language=${lang}&sort_by=popularity.desc&include_adult=false&include_video=false&page=${moviesPopularPage}&vote_count.gte=10&with_watch_monetization_types=flatrate`
+        `https://api.themoviedb.org/3/discover/movie?api_key=${
+          import.meta.env.VITE_API_KEY
+        }&language=${lang}&sort_by=popularity.desc&include_adult=false&include_video=false&page=${moviesPopularPage}&vote_count.gte=10&with_watch_monetization_types=flatrate`
       )
       .then((res) => {
         setMoviesPopular(res.data.results);
@@ -112,7 +118,9 @@ export const useTrending = () => {
   useEffect(() => {
     axios
       .get(
-        `https://api.themoviedb.org/3/trending/all/${trendingTime}?api_key=ac1108de3648bb230bb19e261e8497cb`
+        `https://api.themoviedb.org/3/trending/all/${trendingTime}?api_key=${
+          import.meta.env.VITE_API_KEY
+        }`
       )
       .then((res) => {
         setTrending(res.data.results);
@@ -129,7 +137,9 @@ export const useMoviesTop = () => {
   useEffect(() => {
     axios
       .get(
-        `https://api.themoviedb.org/3/discover/movie?api_key=ac1108de3648bb230bb19e261e8497cb&language=${lang}&sort_by=vote_average.desc&include_adult=false&include_video=false&page=${moviesTopPage}&vote_count.gte=300&with_watch_monetization_types=flatrate`
+        `https://api.themoviedb.org/3/discover/movie?api_key=${
+          import.meta.env.VITE_API_KEY
+        }&language=${lang}&sort_by=vote_average.desc&include_adult=false&include_video=false&page=${moviesTopPage}&vote_count.gte=300&with_watch_monetization_types=flatrate`
       )
       .then((res) => {
         setMoviesTop(res.data.results);
@@ -146,7 +156,9 @@ export const useSeriesTop = () => {
   useEffect(() => {
     axios
       .get(
-        `https://api.themoviedb.org/3/discover/tv?api_key=ac1108de3648bb230bb19e261e8497cb&language=${lang}&sort_by=vote_average.desc&page=${seriesTopPage}&vote_count.gte=100&include_null_first_air_dates=false&with_watch_monetization_types=flatrate`
+        `https://api.themoviedb.org/3/discover/tv?api_key=${
+          import.meta.env.VITE_API_KEY
+        }&language=${lang}&sort_by=vote_average.desc&page=${seriesTopPage}&vote_count.gte=100&include_null_first_air_dates=false&with_watch_monetization_types=flatrate`
       )
       .then((res) => {
         setSeriesTop(res.data.results);
@@ -162,7 +174,9 @@ export const useUpcoming = () => {
   useEffect(() => {
     axios
       .get(
-        `https://api.themoviedb.org/3/movie/upcoming?api_key=ac1108de3648bb230bb19e261e8497cb&language=${lang}&page=1`
+        `https://api.themoviedb.org/3/movie/upcoming?api_key=${
+          import.meta.env.VITE_API_KEY
+        }&language=${lang}&page=1`
       )
       .then((res) => {
         setMoviesUpcoming(res.data.results);
@@ -177,7 +191,9 @@ export const useSeriesPopular = () => {
   useEffect(() => {
     axios
       .get(
-        ` https://api.themoviedb.org/3/tv/popular?api_key=ac1108de3648bb230bb19e261e8497cb&language=${lang}&page=1`
+        ` https://api.themoviedb.org/3/tv/popular?api_key=${
+          import.meta.env.VITE_API_KEY
+        }&language=${lang}&page=1`
       )
       .then((res) => {
         setSeriesPopular(res.data.results);
@@ -191,7 +207,9 @@ export const useMoviesCategories = () => {
   useEffect(() => {
     axios
       .get(
-        `https://api.themoviedb.org/3/genre/movie/list?api_key=ac1108de3648bb230bb19e261e8497cb&language=en-US
+        `https://api.themoviedb.org/3/genre/movie/list?api_key=${
+          import.meta.env.VITE_API_KEY
+        }&language=en-US
 `
       )
       .then((res) => {
@@ -206,7 +224,9 @@ export const useSeriesCategories = () => {
   useEffect(() => {
     axios
       .get(
-        `https://api.themoviedb.org/3/genre/tv/list?api_key=ac1108de3648bb230bb19e261e8497cb&language=en-US
+        `https://api.themoviedb.org/3/genre/tv/list?api_key=${
+          import.meta.env.VITE_API_KEY
+        }&language=en-US
     `
       )
       .then((res) => {

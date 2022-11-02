@@ -35,7 +35,7 @@ export default function ContentCard({ c }) {
             })(),
           }}
         >
-          {c.vote_average.toFixed(1).toString().replace("0.0", "NR")}
+          {c.vote_average.toFixed(1).toString().replace(/\0.0/g, "NR")}
         </p>
         <h3>{c.title || c.name}</h3>
       </Link>
