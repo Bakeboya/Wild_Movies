@@ -1,79 +1,32 @@
+import { Link } from "react-router-dom";
+import axios from "axios";
 import React, { useState, useEffect } from "react";
-import alien from "@assets/header/alien.jpg";
-import dune from "@assets/header/dune.jpg";
-import future from "@assets/header/future.jpg";
-import interstellar from "@assets/header/interstellar.jpg";
-import matrix from "@assets/header/matrix.jpg";
-import terminator from "@assets/header/terminator.jpg";
-
-const sliderData = [
-  {
-    image: alien,
-  },
-  {
-    image: dune,
-  },
-  {
-    image: interstellar,
-  },
-  {
-    image: matrix,
-  },
-  {
-    image: future,
-  },
-  {
-    image: terminator,
-  },
-];
+import Slider from "./Slider";
 
 function Header() {
-
-  const [currentSlide, setCurrentSlide] = useState(0);
-
-  const slideLength = sliderData.length;
-
-  const autoScroll = true;
-  let slideInterval;
-  const intervalTime = 6000;
-
-  const nextSlide = () => {
-    setCurrentSlide(currentSlide === slideLength - 1 ? 0 : currentSlide + 1);
-  };
-
-  function auto() {
-    slideInterval = setInterval(nextSlide, intervalTime);
-  }
-
+  const [poster, setPoster] = useState();
+  const page = 1;
   useEffect(() => {
-    if (autoScroll) {
-      auto();
-    }
-    return () => clearInterval(slideInterval);
-  }, [currentSlide]);
+    axios
+      .get(
+        `https://api.themoviedb.org/3/movie/popular?api_key=ac1108de3648bb230bb19e261e8497cb&language=en-US&page=${page}`
+      )
+      .then((res) => {
+        setPoster(res.data.results);
+      });
+  }, [page]);
 
   return (
     <header className="header">
-      <div className="slider">
-        {sliderData.map((slide, index) => {
-          const id = `caroussel-${index}`;
-          return (
-            <div
-              className={index === currentSlide ? "slide current" : "slide"}
-              key={id}
-            >
-              {index === currentSlide && (
-                <img src={slide.image} alt="slide" className="image" />
-              )}
-            </div>
-          );
-        })}
-      </div>
+      {poster && <Slider poster={poster} />}
+
       <div className="smartBox">
         <div className="wildMovies">
-          <h1>
-            Wild<span>Movies</span>
-          </h1>
+          <Link to="/" className="logoHeader">
+            <h1>
+              Wild<span>Movies</span>
+            </h1>
+          </Link>
         </div>
 
         <div>
@@ -87,19 +40,22 @@ function Header() {
             RECHERCHER
           </button>
         </div>
+      </div>
 
-        <form className="searchBarBox">
-          <input
-            className="searchBar"
-            placeholder="Commencer ma recherche"
-          />
-          <button
-            type="submit"
-            className="searchButtonDesktop"
-          >
-            RECHERCHER
-          </button>
-        </form>
+      <div className="deskBox">
+        <div>
+          <p className="headerTitle2">
+            Le meilleur moteur de recherche de films et de séries
+          </p>
+        </div>
+        <div className="searchBar">
+          <input placeholder="Commencer ma recherche" />
+          <Link to="/">
+            <button type="submit" className="searchButtonDesktop">
+              RECHERCHER
+            </button>
+          </Link>
+        </div>
       </div>
     </header>
   );
