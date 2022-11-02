@@ -13,6 +13,7 @@ function CardText({
   genres,
   title,
   cast,
+  preview,
 }) {
   const color = (donnee) => {
     if (donnee < 5) {
@@ -23,6 +24,10 @@ function CardText({
     }
     return "diagram_note good";
   };
+
+
+
+
 
   return (
     <div className="cardText">
@@ -56,7 +61,11 @@ function CardText({
         </div>
         <img id="logoFavoris" src={componentCoeur} alt="logo favoris" />
         <div className="bande_annonce">
-          <a href="https://www.youtube.com/watch?v=HGpwaIf3ZKk">
+          <a
+            href={`https://www.youtube.com/watch?v=${preview[0].key}`}
+            target="_blank"
+            rel="noreferrer"
+          >
             <img
               id="logoLecteur"
               src={componentLecteur}
@@ -77,7 +86,7 @@ function CardText({
 CardText.propTypes = {
   title: PropTypes.string.isRequired,
   releaseDate: PropTypes.string.isRequired,
-  runtime: PropTypes.string.isRequired,
+  runtime: PropTypes.number.isRequired,
   overview: PropTypes.string.isRequired,
   voteAverage: PropTypes.number.isRequired,
   genres: PropTypes.shape(PropTypes.number, PropTypes.string).isRequired,
