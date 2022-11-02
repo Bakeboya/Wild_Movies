@@ -34,3 +34,20 @@ export const certificationOptions = [
   { value: "16", label: "16", id: "16" },
   { value: "18", label: "18", id: "18" },
 ];
+
+export const sortingOptions = [
+  { value: "Popularité ↓", label: "Popularité ↓", id: "popularity.desc" },
+  { value: "Popularité ↑", label: "Popularité ↑", id: "popularity.asc" },
+  { value: "Notes ↓", label: "Notes ↓", id: "vote_average.desc" },
+  { value: "Notes ↑", label: "Notes ↑", id: "vote_average.asc" },
+  {
+    value: "Date de sortie ↓",
+    label: "Date de sortie ↓",
+    id: "release_date.desc",
+  },
+  {
+    value: "Date de sortie ↑",
+    label: "Date de sortie ↑",
+    id: "release_date.asc",
+  },
+];
