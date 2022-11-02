@@ -8,7 +8,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 1;
+  z-index: 2;
   background: rgba(0, 0, 0, 0.7);
   opacity: 1;
   visibility: visible;
@@ -40,12 +40,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 10px;
+    margin: auto;
     border-radius: 20px;
-    height: 90%;
+    height: 94%;
     width: 50%;
     font-size: 16px;
-
 
     &.overlayNews {
       display: flex;
@@ -62,7 +61,7 @@
       text-align: center;
       color: black;
       font-size: 16px;
-      margin: 0px auto 80px auto;
+      margin: 0px auto 50px auto;
     }
 
     .linkClose {
@@ -102,9 +101,9 @@
     }
 
     .userTitle {
-      margin-top: 20px;
-      margin-bottom: 30px;
-      width: 30%;
+      margin-top: 10px;
+      margin-bottom: 20px;
+      width: 150px;
     }
 
     #logoCreate {
@@ -115,7 +114,7 @@
 
     #logoConnect {
       width: 80%;
-      max-width: 200px;
+      max-width: 240px;
       margin-bottom: 10px;
     }
 
@@ -499,26 +498,64 @@
 
     .checkBoxDiv {
       display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
-
-    .checkBox {
-      display: flex;
+      flex-direction: row;
+      justify-content: center;
       align-items: center;
       width: 90%;
-      margin-left: 10px;
-      gap: 10px;
-      font-size: 14px;
+      gap: 14px;
 
-      .box {
-        margin-left: 20px;
-        transition: all 200ms ease-in;
-        transform: scale(1.4);
+      .checkBox {
+        display: block;
+        margin-top: -16px;
+        margin-left: 10px;
+        gap: 14px;
+        font-size: 14px;
 
-        &:hover {
-          transition: all 100ms ease-in;
-          transform: scale(1.8);
+        input[type=checkbox] {
+          height: 0;
+          width: 0;
+          visibility: hidden;
+        }
+
+        label {
+          cursor: pointer;
+          width: 36px;
+          height: 20px;
+          background: #38383D;
+          // background: #F5F5F5;
+          // background: #E66D38;
+          display: block;
+          border-radius: 12px;
+          position: relative;
+        }
+
+        label:after {
+          content: '';
+          position: absolute;
+          top: 2px;
+          left: 2px;
+          width: 16px;
+          height: 16px;
+          // background: #38383D;
+          background: #F5F5F5;
+          // background: #E66D38;
+          border-radius: 10px;
+          transition: 0.3s;
+        }
+
+        input:checked+label {
+          // background: #38383D;
+          // background: #F5F5F5;
+          background: #E66D38;
+        }
+
+        input:checked+label:after {
+          left: calc(100% - 2px);
+          transform: translateX(-100%);
+        }
+
+        label:active:after {
+          width: 20px;
         }
       }
     }
@@ -648,17 +685,22 @@
   @media screen and (max-width: 600px) {
     .popUp {
       .overlay {
-        width: 95%;
-        height: 80%;
+        width: 90%;
         gap: 20px;
 
         .overlayTitle {
-          margin: 0px auto 20px auto;
+          margin: 20px auto 30px auto;
         }
 
         .userTitle {
-          margin-top: 20px;
+          margin-top: 10px;
           margin-bottom: 0px;
+        }
+
+        #logoConnect {
+          width: 70%;
+          max-width: 180px;
+          margin-bottom: 10px;
         }
 
         #logoSend {
@@ -759,7 +801,6 @@
     }
 
     .checkBox {
-      width: 95%;
 
       .box {
         margin-left: 20px;

@@ -29,8 +29,8 @@ function User({ handleClose }) {
       userPassword: "b",
     },
     {
-      userName: "c",
-      userPassword: "d",
+      userName: "anticonstitutionnellement",
+      userPassword: "b",
     },
   ];
   const getMail = (e) => {
@@ -123,12 +123,6 @@ function User({ handleClose }) {
   const exitSend = () => {
     setDisplayPopUpSend(false);
   };
-  // const handleMain = () => {
-  //   setConnect(false);
-  //   setInscription(false);
-  //   setHide(false);
-  //   setHidePassword(true);
-  // };
 
   return (
     <div>
@@ -157,14 +151,26 @@ function User({ handleClose }) {
             <div className="popUp">
               <div className="overlay overlayNews">
                 <img src={wildmovies} alt="title" className="userTitle" />
-                <button type="submit" className='buttonLottie' onClick={exitNews} >
+                <button
+                  type="submit"
+                  className="buttonLottie"
+                  onClick={exitNews}
+                >
                   <img src={logoNews} alt="Yes" id="logoNews" />
                 </button>
                 <div className="questionNews">
-                  <button type="submit" className='buttonLottie' onClick={exitNews} >
+                  <button
+                    type="submit"
+                    className="buttonLottie"
+                    onClick={exitNews}
+                  >
                     <img src={logoYes} alt="Yes" id="logoYes" />
                   </button>
-                  <button type="submit" className='buttonLottie' onClick={exitNews} >
+                  <button
+                    type="submit"
+                    className="buttonLottie"
+                    onClick={exitNews}
+                  >
                     <img src={logoNo} alt="No" id="logoNo" />
                   </button>
                 </div>
@@ -250,10 +256,11 @@ function User({ handleClose }) {
                   onChange={getMail}
                 />
                 <input
-                  type="text"
+                  type="password"
                   name="pass"
                   placeholder="Mot de passe"
                   className="userForm champs"
+                  autoComplete="current-password"
                   onChange={getPassword}
                 />
                 <button
@@ -302,24 +309,16 @@ function User({ handleClose }) {
                   type="password"
                   className="userForm champs"
                   placeholder="Mot de passe"
-                  autoComplete={false}
-                  autoCorrect={false}
+                  autoComplete="current-password"
                   onChange={getPassword}
                 />
                 <div className="checkBoxDiv">
                   <div className="checkBox">
-                    <input
-                      type="checkbox"
-                      name="politique"
-                      className="box"
-                      id="politique"
-                      onChange={handleCheckBox}
-                    />
-                    <label htmlFor="politique">
-                      J'accepte la politique de confidentialité et la politique
-                      de cookies (requis).
-                    </label>
+                    <input type="checkbox" id="switch" onChange={handleCheckBox} />
+                    <label for="switch"></label>
                   </div>
+                  <p>J'accepte la politique de confidentialité et la politique
+                    de cookies (requis).</p>
                 </div>
                 <button
                   type="submit"

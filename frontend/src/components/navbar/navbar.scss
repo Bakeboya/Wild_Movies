@@ -4,9 +4,11 @@
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+  height:60px;
 
   .WildMoviesDiv {
     width: 100%;
+    margin-left:10px;
 
     .WildMovies {
       display: flex;
@@ -43,6 +45,7 @@
     display: flex;
     justify-content: flex-end;
     width: 100%;
+    margin-right:10px;
 
     .User {
       background-color: $primary-color;
@@ -59,7 +62,7 @@
 
         &:hover {
           transition: 0.3s ease-in-out;
-          transform: scale(1.2);
+          transform: scale(1.4);
         }
       }
     }
