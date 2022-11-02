@@ -40,13 +40,17 @@
   }
 
   .UserDiv {
+    display: flex;
+    justify-content: flex-end;
     width: 100%;
 
     .User {
+      background-color: $primary-color;
       display: flex;
-      justify-content: flex-end;
+      border: 0;
 
-      .BisUser {
+      .bisUser {
+        background-color: $primary-color;
         color: $tertiary-color;
         height: 40px;
         width: 40px;
@@ -54,17 +58,11 @@
         transition: 0.3s ease-in-out;
 
         &:hover {
-          color: $secondary-color;
-          transform: scale(1.05);
+          transition: 0.3s ease-in-out;
+          transform: scale(1.2);
         }
       }
     }
-  }
-
-  .Button {
-    margin-top: 500px;
-    width: 100px;
-    height: 30px;
   }
 }
 

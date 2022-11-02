@@ -1,223 +1,792 @@
-.userDiv {
-  background-color: $secondary-color;
-  padding: 0;
-  margin: 0;
-  height: 150px;
-  width: 40%;
+.userContainer {
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-end;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.7);
+  opacity: 1;
+  visibility: visible;
 
-  .close {
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
-    background-color: transparent;
-    border: 0;
-    margin: 8px 8px auto auto;
-    transition: all 200ms ease-in;
-    transform: scale(1.4);
-
-    &:hover {
-      transition: all 100ms ease-in;
-      transform: scale(2);
-    }
-  }
-
-  .userMain {
+  .popUp {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    margin-top: 32px;
-    height: 100%;
+    margin-bottom: 20px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
     width: 100%;
-    gap: 50px;
-  }
+    height: 100%;
+    z-index: 1;
+    background: rgba(0, 0, 0, 0);
+    opacity: 1;
+    visibility: visible;
 
-  &.hide {
-    display: none;
-  }
-}
-
-.buttonUser {
-  height: 40px;
-  width: 30%;
-}
-
-.connectDiv {
-  background-color: $secondary-color;
-  display: flex;
-  flex-direction: column;
-  width: 40%;
-
-  .close {
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
-    background-color: transparent;
-    border: 0;
-    margin: 8px 8px auto auto;
-    transition: all 200ms ease-in;
-    transform: scale(1.4);
-
-    &:hover {
-      transition: all 100ms ease-in;
-      transform: scale(2);
+    &.hide {
+      display: none;
     }
   }
 
-  .connectMain {
+  .overlay {
+    background-color: white;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
     align-items: center;
-    height: 300px;
-    width: 100%;
-    font-size: 14px;
-  }
+    margin-top: 10px;
+    border-radius: 20px;
+    height: 90%;
+    width: 50%;
+    font-size: 16px;
 
-  .userForm {
-    width: 60%;
-    height: 30px;
-  }
 
-  #enteteConnect {
-    margin-top: 30px;
-  }
+    &.overlayNews {
+      display: flex;
+      justify-content: flex-start;
+    }
 
-  .link {
-    border: 0;
-    background-color: transparent;
-    text-decoration: underline;
-    color: blue;
+    .buttonLottie {
+      background-color: transparent;
+      border: 0;
+    }
 
-    &:hover {
+    .overlayTitle {
+      width: 80%;
+      text-align: center;
+      color: black;
+      font-size: 16px;
+      margin: 0px auto 80px auto;
+    }
+
+    .linkClose {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: black;
+      height: 40px;
+      width: 30%;
+      border-radius: 20px;
+      border: transparent;
       text-decoration: none;
-      color: blueviolet;
+      font-size: 20px;
+      background: linear-gradient(to top,
+          transparent 16%,
+          black 16.01%,
+          black 20%,
+          transparent 20.01%) no-repeat;
+      transition: all 300ms ease-out;
+      background-position: 50%;
+      background-size: 0% 100%;
+      background-color: $tertiary-color;
+      cursor: pointer;
+
+      &:hover {
+        background-position: center;
+        transition: background-size 0.3s;
+        transition: all 300ms ease-in;
+        background-size: 40% 100%;
+      }
+    }
+
+    .messagePopUp {
+      color: blue;
+      font-style: italic;
+      text-decoration: underline;
+    }
+
+    .userTitle {
+      margin-top: 20px;
+      margin-bottom: 30px;
+      width: 30%;
+    }
+
+    #logoCreate {
+      width: 80%;
+      max-width: 230px;
+      margin-bottom: 10px;
+    }
+
+    #logoConnect {
+      width: 80%;
+      max-width: 200px;
+      margin-bottom: 10px;
+    }
+
+    #logoSend {
+      width: 80%;
+      max-width: 230px;
+      margin-bottom: 10px;
+    }
+
+    #logoNews {
+      width: 80%;
+      max-width: 300px;
       cursor: pointer;
     }
-  }
-}
 
-.inscriptionDiv {
-  background-color: $secondary-color;
-  display: flex;
-  flex-direction: column;
-  width: 40%;
+    .questionNews {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
 
-  .close {
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
-    background-color: transparent;
-    border: 0;
-    margin: 8px 8px auto auto;
-    transition: all 200ms ease-in;
-    transform: scale(1.4);
+      #logoYes {
+        width: 80%;
+        max-width: 120px;
+        cursor: pointer;
+      }
 
-    &:hover {
-      transition: all 100ms ease-in;
-      transform: scale(2);
+      #logoNo {
+        width: 80%;
+        max-width: 150px;
+        cursor: pointer;
+      }
     }
   }
 
-  .inscriptionMain {
+  .userDiv {
+    background-color: $secondary-color;
+    padding: 0;
+    margin: 0;
+    position: fixed;
+    top: 150px;
+    height: 200px;
+    width: 40%;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    height: 300px;
-    width: 100%;
-    font-size: 14px;
-  }
+    justify-content: flex-start;
+    border-radius: 8px;
+    align-items: flex-end;
 
-  .userForm {
-    width: 60%;
-    height: 30px;
-  }
-
-  .checkBoxDiv {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-  }
-
-  .checkBox {
-    display: flex;
-    align-items: center;
-    margin-left: 0px;
-    gap: 10px;
-
-    .box {
+    .close {
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-end;
+      background-color: transparent;
+      border: 0;
+      margin: 8px 8px auto auto;
       transition: all 200ms ease-in;
       transform: scale(1.4);
 
       &:hover {
         transition: all 100ms ease-in;
-        transform: scale(1.8);
+        transform: scale(2);
+      }
+    }
+
+    .userMain {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      margin-top: 50px;
+      height: 100%;
+      width: 100%;
+      gap: 30px;
+    }
+
+    .enteteForm {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+
+      #userTitle {
+        display: flex;
+        width: 40%;
+        margin: 5px;
+      }
+
+      #userLogo {
+        display: none;
+      }
+    }
+
+    &.hide {
+      display: none;
+    }
+  }
+
+  .buttonUser {
+    height: 40px;
+    width: 40%;
+    font-size: 14px;
+    font-family: $font-text;
+    border-radius: 20px;
+    border: transparent;
+    text-decoration: none;
+    background: linear-gradient(to top,
+        transparent 16%,
+        black 16.01%,
+        black 20%,
+        transparent 20.01%) no-repeat;
+    transition: all 300ms ease-out;
+    background-color: $tertiary-color;
+    cursor: pointer;
+
+    &.signUp {
+      background-position: 50%;
+      background-size: 0% 100%;
+
+      &:hover {
+        background-position: center;
+        transition: background-size 0.3s;
+        transition: all 300ms ease-in;
+        background-size: 75px 100%;
+      }
+    }
+
+    &.signIn {
+      background-position: 50%;
+      background-size: 0% 100%;
+
+      &:hover {
+        background-position: center;
+        transition: background-size 0.3s;
+        transition: all 300ms ease-in;
+        background-size: 52px 100%;
       }
     }
   }
 
-  #enteteIns {
-    margin-top: 30px;
-  }
-
-  .link {
-    border: 0;
-    background-color: transparent;
-    text-decoration: underline;
-    color: blue;
-
-    &:hover {
-      text-decoration: none;
-      color: blueviolet;
-      cursor: pointer;
-    }
-  }
-}
-
-.userPasswordDiv {
-  background-color: $secondary-color;
-  display: flex;
-  flex-direction: column;
-  width: 40%;
-  height: 200px;
-
-  &.hide {
-    display: none;
-  }
-
-  .close {
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
-    background-color: transparent;
-    border: 0;
-    margin: 8px 8px auto auto;
-    transition: all 200ms ease-in;
-    transform: scale(1.4);
-
-    &:hover {
-      transition: all 100ms ease-in;
-      transform: scale(2);
-    }
-  }
-
-  .userPassword {
+  .connectDiv {
+    background-color: $secondary-color;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    width: 100%;
-    gap: 40px;
+    position: fixed;
+    top: 40px;
+    height: 400px;
+    width: 40%;
+    border-radius: 8px;
+
+    .enteteForm {
+      display: flex;
+    }
+
+    .close {
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-end;
+      background-color: transparent;
+      border: 0;
+      margin: 8px 8px auto auto;
+      transition: all 200ms ease-in;
+      transform: scale(1.4);
+
+      &:hover {
+        transition: all 100ms ease-in;
+        transform: scale(2);
+      }
+    }
+
+    #userTitle {
+      display: flex;
+      width: 40%;
+      margin: 5px;
+    }
+
+    #userLogo {
+      display: none;
+    }
+
+    .connectMain {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+      height: 100%;
+      width: 100%;
+      font-size: 16px;
+    }
+
+    #enteteConnect {
+      margin-top: 30px;
+    }
+
+    .userForm {
+      display: flex;
+      justify-content: space-around;
+      height: 30px;
+      width: 60%;
+      font-size: 14px;
+      font-family: $font-text;
+      border: 2px solid transparent;
+      transition: all 300ms ease-in;
+      -webkit-box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.3);
+      box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.3);
+
+      &.champs {
+        border-radius: 5px;
+
+        &:hover {
+          border: 2px solid #000000;
+          transition: all 300ms ease-in;
+        }
+      }
+
+      &.signUp {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: black;
+        height: 40px;
+        border-radius: 20px;
+        border: transparent;
+        text-decoration: none;
+        background: linear-gradient(to top,
+            transparent 16%,
+            black 16.01%,
+            black 20%,
+            transparent 20.01%) no-repeat;
+        transition: all 300ms ease-out;
+        background-position: 50%;
+        background-size: 0% 100%;
+        background-color: $tertiary-color;
+        cursor: pointer;
+
+        &:hover {
+          background-position: center;
+          transition: background-size 0.3s;
+          transition: all 300ms ease-in;
+          background-size: 80px 100%;
+        }
+      }
+
+      &::placeholder {
+        text-align: center;
+        font-family: $font-text;
+      }
+    }
+
+    .linkForget {
+      border: 0;
+      background-color: transparent;
+      text-decoration: underline;
+      color: blue;
+
+      &:hover {
+        text-decoration: none;
+        color: blueviolet;
+        cursor: pointer;
+      }
+    }
+
+    .linkQuestion {
+      border: 0;
+      background-color: transparent;
+      text-decoration: underline;
+      color: blue;
+      margin-bottom: 20px;
+
+      &:hover {
+        text-decoration: none;
+        color: blueviolet;
+        cursor: pointer;
+      }
+    }
   }
 
-  .userForm {
-    width: 60%;
-    height: 30px;
+  .inscriptionDiv {
+    background-color: $secondary-color;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 40px;
+    height: 400px;
+    width: 40%;
+    border-radius: 8px;
+
+    .enteteForm {
+      display: flex;
+    }
+
+    .close {
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-end;
+      background-color: transparent;
+      border: 0;
+      margin: 8px 8px auto auto;
+      transition: all 200ms ease-in;
+      transform: scale(1.4);
+
+      &:hover {
+        transition: all 100ms ease-in;
+        transform: scale(2);
+      }
+    }
+
+    #userTitle {
+      display: flex;
+      width: 40%;
+      margin: 5px;
+    }
+
+    #userLogo {
+      display: none;
+    }
+
+    .inscriptionMain {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      height: 100%;
+      width: 100%;
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+
+    .userForm {
+      height: 30px;
+      width: 60%;
+      font-size: 14px;
+      font-family: $font-text;
+      border: 2px solid transparent;
+      transition: all 300ms ease-in;
+      -webkit-box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.3);
+      box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.3);
+
+      &.champs {
+        border-radius: 5px;
+
+        &:hover {
+          border: 2px solid #000000;
+          transition: all 300ms ease-in;
+        }
+      }
+
+      &.create {
+        height: 40px;
+        border-radius: 20px;
+        border: transparent;
+        text-decoration: none;
+        background: linear-gradient(to top,
+            transparent 16%,
+            black 16.01%,
+            black 20%,
+            transparent 20.01%) no-repeat;
+        transition: all 300ms ease-out;
+        background-position: 50%;
+        background-size: 0% 100%;
+        background-color: $tertiary-color;
+        cursor: pointer;
+
+        &:hover {
+          background-position: center;
+          transition: background-size 0.3s;
+          transition: all 300ms ease-in;
+          background-size: 114px 100%;
+        }
+      }
+
+      &::placeholder {
+        text-align: center;
+        font-family: $font-text;
+      }
+    }
+
+    #enteteIns {
+      margin-top: 20px;
+      height: 30px;
+    }
+
+    .checkBoxDiv {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .checkBox {
+      display: flex;
+      align-items: center;
+      width: 90%;
+      margin-left: 10px;
+      gap: 10px;
+      font-size: 14px;
+
+      .box {
+        margin-left: 20px;
+        transition: all 200ms ease-in;
+        transform: scale(1.4);
+
+        &:hover {
+          transition: all 100ms ease-in;
+          transform: scale(1.8);
+        }
+      }
+    }
+
+    .link {
+      border: 0;
+      background-color: transparent;
+      text-decoration: underline;
+      color: blue;
+      margin-bottom: 10px;
+
+      &:hover {
+        text-decoration: none;
+        color: blueviolet;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .userPasswordDiv {
+    background-color: $secondary-color;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 150px;
+    height: 200px;
+    width: 40%;
+    border-radius: 8px;
+
+    &.hide {
+      display: none;
+    }
+
+    .enteteForm {
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+
+      #userTitle {
+        display: flex;
+        width: 40%;
+        margin: 5px;
+      }
+
+      #userLogo {
+        display: none;
+      }
+    }
+
+    .close {
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-end;
+      background-color: transparent;
+      border: 0;
+      margin: 8px 8px auto auto;
+      transition: all 200ms ease-in;
+      transform: scale(1.4);
+
+      &:hover {
+        transition: all 100ms ease-in;
+        transform: scale(2);
+      }
+    }
+
+    .userPassword {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      height: 100%;
+      width: 100%;
+      margin-top: 20px;
+      gap: 30px;
+    }
+
+    .userForm {
+      height: 30px;
+      width: 60%;
+      font-size: 14px;
+      font-family: $font-text;
+      border: 2px solid transparent;
+      transition: all 300ms ease-in;
+      -webkit-box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.3);
+      box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.3);
+
+      &.champs {
+        border-radius: 5px;
+
+        &:hover {
+          border: 2px solid #000000;
+          transition: all 300ms ease-in;
+        }
+      }
+
+      &.send {
+        height: 40px;
+        border-radius: 20px;
+        border: transparent;
+        text-decoration: none;
+        background: linear-gradient(to top,
+            transparent 16%,
+            black 16.01%,
+            black 20%,
+            transparent 20.01%) no-repeat;
+        transition: all 300ms ease-out;
+        background-position: 50%;
+        background-size: 0% 100%;
+        background-color: $tertiary-color;
+        cursor: pointer;
+
+        &:hover {
+          background-position: center;
+          transition: background-size 0.3s;
+          transition: all 300ms ease-in;
+          background-size: 50px 100%;
+        }
+      }
+
+      &::placeholder {
+        text-align: center;
+        font-family: $font-text;
+      }
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    .popUp {
+      .overlay {
+        width: 95%;
+        height: 80%;
+        gap: 20px;
+
+        .overlayTitle {
+          margin: 0px auto 20px auto;
+        }
+
+        .userTitle {
+          margin-top: 20px;
+          margin-bottom: 0px;
+        }
+
+        #logoSend {
+          width: 70%;
+          max-width: 200px;
+          margin-bottom: 10px;
+        }
+
+        #logoCreate {
+          width: 70%;
+          max-width: 200px;
+          margin-bottom: 10px;
+        }
+
+        #logoNews {
+          width: 80%;
+          max-width: 260px;
+        }
+
+        #logoYes {
+          width: 80%;
+          max-width: 120px;
+        }
+
+        #logoNo {
+          width: 80%;
+          max-width: 140px;
+        }
+      }
+    }
+
+    .userDiv {
+      width: 90%;
+      margin: 0;
+
+      .enteteForm {
+        #userTitle {
+          display: none;
+        }
+
+        #userLogo {
+          display: flex;
+          width: 12%;
+          margin: 5px auto auto 5px;
+        }
+      }
+
+      .userMain {
+        display: flex;
+        align-items: center;
+        margin: auto;
+        gap: 30px;
+      }
+
+      .buttonUser {
+        width: 34%;
+      }
+    }
+
+    .connectDiv {
+      width: 90%;
+
+      .enteteForm {
+        #userTitle {
+          display: none;
+        }
+
+        #userLogo {
+          display: flex;
+          width: 12%;
+          margin: 5px auto auto 5px;
+        }
+      }
+
+      .userForm {
+        width: 80%;
+      }
+    }
+
+    .inscriptionDiv {
+      width: 90%;
+
+      .enteteForm {
+        #userTitle {
+          display: none;
+        }
+
+        #userLogo {
+          display: flex;
+          width: 12%;
+          margin: 5px auto auto 5px;
+        }
+      }
+
+      .userForm {
+        width: 80%;
+      }
+    }
+
+    .checkBox {
+      width: 95%;
+
+      .box {
+        margin-left: 20px;
+      }
+    }
+
+    .userPasswordDiv {
+      width: 90%;
+
+      .userPassword {
+        display: flex;
+        align-items: center;
+        margin: auto;
+        gap: 30px;
+      }
+
+      .enteteForm {
+        #userTitle {
+          display: none;
+        }
+
+        #userLogo {
+          display: flex;
+          width: 12%;
+          margin: 5px auto auto 5px;
+        }
+      }
+    }
   }
 }

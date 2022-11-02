@@ -1,21 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
+import UserIcon from "@components/navbar/UserIcon";
 import Loupe from "./Loupe";
-import User from "./User";
 import WildMovies from "./WildMovies";
 
 function Navbar() {
-  const [fixed, setFixed] = React.useState(true);
+  const [fixed, setFixed] = useState(true);
 
   const handleScroll = () => {
     setFixed(!fixed);
   };
 
   return (
-    <navbar className={!fixed ? "Navbar" : "Navbar Bottom"}>
+    <nav className={!fixed ? "Navbar" : "Navbar Bottom"}>
       <WildMovies />
       <Loupe />
-      <User />
-    </navbar>
+      <UserIcon />
+    </nav>
   );
 }
 
