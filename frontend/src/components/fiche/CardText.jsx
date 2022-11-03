@@ -4,6 +4,7 @@ import componentLecteur from "@assets/ComponentLecteur.svg";
 import pegi12 from "@assets/pegi12.png";
 import PropTypes from "prop-types";
 import Casting from "./Casting";
+import Pegi from "./Pegi";
 
 function CardText({
   releaseDate,
@@ -14,6 +15,7 @@ function CardText({
   title,
   cast,
   preview,
+  pegi,
 }) {
   const color = (donnee) => {
     if (donnee < 5) {
@@ -38,7 +40,7 @@ function CardText({
       </div>
       <div className="filtreFilm">
         <div className="pegiFilm">
-          <img src={pegi12} alt="Pegi 12" />
+          <Pegi pegi={pegi} />
         </div>
         <div className="categorieFilm">
           <h4>{genres && genres.map((genre) => <p>{genre.name}</p>)}</h4>

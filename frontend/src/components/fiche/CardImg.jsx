@@ -17,18 +17,20 @@ function CardImg({ posterPath, originalTitle, providers }) {
       </div>
       <div className="streamingCard">
         <h3>Streaming</h3>
-        {flatrate &&
-          flatrate
-            .filter(
-              (provider) =>
-                provider.provider_name.includes("Amazon") ||
-                provider.provider_name.includes("Canal+") ||
-                provider.provider_name.includes("Netflix") ||
-                provider.provider_name.includes("Disney")
-            )
-            .map((provider_name, index) => (
-              <Streaming key={index} {...provider_name} />
-            ))}
+        <div className="streamLogo">
+          {flatrate &&
+            flatrate
+              .filter(
+                (provider) =>
+                  provider.provider_name.includes("Amazon") ||
+                  provider.provider_name.includes("Canal+") ||
+                  provider.provider_name.includes("Netflix") ||
+                  provider.provider_name.includes("Disney")
+              )
+              .map((provider_name, index) => (
+                <Streaming key={index} {...provider_name} />
+              ))}
+        </div>
       </div>
     </div>
   );
