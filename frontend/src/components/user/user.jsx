@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import FaWindowClose from "@meronex/icons/fa/FaWindowClose";
 import PropTypes from "prop-types";
-import wildmovies from "../../assets/logo3_wildmovies.svg";
-import wildmoviesLogo from "../../assets/logo_wildmovies.svg";
-import logoCreate from "../../assets/user/104368-thank-you.gif";
-import logoConnect from "../../assets/user/92578-check-okey-done.gif";
-import logoSend from "../../assets/user/lf30_editor_01fqcrbg-150x150.gif";
-import logoYes from "../../assets/user/11743-check-mark-yes.gif";
-import logoNo from "../../assets/user/101930-no-acces-denied.gif";
-import logoNews from "../../assets/user/lf30_editor_n2dzrzma-150x150.gif";
+import wildmovies from "@assets/logo3_wildmovies.svg";
+import wildmoviesLogo from "@assets/logo_wildmovies.svg";
+import logoCreate from "@assets/user/104368-thank-you.gif";
+import logoConnect from "@assets/user/92578-check-okey-done.gif";
+import logoSend from "@assets/user/lf30_editor_01fqcrbg-150x150.gif";
+import logoYes from "@assets/user/11743-check-mark-yes.gif";
+import logoNo from "@assets/user/101930-no-acces-denied.gif";
+import logoNews from "@assets/user/lf30_editor_n2dzrzma-150x150.gif";
 
 function User({ handleClose }) {
   const [active, setActive] = useState(true);
@@ -17,7 +17,7 @@ function User({ handleClose }) {
   const [activeCheck, setActiveCheck] = useState(false);
   const [mail, setMail] = useState("");
   const [password, setPassword] = useState("");
-  const [hide, setHide] = React.useState(false);
+  const [hide, setHide] = useState(false);
   const [hidePassword, setHidePassword] = useState(true);
   const [displayPopUpConnect, setDisplayPopUpConnect] = useState(false);
   const [displayPopUpNews, setDisplayPopUpNews] = useState(false);
@@ -378,7 +378,7 @@ function User({ handleClose }) {
       )}
     </div>
   );
-};
+}
 User.propTypes = {
   handleClose: PropTypes.string.isRequired,
 };
