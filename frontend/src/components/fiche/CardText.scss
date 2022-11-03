@@ -66,8 +66,8 @@
 
     .bof {
       transform: rotate(-45deg);
-      border-bottom-color: gold;
-      border-left-color: gold;
+      border-bottom-color: orange;
+      border-left-color: orange;
 
       span {
         transform: rotate(45deg);
@@ -126,20 +126,7 @@
   }
 }
 
-.actorFilm {
-  ul {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 10px;
-    grid-auto-rows: minmax(75px, auto);
 
-    li {
-      background-color: aqua;
-      display: flex;
-      align-items: center;
-    }
-  }
-}
 
 .categorieFilm {
   display: flex;
@@ -202,10 +189,44 @@
   }
 }
 
+@media screen and (max-width:900px) and (min-width: 601px) {
+
+  .casting {
+
+    .actorCard {
+
+      display: flex;
+      width: 100%;
+
+      .actors {
+        display: flex;
+        width: 30%;
+
+      }
+
+    }
+  }
+}
+
 @media screen and (max-width: 600px) {
   .cardText {
     padding: 0;
-    margin: 0 0 100px 0;
+    margin: 0 5px 100px 25px;
     width: 98%;
+  }
+
+  .casting {
+
+    .actorCard {
+
+      display: flex;
+      width: 100%;
+
+
+      .actors {
+        display: flex;
+        width: 40%;
+      }
+    }
   }
 }
