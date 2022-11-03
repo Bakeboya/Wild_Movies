@@ -58,20 +58,22 @@ function CardText({
           <p>Note des Utilisateurs</p>
         </div>
         <img id="logoFavoris" src={componentCoeur} alt="logo favoris" />
-        <div className="bande_annonce">
-          <a
-            href={`https://www.youtube.com/watch?v=${preview[0].key}`}
-            target="_blank"
-            rel="noreferrer"
-          >
-            <img
-              id="logoLecteur"
-              src={componentLecteur}
-              alt="logo lecteur bande-annonce"
-            />
-            Bande-annonce
-          </a>
-        </div>
+        {preview[0] !== undefined && (
+          <div className="bande_annonce">
+            <a
+              href={`https://www.youtube.com/watch?v=${preview[0].key}`}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <img
+                id="logoLecteur"
+                src={componentLecteur}
+                alt="logo lecteur bande-annonce"
+              />
+              Bande-annonce
+            </a>
+          </div>
+        )}
       </div>
       <div className="synopsisFilm">
         <h3>Synopsis</h3>

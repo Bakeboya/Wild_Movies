@@ -6,35 +6,33 @@ function CardImg({ posterPath, originalTitle, providers }) {
   const imgPath = `https://image.tmdb.org/t/p/w500/${posterPath}`;
   const titleFilm = `image du film ${originalTitle}`;
 
-  const {
-    FR: { flatrate },
-  } = providers;
-
   return (
     <div className="cardImg">
       <div className="imgFilm">
         <img src={imgPath} alt={titleFilm} />
       </div>
-      <div className="streamingCard">
-        <h3>Streaming</h3>
-        <div className="streamLogo">
-          {flatrate &&
-            flatrate
-              .filter(
-                (provider) =>
-                  provider.provider_name.includes("Amazon") ||
-                  provider.provider_name.includes("Canal+") ||
-                  provider.provider_name.includes("Netflix") ||
-                  provider.provider_name.includes("Disney")
-              )
-              .map((watch) => (
-                <Streaming
-                  logoPath={watch.logo_path}
-                  providerName={watch.provider_name}
-                />
-              ))}
+      {providers.FR !== undefined ? (
+        <div className="streamingCard">
+          <h3>Streaming</h3>
+          <div className="streamLogo">
+            {providers.FR.flatrate &&
+              providers.FR.flatrate
+                .filter(
+                  (provider) =>
+                    provider.provider_name.includes("Amazon") ||
+                    provider.provider_name.includes("Canal+") ||
+                    provider.provider_name.includes("Netflix") ||
+                    provider.provider_name.includes("Disney")
+                )
+                .map((watch) => (
+                  <Streaming
+                    logoPath={watch.logo_path}
+                    providerName={watch.provider_name}
+                  />
+                ))}
+          </div>
         </div>
-      </div>
+      ) : null}
     </div>
   );
 }

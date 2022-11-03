@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import Navbar from "@components/navbar/Navbar";
+import Footer from "@components/footer/Footer";
 import CardImg from "./CardImg";
 import CardText from "./CardText";
 
 function FicheFilm() {
-  const { name } = useParams();
+  const { id } = useParams();
 
   const [film, setFilm] = useState({});
   const [filmCrew, setFilmCrew] = useState({});
@@ -13,12 +15,10 @@ function FicheFilm() {
   const [preview, setPreview] = useState({});
   const [pegi, setPegi] = useState({});
 
-  const idFilm = 550;
-
   useEffect(() => {
     axios
       .get(
-        `https://api.themoviedb.org/3/movie/${idFilm}/videos?api_key=${
+        `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${
           import.meta.env.VITE_API_KEY
         }&language=fr`
       )
@@ -28,7 +28,7 @@ function FicheFilm() {
 
     axios
       .get(
-        `https://api.themoviedb.org/3/movie/${idFilm}?api_key=${
+        `https://api.themoviedb.org/3/movie/${id}?api_key=${
           import.meta.env.VITE_API_KEY
         }&language=fr`
       )
@@ -38,7 +38,7 @@ function FicheFilm() {
 
     axios
       .get(
-        `https://api.themoviedb.org/3/movie/${idFilm}/credits?api_key=${
+        `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${
           import.meta.env.VITE_API_KEY
         }&language=fr`
       )
@@ -48,7 +48,7 @@ function FicheFilm() {
 
     axios
       .get(
-        `https://api.themoviedb.org/3/movie/${idFilm}/watch/providers?api_key=${
+        `https://api.themoviedb.org/3/movie/${id}/watch/providers?api_key=${
           import.meta.env.VITE_API_KEY
         }&language=fr`
       )
@@ -58,7 +58,7 @@ function FicheFilm() {
 
     axios
       .get(
-        `https://api.themoviedb.org/3/movie/${idFilm}/release_dates?api_key=${
+        `https://api.themoviedb.org/3/movie/${id}/release_dates?api_key=${
           import.meta.env.VITE_API_KEY
         }&language=fr`
       )
@@ -68,29 +68,33 @@ function FicheFilm() {
   }, []);
 
   return (
-    <div className="ficheFilm">
-      {watchProviders && watchProviders.results && film && (
-        <CardImg
-          posterPath={film.poster_path || ""}
-          originalTitle={film.original_title || ""}
-          providers={watchProviders.results || {}}
-        />
-      )}
+    <>
+      <Navbar />
+      <div className="ficheFilm">
+        {watchProviders && watchProviders.results && film && (
+          <CardImg
+            posterPath={film.poster_path || ""}
+            originalTitle={film.original_title || ""}
+            providers={watchProviders.results || {}}
+          />
+        )}
 
-      {film && preview && preview.results && pegi && pegi.results && (
-        <CardText
-          releaseDate={film.release_date}
-          genres={film.genres}
-          runtime={film.runtime}
-          voteAverage={film.vote_average}
-          overview={film.overview}
-          title={film.title || ""}
-          cast={filmCrew.cast}
-          preview={preview.results}
-          pegi={pegi.results}
-        />
-      )}
-    </div>
+        {film && preview && preview.results && pegi && pegi.results && (
+          <CardText
+            releaseDate={film.release_date}
+            genres={film.genres}
+            runtime={film.runtime}
+            voteAverage={film.vote_average}
+            overview={film.overview}
+            title={film.title || ""}
+            cast={filmCrew.cast}
+            preview={preview.results}
+            pegi={pegi.results}
+          />
+        )}
+      </div>
+      <Footer />
+    </>
   );
 }
 

@@ -6,7 +6,7 @@ import logoInstagram from "../../assets/logo footer/instagram.svg";
 
 function Footer() {
   return (
-    <div className="footerApp">
+    <footer className="footerApp">
       <img src={logoWildmovies} alt="logoW" id="logoW" />
       <div className="textLogo">
         <div className="logos">
@@ -38,7 +38,7 @@ function Footer() {
           et Serenianus dignus exsecratione cunctorum, innoxius, modo non{" "}
         </p>
       </div>
-    </div>
+    </footer>
   );
 }
 

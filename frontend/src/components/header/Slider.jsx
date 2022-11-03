@@ -43,9 +43,8 @@ function Slider({ poster }) {
             key={id}
           >
             {index === currentSlide && (
-              <img src={slide.backdrop_path} alt="slide" className="image" />
+              <img src={slide.backdrop_path} alt="" className="image" />
             )}
-            ;
           </div>
         );
       })}

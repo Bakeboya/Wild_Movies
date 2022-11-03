@@ -323,10 +323,8 @@ function User({ handleClose }) {
                     <input
                       type="checkbox"
                       id="switch"
-                      name="switch"
                       onChange={handleCheckBox}
                     />
-                    <label htmlFor="switch" />
                   </div>
                   <p>
                     J'accepte la politique de confidentialité et la politique de
