@@ -1,17 +1,25 @@
 import { ScrollMenu } from "react-horizontal-scrolling-menu";
 import PropTypes from "prop-types";
-import { useMoviesCategories } from "../../../data/DataFetch";
+import BisChevronRightCircle from "@meronex/icons/bi/BisChevronRightCircle";
 import { onWheel, usePreventBodyScroll } from "../../../data/ScrollFunction";
 import ContentCard from "./ContentCard";
-import CgScrollH from '@meronex/icons/cg/CgScrollH';
 
-export default function ContentList({ title, hook }) {
-  const { moviesCategories } = useMoviesCategories();
+export default function ContentList({ title, hook, background }) {
   const { disableScroll, enableScroll } = usePreventBodyScroll();
 
   return (
-    <div className="listContainer">
-      <h2>{title} <span><CgScrollH /></span></h2>
+    <div
+      className="listContainer"
+      style={{
+        backgroundImage: `url(https://image.tmdb.org/t/p/w780${background}), linear-gradient(0deg, #e66d38, #e66d38)`,
+      }}
+    >
+      <h2>
+        {title}{" "}
+        <span>
+          <BisChevronRightCircle />
+        </span>
+      </h2>
       <hr />
       <ul
         className="movieList"
@@ -20,7 +28,7 @@ export default function ContentList({ title, hook }) {
       >
         <ScrollMenu onWheel={onWheel}>
           {hook.map((c) => (
-            <ContentCard c={c} moviesCategories={moviesCategories} />
+            <ContentCard c={c} />
           ))}
         </ScrollMenu>
       </ul>
@@ -48,4 +56,5 @@ ContentList.propTypes = {
       PropTypes.number,
     ])
   ).isRequired,
+  background: PropTypes.string.isRequired,
 };

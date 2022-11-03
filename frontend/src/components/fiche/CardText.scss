@@ -7,7 +7,7 @@
 }
 
 .titleFilm {
-  font-size: 2em;
+  font-size: 3em;
   font-weight: 1000;
 }
 
@@ -17,7 +17,7 @@
   align-items: center;
 
   h4 {
-    font-size: 1.1em;
+    font-size: 2em;
     font-weight: 600;
   }
 
@@ -30,6 +30,7 @@
   display: flex;
   gap: 30px;
   align-items: center;
+  font-size: 1.5em;
 
   .diagramAvis {
     display: flex;
@@ -39,7 +40,7 @@
 
     span {
       font-weight: 600;
-      font-size: 1.25em;
+      font-size: 1.45em;
     }
 
     .diagram_note {
@@ -114,12 +115,12 @@
   gap: 15px;
 
   h3 {
-    font-size: 1.5em;
+    font-size: 2.5em;
     font-weight: 700;
   }
 
   p {
-    font-size: 0.9em;
+    font-size: 1.5em;
     font-weight: 100;
     line-height: 1.5em;
   }
@@ -178,21 +179,34 @@
       }
 
       .actorName {
-        font-size: 1em;
+        font-size: 1.5em;
         font-weight: 800;
       }
 
       .actorCharacter {
-        font-size: 0.85em;
+        font-size: 1.25em;
       }
     }
   }
 
   #btnCrew {
-    border: solid 2px;
-    border-radius: 5px;
+    font-family: $font-display;
+    font-size: auto;
+    color: $primary-color;
     background-color: $tertiary-color;
-    width: 100px;
-    height: 30px;
+    width: 75px;
+    height: 25px;
+    border-radius: 45px;
+    border: none;
+    cursor: pointer;
+  }
+}
+
+@media screen and (max-width: 600px) {
+
+  .cardText {
+    padding: 0;
+    margin: 0 0 100px 0;
+    width: 98%
   }
 }

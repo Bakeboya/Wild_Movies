@@ -4,6 +4,7 @@ import componentLecteur from "@assets/ComponentLecteur.svg";
 import pegi12 from "@assets/pegi12.png";
 import PropTypes from "prop-types";
 import Casting from "./Casting";
+import Pegi from "./Pegi";
 
 function CardText({
   releaseDate,
@@ -13,6 +14,8 @@ function CardText({
   genres,
   title,
   cast,
+  preview,
+  pegi,
 }) {
   const color = (donnee) => {
     if (donnee < 5) {
@@ -24,6 +27,10 @@ function CardText({
     return "diagram_note good";
   };
 
+
+
+
+
   return (
     <div className="cardText">
       <div className="titleFilm">
@@ -33,7 +40,7 @@ function CardText({
       </div>
       <div className="filtreFilm">
         <div className="pegiFilm">
-          <img src={pegi12} alt="Pegi 12" />
+          <Pegi pegi={pegi} />
         </div>
         <div className="categorieFilm">
           <h4>{genres && genres.map((genre) => <p>{genre.name}</p>)}</h4>
@@ -56,7 +63,11 @@ function CardText({
         </div>
         <img id="logoFavoris" src={componentCoeur} alt="logo favoris" />
         <div className="bande_annonce">
-          <a href="https://www.youtube.com/watch?v=HGpwaIf3ZKk">
+          <a
+            href={`https://www.youtube.com/watch?v=${preview[0].key}`}
+            target="_blank"
+            rel="noreferrer"
+          >
             <img
               id="logoLecteur"
               src={componentLecteur}
@@ -77,7 +88,7 @@ function CardText({
 CardText.propTypes = {
   title: PropTypes.string.isRequired,
   releaseDate: PropTypes.string.isRequired,
-  runtime: PropTypes.string.isRequired,
+  runtime: PropTypes.number.isRequired,
   overview: PropTypes.string.isRequired,
   voteAverage: PropTypes.number.isRequired,
   genres: PropTypes.shape(PropTypes.number, PropTypes.string).isRequired,

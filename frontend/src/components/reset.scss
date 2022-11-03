@@ -102,10 +102,15 @@ section {
 }
 html {
   font-size: 10px;
+  font-family: $font-text;
   overflow-x: hidden;
 }
 body {
   line-height: 1;
+}
+a {
+  text-decoration: none;
+  color: inherit;
 }
 ol,
 ul {
@@ -125,4 +130,10 @@ q:after {
 table {
   border-collapse: collapse;
   border-spacing: 0;
+}
+
+@media screen and (max-width: 600px) {
+  html {
+    font-size: 8px;
+  }
 }
