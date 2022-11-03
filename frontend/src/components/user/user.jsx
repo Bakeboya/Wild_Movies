@@ -102,6 +102,13 @@ function User({ handleClose }) {
     setHide(true);
     setHidePassword(false);
   };
+  const handleMain = () => {
+    setMail("");
+    setConnect(true);
+    setInscription(false);
+    setHide(true);
+    setHidePassword(true);
+  };
   const sendPassword = () => {
     if (mail !== "") {
       setDisplayPopUpSend(true);
@@ -314,11 +321,18 @@ function User({ handleClose }) {
                 />
                 <div className="checkBoxDiv">
                   <div className="checkBox">
-                    <input type="checkbox" id="switch" onChange={handleCheckBox} />
-                    <label for="switch"></label>
+                    <input
+                      type="checkbox"
+                      id="switch"
+                      name="switch"
+                      onChange={handleCheckBox}
+                    />
+                    <label htmlFor="switch" />
                   </div>
-                  <p>J'accepte la politique de confidentialité et la politique
-                    de cookies (requis).</p>
+                  <p>
+                    J'accepte la politique de confidentialité et la politique de
+                    cookies (requis).
+                  </p>
                 </div>
                 <button
                   type="submit"
@@ -341,7 +355,7 @@ function User({ handleClose }) {
             <div className="enteteForm">
               <img src={wildmovies} alt="title" id="userTitle" />
               <img src={wildmoviesLogo} alt="title" id="userLogo" />
-              <button type="submit" className="close" onClick={handleClose}>
+              <button type="submit" className="close" onClick={handleMain}>
                 <FaWindowClose />
               </button>
             </div>
