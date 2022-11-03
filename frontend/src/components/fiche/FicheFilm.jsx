@@ -18,7 +18,9 @@ function FicheFilm() {
   useEffect(() => {
     axios
       .get(
-        `https://api.themoviedb.org/3/movie/${idFilm}/videos?api_key=ac1108de3648bb230bb19e261e8497cb&language=fr`
+        `https://api.themoviedb.org/3/movie/${idFilm}/videos?api_key=${
+          import.meta.env.VITE_API_KEY
+        }&language=fr`
       )
       .then((res) => {
         setPreview(res.data);
@@ -26,7 +28,9 @@ function FicheFilm() {
 
     axios
       .get(
-        `https://api.themoviedb.org/3/movie/${idFilm}?api_key=ac1108de3648bb230bb19e261e8497cb&language=fr`
+        `https://api.themoviedb.org/3/movie/${idFilm}?api_key=${
+          import.meta.env.VITE_API_KEY
+        }&language=fr`
       )
       .then((res) => {
         setFilm(res.data);
@@ -34,7 +38,9 @@ function FicheFilm() {
 
     axios
       .get(
-        `https://api.themoviedb.org/3/movie/${idFilm}/credits?api_key=ac1108de3648bb230bb19e261e8497cb&language=fr`
+        `https://api.themoviedb.org/3/movie/${idFilm}/credits?api_key=${
+          import.meta.env.VITE_API_KEY
+        }&language=fr`
       )
       .then((res) => {
         setFilmCrew(res.data);
@@ -42,13 +48,20 @@ function FicheFilm() {
 
     axios
       .get(
-        `https://api.themoviedb.org/3/movie/${idFilm}/watch/providers?api_key=ac1108de3648bb230bb19e261e8497cb&language=fr`
+        `https://api.themoviedb.org/3/movie/${idFilm}/watch/providers?api_key=${
+          import.meta.env.VITE_API_KEY
+        }&language=fr`
       )
       .then((res) => {
         setWatchProviders(res.data);
       });
 
-    axios.get(`https://api.themoviedb.org/3/movie/${idFilm}/release_dates?api_key=ac1108de3648bb230bb19e261e8497cb&language=fr`)
+    axios
+      .get(
+        `https://api.themoviedb.org/3/movie/${idFilm}/release_dates?api_key=${
+          import.meta.env.VITE_API_KEY
+        }&language=fr`
+      )
       .then((res) => {
         setPegi(res.data);
       });

@@ -27,10 +27,6 @@ function CardText({
     return "diagram_note good";
   };
 
-
-
-
-
   return (
     <div className="cardText">
       <div className="titleFilm">
@@ -93,6 +89,8 @@ CardText.propTypes = {
   voteAverage: PropTypes.number.isRequired,
   genres: PropTypes.shape(PropTypes.number, PropTypes.string).isRequired,
   cast: PropTypes.shape(PropTypes.string, PropTypes.number).isRequired,
+  preview: PropTypes.shape(PropTypes.string, PropTypes.number).isRequired,
+  pegi: PropTypes.shape(PropTypes.string, PropTypes.number).isRequired,
 };
 
 export default CardText;

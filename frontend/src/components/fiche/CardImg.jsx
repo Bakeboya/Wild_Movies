@@ -27,8 +27,11 @@ function CardImg({ posterPath, originalTitle, providers }) {
                   provider.provider_name.includes("Netflix") ||
                   provider.provider_name.includes("Disney")
               )
-              .map((provider_name, index) => (
-                <Streaming key={index} {...provider_name} />
+              .map((watch) => (
+                <Streaming
+                  logoPath={watch.logo_path}
+                  providerName={watch.provider_name}
+                />
               ))}
         </div>
       </div>
@@ -39,6 +42,7 @@ function CardImg({ posterPath, originalTitle, providers }) {
 CardImg.propTypes = {
   posterPath: PropTypes.string.isRequired,
   originalTitle: PropTypes.string.isRequired,
+  providers: PropTypes.shape(PropTypes.number, PropTypes.string).isRequired,
 };
 
 export default CardImg;
