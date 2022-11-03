@@ -38,3 +38,36 @@
     padding-bottom: 20px;
   }
 }
+
+@media screen and (max-width: 600px) {
+  .cardImg {
+    justify-content: center;
+    align-items: center;
+    width: 98%;
+    padding: 0;
+    margin: 0;
+
+  }
+
+  .streamingCard {
+    h3 {
+      display: none;
+      ;
+    }
+  }
+
+  .streamLogo {
+    display: flex;
+    gap: 50%;
+    justify-content: center;
+
+    .streaming {
+      p {
+        display: none;
+      }
+    }
+  }
+
+
+
+}

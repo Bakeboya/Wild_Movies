@@ -8,11 +8,12 @@ function FicheFilm() {
   const { name } = useParams();
 
   const [film, setFilm] = useState({});
-  const [filmCrew, setFilmCrew] = useState([]);
-  const [watchProviders, setWatchProviders] = useState();
-  const [preview, setPreview] = useState([]);
+  const [filmCrew, setFilmCrew] = useState({});
+  const [watchProviders, setWatchProviders] = useState({});
+  const [preview, setPreview] = useState({});
+  const [pegi, setPegi] = useState({});
 
-  const idFilm = 155;
+  const idFilm = 550;
 
   useEffect(() => {
     axios
@@ -46,6 +47,11 @@ function FicheFilm() {
       .then((res) => {
         setWatchProviders(res.data);
       });
+
+    axios.get(`https://api.themoviedb.org/3/movie/${idFilm}/release_dates?api_key=ac1108de3648bb230bb19e261e8497cb&language=fr`)
+      .then((res) => {
+        setPegi(res.data);
+      });
   }, []);
 
   return (
@@ -58,7 +64,7 @@ function FicheFilm() {
         />
       )}
 
-      {film && preview && preview.results && (
+      {film && preview && preview.results && pegi && pegi.results && (
         <CardText
           releaseDate={film.release_date}
           genres={film.genres}
@@ -68,6 +74,7 @@ function FicheFilm() {
           title={film.title || ""}
           cast={filmCrew.cast}
           preview={preview.results}
+          pegi={pegi.results}
         />
       )}
     </div>

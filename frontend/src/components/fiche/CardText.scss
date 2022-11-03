@@ -201,3 +201,12 @@
     cursor: pointer;
   }
 }
+
+@media screen and (max-width: 600px) {
+
+  .cardText {
+    padding: 0;
+    margin: 0 0 100px 0;
+    width: 98%
+  }
+}
