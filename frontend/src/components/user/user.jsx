@@ -130,7 +130,6 @@ function User({ handleClose }) {
   const exitSend = () => {
     setDisplayPopUpSend(false);
   };
-
   return (
     <div>
       {active && (
@@ -379,10 +378,8 @@ function User({ handleClose }) {
       )}
     </div>
   );
-}
-
+};
 User.propTypes = {
   handleClose: PropTypes.string.isRequired,
 };
-
 export default User;
