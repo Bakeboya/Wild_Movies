@@ -8,26 +8,28 @@ export const useLanguage = () => {
 
 export const useSearch = () => {
   const { lang } = useLanguage();
-  const [search, setSearch] = useState("");
+  const [searchText, setSearchText] = useState("");
+  const [search, setSearch] = useState(searchText);
   const [results, setResults] = useState([]);
   const [resultsTotal, setResultsTotal] = useState("");
   const [searchPage, setSearchPage] = useState(1);
 
   useEffect(() => {
-    if (search !== "") {
-      axios
-        .get(
-          `https://api.themoviedb.org/3/search/movie?api_key=${
-            import.meta.env.VITE_API_KEY
-          }&language=${lang}&page=${searchPage}&include_adult=false&query=${search}`
-        )
-        .then((res) => {
-          setResultsTotal(res.data);
-          setResults(res.data.results);
-        });
-    }
+    axios
+      .get(
+        `https://api.themoviedb.org/3/search/movie?api_key=${
+          import.meta.env.VITE_API_KEY
+        }&language=${lang}&page=${searchPage}&include_adult=false&query=${search}`
+      )
+      .then((res) => {
+        console.log(res.data.results);
+        setResultsTotal(res.data);
+        setResults(res.data.results);
+      });
   }, [search, searchPage, lang]);
   return {
+    searchText,
+    setSearchText,
     search,
     setSearch,
     results,

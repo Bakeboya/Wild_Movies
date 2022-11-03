@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import ReactPaginate from "react-paginate";
 import ContentCard from "./components/ContentCard";
 import ContentList from "./components/ContentList";
@@ -14,8 +15,12 @@ import {
 } from "../../data/DataFetch";
 import ButtonsChoice from "./components/ButtonsChoice";
 
-export default function Filters() {
-  const { search, results, resultsTotal, setSearchPage } = useSearch();
+export default function Filters({
+  search,
+  results,
+  resultsTotal,
+  setSearchPage,
+}) {
   const { moviesPopular } = useMoviesPopular();
   const { moviesTop } = useMoviesTop();
   const { discover } = useDiscover();
@@ -33,7 +38,7 @@ export default function Filters() {
 
   return (
     <main className="home">
-      {search === "" ? (
+      {results.length === 0 ? (
         <>
           <ButtonsChoice movies={discover} series={seriesPopular} />
           <section className="homeList">
@@ -90,3 +95,27 @@ export default function Filters() {
     </main>
   );
 }
+
+Filters.propTypes = {
+  search: PropTypes.string.isRequired,
+  results: PropTypes.arrayOf(
+    PropTypes.shape([
+      PropTypes.bool,
+      PropTypes.string,
+      PropTypes.array,
+      PropTypes.number,
+      PropTypes.string,
+      PropTypes.string,
+      PropTypes.string,
+      PropTypes.number,
+      PropTypes.string,
+      PropTypes.string,
+      PropTypes.string,
+      PropTypes.bool,
+      PropTypes.number,
+      PropTypes.number,
+    ])
+  ).isRequired,
+  resultsTotal: PropTypes.string.isRequired,
+  setSearchPage: PropTypes.func.isRequired,
+};

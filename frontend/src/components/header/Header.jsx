@@ -1,9 +1,10 @@
+import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import React, { useState, useEffect } from "react";
 import Slider from "./Slider";
 
-function Header() {
+function Header({ search, setSearch, searchText, setSearchText }) {
   const [poster, setPoster] = useState();
   const page = 1;
   useEffect(() => {
@@ -15,6 +16,16 @@ function Header() {
         setPoster(res.data.results);
       });
   }, [page]);
+
+  const handleChange = (e) => {
+    setSearchText(e.target.value);
+  };
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    setSearch(searchText);
+    setSearchText("");
+  };
 
   return (
     <header className="header">
@@ -49,12 +60,18 @@ function Header() {
           </p>
         </div>
         <div className="searchBar">
-          <input placeholder="Commencer ma recherche" />
-          <Link to="/">
-            <button type="submit" className="searchButtonDesktop">
-              RECHERCHER
-            </button>
-          </Link>
+          <input
+            placeholder="Rechercher un film, une série"
+            value={searchText}
+            onChange={handleChange}
+          />
+          <button
+            type="button"
+            className="searchButtonDesktop"
+            onClick={handleClick}
+          >
+            RECHERCHER
+          </button>
         </div>
       </div>
     </header>
@@ -62,3 +79,10 @@ function Header() {
 }
 
 export default Header;
+
+Header.propTypes = {
+  search: PropTypes.string.isRequired,
+  setSearch: PropTypes.func.isRequired,
+  searchText: PropTypes.string.isRequired,
+  setSearchText: PropTypes.func.isRequired,
+};
