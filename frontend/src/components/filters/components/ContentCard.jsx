@@ -1,12 +1,18 @@
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 export default function ContentCard({ c }) {
   const imgPath = "https://image.tmdb.org/t/p/w200";
+  const [type, setType] = useState(c.title === undefined ? "tv" : "movie");
 
   return (
     <li>
-      <Link to={`/${c.id}`} className="imgPoster" title={c.title || c.name}>
+      <Link
+        to={`/${type}/${c.id}`}
+        className="imgPoster"
+        title={c.title || c.name}
+      >
         {c.poster_path !== null ? (
           <img
             src={`${imgPath}${c.poster_path}`}

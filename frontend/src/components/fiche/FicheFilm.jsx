@@ -7,7 +7,7 @@ import CardImg from "./CardImg";
 import CardText from "./CardText";
 
 function FicheFilm() {
-  const { id } = useParams();
+  const { id, type } = useParams();
 
   const [film, setFilm] = useState({});
   const [filmCrew, setFilmCrew] = useState({});
@@ -20,7 +20,7 @@ function FicheFilm() {
     setLoading(true);
     axios
       .get(
-        `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${
+        `https://api.themoviedb.org/3/${type}/${id}/videos?api_key=${
           import.meta.env.VITE_API_KEY
         }&language=fr`
       )
@@ -30,7 +30,7 @@ function FicheFilm() {
 
     axios
       .get(
-        `https://api.themoviedb.org/3/movie/${id}?api_key=${
+        `https://api.themoviedb.org/3/${type}/${id}?api_key=${
           import.meta.env.VITE_API_KEY
         }&language=fr`
       )
@@ -40,7 +40,7 @@ function FicheFilm() {
 
     axios
       .get(
-        `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${
+        `https://api.themoviedb.org/3/${type}/${id}/credits?api_key=${
           import.meta.env.VITE_API_KEY
         }&language=fr`
       )
@@ -50,7 +50,7 @@ function FicheFilm() {
 
     axios
       .get(
-        `https://api.themoviedb.org/3/movie/${id}/watch/providers?api_key=${
+        `https://api.themoviedb.org/3/${type}/${id}/watch/providers?api_key=${
           import.meta.env.VITE_API_KEY
         }&language=fr`
       )
@@ -60,7 +60,7 @@ function FicheFilm() {
 
     axios
       .get(
-        `https://api.themoviedb.org/3/movie/${id}/release_dates?api_key=${
+        `https://api.themoviedb.org/3/${type}/${id}/release_dates?api_key=${
           import.meta.env.VITE_API_KEY
         }&language=fr`
       )
