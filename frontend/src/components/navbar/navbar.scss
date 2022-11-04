@@ -1,0 +1,130 @@
+.Navbar {
+  background-color: $primary-color;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  height: 60px;
+
+  .WildMoviesDiv {
+    width: 100%;
+    margin-left: 10px;
+
+    .WildMovies {
+      display: flex;
+      justify-content: flex-start;
+
+      .WildTitle {
+        width: 200px;
+      }
+
+      .WildLogo {
+        display: none;
+      }
+    }
+  }
+
+  .LoupeDiv {
+    width: 100%;
+
+    .Loupe {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+
+      .GoSearch {
+        display: none;
+        color: $tertiary-color;
+        height: 100%;
+        width: 40px;
+      }
+    }
+  }
+
+  .UserDiv {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    margin-right: 10px;
+
+    .User {
+      background-color: $primary-color;
+      display: flex;
+      border: 0;
+
+      .bisUser {
+        background-color: $primary-color;
+        color: $tertiary-color;
+        height: 40px;
+        width: 40px;
+        cursor: pointer;
+        transition: 0.3s ease-in-out;
+
+        &:hover {
+          transition: 0.3s ease-in-out;
+          transform: scale(1.4);
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .Navbar {
+    position: relative;
+    border: 5px none #1c6ea4;
+    border-radius: 0px 0px 40px 40px;
+    height: 70px;
+    width: 100%;
+    z-index: 100;
+
+    &.Bottom {
+      position: fixed;
+      bottom: 0px;
+      -webkit-border-radius: 40px 40px 0px 0px;
+      -moz-border-radius: 40px 40px 0px 0px;
+      border-radius: 40px 40px 0px 0px;
+    }
+
+    .WildMoviesDiv {
+      .WildMovies {
+        .WildTitle {
+          display: none;
+        }
+
+        .WildLogo {
+          display: flex;
+          width: 60px;
+          margin-left: 20px;
+          width: 50px;
+        }
+      }
+    }
+
+    .LoupeDiv {
+      .Loupe {
+        display: flex;
+        justify-content: center;
+
+        .GoSearch {
+          display: flex;
+        }
+      }
+    }
+
+    .UserDiv {
+      .User {
+        margin-right: 20px;
+
+        .BisUser {
+          width: 40px;
+
+          &:hover {
+            transition: all 200ms ease-in;
+            transform: scale(1);
+          }
+        }
+      }
+    }
+  }
+}
