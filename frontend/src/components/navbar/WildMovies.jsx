@@ -1,11 +1,13 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import logo from "../../assets/logo_wildmovies.svg";
 import title from "../../assets/logo3_wildmovies.svg";
 
-function WildMovies() {
+function WildMovies({ setResults }) {
   const upToGo = () => {
     window.scrollTo(0, 0);
+    setResults([]);
   };
 
   return (
@@ -19,3 +21,7 @@ function WildMovies() {
 }
 
 export default WildMovies;
+
+WildMovies.propTypes = {
+  setResults: PropTypes.func.isRequired,
+};
