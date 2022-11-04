@@ -326,7 +326,7 @@ function User({ handleClose }) {
                       name="switch"
                       onChange={handleCheckBox}
                     />
-                    <label htmlFor="switch" />
+                    <label htmlFor="switch">‎</label>
                   </div>
                   <p>
                     J'accepte la politique de confidentialité et la politique de

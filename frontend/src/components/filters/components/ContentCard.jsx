@@ -6,7 +6,7 @@ export default function ContentCard({ c }) {
 
   return (
     <li>
-      <Link to={`${c.title}`} className="imgPoster" title={c.title || c.name}>
+      <Link to={`/${c.id}`} className="imgPoster" title={c.title || c.name}>
         {c.poster_path !== null ? (
           <img
             src={`${imgPath}${c.poster_path}`}

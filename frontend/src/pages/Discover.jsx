@@ -7,7 +7,7 @@ import { useLocation } from "react-router-dom";
 import ContentCard from "@components/filters/components/ContentCard";
 import Navbar from "@components/navbar/Navbar";
 import Footer from "@components/footer/Footer";
-import { useDiscover, useSearch } from "../data/DataFetch";
+import { useDiscover } from "../data/DataFetch";
 import {
   genreOptions,
   providerOptions,
@@ -19,7 +19,6 @@ function Discover() {
   const location = useLocation();
   const { title, placeholder } = location.state;
 
-  const { setSearch, setSearchPage } = useSearch();
   const {
     setSorting,
     filtersTotal,
