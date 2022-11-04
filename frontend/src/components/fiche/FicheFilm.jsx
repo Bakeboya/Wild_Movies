@@ -14,8 +14,10 @@ function FicheFilm() {
   const [watchProviders, setWatchProviders] = useState({});
   const [preview, setPreview] = useState({});
   const [pegi, setPegi] = useState({});
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    setLoading(true);
     axios
       .get(
         `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${
@@ -64,37 +66,47 @@ function FicheFilm() {
       )
       .then((res) => {
         setPegi(res.data);
+        setLoading(false);
       });
   }, []);
 
   return (
-    <>
-      <Navbar />
-      <div className="ficheFilm">
-        {watchProviders && watchProviders.results && film && (
-          <CardImg
-            posterPath={film.poster_path || ""}
-            originalTitle={film.original_title || ""}
-            providers={watchProviders.results || {}}
-          />
-        )}
+    <div className="container">
+      {loading ? (
+        <div className="loader-container">
+          <div className="spinner" />
+        </div>
+      ) : (
+        <>
+          <Navbar />
+          <div className="ficheFilm">
+            {watchProviders && watchProviders.results && film && (
+              <CardImg
+                posterPath={film.poster_path}
+                originalTitle={film.original_title}
+                providers={watchProviders.results}
+              />
+            )}
 
-        {film && preview && preview.results && pegi && pegi.results && (
-          <CardText
-            releaseDate={film.release_date}
-            genres={film.genres}
-            runtime={film.runtime}
-            voteAverage={film.vote_average}
-            overview={film.overview}
-            title={film.title || ""}
-            cast={filmCrew.cast}
-            preview={preview.results}
-            pegi={pegi.results}
-          />
-        )}
-      </div>
-      <Footer />
-    </>
+            {film && preview && preview.results && pegi && pegi.results && (
+              <CardText
+                releaseDate={film.release_date}
+                genres={film.genres}
+                runtime={film.runtime}
+                voteAverage={film.vote_average}
+                overview={film.overview}
+                title={film.title}
+                cast={filmCrew.cast}
+                preview={preview.results}
+                pegi={pegi.results}
+              />
+            )}
+          </div>
+          <Footer />
+        </>
+      )}
+      ;
+    </div>
   );
 }
 
