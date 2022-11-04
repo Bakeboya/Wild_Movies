@@ -27,6 +27,12 @@ function Header({ search, setSearch, searchText, setSearchText }) {
     setSearchText("");
   };
 
+  const handleKeypress = (e) => {
+    if (e.key === "Enter") {
+      handleClick(e);
+    }
+  };
+
   return (
     <header className="header">
       {poster && <Slider poster={poster} />}
@@ -64,6 +70,7 @@ function Header({ search, setSearch, searchText, setSearchText }) {
             placeholder="Rechercher un film, une série"
             value={searchText}
             onChange={handleChange}
+            onKeyPress={handleKeypress}
           />
           <button
             type="button"
