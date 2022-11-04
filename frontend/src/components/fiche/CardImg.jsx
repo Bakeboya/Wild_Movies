@@ -20,7 +20,7 @@ function CardImg({ posterPath, originalTitle, providers }) {
               providers.FR.flatrate
                 .filter(
                   (provider) =>
-                    provider.provider_name.includes("Amazon Prime") ||
+                    provider.provider_name.includes("Amazon") ||
                     provider.provider_name.includes("Canal+") ||
                     provider.provider_name.includes("Netflix") ||
                     provider.provider_name.includes("Disney")
