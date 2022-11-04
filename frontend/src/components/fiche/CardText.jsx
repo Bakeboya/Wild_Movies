@@ -1,10 +1,11 @@
 import React from "react";
 import componentCoeur from "@assets/ComponentCoeur.svg";
-import componentLecteur from "@assets/ComponentLecteur.svg";
-import pegi12 from "@assets/pegi12.png";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
+import FaWindowClose from "@meronex/icons/fa/FaWindowClose";
 import Casting from "./Casting";
 import Pegi from "./Pegi";
+import LecteurBA from "./LecteurBA";
 
 function CardText({
   releaseDate,
@@ -29,6 +30,11 @@ function CardText({
 
   return (
     <div className="cardText">
+      <div className="close">
+        <Link to="/">
+          <FaWindowClose />
+        </Link>
+      </div>
       <div className="titleFilm">
         <h3>
           {title} ({releaseDate && releaseDate.split("-")[0]})
@@ -53,25 +59,14 @@ function CardText({
       <div className="avisFilm">
         <div className="diagramAvis">
           <div className={color(voteAverage)}>
-            <span>{Math.floor(voteAverage) * 10}%</span>
+            <span>{Math.floor(voteAverage * 10)}%</span>
           </div>
           <p>Note des Utilisateurs</p>
         </div>
         <img id="logoFavoris" src={componentCoeur} alt="logo favoris" />
         {preview[0] !== undefined && (
           <div className="bande_annonce">
-            <a
-              href={`https://www.youtube.com/watch?v=${preview[0].key}`}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <img
-                id="logoLecteur"
-                src={componentLecteur}
-                alt="logo lecteur bande-annonce"
-              />
-              Bande-annonce
-            </a>
+            {preview && <LecteurBA preview={preview} title={title} />}
           </div>
         )}
       </div>

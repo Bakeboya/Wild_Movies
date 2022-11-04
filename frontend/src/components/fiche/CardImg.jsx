@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Streaming from "./Streaming";
+import StreamingNo from "./StreamingNo";
 
 function CardImg({ posterPath, originalTitle, providers }) {
   const imgPath = `https://image.tmdb.org/t/p/w500/${posterPath}`;
@@ -11,7 +12,7 @@ function CardImg({ posterPath, originalTitle, providers }) {
       <div className="imgFilm">
         <img src={imgPath} alt={titleFilm} />
       </div>
-      {providers.FR !== undefined ? (
+      {providers.FR !== undefined && providers.FR.flatrate !== undefined ? (
         <div className="streamingCard">
           <h3>Streaming</h3>
           <div className="streamLogo">
@@ -19,7 +20,7 @@ function CardImg({ posterPath, originalTitle, providers }) {
               providers.FR.flatrate
                 .filter(
                   (provider) =>
-                    provider.provider_name.includes("Amazon") ||
+                    provider.provider_name.includes("Amazon Prime") ||
                     provider.provider_name.includes("Canal+") ||
                     provider.provider_name.includes("Netflix") ||
                     provider.provider_name.includes("Disney")
@@ -32,7 +33,9 @@ function CardImg({ posterPath, originalTitle, providers }) {
                 ))}
           </div>
         </div>
-      ) : null}
+      ) : (
+        <StreamingNo />
+      )}
     </div>
   );
 }
