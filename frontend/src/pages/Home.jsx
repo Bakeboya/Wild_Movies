@@ -1,4 +1,3 @@
-import FicheFilm from "@components/fiche/FicheFilm";
 import Filters from "@components/filters/Filters";
 import Footer from "@components/footer/Footer";
 import Header from "@components/header/Header";
@@ -13,13 +12,14 @@ export default function Home() {
     searchText,
     setSearchText,
     results,
+    setResults,
     resultsTotal,
     setSearchPage,
   } = useSearch();
 
   return (
     <>
-      <Navbar />
+      <Navbar setResults={setResults} />
       <Header
         search={search}
         setSearch={setSearch}
@@ -33,7 +33,6 @@ export default function Home() {
         resultsTotal={resultsTotal}
         setSearchPage={setSearchPage}
       />
-      {/* <FicheFilm /> */}
       <Footer />
     </>
   );
