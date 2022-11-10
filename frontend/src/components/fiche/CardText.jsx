@@ -1,11 +1,13 @@
 import React from "react";
-import componentCoeur from "@assets/ComponentCoeur.svg";
+import componentCoeur from "@assets/fiche/ComponentCoeur.svg";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import FaWindowClose from "@meronex/icons/fa/FaWindowClose";
 import Casting from "./Casting";
 import Pegi from "./Pegi";
 import LecteurBA from "./LecteurBA";
+import Time from "./Time";
+import VoteAverage from "./VoteAverage";
 
 function CardText({
   releaseDate,
@@ -17,17 +19,10 @@ function CardText({
   cast,
   preview,
   pegi,
+  type,
+  numOfEpisodes,
+  numOfSeasons,
 }) {
-  const color = (donnee) => {
-    if (donnee < 5) {
-      return "diagram_note nul";
-    }
-    if (donnee >= 5 && donnee < 7.5) {
-      return "diagram_note bof";
-    }
-    return "diagram_note good";
-  };
-
   return (
     <div className="cardText">
       <div className="close">
@@ -37,38 +32,46 @@ function CardText({
       </div>
       <div className="titleFilm">
         <h3>
-          {title} ({releaseDate && releaseDate.split("-")[0]})
+          {title} ({releaseDate.split("-")[0]})
         </h3>
       </div>
       <div className="filtreFilm">
         <div className="pegiFilm">
-          <Pegi pegi={pegi} />
+          <Pegi pegi={pegi} type={type} />
         </div>
+        <div className="separation" />
         <div className="categorieFilm">
-          <h4>{genres && genres.map((genre) => <p>{genre.name}</p>)}</h4>
+          <div className="genreh4">
+            {genres &&
+              genres.map((genre) => <p className="genreP">{genre.name}</p>)}
+          </div>
         </div>
+        <div className="separation" />
         <div className="dureeFilm">
-          <h4>
-            <p>
-              {Math.floor(runtime / 60)}h
-              {runtime % 60 < 10 ? `0${runtime % 60}` : runtime % 60}
-            </p>
-          </h4>
+          <Time
+            runtime={runtime}
+            type={type}
+            numOfEpisodes={numOfEpisodes}
+            numOfSeasons={numOfSeasons}
+          />
         </div>
       </div>
       <div className="avisFilm">
         <div className="diagramAvis">
-          <div className={color(voteAverage)}>
-            <span>{Math.floor(voteAverage * 10)}%</span>
-          </div>
+          <VoteAverage voteAverage={voteAverage} />
           <p>Note des Utilisateurs</p>
         </div>
         <img id="logoFavoris" src={componentCoeur} alt="logo favoris" />
-        {preview[0] !== undefined && (
-          <div className="bande_annonce">
-            {preview && <LecteurBA preview={preview} title={title} />}
-          </div>
-        )}
+
+        <div className="bande_annonce">
+          {preview[0] !== undefined ? (
+            <LecteurBA preview={preview} title={title} />
+          ) : (
+            <div>
+              <p>La bande annonce n'est pas disponible</p>
+            </div>
+          )}
+        </div>
       </div>
       <div className="synopsisFilm">
         <h3>Synopsis</h3>
@@ -88,6 +91,9 @@ CardText.propTypes = {
   cast: PropTypes.shape(PropTypes.string, PropTypes.number).isRequired,
   preview: PropTypes.shape(PropTypes.string, PropTypes.number).isRequired,
   pegi: PropTypes.shape(PropTypes.string, PropTypes.number).isRequired,
+  type: PropTypes.string.isRequired,
+  numOfEpisodes: PropTypes.number.isRequired,
+  numOfSeasons: PropTypes.number.isRequired,
 };
 
 export default CardText;

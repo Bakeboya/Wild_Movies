@@ -1,14 +1,25 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import imgTemp from "@assets/imgTemp.webp";
+import imgTemp from "@assets/fiche/imgTemp.webp";
+import ButtonActor from "./ButtonActor";
 
 function Casting({ cast }) {
   const [isCut, setIsCut] = useState(true);
 
-  const castCut = cast && cast.slice(0, 8);
-
   const toggleCast = () => {
     setIsCut(!isCut);
+  };
+
+  const castCut = cast && cast.slice(0, 8);
+
+  const length = (a, b) => {
+    let c = 0;
+    if (a.length >= b.length) {
+      c = a.length;
+    } else {
+      c = b.length;
+    }
+    return c;
   };
 
   return (
@@ -36,9 +47,13 @@ function Casting({ cast }) {
               </div>
             ))}
         </div>
-        <button id="btnCrew" type="button" onClick={toggleCast}>
-          {isCut ? "Voir Plus" : "Voir Moins"}
-        </button>
+
+        <ButtonActor
+          isCut={isCut}
+          toggleCast={toggleCast}
+          castCut={castCut}
+          length={length(castCut, cast)}
+        />
       </div>
     </div>
   );

@@ -1,57 +1,54 @@
 @import "./Modal.scss";
 
-.popupLecteurBA {
-  background: none;
-  border: none;
+.lecteurBA {
   display: flex;
+  width: 200px;
+  height: 45px;
+  justify-content: space-between;
+  flex-direction: row;
   align-items: center;
-  gap: 15px;
+  border: solid 2px noir;
+  border-radius: 20px;
   cursor: pointer;
+  background-color: $tertiary-color;
 
-  #logoLecteur {
+  .popupLecteurBA {
+    width: 100%;
+    height: 100%;
+    border: none;
+    font-family: $font-text;
+    color: $primary-color;
+    font-weight: 600;
+    font-size: 1em;
+    border: transparent;
+    background: linear-gradient(
+        to top,
+        transparent 16%,
+        $secondary-color 16.01%,
+        $secondary-color 20%,
+        transparent 20.01%
+      )
+      no-repeat;
+    transition: all 300ms ease-out;
+    background-position: 50%;
+    background-size: 0% 100%;
+    cursor: pointer;
+
+    &:hover {
+      background-position: center;
+      transition: all 300ms ease-in-out;
+      background-size: 70% 100%;
+    }
+  }
+
+  .logoLecteur {
     width: 50px;
     height: 50px;
+    transform: translateX(-5%);
   }
 
   &:hover {
-    transition: all 250ms ease-out;
     transform: scale(1.1);
-  }
-}
-
-.lecteurBa2 {
-  display: none;
-}
-
-@media screen and (max-width: 800px) {
-  .lecteurBa2 {
-    display: flex;
-  }
-
-  .mobileLecteur2 {
-    display: flex;
-    gap: 15px;
-
-    a {
-      cursor: pointer;
-      display: flex;
-      gap: 15px;
-      justify-content: center;
-      align-items: center;
-    }
-
-    #logoLecteur2 {
-      width: 50px;
-      height: 50px;
-    }
-
-    &:hover {
-      transition: all 250ms ease-out;
-      transform: scale(1.1);
-    }
-  }
-
-  .popupLecteurBA {
-    display: none;
+    transition: all 300ms ease-in-out;
   }
 }

@@ -46,9 +46,10 @@
 @media screen and (max-width: 600px) {
   .ficheFilm {
     flex-direction: column;
-    width: fit-content;
+    width: 100%;
     margin: 0;
-    padding: 5px 0 0 0;
+    padding: 0;
+    box-sizing: border-box;
     align-items: center;
   }
 }

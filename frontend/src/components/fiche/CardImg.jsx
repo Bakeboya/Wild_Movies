@@ -9,8 +9,10 @@ function CardImg({ posterPath, originalTitle, providers }) {
 
   return (
     <div className="cardImg">
-      <div className="imgFilm">
-        <img src={imgPath} alt={titleFilm} />
+      <div className="imgMulti">
+        <img id="imgFilm2" src={imgPath} alt={titleFilm} />
+
+        <img id="imgFilm" src={imgPath} alt={titleFilm} />
       </div>
       {providers.FR !== undefined && providers.FR.flatrate !== undefined ? (
         <div className="streamingCard">

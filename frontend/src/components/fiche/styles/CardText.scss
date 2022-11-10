@@ -11,18 +11,49 @@
 }
 
 .titleFilm {
-  font-size: 3em;
+  font-size: 3.5em;
   font-weight: 1000;
+  margin-bottom: 10px;
 }
 
 .filtreFilm {
   display: flex;
-  gap: 15px;
+  gap: 30px;
   align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
 
-  h4 {
+  .separation {
+    width: 2px;
+    height: 15px;
+    background-color: $primary-color;
+  }
+
+  .genreh4 {
+    display: flex;
+    flex-wrap: wrap;
     font-size: 2em;
     font-weight: 600;
+    gap: 20px;
+
+    .genreP {
+      display: flex;
+      padding: 5px;
+      border-radius: 15px;
+      color: $tertiary-color;
+      // background-color: $tertiary-color;
+      // border: solid 2px $primary-color;
+    }
+  }
+
+  .dureeFilm {
+    .time {
+      p {
+        font-size: 2em;
+        font-weight: 600;
+        color: $primary-color;
+      }
+    }
   }
 
   .pegiFilm img {
@@ -32,9 +63,11 @@
 
 .avisFilm {
   display: flex;
-  gap: 30px;
+  flex-wrap: wrap;
+  gap: 40px;
   align-items: center;
   font-size: 1.5em;
+  margin-bottom: 10px;
 
   .diagramAvis {
     display: flex;
@@ -49,16 +82,11 @@
   height: 50px;
 }
 
-.bande_annonce {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-
 .synopsisFilm {
   display: flex;
   flex-direction: column;
   gap: 15px;
+  margin-bottom: 10px;
 
   h3 {
     font-size: 2.5em;
@@ -72,20 +100,21 @@
   }
 }
 
-.categorieFilm {
-  display: flex;
-  flex-direction: row;
-
-  h4 {
-    display: flex;
-    gap: 10px;
-  }
-}
-
 @media screen and (max-width: 600px) {
   .cardText {
     padding: 0;
-    margin: 0 5px 100px 25px;
-    width: 98%;
+    margin: 65vh 5px 100px 25px;
+    width: 95%;
+    font-size: 1.5em;
+  }
+
+  .filtreFilm {
+    gap: 10px;
+    flex-wrap: wrap;
+
+    .genreh4 {
+      display: flex;
+      flex-wrap: wrap;
+    }
   }
 }
