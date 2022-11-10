@@ -39,14 +39,14 @@ function CardText({
         <div className="pegiFilm">
           <Pegi pegi={pegi} type={type} />
         </div>
-        <div className="separation" />
-        <div className="categorieFilm">
-          <div className="genreh4">
-            {genres &&
-              genres.map((genre) => <p className="genreP">{genre.name}</p>)}
-          </div>
-        </div>
-        <div className="separation" />
+        <div className="separation"></div>
+
+
+        {genres &&
+          genres.map((genre) => <div className="genreP">{genre.name}</div>)}
+
+
+        <div className="separation"></div>
         <div className="dureeFilm">
           <Time
             runtime={runtime}
