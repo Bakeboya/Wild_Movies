@@ -15,6 +15,7 @@ function LecteurBA({ preview, title }) {
           className="logoLecteur"
           src={componentLecteur}
           alt="logo lecteur bande-annonce"
+          onClick={() => setIsOpen(true)}
         />
         <button
           className="popupLecteurBA"
