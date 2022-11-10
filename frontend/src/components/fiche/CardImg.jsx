@@ -9,10 +9,8 @@ function CardImg({ posterPath, originalTitle, providers }) {
 
   return (
     <div className="cardImg">
-      <div className="imgMulti">
-        <img id="imgFilm2" src={imgPath} alt={titleFilm} />
-
-        <img id="imgFilm" src={imgPath} alt={titleFilm} />
+      <div className="imgMulti" style={{backgroundImage: `url(https://image.tmdb.org/t/p/w500/${posterPath})`}}>
+              <img id="imgFilm" src={imgPath} alt={titleFilm} />
       </div>
       {providers.FR !== undefined && providers.FR.flatrate !== undefined ? (
         <div className="streamingCard">
