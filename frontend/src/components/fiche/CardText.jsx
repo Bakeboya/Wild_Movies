@@ -31,9 +31,9 @@ function CardText({
         </Link>
       </div>
       <div className="titleFilm">
-        <h3>
-          {title} ({releaseDate.split("-")[0]})
-        </h3>
+
+        {title} ({releaseDate.split("-")[0]})
+
       </div>
       <div className="filtreFilm">
         <div className="pegiFilm">
