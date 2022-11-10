@@ -1,4 +1,4 @@
-import Filters from "@components/filters/Filters";
+import Main from "@components/filters/Main";
 import Footer from "@components/footer/Footer";
 import Header from "@components/header/Header";
 import Navbar from "@components/navbar/Navbar";
@@ -19,14 +19,20 @@ export default function Home() {
 
   return (
     <>
-      <Navbar setResults={setResults} />
+      <Navbar
+        setResults={setResults}
+        search={search}
+        setSearch={setSearch}
+        searchText={searchText}
+        setSearchText={setSearchText}
+      />
       <Header
         search={search}
         setSearch={setSearch}
         searchText={searchText}
         setSearchText={setSearchText}
       />
-      <Filters
+      <Main
         search={search}
         searchText={searchText}
         results={results}

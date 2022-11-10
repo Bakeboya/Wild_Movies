@@ -27,7 +27,9 @@
   width: 100%;
 
   .wildMovies {
-    @include display-column;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border-radius: 45px;
     border-style: hidden;
     background-color: $primary-color;
@@ -60,6 +62,7 @@
     height: 60px;
     border-radius: 45px;
     border: none;
+    cursor: pointer;
   }
 
   .headerTitle {
@@ -100,11 +103,12 @@
 
     input {
       border: 3px solid transparent;
-      color: $tertiary-color;
+      color: $primary-color;
       width: 100%;
       background-color: $secondary-color;
       height: 35px;
       border-radius: 45px 0px 0px 45px;
+      text-transform: capitalize;
       text-indent: 30px;
     }
 
@@ -113,7 +117,7 @@
     }
 
     input:focus {
-      color: $tertiary-color;
+      color: $primary-color;
       border: 3px solid $tertiary-color;
       outline: none;
     }

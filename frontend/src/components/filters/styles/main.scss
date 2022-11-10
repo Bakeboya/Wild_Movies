@@ -83,7 +83,7 @@
 .choiceContainer {
   width: 50%;
   padding: 3rem 1rem;
-  margin: 0 auto;
+  margin: 0 auto 3rem;
   background-color: $primary-color;
   color: $secondary-color;
   border-radius: 4px;
@@ -151,11 +151,10 @@
   color: $primary-color;
   background-color: #ffffff;
   padding: 3rem 0;
-  padding-left: 0;
 
   .homeList {
     width: 85%;
-    margin: 3rem auto 0;
+    margin: 0 auto;
 
     .resultsCount {
       margin-bottom: 1.5rem;
@@ -275,8 +274,8 @@
     display: none;
   }
   .home {
+    margin-bottom: 10rem;
     .homeList {
-      margin-bottom: 10rem;
       .listContainer {
         h2 {
           span {
@@ -307,6 +306,26 @@
         &:after {
           width: 25px;
         }
+      }
+      .resultsList {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        li {
+          width: 125px;
+          height: 250px;
+          .imgPoster {
+            img {
+              width: 125px;
+              height: 187.5px;
+            }
+            p {
+              margin-bottom: 0;
+            }
+          }
+        }
+      }
+      .paginationList {
+        width: 100%;
       }
     }
   }

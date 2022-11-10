@@ -16,85 +16,6 @@
       color: $primary-color;
       text-transform: capitalize;
     }
-    .searchContainer {
-      margin-left: 35%;
-      .searchBar {
-        width: 100%;
-        display: block;
-        outline: none;
-        background-color: transparent;
-        border: 1px solid $primary-color;
-        border-radius: 15px;
-        padding: 0.5rem 0.3rem;
-        text-transform: capitalize;
-      }
-    }
-    .filtersInner {
-      width: 90%;
-      margin: 0 auto;
-      padding: 1.5rem;
-      border-radius: 4px;
-      background-color: $secondary-color;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-around;
-      font-size: 1.5rem;
-      box-shadow: inset 3px -3px 9px #bebebe, inset -3px 3px 9px #ffffff;
-      h3 {
-        font-weight: 700;
-        font-size: 2rem;
-      }
-      hr {
-        width: 100%;
-        margin-bottom: 1.5rem;
-      }
-      .react-select-container {
-        width: 100%;
-        cursor: pointer;
-        margin-bottom: 3rem;
-        &:last-of-type {
-          margin-bottom: 0;
-        }
-        .react-select__menu {
-          display: block;
-          position: relative;
-          top: 0;
-          z-index: 100;
-        }
-      }
-      .multi-range-slider {
-        margin-bottom: 3rem;
-        box-shadow: none;
-        border: none;
-        .bar-left,
-        .bar-right {
-          background-color: $primary-color !important;
-          box-shadow: none !important;
-        }
-        .bar-inner {
-          background-color: $tertiary-color !important;
-          box-shadow: none !important;
-        }
-        .thumb::before {
-          box-shadow: none !important;
-          background-color: $secondary-color !important;
-          &:active {
-            background-color: $tertiary-color !important;
-          }
-        }
-        .caption {
-          span {
-            background-color: $tertiary-color !important;
-          }
-        }
-        .ruler-rule {
-          border-color: $tertiary-color !important;
-        }
-      }
-      &:first-of-type {
-        margin-bottom: 3rem;
-      }
-    }
   }
   .filtered {
     min-height: 100vh;
@@ -111,6 +32,42 @@
       justify-items: center;
       align-items: start;
     }
+  }
+}
+
+.filteredResponsive {
+  width: 85%;
+  margin: 0 auto 10rem;
+  padding: 3rem 0;
+  .filteredCount {
+    margin-bottom: 1.5rem;
+    font-family: $font-display;
+    font-size: 1.5rem;
+    text-transform: capitalize;
+  }
+  .filteredList {
+    @include resultsList;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    li {
+      width: 125px;
+      height: 250px;
+      .imgPoster {
+        img {
+          width: 125px;
+          height: 187.5px;
+        }
+        p {
+          margin-bottom: 0;
+        }
+        h3 {
+          height: calc(250px - 187.5px);
+        }
+      }
+    }
+  }
+  .paginationList {
+    width: 100%;
   }
 }
 
@@ -147,38 +104,6 @@
             }
           }
         }
-      }
-    }
-  }
-}
-
-@media screen and (max-width: 600px) {
-  .discover {
-    margin-bottom: 10rem;
-    display: block;
-    .filtersContainer {
-      display: none;
-    }
-    .filtered {
-      .filteredList {
-        grid-template-columns: repeat(3, 1fr);
-        li {
-          width: 150px;
-          height: 225px;
-        }
-      }
-      .paginationList {
-        width: 100%;
-      }
-    }
-  }
-}
-
-@media screen and (max-width: 520px) {
-  .discover {
-    .filtered {
-      .filteredList {
-        grid-template-columns: 1fr 1fr;
       }
     }
   }
