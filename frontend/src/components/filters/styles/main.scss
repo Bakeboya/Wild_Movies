@@ -228,7 +228,7 @@
         color: $secondary-color;
 
         hr {
-          color: $secondary-color;
+          border: 1px solid $secondary-color;
         }
 
         .react-horizontal-scrolling-menu--scroll-container {
@@ -237,7 +237,7 @@
           }
         }
 
-        span {
+        h2, span {
           color: $secondary-color;
         }
       }

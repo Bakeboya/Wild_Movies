@@ -1,12 +1,28 @@
 @import "./variables.scss";
 @import "./reset.scss";
 
-@import "./fiche/FicheFilm.scss";
 @import "./navbar/navbar.scss";
 @import "./header/header.scss";
 @import "./filters/styles/main.scss";
 @import "./footer/footer.scss";
+
 @import "./user/user.scss";
+
 @import "./filters/styles/discover.scss";
 @import "./filters/styles/pagination.scss";
 @import "./filters/styles/inputs.scss";
+
+@import "./fiche/styles/FicheFilm.scss";
+@import "./fiche/styles/CardImg.scss";
+@import "./fiche/styles/ButtonActor.scss";
+@import "./fiche/styles/CardText.scss";
+@import "./fiche/styles/Casting.scss";
+@import "./fiche/styles/LecteurBA.scss";
+@import "./fiche/styles/Modal.scss";
+@import "./fiche/styles/VoteAverage.scss";
+
+@import "./actors/ActorImg.scss";
+@import "./actors/Actorlist.scss";
+@import "./actors/ActorText.scss";
+
+@import "./director/directorPage.scss";
