@@ -16,6 +16,16 @@ function FicheFilm() {
   const [pegi, setPegi] = useState({});
   const [loading, setLoading] = useState(false);
 
+  const certification = (certi) => {
+    let result = "";
+    if (certi === "tv") {
+      result = "content_ratings";
+    } else if (certi === "movie") {
+      result = "release_dates";
+    }
+    return result;
+  };
+
   useEffect(() => {
     setLoading(true);
     axios
@@ -60,9 +70,9 @@ function FicheFilm() {
 
     axios
       .get(
-        `https://api.themoviedb.org/3/${type}/${id}/release_dates?api_key=${
-          import.meta.env.VITE_API_KEY
-        }&language=fr`
+        `https://api.themoviedb.org/3/${type}/${id}/${certification(
+          type
+        )}?api_key=${import.meta.env.VITE_API_KEY}&language=fr`
       )
       .then((res) => {
         setPegi(res.data);
@@ -90,15 +100,22 @@ function FicheFilm() {
 
             {film && preview && preview.results && pegi && pegi.results && (
               <CardText
-                releaseDate={film.release_date}
+                releaseDate={film.release_date || film.first_air_date}
                 genres={film.genres}
-                runtime={film.runtime}
+                runtime={
+                  film.runtime ||
+                  film.episode_run_time[0] ||
+                  film.last_episode_to_air.runtime
+                }
                 voteAverage={film.vote_average}
                 overview={film.overview}
-                title={film.title}
+                title={film.title || film.name || film.original_title}
                 cast={filmCrew.cast}
                 preview={preview.results}
                 pegi={pegi.results}
+                type={type}
+                numOfEpisodes={film.number_of_episodes}
+                numOfSeasons={film.number_of_seasons}
               />
             )}
           </div>
