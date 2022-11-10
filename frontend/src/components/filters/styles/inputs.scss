@@ -1,0 +1,190 @@
+.filtersInner {
+  width: 90%;
+  margin: 0 auto;
+  padding: 1.5rem;
+  border-radius: 4px;
+  background-color: $secondary-color;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  font-size: 1.5rem;
+  box-shadow: inset 3px -3px 9px #bebebe, inset -3px 3px 9px #ffffff;
+  h3 {
+    font-weight: 700;
+    font-size: 2rem;
+  }
+  hr {
+    width: 100%;
+    margin-bottom: 1.5rem;
+  }
+  .responsiveTypeChoice {
+    display: none;
+  }
+  .react-select-container {
+    width: 100%;
+    cursor: pointer;
+    margin-bottom: 3rem;
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+    .react-select__menu {
+      display: block;
+      position: relative;
+      top: 0;
+      z-index: 100;
+    }
+  }
+  .multi-range-slider {
+    margin-bottom: 3rem;
+    box-shadow: none;
+    border: none;
+    .bar-left,
+    .bar-right {
+      background-color: $primary-color !important;
+      box-shadow: none !important;
+    }
+    .bar-inner {
+      background-color: $tertiary-color !important;
+      box-shadow: none !important;
+    }
+    .thumb::before {
+      box-shadow: none !important;
+      background-color: $secondary-color !important;
+      &:active {
+        background-color: $tertiary-color !important;
+      }
+    }
+    .caption {
+      span {
+        background-color: $tertiary-color !important;
+      }
+    }
+    .ruler-rule {
+      border-color: $tertiary-color !important;
+    }
+  }
+  &:first-of-type {
+    margin-bottom: 3rem;
+  }
+  .responsiveButton {
+    display: none;
+  }
+}
+
+.responsiveSearch {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: $primary-color;
+  padding-bottom: 12rem;
+
+  h2 {
+    padding: 3rem 0;
+    font-size: 5rem;
+    font-weight: 700;
+    font-family: $font-display;
+    letter-spacing: 2px;
+    color: $secondary-color;
+  }
+
+  .filtersInner {
+    .responsiveTypeChoice {
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      padding-bottom: 1.5rem;
+
+      & button {
+        width: 80px;
+        padding: 2rem 0;
+        border: none;
+        border-radius: 4px;
+        background: $tertiary-color;
+        color: $primary-color;
+        font-size: 2rem;
+        font-weight: 700;
+        filter: grayscale(1);
+        cursor: pointer;
+        transition: 0.3s ease-in-out;
+        &:active {
+          transform: scale(0.98);
+        }
+      }
+      .selected {
+        filter: grayscale(0);
+      }
+    }
+    .responsiveButton {
+      display: block;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      & a {
+        padding: 0.7rem 2.5rem;
+        font-family: $font-display;
+        font-size: 2.3rem;
+        color: $primary-color;
+        background-color: $tertiary-color;
+        border-radius: 45px;
+        border: none;
+        cursor: pointer;
+      }
+    }
+    &:first-of-type {
+      margin-bottom: 0;
+
+      input {
+        margin-bottom: 1.5rem;
+        padding: 1rem 0.5rem;
+        border: 1px solid $primary-color;
+        border-radius: 4px;
+        background: transparent;
+        text-transform: capitalize;
+        outline: none;
+
+        &:focus {
+          border: 1px solid $tertiary-color;
+        }
+
+        &::placeholder {
+          text-transform: none;
+        }
+      }
+    }
+  }
+
+  .choiceText {
+    padding: 3rem 0;
+    font-size: 3rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: $secondary-color;
+  }
+
+  .Navbar {
+    &.Bottom {
+      border-top: 1px solid $secondary-color;
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .filtersInner {
+    font-size: 1.7rem;
+    h3 {
+      display: none;
+    }
+    hr {
+      display: none;
+    }
+    .react-select-container {
+      .react-select__menu {
+        position: absolute;
+        top: 40px;
+      }
+    }
+  }
+}

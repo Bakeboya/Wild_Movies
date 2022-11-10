@@ -1,10 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import ReactPaginate from "react-paginate";
-import ContentCard from "./components/ContentCard";
 import ContentList from "./components/ContentList";
 import {
-  useSearch,
   useUpcoming,
   useMoviesTop,
   useSeriesTop,
@@ -14,11 +11,12 @@ import {
   useMoviesPopular,
 } from "../../data/DataFetch";
 import ButtonsChoice from "./components/ButtonsChoice";
+import SearchResults from "./components/SearchResults";
 
-export default function Filters({
-  search,
+export default function Main({
   results,
   resultsTotal,
+  searchPage,
   setSearchPage,
 }) {
   const { moviesPopular } = useMoviesPopular();
@@ -28,13 +26,6 @@ export default function Filters({
   const { trending } = useTrending();
   const { seriesTop } = useSeriesTop();
   const { seriesPopular } = useSeriesPopular();
-
-  const handleSearchPage = (data) => {
-    window.scrollTo(0, 0);
-    setSearchPage(data.selected + 1);
-  };
-
-  const moviesTopId = moviesTop.map((mt) => mt.id);
 
   return (
     <main className="home">
@@ -65,39 +56,19 @@ export default function Filters({
           </section>
         </>
       ) : (
-        <section className="homeList">
-          {resultsTotal.total_results === 10000 ? (
-            <p className="resultsCount">
-              {resultsTotal.total_results}+ résultats
-            </p>
-          ) : (
-            <p className="resultsCount">
-              {resultsTotal.total_results} résultats
-            </p>
-          )}
-          <ul className="resultsList">
-            {results.map((r) => (
-              <ContentCard c={r} />
-            ))}
-          </ul>
-          <ReactPaginate
-            breakLabel="..."
-            onPageChange={handleSearchPage}
-            nextLabel=">"
-            className="paginationList"
-            pageRangeDisplayed={5}
-            pageCount={resultsTotal.total_pages}
-            previousLabel="<"
-            renderOnZeroPageCount={null}
-          />
-        </section>
+        <SearchResults
+          results={results}
+          resultsTotal={resultsTotal}
+          searchPage={searchPage}
+          setSearchPage={setSearchPage}
+        />
       )}
     </main>
   );
 }
 
-Filters.propTypes = {
-  search: PropTypes.string.isRequired,
+Main.propTypes = {
+  searchPage: PropTypes.number.isRequired,
   results: PropTypes.arrayOf(
     PropTypes.shape([
       PropTypes.bool,

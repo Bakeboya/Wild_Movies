@@ -52,11 +52,11 @@ function Header({ search, setSearch, searchText, setSearchText }) {
           </p>
         </div>
 
-        <div>
+        <Link to="/search">
           <button type="button" className="searchButton">
             RECHERCHER
           </button>
-        </div>
+        </Link>
       </div>
 
       <div className="deskBox">
