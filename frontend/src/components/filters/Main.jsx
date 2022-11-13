@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import ReactPaginate from "react-paginate";
 import ContentList from "./components/ContentList";
 import {
   useUpcoming,
@@ -11,14 +12,9 @@ import {
   useMoviesPopular,
 } from "../../data/DataFetch";
 import ButtonsChoice from "./components/ButtonsChoice";
-import SearchResults from "./components/SearchResults";
+import ContentCard from "./components/ContentCard";
 
-export default function Main({
-  results,
-  resultsTotal,
-  searchPage,
-  setSearchPage,
-}) {
+export default function Main({ search, results, resultsTotal, setSearchPage }) {
   const { moviesPopular } = useMoviesPopular();
   const { moviesTop } = useMoviesTop();
   const { discover } = useDiscover();
@@ -26,6 +22,11 @@ export default function Main({
   const { trending } = useTrending();
   const { seriesTop } = useSeriesTop();
   const { seriesPopular } = useSeriesPopular();
+
+  const handleSearchPage = (data) => {
+    window.scrollTo(0, 0);
+    setSearchPage(data.selected + 1);
+  };
 
   return (
     <main className="home">
@@ -56,19 +57,39 @@ export default function Main({
           </section>
         </>
       ) : (
-        <SearchResults
-          results={results}
-          resultsTotal={resultsTotal}
-          searchPage={searchPage}
-          setSearchPage={setSearchPage}
-        />
+        <section className="homeList">
+          {resultsTotal.total_results === 10000 ? (
+            <p className="resultsCount">
+              {resultsTotal.total_results}+ résultats pour : '{search}'
+            </p>
+          ) : (
+            <p className="resultsCount">
+              {resultsTotal.total_results} résultats pour '{search}'
+            </p>
+          )}
+          <ul className="resultsList">
+            {results.map((r) => (
+              <ContentCard c={r} />
+            ))}
+          </ul>
+          <ReactPaginate
+            breakLabel="..."
+            onPageChange={handleSearchPage}
+            nextLabel=">"
+            className="paginationList"
+            pageRangeDisplayed={4}
+            pageCount={resultsTotal.total_pages}
+            previousLabel="<"
+            renderOnZeroPageCount={null}
+          />
+        </section>
       )}
     </main>
   );
 }
 
 Main.propTypes = {
-  searchPage: PropTypes.number.isRequired,
+  search: PropTypes.string.isRequired,
   results: PropTypes.arrayOf(
     PropTypes.shape([
       PropTypes.bool,

@@ -1,15 +1,36 @@
 import React from "react";
+import PropTypes from "prop-types";
 import GoSearch from "@meronex/icons/go/GoSearch";
-import { Link } from "react-router-dom";
 
-function Loupe() {
+function Loupe({
+  setEmptySearch,
+  showModal,
+  setShowModal,
+  setShowSearchModal,
+  setShowFiltersModal,
+}) {
+  const openCloseModal = () => {
+    setShowModal(!showModal);
+    setShowSearchModal(false);
+    setShowFiltersModal(false);
+    setEmptySearch("");
+  };
+
   return (
     <div className="LoupeDiv">
-      <Link to="/search" className="Loupe">
+      <button type="button" className="Loupe" onClick={openCloseModal}>
         <GoSearch className="GoSearch" />
-      </Link>
+      </button>
     </div>
   );
 }
 
 export default Loupe;
+
+Loupe.propTypes = {
+  setEmptySearch: PropTypes.func.isRequired,
+  showModal: PropTypes.bool.isRequired,
+  setShowModal: PropTypes.func.isRequired,
+  setShowSearchModal: PropTypes.func.isRequired,
+  setShowFiltersModal: PropTypes.func.isRequired,
+};

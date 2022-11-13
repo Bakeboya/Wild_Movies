@@ -12,11 +12,11 @@ function Discover() {
   const location = useLocation();
   const { title, placeholder } = location.state;
 
-  const [filtersPage, setFiltersPage] = useState(1);
-
   const {
     filtersTotal,
     discover,
+    filtersPage,
+    setFiltersPage,
     setSorting,
     setDiscoverGenre,
     setDiscoverRating,
@@ -24,7 +24,7 @@ function Discover() {
     setDiscoverDuration,
     setDiscoverProvider,
     setDiscoverCertification,
-  } = useDiscover(filtersPage);
+  } = useDiscover();
 
   const handleFiltersPage = (data) => {
     window.scrollTo(0, 0);

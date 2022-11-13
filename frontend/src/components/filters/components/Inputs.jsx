@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import MultiRangeSlider from "multi-range-slider-react";
 import Select from "react-select";
-import { Link } from "react-router-dom";
 import {
   genreOptions,
   providerOptions,
@@ -10,7 +9,8 @@ import {
 } from "../../../data/FiltersArrays";
 
 function Inputs({
-  filtersTotal,
+  setShowModal,
+  setShowFiltersModal,
   setDiscoverGenre,
   setDiscoverRating,
   setDiscoverDecade,
@@ -21,6 +21,11 @@ function Inputs({
   const [toggleType, setToggleType] = useState(0);
   const typeButton = (index) => {
     setToggleType(index);
+  };
+
+  const handleClick = () => {
+    setShowFiltersModal(true);
+    setShowModal(false);
   };
 
   const handleSelectGenres = (option) => {
@@ -223,9 +228,9 @@ function Inputs({
         />
       </div>
       <div className="responsiveButton">
-        <Link to="/filtered" state={filtersTotal}>
+        <button type="button" onClick={handleClick}>
           Filtrer
-        </Link>
+        </button>
       </div>
     </div>
   );
@@ -234,18 +239,12 @@ function Inputs({
 export default Inputs;
 
 Inputs.propTypes = {
-  filtersTotal: PropTypes.arrayOf(
-    PropTypes.shape([
-      PropTypes.number,
-      PropTypes.array,
-      PropTypes.number,
-      PropTypes.number,
-    ])
-  ).isRequired,
   setDiscoverGenre: PropTypes.func.isRequired,
   setDiscoverRating: PropTypes.func.isRequired,
   setDiscoverDecade: PropTypes.func.isRequired,
   setDiscoverDuration: PropTypes.func.isRequired,
   setDiscoverProvider: PropTypes.func.isRequired,
   setDiscoverCertification: PropTypes.func.isRequired,
+  setShowModal: PropTypes.func.isRequired,
+  setShowFiltersModal: PropTypes.func.isRequired,
 };

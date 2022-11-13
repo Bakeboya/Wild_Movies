@@ -151,6 +151,7 @@
   color: $primary-color;
   background-color: #ffffff;
   padding: 3rem 0;
+  margin-bottom: 10rem;
 
   .homeList {
     width: 85%;
@@ -228,7 +229,7 @@
         color: $secondary-color;
 
         hr {
-          color: $secondary-color;
+          border: 1px solid $secondary-color;
         }
 
         .react-horizontal-scrolling-menu--scroll-container {
@@ -273,60 +274,67 @@
   .choiceContainer {
     display: none;
   }
-  .home {
-    margin-bottom: 10rem;
-    .homeList {
-      .listContainer {
-        h2 {
-          span {
-            display: none;
-          }
+  .homeList {
+    padding: 2rem;
+    margin-bottom: 13rem;
+    .listContainer {
+      h2 {
+        span {
+          display: none;
         }
-        .movieList {
-          .react-horizontal-scrolling-menu--scroll-container {
-            li {
-              width: 150px;
-              height: 225px;
-              .imgPoster {
-                img {
-                  height: 100%;
-                  border-radius: 4px;
-                }
-                p {
-                  border-bottom-left-radius: 4px;
-                  bottom: 1px;
-                }
-                h3 {
-                  display: none;
-                }
+      }
+      .movieList {
+        .react-horizontal-scrolling-menu--scroll-container {
+          li {
+            width: 150px;
+            height: 225px;
+            .imgPoster {
+              img {
+                height: 100%;
+                border-radius: 4px;
+              }
+              p {
+                border-bottom-left-radius: 4px;
+                bottom: 1px;
+              }
+              h3 {
+                display: none;
               }
             }
           }
         }
-        &:after {
-          width: 25px;
-        }
       }
-      .resultsList {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        li {
-          width: 125px;
-          height: 250px;
-          .imgPoster {
-            img {
-              width: 125px;
-              height: 187.5px;
-            }
-            p {
-              margin-bottom: 0;
-            }
+      &:after {
+        width: 25px;
+      }
+    }
+    .resultsCount {
+      margin-bottom: 1.5rem;
+      font-family: $font-display;
+      font-size: 1.5rem;
+      text-transform: capitalize;
+    }
+    .resultsList {
+      @include resultsList;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      justify-items: center;
+      li {
+        width: 125px;
+        height: 250px;
+        .imgPoster {
+          img {
+            width: 125px;
+            height: 187.5px;
+          }
+          p {
+            margin-bottom: 0;
           }
         }
       }
-      .paginationList {
-        width: 100%;
-      }
+    }
+    .paginationList {
+      width: 95%;
     }
   }
 }

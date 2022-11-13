@@ -1,8 +1,9 @@
+import React, { useState } from "react";
 import Main from "@components/filters/Main";
 import Footer from "@components/footer/Footer";
 import Header from "@components/header/Header";
 import Navbar from "@components/navbar/Navbar";
-import React from "react";
+import Search from "@components/filters/Search";
 import { useSearch } from "../data/DataFetch";
 
 export default function Home() {
@@ -17,20 +18,28 @@ export default function Home() {
     setSearchPage,
   } = useSearch();
 
+  const [showModal, setShowModal] = useState(false);
+  const [showSearchModal, setShowSearchModal] = useState(false);
+  const [showFiltersModal, setShowFiltersModal] = useState(false);
+
+  const [emptySearch, setEmptySearch] = useState("");
+
   return (
     <>
       <Navbar
+        setEmptySearch={setEmptySearch}
         setResults={setResults}
-        search={search}
-        setSearch={setSearch}
-        searchText={searchText}
-        setSearchText={setSearchText}
+        showModal={showModal}
+        setShowModal={setShowModal}
+        setShowSearchModal={setShowSearchModal}
+        setShowFiltersModal={setShowFiltersModal}
       />
       <Header
-        search={search}
         setSearch={setSearch}
         searchText={searchText}
         setSearchText={setSearchText}
+        showModal={showModal}
+        setShowModal={setShowModal}
       />
       <Main
         search={search}
@@ -40,6 +49,22 @@ export default function Home() {
         setSearchPage={setSearchPage}
       />
       <Footer />
+      <Search
+        emptySearch={emptySearch}
+        setEmptySearch={setEmptySearch}
+        search={search}
+        setSearch={setSearch}
+        searchText={searchText}
+        setSearchText={setSearchText}
+        showModal={showModal}
+        setShowModal={setShowModal}
+        showSearchModal={showSearchModal}
+        setShowSearchModal={setShowSearchModal}
+        showFiltersModal={showFiltersModal}
+        setShowFiltersModal={setShowFiltersModal}
+        results={results}
+        resultsTotal={resultsTotal}
+      />
     </>
   );
 }
