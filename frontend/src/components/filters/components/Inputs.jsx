@@ -18,6 +18,8 @@ function Inputs({
   setDiscoverProvider,
   setDiscoverCertification,
 }) {
+  const curYear = new Date().getFullYear();
+
   const [toggleType, setToggleType] = useState(0);
   const typeButton = (index) => {
     setToggleType(index);
@@ -197,7 +199,7 @@ function Inputs({
         <p>Décennie</p>
         <MultiRangeSlider
           min={1900}
-          max={2030}
+          max={curYear}
           step={10}
           stepOnly
           ruler

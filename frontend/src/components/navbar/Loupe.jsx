@@ -4,6 +4,10 @@ import GoSearch from "@meronex/icons/go/GoSearch";
 
 function Loupe({
   setEmptySearch,
+  setSearch,
+  setSearchText,
+  setSearchPage,
+  setFiltersPage,
   showModal,
   setShowModal,
   setShowSearchModal,
@@ -11,6 +15,10 @@ function Loupe({
 }) {
   const openCloseModal = () => {
     setShowModal(!showModal);
+    setSearch("");
+    setSearchText("");
+    setSearchPage(1);
+    setFiltersPage(1);
     setShowSearchModal(false);
     setShowFiltersModal(false);
     setEmptySearch("");
@@ -29,6 +37,10 @@ export default Loupe;
 
 Loupe.propTypes = {
   setEmptySearch: PropTypes.func.isRequired,
+  setSearch: PropTypes.func.isRequired,
+  setSearchText: PropTypes.func.isRequired,
+  setSearchPage: PropTypes.func.isRequired,
+  setFiltersPage: PropTypes.func.isRequired,
   showModal: PropTypes.bool.isRequired,
   setShowModal: PropTypes.func.isRequired,
   setShowSearchModal: PropTypes.func.isRequired,

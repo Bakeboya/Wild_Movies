@@ -6,6 +6,10 @@ import title from "../../assets/logo3_wildmovies.svg";
 
 function WildMovies({
   setEmptySearch,
+  setSearch,
+  setSearchText,
+  setSearchPage,
+  setFiltersPage,
   setResults,
   setShowModal,
   setShowSearchModal,
@@ -14,6 +18,10 @@ function WildMovies({
   const handleReset = () => {
     window.scrollTo(0, 0);
     setResults([]);
+    setSearch("");
+    setSearchText("");
+    setSearchPage(1);
+    setFiltersPage(1);
     setShowModal(false);
     setShowSearchModal(false);
     setShowFiltersModal(false);
@@ -35,6 +43,10 @@ export default WildMovies;
 WildMovies.propTypes = {
   setResults: PropTypes.func.isRequired,
   setEmptySearch: PropTypes.func.isRequired,
+  setSearch: PropTypes.func.isRequired,
+  setSearchText: PropTypes.func.isRequired,
+  setSearchPage: PropTypes.func.isRequired,
+  setFiltersPage: PropTypes.func.isRequired,
   setShowModal: PropTypes.func.isRequired,
   setShowSearchModal: PropTypes.func.isRequired,
   setShowFiltersModal: PropTypes.func.isRequired,

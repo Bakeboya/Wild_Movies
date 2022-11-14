@@ -27,12 +27,13 @@ export const useSearch = () => {
       .then((res) => {
         setResultsTotal(res.data);
         setResults(res.data.results);
+        console.log(`data search: ${search}`);
       });
 
     return () => {
       source.cancel("Component got unmounted");
     };
-  }, [search, searchPage, lang]);
+  }, [search, searchPage, setSearchPage, lang]);
   return {
     searchText,
     setSearchText,
@@ -46,7 +47,7 @@ export const useSearch = () => {
   };
 };
 
-export const useDiscover = (page) => {
+export const useDiscover = () => {
   const { lang } = useLanguage();
   const [sorting, setSorting] = useState("popularity.desc");
   const [discover, setDiscover] = useState([]);
@@ -57,6 +58,7 @@ export const useDiscover = (page) => {
   const [discoverProvider, setDiscoverProvider] = useState("");
   const [discoverCertification, setDiscoverCertification] = useState("");
   const [filtersTotal, setFiltersTotal] = useState("");
+  const [filtersPage, setFiltersPage] = useState(1);
 
   useEffect(() => {
     const source = axios.CancelToken.source();
@@ -65,7 +67,7 @@ export const useDiscover = (page) => {
       .get(
         `https://api.themoviedb.org/3/discover/movie?api_key=${
           import.meta.env.VITE_API_KEY
-        }&language=${lang}&sort_by=${sorting}&include_adult=false&include_video=false&page=${page}${discoverGenre}${discoverRating}${discoverDecade}${discoverDuration}${discoverProvider}${discoverCertification}&vote_count.gte=10&with_watch_monetization_types=flatrate`,
+        }&language=${lang}&sort_by=${sorting}&include_adult=false&include_video=false&page=${filtersPage}${discoverGenre}${discoverRating}${discoverDecade}${discoverDuration}${discoverProvider}${discoverCertification}&vote_count.gte=10&with_watch_monetization_types=flatrate`,
         { cancelToken: source.token }
       )
       .then((res) => {
@@ -78,7 +80,7 @@ export const useDiscover = (page) => {
     };
   }, [
     sorting,
-    page,
+    filtersPage,
     discoverGenre,
     discoverRating,
     discoverDecade,
@@ -89,6 +91,8 @@ export const useDiscover = (page) => {
   return {
     setSorting,
     filtersTotal,
+    filtersPage,
+    setFiltersPage,
     discover,
     discoverGenre,
     setDiscoverGenre,

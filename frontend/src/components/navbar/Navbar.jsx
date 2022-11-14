@@ -7,6 +7,10 @@ import WildMovies from "./WildMovies";
 function Navbar({
   setEmptySearch,
   setResults,
+  setSearch,
+  setSearchText,
+  setSearchPage,
+  setFiltersPage,
   showModal,
   setShowModal,
   setShowSearchModal,
@@ -18,6 +22,10 @@ function Navbar({
     <nav className={!fixed ? "Navbar" : "Navbar Bottom"}>
       <WildMovies
         setEmptySearch={setEmptySearch}
+        setSearch={setSearch}
+        setSearchText={setSearchText}
+        setSearchPage={setSearchPage}
+        setFiltersPage={setFiltersPage}
         setResults={setResults}
         setShowModal={setShowModal}
         setShowSearchModal={setShowSearchModal}
@@ -25,6 +33,10 @@ function Navbar({
       />
       <Loupe
         setEmptySearch={setEmptySearch}
+        setSearch={setSearch}
+        setSearchText={setSearchText}
+        setSearchPage={setSearchPage}
+        setFiltersPage={setFiltersPage}
         showModal={showModal}
         setShowModal={setShowModal}
         setShowSearchModal={setShowSearchModal}
@@ -40,6 +52,10 @@ export default Navbar;
 Navbar.propTypes = {
   setResults: PropTypes.func.isRequired,
   setEmptySearch: PropTypes.func.isRequired,
+  setSearch: PropTypes.func.isRequired,
+  setSearchText: PropTypes.func.isRequired,
+  setSearchPage: PropTypes.func.isRequired,
+  setFiltersPage: PropTypes.func.isRequired,
   showModal: PropTypes.bool.isRequired,
   setShowModal: PropTypes.func.isRequired,
   setShowSearchModal: PropTypes.func.isRequired,

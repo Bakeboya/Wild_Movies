@@ -4,7 +4,7 @@ import ReactPaginate from "react-paginate";
 import Modal from "react-modal";
 import Inputs from "@components/filters/components/Inputs";
 import Navbar from "@components/navbar/Navbar";
-import { useDiscover, useSearch } from "../../data/DataFetch";
+import { useDiscover } from "../../data/DataFetch";
 import ContentCard from "./components/ContentCard";
 
 export const customStyles = {
@@ -24,8 +24,8 @@ function Search({
   setEmptySearch,
   search,
   setSearch,
-  searchText,
   setSearchText,
+  setSearchPage,
   showModal,
   setShowModal,
   showSearchModal,
@@ -47,8 +47,6 @@ function Search({
     setDiscoverCertification,
   } = useDiscover();
 
-  const { setSearchPage } = useSearch();
-
   const handleChange = (e) => {
     setSearch(e.target.value);
   };
@@ -57,8 +55,8 @@ function Search({
     if (search === "") {
       setEmptySearch("Entrez votre recherche");
     } else {
-      setSearch(searchText);
-      setSearchText("");
+      setSearch(search);
+      setSearchText(search);
       setShowSearchModal(true);
       setShowModal(false);
     }
@@ -176,8 +174,8 @@ Search.propTypes = {
   setEmptySearch: PropTypes.func.isRequired,
   search: PropTypes.string.isRequired,
   setSearch: PropTypes.func.isRequired,
-  searchText: PropTypes.string.isRequired,
   setSearchText: PropTypes.func.isRequired,
+  setSearchPage: PropTypes.func.isRequired,
   showModal: PropTypes.bool.isRequired,
   setShowModal: PropTypes.func.isRequired,
   showSearchModal: PropTypes.string.isRequired,

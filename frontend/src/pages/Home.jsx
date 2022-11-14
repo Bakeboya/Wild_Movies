@@ -4,7 +4,7 @@ import Footer from "@components/footer/Footer";
 import Header from "@components/header/Header";
 import Navbar from "@components/navbar/Navbar";
 import Search from "@components/filters/Search";
-import { useSearch } from "../data/DataFetch";
+import { useDiscover, useSearch } from "../data/DataFetch";
 
 export default function Home() {
   const {
@@ -18,6 +18,8 @@ export default function Home() {
     setSearchPage,
   } = useSearch();
 
+  const { setFiltersPage } = useDiscover();
+
   const [showModal, setShowModal] = useState(false);
   const [showSearchModal, setShowSearchModal] = useState(false);
   const [showFiltersModal, setShowFiltersModal] = useState(false);
@@ -29,6 +31,10 @@ export default function Home() {
       <Navbar
         setEmptySearch={setEmptySearch}
         setResults={setResults}
+        setSearch={setSearch}
+        setSearchText={setSearchText}
+        setSearchPage={setSearchPage}
+        setFiltersPage={setFiltersPage}
         showModal={showModal}
         setShowModal={setShowModal}
         setShowSearchModal={setShowSearchModal}
@@ -43,7 +49,6 @@ export default function Home() {
       />
       <Main
         search={search}
-        searchText={searchText}
         results={results}
         resultsTotal={resultsTotal}
         setSearchPage={setSearchPage}
@@ -56,6 +61,7 @@ export default function Home() {
         setSearch={setSearch}
         searchText={searchText}
         setSearchText={setSearchText}
+        setSearchPage={setSearchPage}
         showModal={showModal}
         setShowModal={setShowModal}
         showSearchModal={showSearchModal}
