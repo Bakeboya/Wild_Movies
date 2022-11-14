@@ -2,9 +2,13 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import imgTemp from "@assets/fiche/imgTemp.webp";
 import ButtonActor from "./ButtonActor";
+import { useParams } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 function Casting({ cast }) {
   const [isCut, setIsCut] = useState(true);
+
+  const { id } = useParams();
 
   const toggleCast = () => {
     setIsCut(!isCut);
@@ -29,21 +33,23 @@ function Casting({ cast }) {
       </div>
       <div className="actorCard">
         <div className="actorFilm">
+
           {cast &&
             (isCut ? castCut : cast).map((acteur) => (
               <div className="actors">
-                <img
-                  src={
-                    acteur.profile_path != null
-                      ? `https://image.tmdb.org/t/p/w200/${acteur.profile_path}`
-                      : imgTemp
-                  }
-                  alt={acteur.name}
-                />
-                <div>
-                  <p className="actorName">{acteur.name}</p>
-                  <p className="actorCharacter">{acteur.character}</p>
-                </div>
+                <Link to={`/actor/${acteur.id}`}>
+                  <img
+                    src={
+                      acteur.profile_path != null
+                        ? `https://image.tmdb.org/t/p/w200/${acteur.profile_path}`
+                        : imgTemp
+                    }
+                    alt={acteur.name}
+                  />
+                  <div>
+                    <p className="actorName">{acteur.name}</p>
+                    <p className="actorCharacter">{acteur.character}</p>
+                  </div></Link>
               </div>
             ))}
         </div>
