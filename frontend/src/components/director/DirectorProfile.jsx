@@ -1,15 +1,29 @@
 import React, { useState } from "react";
-import imgTemp from "@assets/imgTemp.webp";
+import imgTemp from "@assets/fiche/imgTemp.webp";
 import PropTypes from "prop-types";
 
-function DirectorProfile({ picture, name, birthday, alias, city, bio }) {
+function DirectorProfile({
+  picture,
+  name,
+  birthday,
+  alias,
+  city,
+  bio,
+  deathday,
+}) {
   const imgLink = `http://image.tmdb.org/t/p/w500${picture}`;
   const imgName = `Image de ${name}`;
   const [textShow, setTextShow] = useState(false);
 
   function getAge() {
     const dt = new Date(birthday);
-    const diff = Date.now() - dt.getTime();
+    const deathTime = new Date(deathday);
+    let diff = "";
+    if (deathday === null) {
+      diff = Date.now() - dt.getTime();
+    } else {
+      diff = deathTime - dt.getTime();
+    }
     const age = new Date(diff);
     return Math.abs(age.getUTCFullYear() - 1970);
   }
@@ -17,7 +31,7 @@ function DirectorProfile({ picture, name, birthday, alias, city, bio }) {
   return (
     <div className="directorProfile">
       <div className="directorProfile_Picture">
-        {imgLink ? (
+        {imgLink !== "https://image.tmdb.org/t/p/w500null" ? (
           <img src={imgLink} alt={imgName} />
         ) : (
           <img src={imgTemp} alt={imgName} />
@@ -39,10 +53,23 @@ function DirectorProfile({ picture, name, birthday, alias, city, bio }) {
           </div>
 
           <div>
-            <p className="persoBox_Title">Date de naissance</p>
-            <p className="persoBox_Text">
-              {birthday} / {getAge()} ans
-            </p>
+            {deathday ? (
+              <>
+                <p className="persoBox_Title">Date de naissance</p>
+                <p className="persoBox_Text">{birthday}</p>
+                <p className="persoBox_Title">Date de décès</p>
+                <p className="persoBox_Text">
+                  {deathday} à {getAge()} ans
+                </p>
+              </>
+            ) : (
+              <>
+                <p className="persoBox_Title">Date de naissance</p>
+                <p className="persoBox_Text">
+                  {birthday} / {getAge()} ans
+                </p>
+              </>
+            )}
           </div>
 
           <div>
@@ -79,6 +106,10 @@ function DirectorProfile({ picture, name, birthday, alias, city, bio }) {
           )}
         </div>
       </div>
+
+      <div>
+        <p className="directorProfile_casting">{name} est célèbre pour :</p>
+      </div>
     </div>
   );
 }
@@ -90,6 +121,7 @@ DirectorProfile.propTypes = {
   alias: PropTypes.isRequired,
   city: PropTypes.isRequired,
   bio: PropTypes.isRequired,
+  deathday: PropTypes.isRequired,
 };
 
 export default DirectorProfile;

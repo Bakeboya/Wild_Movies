@@ -1,5 +1,31 @@
+@mixin column {
+  display: flex;
+  flex-direction: column;
+}
+
 .directorMoviesCard {
+  @include column;
+  align-items: center;
+  gap: 10px;
+
   &_temp {
     width: 185px;
+    height: 278px;
+    object-fit: cover;
+  }
+
+  &_title {
+    @include column;
+    align-items: center;
+    gap: 5px;
+
+    &_name {
+      color: $tertiary-color;
+      font-size: 11px;
+    }
+
+    &_year {
+      font-size: 11px;
+    }
   }
 }

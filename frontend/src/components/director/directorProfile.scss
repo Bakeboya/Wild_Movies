@@ -18,6 +18,12 @@
     }
   }
 
+  &_casting {
+    font-size: 18px;
+    font-family: $font-display;
+    color: $tertiary-color;
+  }
+
   &_Info {
     @include column;
     align-items: center;
@@ -67,6 +73,9 @@
       }
 
       &_Button {
+        text-align: left;
+        background-color: $secondary-color;
+        border: none;
         color: $tertiary-color;
         font-size: 12px;
       }

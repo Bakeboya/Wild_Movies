@@ -1,7 +1,9 @@
-import imgTemp from "@assets/imgTemp.webp";
+import imgTemp from "@assets/fiche/imgTemp.webp";
 import PropTypes from "prop-types";
 
-function DirectorMoviesCard({ movieImg, movieTitle }) {
+function DirectorMoviesCard({ movieImg, movieTitle, date }) {
+  const year = date.substring(0, 4);
+
   return (
     <div className="directorMoviesCard">
       <div>
@@ -20,8 +22,9 @@ function DirectorMoviesCard({ movieImg, movieTitle }) {
         )}
       </div>
 
-      <div>
-        <p className="directorMoviesCard_title">{movieTitle}</p>
+      <div className="directorMoviesCard_title">
+        <p className="directorMoviesCard_title_name">{movieTitle}</p>
+        <p className="directorMoviesCard_title_year">{year}</p>
       </div>
     </div>
   );
@@ -30,6 +33,7 @@ function DirectorMoviesCard({ movieImg, movieTitle }) {
 DirectorMoviesCard.propTypes = {
   movieImg: PropTypes.isRequired,
   movieTitle: PropTypes.isRequired,
+  date: PropTypes.isRequired,
 };
 
 export default DirectorMoviesCard;
