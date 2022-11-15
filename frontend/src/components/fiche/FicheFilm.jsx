@@ -30,8 +30,7 @@ function FicheFilm() {
     setLoading(true);
     axios
       .get(
-        `https://api.themoviedb.org/3/${type}/${id}/videos?api_key=${
-          import.meta.env.VITE_API_KEY
+        `https://api.themoviedb.org/3/${type}/${id}/videos?api_key=${import.meta.env.VITE_API_KEY
         }&language=fr`
       )
       .then((res) => {
@@ -40,8 +39,7 @@ function FicheFilm() {
 
     axios
       .get(
-        `https://api.themoviedb.org/3/${type}/${id}?api_key=${
-          import.meta.env.VITE_API_KEY
+        `https://api.themoviedb.org/3/${type}/${id}?api_key=${import.meta.env.VITE_API_KEY
         }&language=fr`
       )
       .then((res) => {
@@ -50,8 +48,7 @@ function FicheFilm() {
 
     axios
       .get(
-        `https://api.themoviedb.org/3/${type}/${id}/credits?api_key=${
-          import.meta.env.VITE_API_KEY
+        `https://api.themoviedb.org/3/${type}/${id}/credits?api_key=${import.meta.env.VITE_API_KEY
         }&language=fr`
       )
       .then((res) => {
@@ -60,8 +57,7 @@ function FicheFilm() {
 
     axios
       .get(
-        `https://api.themoviedb.org/3/${type}/${id}/watch/providers?api_key=${
-          import.meta.env.VITE_API_KEY
+        `https://api.themoviedb.org/3/${type}/${id}/watch/providers?api_key=${import.meta.env.VITE_API_KEY
         }&language=fr`
       )
       .then((res) => {
@@ -79,6 +75,19 @@ function FicheFilm() {
         setLoading(false);
       });
   }, []);
+
+  const releaseDateSet = (a) => {
+    console.log(film);
+    let results = "";
+    if (a.release_date !== undefined) {
+      results = a.release_date;
+    } else if (a.first_air_date !== undefined) {
+      results = a.first_air_date;
+    };
+    console.log(results)
+    return results;
+  }
+
 
   return (
     <div className="container">
@@ -100,13 +109,9 @@ function FicheFilm() {
 
             {film && preview && preview.results && pegi && pegi.results && (
               <CardText
-                releaseDate={film.release_date || film.first_air_date}
+                releaseDate={releaseDateSet(film)}
                 genres={film.genres}
-                runtime={
-                  film.runtime ||
-                  film.episode_run_time[0] ||
-                  film.last_episode_to_air.runtime
-                }
+                runtime={film.runtime}
                 voteAverage={film.vote_average}
                 overview={film.overview}
                 title={film.title || film.name || film.original_title}

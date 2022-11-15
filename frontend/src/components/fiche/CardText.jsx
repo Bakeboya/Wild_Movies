@@ -31,22 +31,18 @@ function CardText({
         </Link>
       </div>
       <div className="titleFilm">
-
         {title} ({releaseDate.split("-")[0]})
-
       </div>
       <div className="filtreFilm">
         <div className="pegiFilm">
           <Pegi pegi={pegi} type={type} />
         </div>
-        <div className="separation"></div>
-
+        <div className="separation" />
 
         {genres &&
           genres.map((genre) => <div className="genreP">{genre.name}</div>)}
 
-
-        <div className="separation"></div>
+        <div className="separation" />
         <div className="dureeFilm">
           <Time
             runtime={runtime}
