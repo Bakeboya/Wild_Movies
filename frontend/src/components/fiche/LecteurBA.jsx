@@ -10,20 +10,18 @@ function LecteurBA({ preview, title }) {
 
   return (
     <div>
-      <a href={`https://www.youtube.com/watch?v=${preview[0].key}`}> <div className="lecteurBAMobile">
-        <img
-          className="logoLecteurMobile"
-          src={componentLecteur}
-          alt="logo lecteur bande-annonce"
-
-        />
-        <button
-          className="popupLecteurBAMobile"
-          type="button"
-        >
-          Bande-annonce
-        </button>
-      </div>
+      <a href={`https://www.youtube.com/watch?v=${preview[0].key}`}>
+        {" "}
+        <div className="lecteurBAMobile">
+          <img
+            className="logoLecteurMobile"
+            src={componentLecteur}
+            alt="logo lecteur bande-annonce"
+          />
+          <button className="popupLecteurBAMobile" type="button">
+            Bande-annonce
+          </button>
+        </div>
       </a>
       <div className="lecteurBA">
         <img

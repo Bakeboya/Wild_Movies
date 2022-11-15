@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import imgTemp from "@assets/fiche/imgTemp.webp";
+import { useParams, Link } from "react-router-dom";
 import ButtonActor from "./ButtonActor";
-import { useParams } from "react-router-dom";
-import { Link } from 'react-router-dom';
 
 function Casting({ cast }) {
   const [isCut, setIsCut] = useState(true);
@@ -26,6 +25,8 @@ function Casting({ cast }) {
     return c;
   };
 
+  const lengthFinal = cast && (length(castCut, cast))
+
   return (
     <div className="casting">
       <div className="synopsisFilm">
@@ -33,7 +34,6 @@ function Casting({ cast }) {
       </div>
       <div className="actorCard">
         <div className="actorFilm">
-
           {cast &&
             (isCut ? castCut : cast).map((acteur) => (
               <div className="actors">
@@ -49,7 +49,8 @@ function Casting({ cast }) {
                   <div>
                     <p className="actorName">{acteur.name}</p>
                     <p className="actorCharacter">{acteur.character}</p>
-                  </div></Link>
+                  </div>
+                </Link>
               </div>
             ))}
         </div>
@@ -58,7 +59,7 @@ function Casting({ cast }) {
           isCut={isCut}
           toggleCast={toggleCast}
           castCut={castCut}
-          length={length(castCut, cast)}
+          length={lengthFinal}
         />
       </div>
     </div>
