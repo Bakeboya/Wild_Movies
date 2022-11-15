@@ -26,7 +26,7 @@ function FicheFilm() {
     return result;
   };
 
-  useEffect(() => {
+  const getData = () => {
     setLoading(true);
     axios
       .get(
@@ -74,6 +74,10 @@ function FicheFilm() {
         setPegi(res.data);
         setLoading(false);
       });
+  };
+
+  useEffect(() => {
+    getData();
   }, []);
 
   const releaseDateSet = (a) => {
