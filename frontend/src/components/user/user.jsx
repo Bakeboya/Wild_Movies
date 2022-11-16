@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
-import FaWindowClose from "@meronex/icons/fa/FaWindowClose";
 import PropTypes from "prop-types";
 import wildmovies from "@assets/logo3_wildmovies.svg";
-import wildmoviesLogo from "@assets/logo_wildmovies.svg";
 import logoCreate from "@assets/user/104368-thank-you.gif";
 import logoConnect from "@assets/user/92578-check-okey-done.gif";
 import logoSend from "@assets/user/lf30_editor_01fqcrbg-150x150.gif";
@@ -10,8 +8,12 @@ import logoYes from "@assets/user/11743-check-mark-yes.gif";
 import logoNo from "@assets/user/101930-no-acces-denied.gif";
 import logoNews from "@assets/user/lf30_editor_n2dzrzma-150x150.gif";
 import axios from "axios";
+import UserMain from "./UserMain";
+import UserPassword from "./UserPassword";
+import UserInscription from "./UserInscription";
+import UserConnect from "./UserConnect";
 
-function User({ handleClose }) {
+function User({ handleActive }) {
   const [active, setActive] = useState(true);
   const [connect, setConnect] = useState(false);
   const [inscription, setInscription] = useState(false);
@@ -26,7 +28,6 @@ function User({ handleClose }) {
   const [displayPopUpSend, setDisplayPopUpSend] = useState(false);
   const [users, setUsers] = useState([]);
   const [connected, setConnected] = useState(false);
-
   useEffect(() => {
     axios
       .get("http://localhost:5000/users")
@@ -36,10 +37,9 @@ function User({ handleClose }) {
         // console.log(connected);
       })
       .catch((err) => {
-        console.error(err);
+        // console.error(err);
       });
   }, [connect]);
-
   const getEmail = (e) => {
     setEmail(e.target.value);
   };
@@ -137,7 +137,6 @@ function User({ handleClose }) {
   const exitSend = () => {
     setDisplayPopUpSend(false);
   };
-
   return (
     <div>
       {active && (
@@ -154,7 +153,7 @@ function User({ handleClose }) {
                 <button
                   type="submit"
                   className="linkClose"
-                  onClick={handleClose}
+                  onClick={handleActive}
                 >
                   Fermer
                 </button>
@@ -226,170 +225,47 @@ function User({ handleClose }) {
               </div>
             </div>
           )}
-          <div className={!hide ? "userDiv" : "userDiv hide"}>
-            <div className="enteteForm">
-              <img src={wildmovies} alt="title" id="userTitle" />
-              <img src={wildmoviesLogo} alt="title" id="userLogo" />
-              <button type="submit" className="close" onClick={handleClose}>
-                <FaWindowClose />
-              </button>
-            </div>
-            <div className="userMain">
-              <button
-                type="submit"
-                className="buttonUser signUp"
-                onClick={handleConnect}
-              >
-                Se connecter
-              </button>
-              <button
-                type="submit"
-                className="buttonUser signIn"
-                onClick={handleInscription}
-              >
-                S'inscrire
-              </button>
-            </div>
-          </div>
+          {!hide && (
+            <UserMain
+              handleClose={handleActive}
+              propsHandleConnect={handleConnect}
+              propsHandleInscription={handleInscription}
+            />
+          )}
           {connect && (
-            <div className="connectDiv">
-              <div className="enteteForm">
-                <img src={wildmovies} alt="title" id="userTitle" />
-                <img src={wildmoviesLogo} alt="title" id="userLogo" />
-                <button type="submit" className="close" onClick={handleClose}>
-                  <FaWindowClose />
-                </button>
-              </div>
-              <div className="connectMain">
-                <input
-                  type="text"
-                  name="uname"
-                  placeholder="Adresse email"
-                  className="userForm champs"
-                  id="enteteConnect"
-                  onChange={getEmail}
-                />
-                <input
-                  type="password"
-                  name="pass"
-                  placeholder="Mot de passe"
-                  className="userForm champs"
-                  autoComplete="current-password"
-                  onChange={getPassword}
-                />
-                <button
-                  type="submit"
-                  className="userForm signUp"
-                  onClick={connectAccount}
-                >
-                  Se Connecter
-                </button>
-                <button
-                  type="submit"
-                  onClick={handlePassword}
-                  className="linkForget"
-                >
-                  Mot de passe oublié?
-                </button>
-                <button
-                  type="submit"
-                  onClick={handleInscription}
-                  className="linkQuestion"
-                >
-                  Pas de compte? Créer votre compte.
-                </button>
-              </div>
-            </div>
+            <UserConnect
+              handleClose={handleActive}
+              propsConnect={connectAccount}
+              propsPassword={handlePassword}
+              propsHandleInscription={handleInscription}
+              propsGetEmail={getEmail}
+              propsGetPassword={getPassword}
+            />
           )}
           {inscription && (
-            <div className="inscriptionDiv">
-              <div className="enteteForm">
-                <img src={wildmovies} alt="title" id="userTitle" />
-                <img src={wildmoviesLogo} alt="title" id="userLogo" />
-                <button type="submit" className="close" onClick={handleClose}>
-                  <FaWindowClose />
-                </button>
-              </div>
-              <div className="inscriptionMain">
-                <input
-                  type="text"
-                  placeholde="Email"
-                  className="userForm champs"
-                  id="enteteIns"
-                  placeholder="Adresse email"
-                  onChange={getEmail}
-                />
-                <input
-                  type="password"
-                  className="userForm champs"
-                  placeholder="Mot de passe"
-                  autoComplete="current-password"
-                  onChange={getPassword}
-                />
-                <div className="checkBoxDiv">
-                  <div className="checkBox">
-                    <input
-                      type="checkbox"
-                      id="switch"
-                      name="switch"
-                      onChange={handleCheckBox}
-                    />
-                    <label htmlFor="switch">
-                      <input id="none" />
-                    </label>
-                  </div>
-                  <p>
-                    J'accepte la politique de confidentialité et la politique de
-                    cookies (requis).
-                  </p>
-                </div>
-                <button
-                  type="submit"
-                  className="userForm create"
-                  onClick={createAccount}
-                >
-                  Créer mon compte
-                </button>
-                <button type="submit" onClick={handleConnect} className="link">
-                  Vous possédez déjà un compte?
-                </button>
-              </div>
-            </div>
+            <UserInscription
+              handleClose={handleActive}
+              propsHandleConnect={handleConnect}
+              propsCreate={createAccount}
+              propsCheckBox={handleCheckBox}
+              propsGetEmail={getEmail}
+              propsGetPassword={getPassword}
+            />
           )}
-          <div
-            className={
-              !hidePassword ? "userPasswordDiv" : "userPasswordDiv hide"
-            }
-          >
-            <div className="enteteForm">
-              <img src={wildmovies} alt="title" id="userTitle" />
-              <img src={wildmoviesLogo} alt="title" id="userLogo" />
-              <button type="submit" className="close" onClick={handleMain}>
-                <FaWindowClose />
-              </button>
-            </div>
-            <div className="userPassword">
-              <input
-                type="mail"
-                placeholder="Adresse email"
-                className="userForm champs"
-                onChange={getEmail}
-              />
-              <button
-                type="submit"
-                className="userForm send"
-                onClick={sendPassword}
-              >
-                Envoyer
-              </button>
-            </div>
-          </div>
+          {!hidePassword && (
+            <UserPassword
+              propsHandleMain={handleMain}
+              propsGetEmail={getEmail}
+              propsSendPassword={sendPassword}
+            />
+          )}
         </div>
       )}
+      ;
     </div>
   );
 }
 User.propTypes = {
-  handleClose: PropTypes.string.isRequired,
+  handleActive: PropTypes.string.isRequired,
 };
 export default User;

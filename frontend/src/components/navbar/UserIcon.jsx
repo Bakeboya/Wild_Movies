@@ -14,9 +14,9 @@ function UserIcon() {
       <button type="submit" className="User" onClick={handleActive}>
         <BisUser className="bisUser" />
       </button>
-      {active && <User handleClose={handleActive} />}
+      {active && <User handleActive={handleActive} />}
     </div>
   );
-};
+}
 
 export default UserIcon;
