@@ -3,7 +3,7 @@ import imgTemp from "@assets/fiche/imgTemp.webp";
 import PropTypes from "prop-types";
 
 function DirectorProfile({
-  picture,
+  pic,
   name,
   birthday,
   alias,
@@ -11,7 +11,7 @@ function DirectorProfile({
   bio,
   deathday,
 }) {
-  const imgLink = `http://image.tmdb.org/t/p/w500${picture}`;
+  const imgLink = `http://image.tmdb.org/t/p/w500${pic}`;
   const imgName = `Image de ${name}`;
   const [textShow, setTextShow] = useState(false);
 
@@ -31,7 +31,7 @@ function DirectorProfile({
   return (
     <div className="directorProfile">
       <div className="directorProfile_Picture">
-        {imgLink !== "https://image.tmdb.org/t/p/w500null" ? (
+        {imgLink !== "http://image.tmdb.org/t/p/w500null" ? (
           <img src={imgLink} alt={imgName} />
         ) : (
           <img src={imgTemp} alt={imgName} />
@@ -104,18 +104,17 @@ function DirectorProfile({
               </button>
             </>
           )}
+          <p className="bioBox_Desktop">{bio}</p>
         </div>
       </div>
 
-      <div>
-        <p className="directorProfile_casting">{name} est célèbre pour :</p>
-      </div>
+
     </div>
   );
 }
 
 DirectorProfile.propTypes = {
-  picture: PropTypes.isRequired,
+  pic: PropTypes.string.isRequired,
   name: PropTypes.isRequired,
   birthday: PropTypes.isRequired,
   alias: PropTypes.isRequired,
