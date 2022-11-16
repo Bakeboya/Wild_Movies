@@ -53,7 +53,8 @@ function DirectorPage() {
                 )}
             </div>
         </div>
-    );
+      </div></>
+  );
 }
 
 export default DirectorPage;
