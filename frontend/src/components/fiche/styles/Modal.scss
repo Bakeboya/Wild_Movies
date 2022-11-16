@@ -1,32 +1,3 @@
-.loader-container2 {
-  width: 300px;
-  height: 300px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: $secondary-color(0, 0, 0, 0.834);
-  z-index: 1;
-}
-
-.spinner2 {
-  width: 64px;
-  height: 64px;
-  border: 8px solid;
-  border-color: $tertiary-color transparent $tertiary-color transparent;
-  border-radius: 50%;
-  animation: spin-anim2 1.2s linear infinite;
-}
-
-@keyframes spin-anim2 {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
 .modalLecteur {
   position: fixed;
   top: 50%;
@@ -35,7 +6,6 @@
   z-index: 1000;
   display: flex;
   flex-direction: column;
-
   font-family: $font-text;
   background-color: $secondary-color;
   padding: 20px;
@@ -44,6 +14,17 @@
   box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.5);
   width: fit-content;
   height: fit-content;
+  animation: moveUp 0.8s forwards;
+
+  @keyframes moveUp {
+    0% {
+      transform: translate(-50%, 100%);
+    }
+
+    100% {
+      transform: translate(-50%, -50%);
+    }
+  }
 
   .modalClose {
     display: flex;
