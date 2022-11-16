@@ -25,7 +25,7 @@ function Casting({ cast }) {
     return c;
   };
 
-  const lengthFinal = cast && (length(castCut, cast))
+  const lengthFinal = cast && length(castCut, cast);
 
   return (
     <div className="casting">

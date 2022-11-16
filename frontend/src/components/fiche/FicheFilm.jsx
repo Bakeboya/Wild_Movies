@@ -6,9 +6,28 @@ import Footer from "@components/footer/Footer";
 import CardImg from "./CardImg";
 import CardText from "./CardText";
 
+const certification = (certi) => {
+  let result = "";
+  if (certi === "tv") {
+    result = "content_ratings";
+  } else if (certi === "movie") {
+    result = "release_dates";
+  }
+  return result;
+};
+
+const releaseDateSet = (a) => {
+  let results = "";
+  if (a.release_date !== undefined) {
+    results = a.release_date;
+  } else if (a.first_air_date !== undefined) {
+    results = a.first_air_date;
+  }
+  return results;
+};
+
 function FicheFilm() {
   const { id, type } = useParams();
-
   const [film, setFilm] = useState({});
   const [filmCrew, setFilmCrew] = useState({});
   const [watchProviders, setWatchProviders] = useState({});
@@ -16,21 +35,12 @@ function FicheFilm() {
   const [pegi, setPegi] = useState({});
   const [loading, setLoading] = useState(false);
 
-  const certification = (certi) => {
-    let result = "";
-    if (certi === "tv") {
-      result = "content_ratings";
-    } else if (certi === "movie") {
-      result = "release_dates";
-    }
-    return result;
-  };
-
   const getData = () => {
     setLoading(true);
     axios
       .get(
-        `https://api.themoviedb.org/3/${type}/${id}/videos?api_key=${import.meta.env.VITE_API_KEY
+        `https://api.themoviedb.org/3/${type}/${id}/videos?api_key=${
+          import.meta.env.VITE_API_KEY
         }&language=fr`
       )
       .then((res) => {
@@ -39,7 +49,8 @@ function FicheFilm() {
 
     axios
       .get(
-        `https://api.themoviedb.org/3/${type}/${id}?api_key=${import.meta.env.VITE_API_KEY
+        `https://api.themoviedb.org/3/${type}/${id}?api_key=${
+          import.meta.env.VITE_API_KEY
         }&language=fr`
       )
       .then((res) => {
@@ -48,7 +59,8 @@ function FicheFilm() {
 
     axios
       .get(
-        `https://api.themoviedb.org/3/${type}/${id}/credits?api_key=${import.meta.env.VITE_API_KEY
+        `https://api.themoviedb.org/3/${type}/${id}/credits?api_key=${
+          import.meta.env.VITE_API_KEY
         }&language=fr`
       )
       .then((res) => {
@@ -57,7 +69,8 @@ function FicheFilm() {
 
     axios
       .get(
-        `https://api.themoviedb.org/3/${type}/${id}/watch/providers?api_key=${import.meta.env.VITE_API_KEY
+        `https://api.themoviedb.org/3/${type}/${id}/watch/providers?api_key=${
+          import.meta.env.VITE_API_KEY
         }&language=fr`
       )
       .then((res) => {
@@ -80,19 +93,6 @@ function FicheFilm() {
     getData();
   }, []);
 
-  const releaseDateSet = (a) => {
-    console.log(film);
-    let results = "";
-    if (a.release_date !== undefined) {
-      results = a.release_date;
-    } else if (a.first_air_date !== undefined) {
-      results = a.first_air_date;
-    };
-    console.log(results)
-    return results;
-  }
-
-
   return (
     <div className="container">
       {loading ? (
@@ -106,7 +106,6 @@ function FicheFilm() {
             {watchProviders && watchProviders.results && film && (
               <CardImg
                 posterPath={film.poster_path}
-                originalTitle={film.original_title}
                 providers={watchProviders.results}
               />
             )}

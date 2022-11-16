@@ -8,6 +8,9 @@ import Modal from "./Modal";
 function LecteurBA({ preview, title }) {
   const [isOpen, setIsOpen] = useState(false);
 
+  const openCloseModal = (e) => {
+    setIsOpen(!isOpen);
+  };
   return (
     <div>
       <a href={`https://www.youtube.com/watch?v=${preview[0].key}`}>
@@ -28,17 +31,17 @@ function LecteurBA({ preview, title }) {
           className="logoLecteur"
           src={componentLecteur}
           alt="logo lecteur bande-annonce"
-          onClick={() => setIsOpen(true)}
+          onClick={openCloseModal}
         />
         <button
           className="popupLecteurBA"
           type="button"
-          onClick={() => setIsOpen(true)}
+          onClick={openCloseModal}
         >
           Bande-annonce
         </button>
       </div>
-      <Modal open={isOpen} onClose={() => setIsOpen(false)} title={title}>
+      <Modal open={isOpen} closeModal={openCloseModal} title={title}>
         <ReactPlayer
           url={`https://www.youtube.com/watch?v=${preview[0].key}`}
         />
