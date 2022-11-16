@@ -3,6 +3,7 @@ import axios from "axios";
 import DirectorProfile from "./DirectorProfile";
 import DirectorMoviesCard from "./DirectorMoviesCard";
 import BtnSlider from "./BtnSlider";
+import Navbar from "@components/navbar/Navbar";
 
 function DirectorPage() {
   const [directorInfo, setDirectorInfo] = useState({});
@@ -16,8 +17,7 @@ function DirectorPage() {
     if (directorMovies === undefined) {
       axios
         .get(
-          `https://api.themoviedb.org/3/person/${idDirector}?api_key=${
-            import.meta.env.VITE_API_KEY
+          `https://api.themoviedb.org/3/person/${idDirector}?api_key=${import.meta.env.VITE_API_KEY
           }&language=en-US`
         )
         .then((res) => {
@@ -26,8 +26,7 @@ function DirectorPage() {
 
       axios
         .get(
-          `https://api.themoviedb.org/3/person/${idDirector}/combined_credits?api_key=${
-            import.meta.env.VITE_API_KEY
+          `https://api.themoviedb.org/3/person/${idDirector}/combined_credits?api_key=${import.meta.env.VITE_API_KEY
           }&language=en-US`
         )
         .then((res) => {
@@ -67,39 +66,41 @@ function DirectorPage() {
   };
 
   return (
-    <div className="directorPage">
-      <div>
-        {directorInfo !== 0 && (
-          <DirectorProfile
-            picture={directorInfo.profile_path}
-            name={directorInfo.name}
-            birthday={directorInfo.birthday}
-            alias={directorInfo.also_known_as}
-            city={directorInfo.place_of_birth}
-            bio={directorInfo.biography}
-          />
-        )}
-      </div>
-
-      <div className="container_slider">
-        {directorDataCut !== 0 &&
-          directorDataCut.map((infos, index) => (
-            <DirectorMoviesCard
-              key={infos.id}
-              className={
-                slideIndex === index + 1
-                  ? "container_slider_slide active-anim"
-                  : "container_slider_slide"
-              }
-              movieTitle={infos.original_title}
-              movieImg={infos.poster_path}
+    <>
+      <Navbar />
+      <div className="directorPage">
+        <div>
+          {directorInfo !== 0 && (
+            <DirectorProfile
+              picture={directorInfo.profile_path}
+              name={directorInfo.name}
+              birthday={directorInfo.birthday}
+              alias={directorInfo.also_known_as}
+              city={directorInfo.place_of_birth}
+              bio={directorInfo.biography}
             />
-          ))}
+          )}
+        </div>
 
-        <BtnSlider moveSlide={nextSlide} direction="next" />
-        <BtnSlider moveSlide={prevSlide} direction="prev" />
-      </div>
-    </div>
+        <div className="container_slider">
+          {directorDataCut !== 0 &&
+            directorDataCut.map((infos, index) => (
+              <DirectorMoviesCard
+                key={infos.id}
+                className={
+                  slideIndex === index + 1
+                    ? "container_slider_slide active-anim"
+                    : "container_slider_slide"
+                }
+                movieTitle={infos.original_title}
+                movieImg={infos.poster_path}
+              />
+            ))}
+
+          <BtnSlider moveSlide={nextSlide} direction="next" />
+          <BtnSlider moveSlide={prevSlide} direction="prev" />
+        </div>
+      </div></>
   );
 }
 
