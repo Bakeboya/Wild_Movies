@@ -22,7 +22,10 @@ function CardText({
   type,
   numOfEpisodes,
   numOfSeasons,
+  crew,
 }) {
+  const link1 = `/actor/`;
+  const link2 = `/crew/`;
   return (
     <div className="cardText">
       <div className="close">
@@ -31,21 +34,17 @@ function CardText({
         </Link>
       </div>
       <div className="titleFilm">
-        <h3>
-          {title} ({releaseDate.split("-")[0]})
-        </h3>
+        {title} ({releaseDate.split("-")[0]})
       </div>
       <div className="filtreFilm">
         <div className="pegiFilm">
           <Pegi pegi={pegi} type={type} />
         </div>
         <div className="separation" />
-        <div className="categorieFilm">
-          <div className="genreh4">
-            {genres &&
-              genres.map((genre) => <p className="genreP">{genre.name}</p>)}
-          </div>
-        </div>
+
+        {genres &&
+          genres.map((genre) => <div className="genreP">{genre.name}</div>)}
+
         <div className="separation" />
         <div className="dureeFilm">
           <Time
@@ -77,7 +76,14 @@ function CardText({
         <h3>Synopsis</h3>
         <p>{overview}</p>
       </div>
-      <Casting cast={cast} />
+      <div className="synopsisFilm">
+        <h3>Distribution</h3>
+      </div>
+      <Casting cast={cast} link={link1} />
+      <div className="synopsisFilm">
+        <h3>Equipe technique</h3>
+      </div>
+      <Casting cast={crew} link={link2} />
     </div>
   );
 }
@@ -89,6 +95,7 @@ CardText.propTypes = {
   voteAverage: PropTypes.number.isRequired,
   genres: PropTypes.shape(PropTypes.number, PropTypes.string).isRequired,
   cast: PropTypes.shape(PropTypes.string, PropTypes.number).isRequired,
+  crew: PropTypes.shape(PropTypes.string, PropTypes.number).isRequired,
   preview: PropTypes.shape(PropTypes.string, PropTypes.number).isRequired,
   pegi: PropTypes.shape(PropTypes.string, PropTypes.number).isRequired,
   type: PropTypes.string.isRequired,
