@@ -43,7 +43,7 @@ function Casting({ cast, link }) {
                     }
                     alt={acteur.name}
                   />
-                  <div>
+                  <div className="divChara">
                     <p className="actorName">{acteur.name}</p>
                     <p className="actorCharacter">
                       {acteur.character || acteur.job}

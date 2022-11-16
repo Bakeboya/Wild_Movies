@@ -7,37 +7,72 @@
   .actorFilm {
     display: flex;
     flex-wrap: wrap;
+    height: max-content;
     width: auto;
     padding: 10px;
     justify-content: space-around;
 
     .actors {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
       gap: 15px;
-      padding: 5px;
+      padding: 10px;
+      height: max-content;
       width: 20%;
       margin-bottom: 25px;
 
+      &:hover {
+        transform: scale(1.1);
+        animation: scaleUp 300ms ease-out;
+
+        @keyframes scaleUp {
+          from {
+            transform: scale(1);
+          }
+
+          to {
+            transform: scale(1.1);
+          }
+        }
+      }
+
       a {
+
         display: flex;
         flex-direction: column;
         align-items: center;
+        justify-content: flex-end;
+
 
         img {
-          width: 50%;
-          border-radius: 5px;
+          width: 75%;
+          border-top-right-radius: 5px;
+          border-top-left-radius: 5px;
+          box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.3);
+          z-index: 50;
         }
 
-        .actorName {
-          font-size: 1.5em;
-          font-weight: 800;
-        }
+        .divChara {
+          padding: 5px 0px;
+          background-color: $secondary-color;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 5px;
+          width: 75%;
+          height: 100%;
+          border-bottom-right-radius: 5px;
+          border-bottom-left-radius: 5px;
+          z-index: 100;
+          box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.3);
 
-        .actorCharacter {
-          font-size: 1.25em;
+          .actorName {
+            padding: 5px;
+            font-size: 1.5em;
+            font-weight: 800;
+          }
+
+          .actorCharacter {
+            font-size: 1.25em;
+          }
         }
       }
     }
