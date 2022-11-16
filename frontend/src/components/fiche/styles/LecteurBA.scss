@@ -11,12 +11,15 @@
   justify-content: space-between;
   flex-direction: row;
   align-items: center;
-  border: solid 2px noir;
+  border: none;
   border-radius: 20px;
   cursor: pointer;
   background-color: $tertiary-color;
 
   .popupLecteurBA {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     width: 100%;
     height: 100%;
     font-family: $font-text;
@@ -52,7 +55,17 @@
 
   &:hover {
     transform: scale(1.1);
-    transition: all 300ms ease-in-out;
+    animation: scaleUp 300ms ease-out;
+
+    @keyframes scaleUp {
+      from {
+        transform: scale(1);
+      }
+
+      to {
+        transform: scale(1.1);
+      }
+    }
   }
 }
 

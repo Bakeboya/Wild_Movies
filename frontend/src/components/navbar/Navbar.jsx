@@ -13,13 +13,16 @@ function Navbar({ setResults }) {
   };
 
   return (
-    <nav className={!fixed ? "Navbar" : "Navbar Bottom"} onClick={detailConnected}>
+    <nav
+      className={!fixed ? "Navbar" : "Navbar Bottom"}
+      onClick={detailConnected}
+    >
       <WildMovies setResults={setResults} />
       <Loupe />
       <UserIcon />
     </nav>
   );
-};
+}
 
 export default Navbar;
 

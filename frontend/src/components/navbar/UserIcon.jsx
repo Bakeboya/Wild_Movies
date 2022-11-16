@@ -17,6 +17,6 @@ function UserIcon() {
       {active && <User handleClose={handleActive} />}
     </div>
   );
-};
+}
 
 export default UserIcon;

@@ -3,8 +3,6 @@ import PropTypes from "prop-types";
 import imgTemp from "@assets/fiche/imgTemp.webp";
 import { useParams, Link } from "react-router-dom";
 import ButtonActor from "./ButtonActor";
-import Crew from "./Crew";
-import ActorImg from "@components/actors/ActorImg";
 
 function Casting({ cast, link }) {
   const [isCut, setIsCut] = useState(true);
@@ -47,7 +45,9 @@ function Casting({ cast, link }) {
                   />
                   <div>
                     <p className="actorName">{acteur.name}</p>
-                    <p className="actorCharacter">{acteur.character || acteur.job}</p>
+                    <p className="actorCharacter">
+                      {acteur.character || acteur.job}
+                    </p>
                   </div>
                 </Link>
               </div>
@@ -60,7 +60,6 @@ function Casting({ cast, link }) {
           castCut={castCut}
           length={lengthFinal}
         />
-
       </div>
     </div>
   );
@@ -68,7 +67,7 @@ function Casting({ cast, link }) {
 
 Casting.propTypes = {
   cast: PropTypes.shape(PropTypes.string).isRequired,
-  link: PropTypes.string.isRequired
+  link: PropTypes.string.isRequired,
 };
 
 export default Casting;

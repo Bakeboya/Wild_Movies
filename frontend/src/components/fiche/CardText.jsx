@@ -22,9 +22,8 @@ function CardText({
   type,
   numOfEpisodes,
   numOfSeasons,
-  crew
+  crew,
 }) {
-
   const link1 = `/actor/`;
   const link2 = `/crew/`;
   return (
