@@ -1,119 +1,114 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 
-function ActorImg({
-  actImg,
-  actName,
-  biography,
-  birthday,
-  gender,
-  placeOfBirth,
-  deathday,
-  homepage,
-}) {
-  const imgAct = `http://image.tmdb.org/t/p/h632/${actImg}`;
-  const [textShow, setTextShow] = useState(false);
 
-  function getAge() {
-    const dt = new Date(birthday);
-    const deathTime = new Date(deathday);
-    let diff = "";
-    if (deathday === null) {
-      diff = Date.now() - dt.getTime();
-    } else {
-      diff = deathTime - dt.getTime();
-    }
-    const age = new Date(diff);
-    return Math.abs(age.getUTCFullYear() - 1970);
-  }
+function ActorImg({ actImg, actName, biography, birthday, gender, placeOfBirth, deathday, homepage }) {
 
-  const biocut = biography.slice(0, 205);
+    const imgAct = `http://image.tmdb.org/t/p/h632/${actImg}`;
+    const [textShow, setTextShow] = useState(false);
 
-  return (
-    <div className="actorsInfos">
-      <div className="imgNameInfos">
-        <div className="picture">
-          <img className="actorImg" src={imgAct} alt={actName} />
-        </div>
+    function getAge() {
+        const dt = new Date(birthday)
+        const deathTime = new Date(deathday)
+        let diff = '';
+        if (deathday === null) {
+            diff = Date.now() - dt.getTime();
+        } else {
+            diff = deathTime - dt.getTime();
+        }
+        let age = new Date(diff);
+        return Math.abs(age.getUTCFullYear() - 1970);
+    };
 
-        <h2>{actName}</h2>
+    const biocut = biography.slice(0, 205);
 
-        <div className="moreInfos">
-          <div className="actorGender">
-            <p className="titles"> Genre </p>
 
-            {gender === 1 ? <p> Femme </p> : <p> Homme </p>}
-          </div>
+    return (
 
-          <div className="actorBirthday">
-            <p className="titles"> Date de naissance </p>
-            <p>{birthday}</p>
-          </div>
+        <div className="actorsInfos">
 
-          <div className="placeBirth">
-            <p className="titles"> Lieu de naissance </p>
-            <p>{placeOfBirth}</p>
-          </div>
+            <div className="imgNameInfos">
+                <div className="picture">
+                    <img className="actorImg" src={imgAct} alt={actName} />
+                </div>
 
-          <div className="deathday">
-            {deathday && (
-              <>
-                <p className="titles"> Date du décès </p>
+                <h2>{actName}</h2>
 
-                <p>
-                  {deathday} à {getAge()} ans
-                </p>
-              </>
-            )}
-          </div>
+                <div className="moreInfos">
 
-          <div className="homepage">
-            {homepage && (
-              <>
-                <p className="titles"> Lien site web {homepage}</p>
-                <p>{homepage}</p>
-              </>
-            )}
-          </div>
-        </div>
+
+                    <div className="actorGender">
+
+                        <p className="titles"> Genre </p>
+
+                        {gender === 1 ? (
+                            <p> Femme </p>
+                        ) : (
+                            <p> Homme </p>
+                        )}
+                    </div>
+
+                    <div className="actorBirthday">
+                        <p className="titles"> Date de naissance </p>
+                        <p>{birthday}</p>
+                    </div>
+
+                    <div className="placeBirth">
+                        <p className="titles"> Lieu de naissance </p>
+                        <p>{placeOfBirth}</p>
+                    </div>
+
+                    {deathday && (
+                        <div className="deathday">
+
+                            <p className="titles"> Date du décès </p>
+
+                            <p>{deathday} à  {getAge()} ans</p>
+
+                        </div>
+                    )}
+
+                    <div className="homepage">
+
+                        {homepage && (
+                            <>
+                                <p className="titles"> Site Web </p>
+                                <a href={homepage}> {homepage} </a>
+                            </>
+                        )
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <div className="actorBio">
+                <h3> Biographie </h3>
+                {textShow === false ? (
+                    <>
+                        <p className="cache">{`${biocut} (...)`}</p>
+                        <button type="button" className="lire" onClick={() => { setTextShow(true) }}> Lire plus </button>
+                    </>) : (
+                    <>
+                        <p className="cache"> {biography}</p>
+                        <button type="button" className="lire" onClick={() => { setTextShow(false) }}> Lire moins </button>
+                    </>)
+                }
+                <p className="bioDesktop"> {biography}</p>
+            </div>
       </div>
-
-      <div className="actorBio">
-        <h3> Biographie </h3>
-        {textShow === false ? (
-          <>
-            <p>{`${biocut} (...)`}</p>
-            <button
-              className="lire"
-              onClick={() => {
-                setTextShow(true);
-              }}
-            >
-              {" "}
-              Lire plus{" "}
-            </button>
-          </>
-        ) : (
-          <>
-            <p> {biography}</p>
-            <button
-              className="lire"
-              onClick={() => {
-                setTextShow(false);
-              }}
-            >
-              {" "}
-              Lire moins{" "}
-            </button>
-          </>
-        )}
-      </div>
-    </div>
   );
 }
 
 ActorImg.propTypes = {
-  actImg: PropTypes.string.isRequired,
-  actName: PropTypes.string.isRequired,
+
+    actImg: PropTypes.string.isRequired,
+    actName: PropTypes.string.isRequired,
+    biography: PropTypes.string.isRequired,
+    birthday: PropTypes.string.isRequired,
+    gender: PropTypes.string.isRequired,
+    placeOfBirth: PropTypes.string.isRequired,
+    deathday: PropTypes.string.isRequired,
+    homepage: PropTypes.string.isRequired,
 };
 export default ActorImg;
+

@@ -23,15 +23,38 @@ th {
 }
 
 .credits {
-  width: 100%;
-  margin: 0;
-  border-collapse: separate;
-  border-bottom: 1px solid $tertiary-color;
-  padding: 10px 0 10px 5px;
+    width: 100%;
+    margin: 0;
+    border-collapse: collapse;
+    border-bottom: 1px solid $tertiary-color;
+    padding: 10px 0 10px 5px;
 }
 
-@media screen and (min-width: 600px) {
-  .thead {
-    margin: 40px 0 60px 0;
-  }
+@media screen and (min-width:600px) {
+
+
+    .displayText {
+        font-size: 15px;
+    }
+
+    .thead {
+        margin: 40px 0 60px 0;
+    }
+
+    .ii {
+        font-size: 20px;
+    }
+
+    .link {
+        display: block;
+        border-bottom: 1px solid $tertiary-color;
+    }
+
+    .credits {
+        border-bottom: none;
+    }
+
+
+
+
 }
