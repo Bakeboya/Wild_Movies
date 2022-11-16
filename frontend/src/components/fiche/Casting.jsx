@@ -3,8 +3,6 @@ import PropTypes from "prop-types";
 import imgTemp from "@assets/fiche/imgTemp.webp";
 import { useParams, Link } from "react-router-dom";
 import ButtonActor from "./ButtonActor";
-import Crew from "./Crew";
-import ActorImg from "@components/actors/ActorImg";
 
 function Casting({ cast, link }) {
   const [isCut, setIsCut] = useState(true);
