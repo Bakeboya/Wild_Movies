@@ -59,7 +59,7 @@ function Actorslist() {
                     />
                 }
             </div>
-            <Footer />
+
         </>
     )
 }
