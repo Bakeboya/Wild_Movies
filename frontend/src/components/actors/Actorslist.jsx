@@ -3,6 +3,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import ActorImg from "./ActorImg";
 import ActorText from "./ActorText";
+import Navbar from "@components/navbar/Navbar";
 
 function Actorslist() {
 
