@@ -1,10 +1,14 @@
 @import "./directorProfile.scss";
 @import "./directorMoviesCard.scss";
-@import "./btnSlider.scss";
+@import "./directorMovies.scss";
 
-.directorPage {
+@mixin column {
   display: flex;
   flex-direction: column;
+}
+
+.directorPage {
+  @include column;
   align-items: center;
   width: 90%;
   margin: 20px auto 100px;
@@ -15,25 +19,9 @@
   -webkit-box-shadow: 0px 10px 13px -7px #000000,
     5px 5px 15px 5px rgba(0, 0, 0, 0);
   box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
-}
 
-.container_slider {
-  max-width: 700px;
-  height: 500px;
-  margin: 100px auto 0;
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-
-  &slide {
-    width: 100%;
+  &_movies {
     height: 100%;
-    position: absolute;
-    opacity: 0;
-    transition: opacity ease-in-out 0.4s;
-
-    .activ-anim {
-      opacity: 1;
-    }
+    width: 100%;
   }
 }
