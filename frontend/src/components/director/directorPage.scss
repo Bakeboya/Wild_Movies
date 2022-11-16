@@ -11,7 +11,7 @@
   @include column;
   align-items: center;
   width: 90%;
-  margin: 20px auto 100px;
+  margin: 30px auto 70px;
   padding: 3%;
   background-color: $secondary-color;
   border-radius: 15px;
@@ -23,5 +23,11 @@
   &_movies {
     height: 100%;
     width: 100%;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .directorPage {
+    margin: 30px auto 30px;
   }
 }

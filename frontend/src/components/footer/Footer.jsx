@@ -33,9 +33,7 @@ function Footer() {
           </a>
         </div>
         <p className="text">
-          Relicta ora maritima in Lycaoniam adnexam Isauriae intersaepientes
-          itinera qrgfqergesrg <br />
-          et Serenianus dignus exsecratione cunctorum, innoxius, modo non{" "}
+          © Team Movies. All rights reserved.
         </p>
       </div>
     </footer>
