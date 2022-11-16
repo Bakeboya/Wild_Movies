@@ -7,12 +7,14 @@ import Search from "@pages/Search";
 import Results from "@pages/Results";
 import Filtered from "@pages/Filtered";
 import Actorslist from "@components/actors/Actorslist";
+import DirectorPage from "@components/director/DirectorPage";
 
 function App() {
   return (
     <div className="App">
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/crew/:id" element={<DirectorPage />} />
         <Route path="/actor/:id" element={<Actorslist />} />
         <Route path="/:type/:id" element={<FicheFilm />} />
         <Route path="/search" element={<Search />} />
