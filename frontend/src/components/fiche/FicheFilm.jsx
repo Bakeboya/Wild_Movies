@@ -39,8 +39,7 @@ function FicheFilm() {
     setLoading(true);
     axios
       .get(
-        `https://api.themoviedb.org/3/${type}/${id}/videos?api_key=${
-          import.meta.env.VITE_API_KEY
+        `https://api.themoviedb.org/3/${type}/${id}/videos?api_key=${import.meta.env.VITE_API_KEY
         }&language=fr`
       )
       .then((res) => {
@@ -49,8 +48,7 @@ function FicheFilm() {
 
     axios
       .get(
-        `https://api.themoviedb.org/3/${type}/${id}?api_key=${
-          import.meta.env.VITE_API_KEY
+        `https://api.themoviedb.org/3/${type}/${id}?api_key=${import.meta.env.VITE_API_KEY
         }&language=fr`
       )
       .then((res) => {
@@ -59,8 +57,7 @@ function FicheFilm() {
 
     axios
       .get(
-        `https://api.themoviedb.org/3/${type}/${id}/credits?api_key=${
-          import.meta.env.VITE_API_KEY
+        `https://api.themoviedb.org/3/${type}/${id}/credits?api_key=${import.meta.env.VITE_API_KEY
         }&language=fr`
       )
       .then((res) => {
@@ -69,8 +66,7 @@ function FicheFilm() {
 
     axios
       .get(
-        `https://api.themoviedb.org/3/${type}/${id}/watch/providers?api_key=${
-          import.meta.env.VITE_API_KEY
+        `https://api.themoviedb.org/3/${type}/${id}/watch/providers?api_key=${import.meta.env.VITE_API_KEY
         }&language=fr`
       )
       .then((res) => {
@@ -124,6 +120,7 @@ function FicheFilm() {
                 type={type}
                 numOfEpisodes={film.number_of_episodes}
                 numOfSeasons={film.number_of_seasons}
+                crew={filmCrew.crew}
               />
             )}
           </div>
