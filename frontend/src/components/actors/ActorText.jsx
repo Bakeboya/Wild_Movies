@@ -1,11 +1,12 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 
 function ActorText({ cast }) {
 
-  return (
 
+  return (
     <table className="displayText">
       <thead className="thead">
         <th className="ii">Interprétations </th>
@@ -32,13 +33,15 @@ function ActorText({ cast }) {
             </tr>
           </Link>
 
+
         ))}
       </tbody>
     </table>
-  )
+  );
 }
 
-
-
+ActorText.propTypes = {
+  cast: PropTypes.string.isRequired,
+};
 
 export default ActorText;

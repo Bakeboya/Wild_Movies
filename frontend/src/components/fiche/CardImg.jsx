@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 import Streaming from "./Streaming";
 import StreamingNo from "./StreamingNo";
 
-function CardImg({ posterPath, originalTitle, providers }) {
+function CardImg({ posterPath, providers }) {
   const imgPath = `https://image.tmdb.org/t/p/w500/${posterPath}`;
-  const titleFilm = `image du film ${originalTitle}`;
+  const titleFilm = `image du film`;
 
   return (
     <div className="cardImg">
@@ -49,7 +49,6 @@ function CardImg({ posterPath, originalTitle, providers }) {
 
 CardImg.propTypes = {
   posterPath: PropTypes.string.isRequired,
-  originalTitle: PropTypes.string.isRequired,
   providers: PropTypes.shape(PropTypes.number, PropTypes.string).isRequired,
 };
 

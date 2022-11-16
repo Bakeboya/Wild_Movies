@@ -1,11 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import ActorImg from './ActorImg';
-import ActorText from './ActorText';
-import { useParams } from 'react-router-dom';
-import Footer from '@components/footer/Footer';
-import Navbar from '@components/navbar/Navbar';
-
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { useParams } from "react-router-dom";
+import ActorImg from "./ActorImg";
+import ActorText from "./ActorText";
 
 function Actorslist() {
 
@@ -61,8 +58,6 @@ function Actorslist() {
 
                     />
                 }
-
-
             </div>
             <Footer />
         </>

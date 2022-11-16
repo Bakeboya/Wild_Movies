@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import componentLecteur from "@assets/fiche/ComponentLecteur.svg";
-import componentLecteur2 from "@assets/fiche/ComponentLecteur2.svg";
 import ReactPlayer from "react-player";
 import PropTypes from "prop-types";
 import Modal from "./Modal";
@@ -8,6 +7,9 @@ import Modal from "./Modal";
 function LecteurBA({ preview, title }) {
   const [isOpen, setIsOpen] = useState(false);
 
+  const openCloseModal = (e) => {
+    setIsOpen(!isOpen);
+  };
   return (
     <div>
       <a href={`https://www.youtube.com/watch?v=${preview[0].key}`}>
@@ -23,22 +25,15 @@ function LecteurBA({ preview, title }) {
           </button>
         </div>
       </a>
-      <div className="lecteurBA">
+      <button type="button" className="lecteurBA" onClick={openCloseModal}>
         <img
           className="logoLecteur"
           src={componentLecteur}
           alt="logo lecteur bande-annonce"
-          onClick={() => setIsOpen(true)}
         />
-        <button
-          className="popupLecteurBA"
-          type="button"
-          onClick={() => setIsOpen(true)}
-        >
-          Bande-annonce
-        </button>
-      </div>
-      <Modal open={isOpen} onClose={() => setIsOpen(false)} title={title}>
+        <div className="popupLecteurBA">Bande-annonce</div>
+      </button>
+      <Modal open={isOpen} closeModal={openCloseModal} title={title}>
         <ReactPlayer
           url={`https://www.youtube.com/watch?v=${preview[0].key}`}
         />

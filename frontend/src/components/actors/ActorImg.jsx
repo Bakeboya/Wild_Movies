@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { useState } from "react";
+
 
 function ActorImg({ actImg, actName, biography, birthday, gender, placeOfBirth, deathday, homepage }) {
 
@@ -95,12 +95,12 @@ function ActorImg({ actImg, actName, biography, birthday, gender, placeOfBirth, 
                 }
                 <p className="bioDesktop"> {biography}</p>
             </div>
-        </div>
-    )
+      </div>
+  );
 }
 
-
 ActorImg.propTypes = {
+
     actImg: PropTypes.string.isRequired,
     actName: PropTypes.string.isRequired,
     biography: PropTypes.string.isRequired,
@@ -111,3 +111,4 @@ ActorImg.propTypes = {
     homepage: PropTypes.string.isRequired,
 };
 export default ActorImg;
+

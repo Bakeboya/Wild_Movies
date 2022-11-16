@@ -1,28 +1,30 @@
 .picture {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .actorImg {
+
     width: 85%;
     object-fit: cover;
     border-radius: 4px;
+
 }
 
 h2 {
-    font-size: 20px;
-    font-weight: 700;
-    color: $tertiary-color;
-    font-family: $font-display;
-    text-align: center;
-    margin-top: 10px;
+  font-size: 20px;
+  font-weight: 700;
+  color: $tertiary-color;
+  font-family: $font-display;
+  text-align: center;
+  margin-top: 10px;
 }
 
 h3 {
-    font-size: 15px;
-    margin-bottom: 9px;
-    margin-top: 15px;
-    font-weight: 700;
+  font-size: 15px;
+  margin-bottom: 9px;
+  margin-top: 15px;
+  font-weight: 700;
 }
 
 
@@ -32,10 +34,11 @@ h3 {
     gap: 10px;
     margin: 15px 0 15px 0;
     font-size: 13px;
+
 }
 
 .actorBio {
-    font-size: 13px;
+  font-size: 13px;
 }
 
 .bioDesktop {
@@ -43,23 +46,27 @@ h3 {
 }
 
 .lire {
-    color: $tertiary-color;
-    border: none;
+  color: $tertiary-color;
+  border: none;
 }
 
 .imgNameInfos {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    font-size: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 15px;
 }
 
 .titles {
-    font-weight: 700;
-    margin-bottom: 5px;
+  font-weight: 700;
+  margin-bottom: 5px;
 }
 
-@media screen and (min-width:600px) {
+@media screen and (min-width: 600px) {
+  .actorImg {
+    width: 35%;
+    object-fit: cover;
+  }
 
     .actorImg {
         width: 35%;
@@ -109,3 +116,4 @@ h3 {
         }
     }
 }
+

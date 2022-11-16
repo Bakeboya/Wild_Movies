@@ -7,12 +7,17 @@ import Search from "@pages/Search";
 import Results from "@pages/Results";
 import Filtered from "@pages/Filtered";
 import Actorslist from "@components/actors/Actorslist";
+import DirectorPage from "@components/director/DirectorPage";
+import Navbar from "@components/navbar/Navbar";
+import Footer from "@components/footer/Footer";
 
 function App() {
   return (
     <div className="App">
+      <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/crew/:id" element={<DirectorPage />} />
         <Route path="/actor/:id" element={<Actorslist />} />
         <Route path="/:type/:id" element={<FicheFilm />} />
         <Route path="/search" element={<Search />} />
@@ -22,6 +27,7 @@ function App() {
         <Route path="/films/meilleures-notes" element={<Discover />} />
         <Route path="/films/a-venir" element={<Discover />} />
       </Routes>
+      <Footer />
     </div>
   );
 }
