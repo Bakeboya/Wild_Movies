@@ -14,11 +14,9 @@ function Actorslist() {
 
     const { id } = useParams();
 
-
-    useEffect(() => {
-
+    const effect = () => {
         axios
-            .get(`https://api.themoviedb.org/3/person/${id}?api_key=${import.meta.env.VITE_API_KEY}&language=fr`)
+            .get(`https://api.themoviedb.org/3/person/${id}?api_key=${import.meta.env.VITE_API_KEY}&language=en-US`)
             .then((res) => {
 
                 setActors(res.data);
@@ -26,16 +24,17 @@ function Actorslist() {
             });
 
         axios
-            .get(`https://api.themoviedb.org/3/person/${id}/combined_credits?api_key=${import.meta.env.VITE_API_KEY}&language=fr`)
+            .get(`https://api.themoviedb.org/3/person/${id}/combined_credits?api_key=${import.meta.env.VITE_API_KEY}&language=en-US`)
             .then((res) => {
                 setCredits(res.data);
 
             });
-    }, []);
-    console.log(id)
-    console.log(actors)
-    console.log(credits)
+    };
 
+    useEffect(() => {
+
+        effect()
+    }, []);
 
     return (
 
@@ -59,6 +58,7 @@ function Actorslist() {
                     <ActorText
                         cast={credits.cast}
                         crew={credits.crew}
+
                     />
                 }
 

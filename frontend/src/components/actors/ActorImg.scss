@@ -5,7 +5,7 @@
 
 .actorImg {
     width: 85%;
-    height: 430px;
+    object-fit: cover;
     border-radius: 4px;
 }
 
@@ -25,16 +25,21 @@ h3 {
     font-weight: 700;
 }
 
+
 .moreInfos {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    margin-top: 15px;
+    margin: 15px 0 15px 0;
     font-size: 13px;
 }
 
 .actorBio {
     font-size: 13px;
+}
+
+.bioDesktop {
+    display: none;
 }
 
 .lire {
@@ -59,11 +64,48 @@ h3 {
     .actorImg {
         width: 35%;
         object-fit: cover;
-    
+        margin: 35px 0 40px 0;
+    }
+
+    h2 {
+        font-size: 40px;
+    }
+
+    h3 {
+        font-size: 25px;
     }
 
     .actorBio {
-        margin: 25px 0 30px 0;
+        margin: 100px 0 30px 0;
+        font-size: 15px;
+        word-spacing: 3px;
+        line-height: 1.6;
     }
 
+    .lire {
+        display: none;
+    }
+
+    .cache {
+        display: none;
+    }
+
+    .bioDesktop {
+        display: flex;
+    }
+
+    .moreInfos {
+        display: grid;
+        grid-template-rows: 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
+        height: 100%;
+        text-align: center;
+        margin: 75px 10% 0 10%;
+        gap: 25px;
+        font-size: 15px;
+
+        .titles {
+            font-size: 20px;
+        }
+    }
 }

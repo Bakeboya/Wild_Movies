@@ -58,25 +58,22 @@ function ActorImg({ actImg, actName, biography, birthday, gender, placeOfBirth, 
                         <p>{placeOfBirth}</p>
                     </div>
 
-                    <div className="deathday">
+                    {deathday && (
+                        <div className="deathday">
 
-                        {deathday && (
-                            <>
-                                <p className="titles"> Date du décès </p>
+                            <p className="titles"> Date du décès </p>
 
-                                <p>{deathday} à  {getAge()} ans</p>
-                            </>
-                        )
-                        }
+                            <p>{deathday} à  {getAge()} ans</p>
 
-                    </div>
+                        </div>
+                    )}
 
                     <div className="homepage">
 
                         {homepage && (
                             <>
-                                <p className="titles"> Lien site web {homepage}</p>
-                                <p>{homepage}</p>
+                                <p className="titles"> Site Web </p>
+                                <a href={homepage}> {homepage} </a>
                             </>
                         )
                         }
@@ -88,14 +85,15 @@ function ActorImg({ actImg, actName, biography, birthday, gender, placeOfBirth, 
                 <h3> Biographie </h3>
                 {textShow === false ? (
                     <>
-                        <p>{`${biocut} (...)`}</p>
-                        <button className="lire" onClick={() => { setTextShow(true) }}> Lire plus </button>
+                        <p className="cache">{`${biocut} (...)`}</p>
+                        <button type="button" className="lire" onClick={() => { setTextShow(true) }}> Lire plus </button>
                     </>) : (
                     <>
-                        <p> {biography}</p>
-                        <button className="lire" onClick={() => { setTextShow(false) }}> Lire moins </button>
+                        <p className="cache"> {biography}</p>
+                        <button type="button" className="lire" onClick={() => { setTextShow(false) }}> Lire moins </button>
                     </>)
                 }
+                <p className="bioDesktop"> {biography}</p>
             </div>
         </div>
     )
@@ -105,6 +103,11 @@ function ActorImg({ actImg, actName, biography, birthday, gender, placeOfBirth, 
 ActorImg.propTypes = {
     actImg: PropTypes.string.isRequired,
     actName: PropTypes.string.isRequired,
+    biography: PropTypes.string.isRequired,
+    birthday: PropTypes.string.isRequired,
+    gender: PropTypes.string.isRequired,
+    placeOfBirth: PropTypes.string.isRequired,
+    deathday: PropTypes.string.isRequired,
+    homepage: PropTypes.string.isRequired,
 };
 export default ActorImg;
-
