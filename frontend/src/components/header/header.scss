@@ -61,8 +61,13 @@
     width: 260px;
     height: 60px;
     border-radius: 45px;
-    border: none;
+    border: 1px solid $primary-color;
     cursor: pointer;
+    transition: 0.3s ease-in-out;
+
+    &:active {
+      transform: scale(0.98);
+    }
   }
 
   .headerTitle {
@@ -70,6 +75,7 @@
     font-size: 48px;
     text-align: center;
     color: white;
+    -webkit-text-stroke: 2px $primary-color;
   }
 }
 
