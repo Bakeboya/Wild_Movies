@@ -12,7 +12,7 @@ const getUsers = (req, res) => {
     });
 };
 const getUserById = (req, res) => {
-  const id = parseInt(req.params.id);
+  const id = parseInt(req.params.id, 10);
   connection
     .query("SELECT * FROM users WHERE id = ?", [id])
     .then(([users]) => {
@@ -28,14 +28,14 @@ const getUserById = (req, res) => {
     });
 };
 const postUser = (req, res) => {
-  const { email, password } = req.body;
+  const { email, password, favorite } = req.body;
   connection
-    .query("INSERT INTO users (email, password) VALUES (?, ?)", [
+    .query("INSERT INTO users (email, password, favorite) VALUES (?, ?, ?)", [
       email,
       password,
+      favorite,
     ])
-    .then(([result]) => {
-      // res.location(`/users/${result.insertId}`).sendStatus(201);
+    .then(() => {
       return res.status(201).send("User created");
     })
     .catch((err) => {
@@ -44,8 +44,8 @@ const postUser = (req, res) => {
     });
 };
 const updateUserById = (req, res) => {
-  const id = parseInt(req.params.id);
-  const { password } = req.body;
+  const id = parseInt(req.params.id, 10);
+  const { password, favorite } = req.body;
   connection
     .query("UPDATE users SET password = ? favorite = ? WHERE id = ?", [
       password,
@@ -61,7 +61,7 @@ const updateUserById = (req, res) => {
     });
 };
 const deleteUserById = (req, res) => {
-  const id = parseInt(req.params.id);
+  const id = parseInt(req.params.id, 10);
   connection
     .query("DELETE FROM users WHERE id =?", [id])
     .then(([result]) => {
