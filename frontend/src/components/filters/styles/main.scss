@@ -23,12 +23,13 @@
     width: 95%;
     margin: 0 auto;
     height: calc(335px - 262.5px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    margin-top: 25px;
     font-size: 1.7rem;
     text-align: center;
     font-weight: 700;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
     transition: 0.3s ease-in-out;
 
     &:hover {
@@ -299,9 +300,6 @@
               p {
                 border-bottom-left-radius: 4px;
                 bottom: 1px;
-              }
-              h3 {
-                display: none;
               }
             }
           }
