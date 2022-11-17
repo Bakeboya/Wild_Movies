@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Navbar from "@components/navbar/Navbar";
 import ActorImg from "./ActorImg";
 import ActorText from "./ActorText";
@@ -10,12 +10,12 @@ function Actorslist() {
   const [credits, setCredits] = useState([]);
 
   const { id } = useParams();
+  const navigate = useNavigate();
 
   const effect = () => {
     axios
       .get(
-        `https://api.themoviedb.org/3/person/${id}?api_key=${
-          import.meta.env.VITE_API_KEY
+        `https://api.themoviedb.org/3/person/${id}?api_key=${import.meta.env.VITE_API_KEY
         }&language=en-US`
       )
       .then((res) => {
@@ -24,8 +24,7 @@ function Actorslist() {
 
     axios
       .get(
-        `https://api.themoviedb.org/3/person/${id}/combined_credits?api_key=${
-          import.meta.env.VITE_API_KEY
+        `https://api.themoviedb.org/3/person/${id}/combined_credits?api_key=${import.meta.env.VITE_API_KEY
         }&language=en-US`
       )
       .then((res) => {
@@ -41,6 +40,15 @@ function Actorslist() {
     <>
       <Navbar />
       <div className="actorlist">
+        <button
+          type="button"
+          className="goBackBtn"
+          onClick={() => {
+            navigate(-1);
+          }}
+        >
+          X
+        </button>
         {actors.length !== 0 && (
           <ActorImg
             actImg={actors.profile_path}
