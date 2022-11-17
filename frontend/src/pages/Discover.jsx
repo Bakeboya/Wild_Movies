@@ -3,7 +3,6 @@ import ReactPaginate from "react-paginate";
 import { useParams } from "react-router-dom";
 import ContentCard from "@components/filters/components/ContentCard";
 import Navbar from "@components/navbar/Navbar";
-import Footer from "@components/footer/Footer";
 import Inputs from "@components/filters/components/Inputs";
 import Sorting from "@components/filters/components/Sorting";
 import { useDiscover } from "../data/DataFetch";
@@ -73,7 +72,6 @@ function Discover() {
           />
         </section>
       </main>
-      
     </>
   );
 }

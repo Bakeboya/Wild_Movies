@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Main from "@components/filters/Main";
-import Footer from "@components/footer/Footer";
 import Header from "@components/header/Header";
 import Navbar from "@components/navbar/Navbar";
 import Search from "@components/filters/Search";
@@ -53,7 +52,7 @@ export default function Home() {
         resultsTotal={resultsTotal}
         setSearchPage={setSearchPage}
       />
- 
+
       <Search
         emptySearch={emptySearch}
         setEmptySearch={setEmptySearch}
