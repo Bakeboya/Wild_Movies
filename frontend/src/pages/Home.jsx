@@ -53,7 +53,7 @@ export default function Home() {
         resultsTotal={resultsTotal}
         setSearchPage={setSearchPage}
       />
-      <Footer />
+ 
       <Search
         emptySearch={emptySearch}
         setEmptySearch={setEmptySearch}
