@@ -7,6 +7,7 @@
 @import "./VoteAverage.scss";
 
 .ficheFilm {
+  min-height: 100vh;
   display: flex;
   width: fit-content;
   font-family: $font-text;
