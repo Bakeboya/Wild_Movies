@@ -143,8 +143,7 @@ function User({ handleActive, setEmail, email, connected, setConnected }) {
               <div className="overlay">
                 <img src={wildmovies} alt="title" className="userTitle" />
                 <img src={logoConnect} alt="Connection" id="logoConnect" />
-                <p className="overlayTitle">
-                  Vous êtes connecté au compte</p>
+                <p className="overlayTitle">Vous êtes connecté au compte</p>
                 <span className="messagePopUp">{email}</span>
                 <button
                   type="submit"
@@ -212,8 +211,9 @@ function User({ handleActive, setEmail, email, connected, setConnected }) {
                 <img src={logoSend} alt="Message" id="logoSend" />
                 <p className="overlayTitle">
                   Afin de réinitialiser votre mot de passe, un mail vous a été
-                  envoyé à l'adresse</p>
-                  <span className="messagePopUp">{email}</span>
+                  envoyé à l'adresse
+                </p>
+                <span className="messagePopUp">{email}</span>
                 <button type="submit" className="linkClose" onClick={exitSend}>
                   Fermer
                 </button>

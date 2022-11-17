@@ -65,11 +65,14 @@
   border: transparent;
   text-decoration: none;
   font-size: 20px;
-  background: linear-gradient(to top,
+  background: linear-gradient(
+      to top,
       transparent 16%,
       black 16.01%,
       black 20%,
-      transparent 20.01%) no-repeat;
+      transparent 20.01%
+    )
+    no-repeat;
   transition: all 300ms ease-out;
   background-position: 50%;
   background-size: 0% 100%;
@@ -230,11 +233,14 @@
     border-radius: 20px;
     border: transparent;
     text-decoration: none;
-    background: linear-gradient(to top,
+    background: linear-gradient(
+        to top,
         transparent 16%,
         black 16.01%,
         black 20%,
-        transparent 20.01%) no-repeat;
+        transparent 20.01%
+      )
+      no-repeat;
     transition: all 300ms ease-out;
     background-color: $tertiary-color;
     cursor: pointer;
@@ -316,11 +322,14 @@
         border-radius: 20px;
         border: transparent;
         text-decoration: none;
-        background: linear-gradient(to top,
+        background: linear-gradient(
+            to top,
             transparent 16%,
             black 16.01%,
             black 20%,
-            transparent 20.01%) no-repeat;
+            transparent 20.01%
+          )
+          no-repeat;
         transition: all 300ms ease-out;
         background-position: 50%;
         background-size: 0% 100%;
@@ -415,11 +424,14 @@
         border-radius: 20px;
         border: transparent;
         text-decoration: none;
-        background: linear-gradient(to top,
+        background: linear-gradient(
+            to top,
             transparent 16%,
             black 16.01%,
             black 20%,
-            transparent 20.01%) no-repeat;
+            transparent 20.01%
+          )
+          no-repeat;
         transition: all 300ms ease-out;
         background-position: 50%;
         background-size: 0% 100%;
@@ -488,11 +500,11 @@
           transition: 0.3s;
         }
 
-        input:checked+label {
+        input:checked + label {
           background: #e66d38;
         }
 
-        input:checked+label:after {
+        input:checked + label:after {
           left: calc(100% - 2px);
           transform: translateX(-100%);
         }
@@ -571,11 +583,14 @@
         border-radius: 20px;
         border: transparent;
         text-decoration: none;
-        background: linear-gradient(to top,
+        background: linear-gradient(
+            to top,
             transparent 16%,
             black 16.01%,
             black 20%,
-            transparent 20.01%) no-repeat;
+            transparent 20.01%
+          )
+          no-repeat;
         transition: all 300ms ease-out;
         background-position: 50%;
         background-size: 0% 100%;
