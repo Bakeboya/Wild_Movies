@@ -13,6 +13,7 @@ function App() {
       <Suspense fallback={
         <div className="loader-container">
           <div className="spinner" />
+          <p>Chargement</p>
         </div>
       }>
         <Routes>
