@@ -15,7 +15,7 @@ const connection = mysql.createPool({
 connection
   .getConnection()
   .then(() => {
-    console.log("Can reach database");
+    console.warn("Can reach database");
   })
   .catch((err) => {
     console.error(err);
