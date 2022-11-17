@@ -9,6 +9,8 @@ import {
 } from "../../../data/FiltersArrays";
 
 function Inputs({
+  type,
+  setType,
   setShowModal,
   setShowFiltersModal,
   setDiscoverGenre,
@@ -23,6 +25,16 @@ function Inputs({
   const [toggleType, setToggleType] = useState(0);
   const typeButton = (index) => {
     setToggleType(index);
+  };
+
+  const handleMovie = () => {
+    typeButton(1);
+    setType("movie");
+  };
+
+  const handleTv = () => {
+    typeButton(2);
+    setType("tv");
   };
 
   const handleClick = () => {
@@ -129,14 +141,14 @@ function Inputs({
         <button
           type="button"
           className={toggleType === 1 ? "selected" : ""}
-          onClick={() => typeButton(1)}
+          onClick={handleMovie}
         >
           Films
         </button>
         <button
           type="button"
           className={toggleType === 2 ? "selected" : ""}
-          onClick={() => typeButton(2)}
+          onClick={handleTv}
         >
           Séries
         </button>
@@ -241,6 +253,8 @@ function Inputs({
 export default Inputs;
 
 Inputs.propTypes = {
+  type: PropTypes.string.isRequired,
+  setType: PropTypes.func.isRequired,
   setDiscoverGenre: PropTypes.func.isRequired,
   setDiscoverRating: PropTypes.func.isRequired,
   setDiscoverDecade: PropTypes.func.isRequired,

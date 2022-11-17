@@ -17,7 +17,6 @@ import ContentCard from "./components/ContentCard";
 export default function Main({ search, results, resultsTotal, setSearchPage }) {
   const { moviesPopular } = useMoviesPopular();
   const { moviesTop } = useMoviesTop();
-  const { discover } = useDiscover();
   const { moviesUpcoming } = useUpcoming();
   const { trending } = useTrending();
   const { seriesTop } = useSeriesTop();
@@ -32,7 +31,7 @@ export default function Main({ search, results, resultsTotal, setSearchPage }) {
     <main className="home">
       {results.length === 0 ? (
         <>
-          <ButtonsChoice movies={discover} series={seriesPopular} />
+          <ButtonsChoice movies={moviesPopular} series={seriesPopular} />
           <section className="homeList">
             <ContentList
               title="Films les plus populaires"

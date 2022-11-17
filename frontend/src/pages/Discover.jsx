@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import ReactPaginate from "react-paginate";
-import { useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import ContentCard from "@components/filters/components/ContentCard";
 import Navbar from "@components/navbar/Navbar";
 import Footer from "@components/footer/Footer";
@@ -9,14 +9,15 @@ import Sorting from "@components/filters/components/Sorting";
 import { useDiscover } from "../data/DataFetch";
 
 function Discover() {
-  const location = useLocation();
-  const { title, placeholder } = location.state;
+  const { type } = useParams();
 
   const {
+    setType,
     filtersTotal,
     discover,
     filtersPage,
     setFiltersPage,
+    sorting,
     setSorting,
     setDiscoverGenre,
     setDiscoverRating,
@@ -25,6 +26,10 @@ function Discover() {
     setDiscoverProvider,
     setDiscoverCertification,
   } = useDiscover();
+
+  useEffect(() => {
+    setType(type);
+  }, []);
 
   const handleFiltersPage = (data) => {
     window.scrollTo(0, 0);
@@ -36,8 +41,8 @@ function Discover() {
       <Navbar />
       <main className="discover">
         <section className="filtersContainer">
-          <h2>{title}</h2>
-          <Sorting placeholder={placeholder} setSorting={setSorting} />
+          <h2>{type === "tv" ? "Séries" : "Films"}</h2>
+          <Sorting sorting={sorting} setSorting={setSorting} />
           <Inputs
             setDiscoverCertification={setDiscoverCertification}
             setDiscoverGenre={setDiscoverGenre}

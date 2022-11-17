@@ -36,6 +36,8 @@ function Search({
   resultsTotal,
 }) {
   const {
+    type,
+    setType,
     discover,
     filtersTotal,
     setFiltersPage,
@@ -92,6 +94,8 @@ function Search({
           </div>
           <p className="choiceText"> ---------- OU ---------- </p>
           <Inputs
+            type={type}
+            setType={setType}
             setShowModal={setShowModal}
             showFiltersModal={showFiltersModal}
             setShowFiltersModal={setShowFiltersModal}

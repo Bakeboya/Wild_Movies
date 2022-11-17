@@ -103,7 +103,10 @@
     justify-content: center;
     gap: 3rem;
 
-    button {
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
       width: 175px;
       height: 87.5px;
       padding: 0;
@@ -116,12 +119,11 @@
       background-repeat: no-repeat;
       cursor: pointer;
       filter: grayscale(1);
-    }
-
-    .selected {
-      border: 1px solid $tertiary-color;
-      filter: grayscale(0);
-      background-blend-mode: multiply;
+      &:active {
+        border: 1px solid $tertiary-color;
+        filter: grayscale(0);
+        background-blend-mode: multiply;
+      }
     }
   }
 

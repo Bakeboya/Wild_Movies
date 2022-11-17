@@ -10,9 +10,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/:type/:id" element={<FicheFilm />} />
-        <Route path="/films/populaires" element={<Discover />} />
-        <Route path="/films/meilleures-notes" element={<Discover />} />
-        <Route path="/films/a-venir" element={<Discover />} />
+        <Route path="/:type" element={<Discover />} />
       </Routes>
     </div>
   );

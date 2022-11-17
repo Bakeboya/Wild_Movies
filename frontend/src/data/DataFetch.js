@@ -14,7 +14,7 @@ export const useSearch = () => {
   const [resultsTotal, setResultsTotal] = useState("");
   const [searchPage, setSearchPage] = useState(1);
 
-  useEffect(() => {
+  const getSearch = () => {
     const source = axios.CancelToken.source();
 
     axios
@@ -33,7 +33,12 @@ export const useSearch = () => {
     return () => {
       source.cancel("Component got unmounted");
     };
+  };
+
+  useEffect(() => {
+    getSearch();
   }, [search, searchPage, setSearchPage, lang]);
+
   return {
     searchText,
     setSearchText,
@@ -59,13 +64,14 @@ export const useDiscover = () => {
   const [discoverCertification, setDiscoverCertification] = useState("");
   const [filtersTotal, setFiltersTotal] = useState("");
   const [filtersPage, setFiltersPage] = useState(1);
+  const [type, setType] = useState("");
 
-  useEffect(() => {
+  const getDiscover = () => {
     const source = axios.CancelToken.source();
 
     axios
       .get(
-        `https://api.themoviedb.org/3/discover/movie?api_key=${
+        `https://api.themoviedb.org/3/discover/${type}?api_key=${
           import.meta.env.VITE_API_KEY
         }&language=${lang}&sort_by=${sorting}&include_adult=false&include_video=false&page=${filtersPage}${discoverGenre}${discoverRating}${discoverDecade}${discoverDuration}${discoverProvider}${discoverCertification}&vote_count.gte=10&with_watch_monetization_types=flatrate`,
         { cancelToken: source.token }
@@ -78,7 +84,12 @@ export const useDiscover = () => {
     return () => {
       source.cancel("Component got unmounted");
     };
+  };
+
+  useEffect(() => {
+    getDiscover();
   }, [
+    type,
     sorting,
     filtersPage,
     discoverGenre,
@@ -88,7 +99,11 @@ export const useDiscover = () => {
     discoverProvider,
     discoverCertification,
   ]);
+
   return {
+    type,
+    setType,
+    sorting,
     setSorting,
     filtersTotal,
     filtersPage,
@@ -114,7 +129,7 @@ export const useMoviesPopular = () => {
   const [moviesPopular, setMoviesPopular] = useState([]);
   const [moviesPopularPage, setMoviesPopularPage] = useState(1);
 
-  useEffect(() => {
+  const getMoviesPopular = () => {
     const source = axios.CancelToken.source();
 
     axios
@@ -131,7 +146,12 @@ export const useMoviesPopular = () => {
     return () => {
       source.cancel("Component got unmounted");
     };
+  };
+
+  useEffect(() => {
+    getMoviesPopular();
   }, []);
+
   return { moviesPopular };
 };
 
@@ -140,7 +160,7 @@ export const useTrending = () => {
   const [trending, setTrending] = useState([]);
   const [trendingTime, setTrendingTime] = useState("day");
 
-  useEffect(() => {
+  const getTrending = () => {
     const source = axios.CancelToken.source();
 
     axios
@@ -157,7 +177,12 @@ export const useTrending = () => {
     return () => {
       source.cancel("Component got unmounted");
     };
+  };
+
+  useEffect(() => {
+    getTrending();
   }, [trendingTime]);
+
   return { trending, trendingTime, setTrendingTime };
 };
 
@@ -166,7 +191,7 @@ export const useMoviesTop = () => {
   const [moviesTop, setMoviesTop] = useState([]);
   const [moviesTopPage, setMoviesTopPage] = useState(1);
 
-  useEffect(() => {
+  const getMoviesTop = () => {
     const source = axios.CancelToken.source();
 
     axios
@@ -183,7 +208,12 @@ export const useMoviesTop = () => {
     return () => {
       source.cancel("Component got unmounted");
     };
+  };
+
+  useEffect(() => {
+    getMoviesTop();
   }, [moviesTopPage, lang]);
+
   return { moviesTop, moviesTopPage, setMoviesTopPage };
 };
 
@@ -192,7 +222,7 @@ export const useSeriesTop = () => {
   const [seriesTop, setSeriesTop] = useState([]);
   const [seriesTopPage, setSeriesTopPage] = useState(1);
 
-  useEffect(() => {
+  const getSeriesTop = () => {
     const source = axios.CancelToken.source();
 
     axios
@@ -209,7 +239,12 @@ export const useSeriesTop = () => {
     return () => {
       source.cancel("Component got unmounted");
     };
+  };
+
+  useEffect(() => {
+    getSeriesTop();
   }, [seriesTopPage, lang]);
+
   return { seriesTop, seriesTopPage, setSeriesTopPage };
 };
 
@@ -218,7 +253,7 @@ export const useUpcoming = () => {
   const [moviesUpcomingPage, setMoviesUpcomingPage] = useState(1);
   const [moviesUpcoming, setMoviesUpcoming] = useState([]);
 
-  useEffect(() => {
+  const getUpcoming = () => {
     const source = axios.CancelToken.source();
 
     axios
@@ -235,7 +270,12 @@ export const useUpcoming = () => {
     return () => {
       source.cancel("Component got unmounted");
     };
+  };
+
+  useEffect(() => {
+    getUpcoming();
   }, [moviesUpcomingPage]);
+
   return { moviesUpcoming, moviesUpcomingPage, setMoviesUpcomingPage };
 };
 
@@ -243,7 +283,7 @@ export const useSeriesPopular = () => {
   const { lang } = useLanguage();
   const [seriesPopular, setSeriesPopular] = useState([]);
 
-  useEffect(() => {
+  const getSeriesPopular = () => {
     const source = axios.CancelToken.source();
 
     axios
@@ -260,6 +300,11 @@ export const useSeriesPopular = () => {
     return () => {
       source.cancel("Component got unmounted");
     };
+  };
+
+  useEffect(() => {
+    getSeriesPopular();
   }, []);
+
   return { seriesPopular };
 };
