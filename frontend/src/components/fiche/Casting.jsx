@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import imgTemp from "@assets/fiche/imgTemp.png";
+import imgTemp from "@assets/fiche/ImgTemp.png";
 import { useParams, Link } from "react-router-dom";
 import ButtonActor from "./ButtonActor";
 
