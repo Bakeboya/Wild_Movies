@@ -95,13 +95,13 @@
 
     .streamLogo {
       display: flex;
-      gap: 50%;
+      gap: 45px;
       justify-content: center;
       margin-bottom: 30px;
+      flex-wrap: wrap;
 
       .streaming {
         display: flex;
-        flex-wrap: wrap;
 
         p {
           display: none;
