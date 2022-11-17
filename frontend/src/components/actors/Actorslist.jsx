@@ -35,32 +35,29 @@ function Actorslist() {
 
     return (
 
-        <><Navbar />
-            <div className='actorlist'>
 
-                {actors.length !== 0 &&
-                    <ActorImg
-                        actImg={actors.profile_path}
-                        actName={actors.name}
-                        biography={actors.biography}
-                        birthday={actors.birthday}
-                        gender={actors.gender}
-                        placeOfBirth={actors.place_of_birth}
-                        deathday={actors.deathday}
-                        homepage={actors.homepage}
-                    />
-                }
+        <div className='actorlist'>
 
-                {credits.length !== 0 &&
-                    <ActorText
-                        cast={credits.cast}
-                        crew={credits.crew}
+            {actors.length !== 0 &&
+                <ActorImg
+                    actImg={actors.profile_path}
+                    actName={actors.name}
+                    biography={actors.biography}
+                    birthday={actors.birthday}
+                    gender={actors.gender}
+                    placeOfBirth={actors.place_of_birth}
+                    deathday={actors.deathday}
+                    homepage={actors.homepage}
+                />
+            }
 
-                    />
-                }
-            </div>
-            <Footer />
-        </>
+            {credits.length !== 0 &&
+                <ActorText
+                    cast={credits.cast}
+                    crew={credits.crew} />
+            }
+        </div>
+
     )
 }
 
