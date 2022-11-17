@@ -4,7 +4,13 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import Slider from "./Slider";
 
-function Header({ search, setSearch, searchText, setSearchText }) {
+function Header({
+  setSearch,
+  searchText,
+  setSearchText,
+  showModal,
+  setShowModal,
+}) {
   const [poster, setPoster] = useState();
   const page = 1;
   useEffect(() => {
@@ -33,6 +39,10 @@ function Header({ search, setSearch, searchText, setSearchText }) {
     }
   };
 
+  const openCloseModal = () => {
+    setShowModal(!showModal);
+  };
+
   return (
     <header className="header">
       {poster && <Slider poster={poster} />}
@@ -52,11 +62,9 @@ function Header({ search, setSearch, searchText, setSearchText }) {
           </p>
         </div>
 
-        <Link to="/search">
-          <button type="button" className="searchButton">
-            RECHERCHER
-          </button>
-        </Link>
+        <button type="button" className="searchButton" onClick={openCloseModal}>
+          RECHERCHER
+        </button>
       </div>
 
       <div className="deskBox">
@@ -88,8 +96,9 @@ function Header({ search, setSearch, searchText, setSearchText }) {
 export default Header;
 
 Header.propTypes = {
-  search: PropTypes.string.isRequired,
   setSearch: PropTypes.func.isRequired,
   searchText: PropTypes.string.isRequired,
   setSearchText: PropTypes.func.isRequired,
+  showModal: PropTypes.bool.isRequired,
+  setShowModal: PropTypes.func.isRequired,
 };

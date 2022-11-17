@@ -1,33 +1,30 @@
-import React from "react";
-import Home from "@pages/Home";
+import React, { lazy, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
-import FicheFilm from "@components/fiche/FicheFilm";
-import Discover from "@pages/Discover";
-import Search from "@pages/Search";
-import Results from "@pages/Results";
-import Filtered from "@pages/Filtered";
-import Actorslist from "@components/actors/Actorslist";
-import DirectorPage from "@components/director/DirectorPage";
-import Navbar from "@components/navbar/Navbar";
-import Footer from "@components/footer/Footer";
+const Home = lazy(() => import("@pages/Home"));
+const FicheFilm = lazy(() => import("@components/fiche/FicheFilm"));
+const Discover = lazy(() => import("@pages/Discover"));
+const DirectorPage = lazy(() => import("@components/director/DirectorPage"));
+const Actorslist = lazy(() => import("@components/actors/Actorslist"));
+const Footer = lazy(() => import("@components/footer/Footer"));
 
 function App() {
   return (
     <div className="App">
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/crew/:id" element={<DirectorPage />} />
-        <Route path="/actor/:id" element={<Actorslist />} />
-        <Route path="/:type/:id" element={<FicheFilm />} />
-        <Route path="/search" element={<Search />} />
-        <Route path="/results" element={<Results />} />
-        <Route path="/filtered" element={<Filtered />} />
-        <Route path="/films/populaires" element={<Discover />} />
-        <Route path="/films/meilleures-notes" element={<Discover />} />
-        <Route path="/films/a-venir" element={<Discover />} />
-      </Routes>
-      <Footer />
+      <Suspense fallback={
+        <div className="loader-container">
+          <div className="spinner" />
+          <p>Chargement</p>
+        </div>
+      }>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/crew/:id" element={<DirectorPage />} />
+          <Route path="/actor/:id" element={<Actorslist />} />
+          <Route path="/:type/:id" element={<FicheFilm />} />
+          <Route path="/:type" element={<Discover />} />
+        </Routes>
+        <Footer />
+      </Suspense>
     </div>
   );
 }

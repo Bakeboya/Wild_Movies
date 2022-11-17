@@ -35,7 +35,7 @@
     }
   }
   .multi-range-slider {
-    margin-bottom: 3rem;
+    margin-bottom: 1.5rem;
     box-shadow: none;
     border: none;
     .bar-left,
@@ -76,8 +76,9 @@
   align-items: center;
   flex-direction: column;
   min-height: 100vh;
+  padding: 2rem;
+  padding-bottom: 13rem;
   background-color: $primary-color;
-  padding-bottom: 12rem;
 
   h2 {
     padding: 3rem 0;
@@ -89,6 +90,35 @@
   }
 
   .filtersInner {
+    .emptySearch {
+      margin-bottom: 1.5rem;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: $tertiary-color;
+      text-align: center;
+      &:empty {
+        margin-bottom: 0;
+      }
+    }
+    .responsiveButton {
+      display: block;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      & button,
+      & a {
+        padding: 0.7rem 2.5rem;
+        font-family: $font-display;
+        font-size: 2.3rem;
+        color: $primary-color;
+        background-color: $tertiary-color;
+        border-radius: 45px;
+        border: none;
+        cursor: pointer;
+      }
+    }
     .responsiveTypeChoice {
       display: flex;
       align-items: center;
@@ -113,24 +143,6 @@
       }
       .selected {
         filter: grayscale(0);
-      }
-    }
-    .responsiveButton {
-      display: block;
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      & a {
-        padding: 0.7rem 2.5rem;
-        font-family: $font-display;
-        font-size: 2.3rem;
-        color: $primary-color;
-        background-color: $tertiary-color;
-        border-radius: 45px;
-        border: none;
-        cursor: pointer;
       }
     }
     &:first-of-type {
@@ -172,18 +184,22 @@
 }
 
 @media screen and (max-width: 600px) {
-  .filtersInner {
-    font-size: 1.7rem;
-    h3 {
-      display: none;
-    }
-    hr {
-      display: none;
-    }
-    .react-select-container {
-      .react-select__menu {
-        position: absolute;
-        top: 40px;
+  .responsiveSearch {
+    .filtersInner {
+      width: 100%;
+      margin: 0;
+      font-size: 1.7rem;
+      h3 {
+        display: none;
+      }
+      hr {
+        display: none;
+      }
+      .react-select-container {
+        .react-select__menu {
+          position: absolute;
+          top: 40px;
+        }
       }
     }
   }

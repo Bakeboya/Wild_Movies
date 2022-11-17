@@ -15,7 +15,15 @@
 
     img {
       width: 75%;
+      border-radius: 12px;
     }
+  }
+
+  &_casting {
+    margin-top: 10px;
+    font-size: 18px;
+    font-family: $font-display;
+    color: $tertiary-color;
   }
 
   &_Info {
@@ -67,8 +75,83 @@
       }
 
       &_Button {
+        text-align: left;
+        background-color: $secondary-color;
+        border: none;
         color: $tertiary-color;
         font-size: 12px;
+      }
+
+      &_Desktop {
+        display: none;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .directorProfile {
+    display: flex;
+    flex-direction: row;
+    align-items: initial;
+
+    &_Picture {
+      img {
+        width: 300px;
+      }
+    }
+
+    &_casting {
+      font-size: 30px;
+      margin-top: 20px;
+    }
+
+    &_Info {
+      gap: 30px;
+
+      &_Name {
+        h2 {
+          font-size: 44px;
+        }
+      }
+
+      .persoBox {
+        margin-left: 15px;
+
+        &_Title {
+          font-size: 20px;
+          margin-bottom: 10px;
+        }
+
+        &_Text {
+          font-size: 14px;
+        }
+      }
+
+      .bioBox {
+        gap: 10px;
+        margin-left: 10px;
+
+        &_Title {
+          font-size: 20px;
+        }
+
+        &_Little {
+          display: none;
+        }
+
+        &_Big {
+          display: none;
+        }
+
+        &_Button {
+          display: none;
+        }
+
+        &_Desktop {
+          font-size: 18px;
+          display: flex;
+        }
       }
     }
   }

@@ -1,8 +1,8 @@
 import React from "react";
 import logoWildmovies from "../../assets/logo footer/wildmovies.svg";
-import logoFacebook from "../../assets/logo footer/facebook.svg";
-import logoTwitter from "../../assets/logo footer/twitter.svg";
-import logoInstagram from "../../assets/logo footer/instagram.svg";
+import BilFacebook from '@meronex/icons/bi/BilFacebook';
+import BilTwitter from '@meronex/icons/bi/BilTwitter';
+import BilInstagramAlt from '@meronex/icons/bi/BilInstagramAlt';
 
 function Footer() {
   return (
@@ -15,28 +15,24 @@ function Footer() {
             target="_blank"
             rel="noreferrer"
           >
-            <img src={logoFacebook} alt="logoF" />
+            <BilFacebook />
           </a>
           <a
             href="https://twitter.com/Wild_M0vies"
             target="_blank"
             rel="noreferrer"
           >
-            <img src={logoTwitter} alt="logoT" />
+            <BilTwitter />
           </a>
           <a
             href="https://www.instagram.com/wild_m0vies/"
             target="_blank"
             rel="noreferrer"
           >
-            <img src={logoInstagram} alt="logoI" />
+            <BilInstagramAlt />
           </a>
         </div>
-        <p className="text">
-          Relicta ora maritima in Lycaoniam adnexam Isauriae intersaepientes
-          itinera qrgfqergesrg <br />
-          et Serenianus dignus exsecratione cunctorum, innoxius, modo non{" "}
-        </p>
+        <p className="text">© Team Movies. All rights reserved.</p>
       </div>
     </footer>
   );

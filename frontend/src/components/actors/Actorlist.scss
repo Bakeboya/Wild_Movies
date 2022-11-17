@@ -1,4 +1,5 @@
 .actorlist {
+  position: relative;
   background-color: $secondary-color;
   display: flex;
   flex-direction: column;
@@ -7,7 +8,21 @@
   margin: 20px 50px 10rem 50px;
   padding: 10px;
   height: 90%;
-}
 
-@media screen and (min-width: 600px) {
+  .goBackBtn {
+    display: inline;
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    background: none;
+    border: none;
+    font-size: 2.5rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+
+    &:hover {
+      color: $tertiary-color;
+    }
+  }
 }

@@ -7,48 +7,45 @@
   .actorFilm {
     display: flex;
     flex-wrap: wrap;
-    height: max-content;
+    height: auto;
     width: auto;
-    padding: 10px;
+    padding: 5px;
     justify-content: space-around;
 
     .actors {
-      gap: 15px;
-      padding: 10px;
-      height: max-content;
-      width: 20%;
+      padding: 5px;
+
       margin-bottom: 25px;
+      transition: all 300ms ease-in-out;
 
       &:hover {
         transform: scale(1.1);
-        animation: scaleUp 300ms ease-out;
-
-        @keyframes scaleUp {
-          from {
-            transform: scale(1);
-          }
-
-          to {
-            transform: scale(1.1);
-          }
-        }
       }
 
       a {
+        width: 100%;
+        height: 100%;
 
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: flex-end;
 
+        .actorImgDiv {
 
-        img {
           width: 75%;
-          border-top-right-radius: 5px;
-          border-top-left-radius: 5px;
+          height: 70%;
           box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.3);
           z-index: 1;
+          
+          img {
+            width: 100%;
+            border-top-right-radius: 5px;
+            border-top-left-radius: 5px;
+
+          }
         }
+
 
         .divChara {
           padding: 5px 0px;
@@ -58,7 +55,7 @@
           align-items: center;
           gap: 5px;
           width: 75%;
-          height: 100%;
+          height: 25%;
           border-bottom-right-radius: 5px;
           border-bottom-left-radius: 5px;
           z-index: 2;
@@ -110,26 +107,36 @@
 
       .actors {
         display: flex;
-        width: 30%;
+        width: 45%;
+
+        .actorImgDiv {
+          width: 75%;
+          height: 70%;
+        }
+
+        .divChara {
+          width: 75%;
+          height: 25%;
+        }
       }
     }
   }
-}
 
-@media screen and (max-width: 600px) {
-  .close {
-    display: none;
-  }
+  @media screen and (max-width: 600px) {
+    .close {
+      display: none;
+    }
 
-  .casting {
-    .actorCard {
-      display: flex;
-      width: 100%;
-      align-items: center;
-
-      .actors {
+    .casting {
+      .actorCard {
         display: flex;
-        width: 40%;
+        width: 100%;
+        align-items: center;
+
+        .actors {
+          display: flex;
+          width: 40%;
+        }
       }
     }
   }
