@@ -1,5 +1,65 @@
+@mixin column {
+  display: flex;
+  flex-direction: column;
+}
+
 .directorMoviesCard {
+  @include column;
+  align-items: center;
+  gap: 10px;
+
+  &_img {
+    width: 185px;
+    object-fit: cover;
+  }
+
   &_temp {
     width: 185px;
+    height: 278px;
+    object-fit: cover;
+  }
+
+  &_title {
+    @include column;
+    align-items: center;
+    gap: 5px;
+
+    &_name {
+      color: $tertiary-color;
+      font-size: 15px;
+    }
+
+    &_year {
+      font-size: 14px;
+    }
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .directorMoviesCard {
+    &_img {
+      width: 250px;
+    }
+
+    &_temp {
+      width: 250px;
+      height: 375px;
+      object-fit: cover;
+    }
+
+    &_title {
+      @include column;
+      align-items: center;
+      gap: 5px;
+
+      &_name {
+        color: $tertiary-color;
+        font-size: 15px;
+      }
+
+      &_year {
+        font-size: 14px;
+      }
+    }
   }
 }

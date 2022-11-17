@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import MultiRangeSlider from "multi-range-slider-react";
 import Select from "react-select";
-import { Link } from "react-router-dom";
 import {
   genreOptions,
   providerOptions,
@@ -10,7 +9,10 @@ import {
 } from "../../../data/FiltersArrays";
 
 function Inputs({
-  filtersTotal,
+  type,
+  setType,
+  setShowModal,
+  setShowFiltersModal,
   setDiscoverGenre,
   setDiscoverRating,
   setDiscoverDecade,
@@ -18,9 +20,26 @@ function Inputs({
   setDiscoverProvider,
   setDiscoverCertification,
 }) {
+  const curYear = new Date().getFullYear();
+
   const [toggleType, setToggleType] = useState(0);
   const typeButton = (index) => {
     setToggleType(index);
+  };
+
+  const handleMovie = () => {
+    typeButton(1);
+    setType("movie");
+  };
+
+  const handleTv = () => {
+    typeButton(2);
+    setType("tv");
+  };
+
+  const handleClick = () => {
+    setShowFiltersModal(true);
+    setShowModal(false);
   };
 
   const handleSelectGenres = (option) => {
@@ -122,14 +141,14 @@ function Inputs({
         <button
           type="button"
           className={toggleType === 1 ? "selected" : ""}
-          onClick={() => typeButton(1)}
+          onClick={handleMovie}
         >
           Films
         </button>
         <button
           type="button"
           className={toggleType === 2 ? "selected" : ""}
-          onClick={() => typeButton(2)}
+          onClick={handleTv}
         >
           Séries
         </button>
@@ -192,7 +211,7 @@ function Inputs({
         <p>Décennie</p>
         <MultiRangeSlider
           min={1900}
-          max={2030}
+          max={curYear}
           step={10}
           stepOnly
           ruler
@@ -223,9 +242,9 @@ function Inputs({
         />
       </div>
       <div className="responsiveButton">
-        <Link to="/filtered" state={filtersTotal}>
+        <button type="button" onClick={handleClick}>
           Filtrer
-        </Link>
+        </button>
       </div>
     </div>
   );
@@ -234,18 +253,14 @@ function Inputs({
 export default Inputs;
 
 Inputs.propTypes = {
-  filtersTotal: PropTypes.arrayOf(
-    PropTypes.shape([
-      PropTypes.number,
-      PropTypes.array,
-      PropTypes.number,
-      PropTypes.number,
-    ])
-  ).isRequired,
+  type: PropTypes.string.isRequired,
+  setType: PropTypes.func.isRequired,
   setDiscoverGenre: PropTypes.func.isRequired,
   setDiscoverRating: PropTypes.func.isRequired,
   setDiscoverDecade: PropTypes.func.isRequired,
   setDiscoverDuration: PropTypes.func.isRequired,
   setDiscoverProvider: PropTypes.func.isRequired,
   setDiscoverCertification: PropTypes.func.isRequired,
+  setShowModal: PropTypes.func.isRequired,
+  setShowFiltersModal: PropTypes.func.isRequired,
 };

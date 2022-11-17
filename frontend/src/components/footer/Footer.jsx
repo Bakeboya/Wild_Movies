@@ -32,11 +32,7 @@ function Footer() {
             <img src={logoInstagram} alt="logoI" />
           </a>
         </div>
-        <p className="text">
-          Relicta ora maritima in Lycaoniam adnexam Isauriae intersaepientes
-          itinera qrgfqergesrg <br />
-          et Serenianus dignus exsecratione cunctorum, innoxius, modo non{" "}
-        </p>
+        <p className="text">© Team Movies. All rights reserved.</p>
       </div>
     </footer>
   );

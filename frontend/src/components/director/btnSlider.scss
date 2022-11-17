@@ -1,9 +1,9 @@
 .btn-slide {
-  width: 60px;
-  height: 60px;
+  width: 45px;
+  height: 45px;
   border-radius: 50%;
-  background: #f1f1f1;
-  border: 1px solid rgba(34, 34, 34, 0.287);
+  background: $tertiary-color;
+  border: 1px solid $primary-color;
   position: absolute;
   display: flex;
   justify-content: center;
