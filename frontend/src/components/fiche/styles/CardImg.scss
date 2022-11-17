@@ -98,6 +98,9 @@
       margin-bottom: 30px;
 
       .streaming {
+        display: flex;
+        flex-wrap: wrap;
+
         p {
           display: none;
         }
