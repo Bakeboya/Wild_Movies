@@ -1,0 +1,45 @@
+.diagram_note {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: solid 5px;
+}
+
+.good {
+  transform: rotate(-45deg);
+  border-bottom-color: rgb(55, 196, 30);
+  border-left-color: rgb(55, 196, 30);
+  border-top-color: rgb(55, 196, 30);
+
+  span {
+    transform: rotate(45deg);
+    font-weight: 600;
+    font-size: 1.45em;
+  }
+}
+
+.bof {
+  transform: rotate(-45deg);
+  border-bottom-color: orange;
+  border-left-color: orange;
+
+  span {
+    transform: rotate(45deg);
+    font-weight: 600;
+    font-size: 1.45em;
+  }
+}
+
+.nul {
+  transform: rotate(-45deg);
+  border-bottom-color: red;
+
+  span {
+    transform: rotate(45deg);
+    font-weight: 600;
+    font-size: 1.45em;
+  }
+}

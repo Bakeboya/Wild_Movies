@@ -1,21 +1,24 @@
-import React, { useState } from "react";
-import FaWindowClose from "@meronex/icons/fa/FaWindowClose";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import wildmovies from "@assets/logo3_wildmovies.svg";
-import wildmoviesLogo from "@assets/logo_wildmovies.svg";
 import logoCreate from "@assets/user/104368-thank-you.gif";
 import logoConnect from "@assets/user/92578-check-okey-done.gif";
 import logoSend from "@assets/user/lf30_editor_01fqcrbg-150x150.gif";
 import logoYes from "@assets/user/11743-check-mark-yes.gif";
 import logoNo from "@assets/user/101930-no-acces-denied.gif";
 import logoNews from "@assets/user/lf30_editor_n2dzrzma-150x150.gif";
+import axios from "axios";
+import UserMain from "./UserMain";
+import UserPassword from "./UserPassword";
+import UserInscription from "./UserInscription";
+import UserConnect from "./UserConnect";
 
-function User({ handleClose }) {
+function User({ handleActive }) {
   const [active, setActive] = useState(true);
   const [connect, setConnect] = useState(false);
   const [inscription, setInscription] = useState(false);
   const [activeCheck, setActiveCheck] = useState(false);
-  const [mail, setMail] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [hide, setHide] = useState(false);
   const [hidePassword, setHidePassword] = useState(true);
@@ -23,18 +26,22 @@ function User({ handleClose }) {
   const [displayPopUpNews, setDisplayPopUpNews] = useState(false);
   const [displayPopUpCreate, setDisplayPopUpCreate] = useState(false);
   const [displayPopUpSend, setDisplayPopUpSend] = useState(false);
-  const accountData = [
-    {
-      userName: "a",
-      userPassword: "b",
-    },
-    {
-      userName: "anticonstitutionnellement",
-      userPassword: "b",
-    },
-  ];
-  const getMail = (e) => {
-    setMail(e.target.value);
+  const [users, setUsers] = useState([]);
+  const [connected, setConnected] = useState(false);
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/users")
+      .then((res) => {
+        setUsers(res.data);
+        // console.log(res.data);
+        // console.log(connected);
+      })
+      .catch((err) => {
+        // console.error(err);
+      });
+  }, [connect]);
+  const getEmail = (e) => {
+    setEmail(e.target.value);
   };
   const getPassword = (e) => {
     setPassword(e.target.value);
@@ -52,19 +59,21 @@ function User({ handleClose }) {
     setHidePassword(true);
   };
   const createAccount = () => {
-    const alreadyExist = accountData.find(
-      (element) => element.userName === mail
-    );
+    const alreadyExist = users.find((element) => element.email === email);
     if (alreadyExist) {
-      // console.log(accountData);
       // alert(`Ce nom d'utilisateur existe déjà`);
-    } else if (mail !== "" && password !== "") {
+    } else if (email !== "" && password !== "") {
       if (activeCheck) {
-        accountData.push({ userName: mail, userPassword: password });
-        // console.log(accountData);
-        setDisplayPopUpNews(true);
-        setConnect(true);
-        setInscription(false);
+        axios
+          .post("http://localhost:5000/users", { email, password })
+          .then(() => {
+            setDisplayPopUpNews(true);
+            setConnect(true);
+            setInscription(false);
+          })
+          .catch((err) => {
+            console.error(err);
+          });
       } else {
         // alert(`Veuillez accepter la politique de confidentialité.`);
         setInscription(true);
@@ -76,14 +85,12 @@ function User({ handleClose }) {
     setHidePassword(true);
   };
   const connectAccount = () => {
-    const autorisation = accountData.find(
-      (element) => element.userName === mail
-    );
+    const autorisation = users.find((element) => element.email === email);
     if (!autorisation) {
       // alert(`Ce compte utilisateur n'existe pas.`);
-    } else if (autorisation.userPassword === password) {
-      setDisplayPopUpConnect(true);
+    } else if (autorisation.password === password) {
       setConnect(false);
+      setDisplayPopUpConnect(true);
     } else {
       // alert(`Votre mot de passe n'est pas valide.`);
       setConnect(true);
@@ -96,21 +103,21 @@ function User({ handleClose }) {
     setActiveCheck(!activeCheck);
   };
   const handlePassword = () => {
-    setMail("");
+    setEmail("");
     setConnect(false);
     setInscription(false);
     setHide(true);
     setHidePassword(false);
   };
   const handleMain = () => {
-    setMail("");
+    setEmail("");
     setConnect(true);
     setInscription(false);
     setHide(true);
     setHidePassword(true);
   };
   const sendPassword = () => {
-    if (mail !== "") {
+    if (email !== "") {
       setDisplayPopUpSend(true);
       setConnect(true);
       setInscription(false);
@@ -141,12 +148,12 @@ function User({ handleClose }) {
                 <img src={logoConnect} alt="Connection" id="logoConnect" />
                 <p className="overlayTitle">
                   Vous êtes connecté au compte{" "}
-                  <span className="messagePopUp">{mail}</span>.
+                  <span className="messagePopUp">{email}</span>.
                 </p>
                 <button
                   type="submit"
                   className="linkClose"
-                  onClick={handleClose}
+                  onClick={handleActive}
                 >
                   Fermer
                 </button>
@@ -190,7 +197,7 @@ function User({ handleClose }) {
                 <img src={logoCreate} alt="Inscription" id="logoCreate" />
                 <p className="overlayTitle">
                   Votre compte utilisateur pour l'adresse{" "}
-                  <span className="messagePopUp">{mail}</span> a bien été créé.
+                  <span className="messagePopUp">{email}</span> a bien été créé.
                 </p>
                 <button
                   type="submit"
@@ -210,7 +217,7 @@ function User({ handleClose }) {
                 <p className="overlayTitle">
                   Afin de réinitialiser votre mot de passe, un mail vous a été
                   envoyé à l'adresse{" "}
-                  <span className="messagePopUp">{mail}</span>.
+                  <span className="messagePopUp">{email}</span>.
                 </p>
                 <button type="submit" className="linkClose" onClick={exitSend}>
                   Fermer
@@ -218,168 +225,47 @@ function User({ handleClose }) {
               </div>
             </div>
           )}
-          <div className={!hide ? "userDiv" : "userDiv hide"}>
-            <div className="enteteForm">
-              <img src={wildmovies} alt="title" id="userTitle" />
-              <img src={wildmoviesLogo} alt="title" id="userLogo" />
-              <button type="submit" className="close" onClick={handleClose}>
-                <FaWindowClose />
-              </button>
-            </div>
-            <div className="userMain">
-              <button
-                type="submit"
-                className="buttonUser signUp"
-                onClick={handleConnect}
-              >
-                Se connecter
-              </button>
-              <button
-                type="submit"
-                className="buttonUser signIn"
-                onClick={handleInscription}
-              >
-                S'inscrire
-              </button>
-            </div>
-          </div>
+          {!hide && (
+            <UserMain
+              handleClose={handleActive}
+              propsHandleConnect={handleConnect}
+              propsHandleInscription={handleInscription}
+            />
+          )}
           {connect && (
-            <div className="connectDiv">
-              <div className="enteteForm">
-                <img src={wildmovies} alt="title" id="userTitle" />
-                <img src={wildmoviesLogo} alt="title" id="userLogo" />
-                <button type="submit" className="close" onClick={handleClose}>
-                  <FaWindowClose />
-                </button>
-              </div>
-              <div className="connectMain">
-                <input
-                  type="text"
-                  name="uname"
-                  placeholder="Adresse email"
-                  className="userForm champs"
-                  id="enteteConnect"
-                  onChange={getMail}
-                />
-                <input
-                  type="password"
-                  name="pass"
-                  placeholder="Mot de passe"
-                  className="userForm champs"
-                  autoComplete="current-password"
-                  onChange={getPassword}
-                />
-                <button
-                  type="submit"
-                  className="userForm signUp"
-                  onClick={connectAccount}
-                >
-                  Se Connecter
-                </button>
-                <button
-                  type="submit"
-                  onClick={handlePassword}
-                  className="linkForget"
-                >
-                  Mot de passe oublié?
-                </button>
-                <button
-                  type="submit"
-                  onClick={handleInscription}
-                  className="linkQuestion"
-                >
-                  Pas de compte? Créer votre compte.
-                </button>
-              </div>
-            </div>
+            <UserConnect
+              handleClose={handleActive}
+              propsConnect={connectAccount}
+              propsPassword={handlePassword}
+              propsHandleInscription={handleInscription}
+              propsGetEmail={getEmail}
+              propsGetPassword={getPassword}
+            />
           )}
           {inscription && (
-            <div className="inscriptionDiv">
-              <div className="enteteForm">
-                <img src={wildmovies} alt="title" id="userTitle" />
-                <img src={wildmoviesLogo} alt="title" id="userLogo" />
-                <button type="submit" className="close" onClick={handleClose}>
-                  <FaWindowClose />
-                </button>
-              </div>
-              <div className="inscriptionMain">
-                <input
-                  type="text"
-                  placeholde="Email"
-                  className="userForm champs"
-                  id="enteteIns"
-                  placeholder="Adresse email"
-                  onChange={getMail}
-                />
-                <input
-                  type="password"
-                  className="userForm champs"
-                  placeholder="Mot de passe"
-                  autoComplete="current-password"
-                  onChange={getPassword}
-                />
-                <div className="checkBoxDiv">
-                  <div className="checkBox">
-                    <input
-                      type="checkbox"
-                      id="switch"
-                      name="switch"
-                      onChange={handleCheckBox}
-                    />
-                    <label htmlFor="switch">‎</label>
-                  </div>
-                  <p>
-                    J'accepte la politique de confidentialité et la politique de
-                    cookies (requis).
-                  </p>
-                </div>
-                <button
-                  type="submit"
-                  className="userForm create"
-                  onClick={createAccount}
-                >
-                  Créer mon compte
-                </button>
-                <button type="submit" onClick={handleConnect} className="link">
-                  Vous possédez déjà un compte?
-                </button>
-              </div>
-            </div>
+            <UserInscription
+              handleClose={handleActive}
+              propsHandleConnect={handleConnect}
+              propsCreate={createAccount}
+              propsCheckBox={handleCheckBox}
+              propsGetEmail={getEmail}
+              propsGetPassword={getPassword}
+            />
           )}
-          <div
-            className={
-              !hidePassword ? "userPasswordDiv" : "userPasswordDiv hide"
-            }
-          >
-            <div className="enteteForm">
-              <img src={wildmovies} alt="title" id="userTitle" />
-              <img src={wildmoviesLogo} alt="title" id="userLogo" />
-              <button type="submit" className="close" onClick={handleMain}>
-                <FaWindowClose />
-              </button>
-            </div>
-            <div className="userPassword">
-              <input
-                type="mail"
-                placeholder="Adresse email"
-                className="userForm champs"
-                onChange={getMail}
-              />
-              <button
-                type="submit"
-                className="userForm send"
-                onClick={sendPassword}
-              >
-                Envoyer
-              </button>
-            </div>
-          </div>
+          {!hidePassword && (
+            <UserPassword
+              propsHandleMain={handleMain}
+              propsGetEmail={getEmail}
+              propsSendPassword={sendPassword}
+            />
+          )}
         </div>
       )}
+      ;
     </div>
   );
 }
 User.propTypes = {
-  handleClose: PropTypes.string.isRequired,
+  handleActive: PropTypes.string.isRequired,
 };
 export default User;

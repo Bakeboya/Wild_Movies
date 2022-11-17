@@ -1,17 +1,25 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Streaming from "./Streaming";
+import StreamingNo from "./StreamingNo";
 
-function CardImg({ posterPath, originalTitle, providers }) {
+function CardImg({ posterPath, providers }) {
   const imgPath = `https://image.tmdb.org/t/p/w500/${posterPath}`;
-  const titleFilm = `image du film ${originalTitle}`;
+  const titleFilm = `image du film`;
 
   return (
     <div className="cardImg">
-      <div className="imgFilm">
-        <img src={imgPath} alt={titleFilm} />
+      <div
+        className="imgMulti"
+        style={{
+          backgroundImage: `url(https://image.tmdb.org/t/p/w500/${posterPath})`,
+        }}
+      >
+        <div className="imgFilm">
+          <img src={imgPath} alt={titleFilm} />
+        </div>
       </div>
-      {providers.FR !== undefined ? (
+      {providers.FR !== undefined && providers.FR.flatrate !== undefined ? (
         <div className="streamingCard">
           <h3>Streaming</h3>
           <div className="streamLogo">
@@ -32,14 +40,15 @@ function CardImg({ posterPath, originalTitle, providers }) {
                 ))}
           </div>
         </div>
-      ) : null}
+      ) : (
+        <StreamingNo />
+      )}
     </div>
   );
 }
 
 CardImg.propTypes = {
   posterPath: PropTypes.string.isRequired,
-  originalTitle: PropTypes.string.isRequired,
   providers: PropTypes.shape(PropTypes.number, PropTypes.string).isRequired,
 };
 

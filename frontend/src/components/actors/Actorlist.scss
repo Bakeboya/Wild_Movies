@@ -1,0 +1,13 @@
+.actorlist {
+  background-color: $secondary-color;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-radius: 4px;
+  margin: 20px 50px 10rem 50px;
+  padding: 10px;
+  height: 90%;
+}
+
+@media screen and (min-width: 600px) {
+}

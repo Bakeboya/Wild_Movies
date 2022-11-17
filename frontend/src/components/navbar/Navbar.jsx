@@ -17,6 +17,11 @@ function Navbar({
   setShowFiltersModal,
 }) {
   const [fixed, setFixed] = useState(true);
+  // const [connected, setConnected] = useState(false);
+
+  const detailConnected = () => {
+    // console.log(connected);
+  };
 
   return (
     <nav className={!fixed ? "Navbar" : "Navbar Bottom"}>
