@@ -32,9 +32,7 @@ function Footer() {
             <img src={logoInstagram} alt="logoI" />
           </a>
         </div>
-        <p className="text">
-          © Team Movies. All rights reserved.
-        </p>
+        <p className="text">© Team Movies. All rights reserved.</p>
       </div>
     </footer>
   );

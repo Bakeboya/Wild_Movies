@@ -89,16 +89,13 @@
   }
 }
 
-
 @media screen and (min-width: 600px) {
-
   .directorProfile {
     display: flex;
     flex-direction: row;
     align-items: initial;
 
     &_Picture {
-
       img {
         width: 300px;
       }

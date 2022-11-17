@@ -2,15 +2,7 @@ import React, { useState } from "react";
 import imgTemp from "@assets/fiche/imgTemp.webp";
 import PropTypes from "prop-types";
 
-function DirectorProfile({
-  pic,
-  name,
-  birthday,
-  alias,
-  city,
-  bio,
-  deathday,
-}) {
+function DirectorProfile({ pic, name, birthday, alias, city, bio, deathday }) {
   const imgLink = `http://image.tmdb.org/t/p/w500${pic}`;
   const imgName = `Image de ${name}`;
   const [textShow, setTextShow] = useState(false);
@@ -107,8 +99,6 @@ function DirectorProfile({
           <p className="bioBox_Desktop">{bio}</p>
         </div>
       </div>
-
-
     </div>
   );
 }

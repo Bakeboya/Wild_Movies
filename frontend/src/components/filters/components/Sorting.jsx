@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import Select from "react-select";
 import { sortingOptions } from "../../../data/FiltersArrays";
 
-function Sorting({ placeholder, setSorting }) {
+function Sorting({ setSorting }) {
   const handleSorting = (option) => {
     setSorting(`${option.id}`);
   };
@@ -31,13 +31,13 @@ function Sorting({ placeholder, setSorting }) {
       <hr />
       <Select
         isClearable
-        closeMenuOnSelect={false}
+        closeMenuOnSelect
         name="trier"
         options={sortingOptions}
         className="react-select-container"
         classNamePrefix="react-select"
         styles={customStyles}
-        placeholder={`${placeholder}`}
+        placeholder={sortingOptions[0].label}
         getOptionValue={(option) => option.id}
         onChange={(option) => handleSorting(option)}
       />
@@ -48,6 +48,5 @@ function Sorting({ placeholder, setSorting }) {
 export default Sorting;
 
 Sorting.propTypes = {
-  placeholder: PropTypes.string.isRequired,
   setSorting: PropTypes.func.isRequired,
 };
