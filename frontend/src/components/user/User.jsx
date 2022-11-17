@@ -13,12 +13,11 @@ import UserPassword from "./UserPassword";
 import UserInscription from "./UserInscription";
 import UserConnect from "./UserConnect";
 
-function User({ handleActive }) {
+function User({ handleActive, setEmail, email, connected, setConnected }) {
   const [active, setActive] = useState(true);
   const [connect, setConnect] = useState(false);
   const [inscription, setInscription] = useState(false);
   const [activeCheck, setActiveCheck] = useState(false);
-  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [hide, setHide] = useState(false);
   const [hidePassword, setHidePassword] = useState(true);
@@ -27,17 +26,14 @@ function User({ handleActive }) {
   const [displayPopUpCreate, setDisplayPopUpCreate] = useState(false);
   const [displayPopUpSend, setDisplayPopUpSend] = useState(false);
   const [users, setUsers] = useState([]);
-  const [connected, setConnected] = useState(false);
   useEffect(() => {
     axios
       .get("http://localhost:5000/users")
       .then((res) => {
         setUsers(res.data);
-        // console.log(res.data);
-        // console.log(connected);
       })
       .catch((err) => {
-        // console.error(err);
+        console.error(err);
       });
   }, [connect]);
   const getEmail = (e) => {
@@ -91,6 +87,7 @@ function User({ handleActive }) {
     } else if (autorisation.password === password) {
       setConnect(false);
       setDisplayPopUpConnect(true);
+      setConnected(true);
     } else {
       // alert(`Votre mot de passe n'est pas valide.`);
       setConnect(true);
@@ -146,10 +143,8 @@ function User({ handleActive }) {
               <div className="overlay">
                 <img src={wildmovies} alt="title" className="userTitle" />
                 <img src={logoConnect} alt="Connection" id="logoConnect" />
-                <p className="overlayTitle">
-                  Vous êtes connecté au compte{" "}
-                  <span className="messagePopUp">{email}</span>.
-                </p>
+                <p className="overlayTitle">Vous êtes connecté au compte</p>
+                <span className="messagePopUp">{email}</span>
                 <button
                   type="submit"
                   className="linkClose"
@@ -196,9 +191,9 @@ function User({ handleActive }) {
                 <img src={wildmovies} alt="title" className="userTitle" />
                 <img src={logoCreate} alt="Inscription" id="logoCreate" />
                 <p className="overlayTitle">
-                  Votre compte utilisateur pour l'adresse{" "}
-                  <span className="messagePopUp">{email}</span> a bien été créé.
+                  Votre compte utilisateur a bien été créé à l'adresse
                 </p>
+                <span className="messagePopUp">{email}</span>
                 <button
                   type="submit"
                   className="linkClose"
@@ -216,9 +211,9 @@ function User({ handleActive }) {
                 <img src={logoSend} alt="Message" id="logoSend" />
                 <p className="overlayTitle">
                   Afin de réinitialiser votre mot de passe, un mail vous a été
-                  envoyé à l'adresse{" "}
-                  <span className="messagePopUp">{email}</span>.
+                  envoyé à l'adresse
                 </p>
+                <span className="messagePopUp">{email}</span>
                 <button type="submit" className="linkClose" onClick={exitSend}>
                   Fermer
                 </button>
@@ -240,6 +235,7 @@ function User({ handleActive }) {
               propsHandleInscription={handleInscription}
               propsGetEmail={getEmail}
               propsGetPassword={getPassword}
+              connected={connected}
             />
           )}
           {inscription && (
@@ -267,5 +263,9 @@ function User({ handleActive }) {
 }
 User.propTypes = {
   handleActive: PropTypes.string.isRequired,
+  setEmail: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
+  connected: PropTypes.string.isRequired,
+  setConnected: PropTypes.string.isRequired,
 };
 export default User;
