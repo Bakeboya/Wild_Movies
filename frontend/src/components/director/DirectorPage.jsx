@@ -8,13 +8,12 @@ import DirectorMovies from "./DirectorMovies";
 function DirectorPage() {
   const [directorInfo, setDirectorInfo] = useState(null);
 
-  const { idDirector } = useParams();
-  // const idDirector = 4690;
+  const { id } = useParams();
 
   const getDirectorInfo = () => {
     axios
       .get(
-        `https://api.themoviedb.org/3/person/${idDirector}?api_key=${
+        `https://api.themoviedb.org/3/person/${id}?api_key=${
           import.meta.env.VITE_API_KEY
         }&language=en-US`
       )
@@ -25,7 +24,7 @@ function DirectorPage() {
 
   useEffect(() => {
     getDirectorInfo();
-  }, [idDirector]);
+  }, [id]);
 
   return (
     <div>
@@ -53,7 +52,7 @@ function DirectorPage() {
         </div>
 
         <div className="directorPage_movies">
-          {directorInfo && <DirectorMovies idDirector={idDirector} />}
+          {directorInfo && <DirectorMovies idDirector={id} />}
         </div>
       </div>
     </div>
