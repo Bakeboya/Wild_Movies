@@ -104,6 +104,7 @@ html {
   font-size: 10px;
   font-family: $font-text;
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 body {
   line-height: 1;
