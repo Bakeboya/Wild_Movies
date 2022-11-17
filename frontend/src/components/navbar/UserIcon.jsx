@@ -3,7 +3,7 @@ import BisUser from "@meronex/icons/bi/BisUser";
 import PropTypes from "prop-types";
 import User from "../user/User";
 
-function UserIcon({ setEmail, email, setConnected, connected }) {
+function UserIcon({ setEmail, email, setConnected, connected, fav, setFav }) {
   const [active, setActive] = useState(false);
 
   const handleActive = () => {
@@ -22,6 +22,8 @@ function UserIcon({ setEmail, email, setConnected, connected }) {
           email={email}
           setConnected={setConnected}
           connected={connected}
+          fav={fav}
+          setFav={setFav}
         />
       )}
     </div>
@@ -32,5 +34,7 @@ UserIcon.propTypes = {
   email: PropTypes.string.isRequired,
   connected: PropTypes.string.isRequired,
   setConnected: PropTypes.string.isRequired,
+  fav: PropTypes.string.isRequired,
+  setFav: PropTypes.string.isRequired,
 };
 export default UserIcon;

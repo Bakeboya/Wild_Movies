@@ -13,7 +13,7 @@ import UserPassword from "./UserPassword";
 import UserInscription from "./UserInscription";
 import UserConnect from "./UserConnect";
 
-function User({ handleActive, setEmail, email, connected, setConnected }) {
+function User({ handleActive, setEmail, email, connected, setConnected, fav, setFav }) {
   const [active, setActive] = useState(true);
   const [connect, setConnect] = useState(false);
   const [inscription, setInscription] = useState(false);
@@ -26,6 +26,7 @@ function User({ handleActive, setEmail, email, connected, setConnected }) {
   const [displayPopUpCreate, setDisplayPopUpCreate] = useState(false);
   const [displayPopUpSend, setDisplayPopUpSend] = useState(false);
   const [users, setUsers] = useState([]);
+
   useEffect(() => {
     axios
       .get("http://localhost:5000/users")
@@ -85,6 +86,7 @@ function User({ handleActive, setEmail, email, connected, setConnected }) {
     if (!autorisation) {
       // alert(`Ce compte utilisateur n'existe pas.`);
     } else if (autorisation.password === password) {
+      setFav(autorisation.favorite);
       setConnect(false);
       setDisplayPopUpConnect(true);
       setConnected(true);
@@ -144,7 +146,8 @@ function User({ handleActive, setEmail, email, connected, setConnected }) {
                 <img src={wildmovies} alt="title" className="userTitle" />
                 <img src={logoConnect} alt="Connection" id="logoConnect" />
                 <p className="overlayTitle">Vous êtes connecté au compte</p>
-                <span className="messagePopUp">{email}</span>
+                <span className="messagePopUp">{email}
+                </span>
                 <button
                   type="submit"
                   className="linkClose"
