@@ -73,7 +73,7 @@ function Discover() {
           />
         </section>
       </main>
-      <Footer />
+      
     </>
   );
 }
