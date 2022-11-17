@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import imgTemp from "@assets/fiche/imgTemp.webp";
+import imgTemp from "@assets/fiche/imgTemp.png";
 import { useParams, Link } from "react-router-dom";
 import ButtonActor from "./ButtonActor";
 
@@ -35,14 +35,16 @@ function Casting({ cast, link }) {
             (isCut ? castCut : cast).map((acteur) => (
               <div className="actors">
                 <Link to={link + acteur.id}>
-                  <img
-                    src={
-                      acteur.profile_path != null
-                        ? `https://image.tmdb.org/t/p/w200/${acteur.profile_path}`
-                        : imgTemp
-                    }
-                    alt={acteur.name}
-                  />
+                  <div className="actorImgDiv">
+                    <img
+                      src={
+                        acteur.profile_path != null
+                          ? `https://image.tmdb.org/t/p/w200/${acteur.profile_path}`
+                          : imgTemp
+                      }
+                      alt={acteur.name}
+                    />
+                  </div>
                   <div className="divChara">
                     <p className="actorName">{acteur.name}</p>
                     <p className="actorCharacter">
