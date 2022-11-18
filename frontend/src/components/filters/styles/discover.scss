@@ -36,9 +36,19 @@
 }
 
 .filteredResponsive {
-  width: 85%;
-  margin: 0 auto 10rem;
-  padding: 3rem 0;
+  margin-bottom: 10rem;
+  padding: 2rem 2rem 0;
+  background: $secondary-color;
+  .filtersInner {
+    background: transparent;
+    box-shadow: none;
+    h3 {
+      display: none;
+    }
+    hr {
+      display: none;
+    }
+  }
   .filteredCount {
     margin-bottom: 1.5rem;
     font-family: $font-display;

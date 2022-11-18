@@ -11,6 +11,8 @@ export default function Home() {
     setSearch,
     searchText,
     setSearchText,
+    searchType,
+    setSearchType,
     results,
     setResults,
     resultsTotal,
@@ -43,6 +45,8 @@ export default function Home() {
         setSearch={setSearch}
         searchText={searchText}
         setSearchText={setSearchText}
+        searchType={searchType}
+        setSearchType={setSearchType}
         showModal={showModal}
         setShowModal={setShowModal}
       />

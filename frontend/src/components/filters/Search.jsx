@@ -4,6 +4,7 @@ import ReactPaginate from "react-paginate";
 import Modal from "react-modal";
 import Inputs from "@components/filters/components/Inputs";
 import Navbar from "@components/navbar/Navbar";
+import Sorting from "@components/filters/components/Sorting";
 import { useDiscover } from "../../data/DataFetch";
 import ContentCard from "./components/ContentCard";
 
@@ -40,6 +41,8 @@ function Search({
     setType,
     discover,
     filtersTotal,
+    sorting,
+    setSorting,
     setFiltersPage,
     setDiscoverGenre,
     setDiscoverRating,
@@ -146,6 +149,7 @@ function Search({
       <Modal isOpen={showFiltersModal} style={customStyles} ariaHideApp={false}>
         {filtersTotal && (
           <main className="filteredResponsive">
+            <Sorting sorting={sorting} setSorting={setSorting} />
             <p className="filteredCount">
               {filtersTotal.total_results} résultats
             </p>
