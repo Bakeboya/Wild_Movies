@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
-export default function ContentCard({ c }) {
+export default function ContentCard({ c, displayToggle }) {
 
   const [type, setType] = useState(c.title === undefined ? "tv" : "movie");
   const imgPath = `https://image.tmdb.org/t/p/w200${c.poster_path}`;
@@ -67,6 +67,19 @@ export default function ContentCard({ c }) {
         }
         <h3>{c.title || c.name}</h3>
       </Link>
+      {displayToggle === 2 &&
+        <div className="listDisplayInfo">
+          <Link to={linkPath()}>
+            {c.title || c.name}
+          </Link>
+          <p className="listOverview">
+            {c.overview}
+          </p>
+          <p className="listRelease">
+            {c.release_date || c.first_air_date}
+          </p>
+        </div>
+      }
     </li>
   );
 }

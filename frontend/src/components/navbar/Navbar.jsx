@@ -31,17 +31,6 @@ function Navbar({
   };
   return (
     <nav className={!fixed ? "Navbar" : "Navbar Bottom"}>
-
-      <WildMovies setResults={setResults} />
-      <Loupe />
-      {windowFavori && (
-        <Favori
-          windowFavori={windowFavori}
-          setWindowFavori={setWindowFavori}
-          email={email}
-          fav={fav}
-          closeFavori={closeFavori} />
-      )}
       <WildMovies
         setEmptySearch={setEmptySearch}
         setSearch={setSearch}
@@ -64,6 +53,14 @@ function Navbar({
         setShowSearchModal={setShowSearchModal}
         setShowFiltersModal={setShowFiltersModal}
       />
+      {windowFavori && (
+        <Favori
+          windowFavori={windowFavori}
+          setWindowFavori={setWindowFavori}
+          email={email}
+          fav={fav}
+          closeFavori={closeFavori} />
+      )}
       <div className="LoginDiv">
         <div className="Login">
           {connected && <>
