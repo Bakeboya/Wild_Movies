@@ -8,6 +8,7 @@ import Pegi from "./Pegi";
 import LecteurBA from "./LecteurBA";
 import Time from "./Time";
 import VoteAverage from "./VoteAverage";
+import CastingCarou from "./CastingCarou";
 
 function CardText({
   releaseDate,
@@ -78,12 +79,14 @@ function CardText({
       </div>
       <div className="synopsisFilm">
         <h3>Distribution</h3>
-      </div>
-      <Casting cast={cast} link={link1} />
+      </div><div className="castingCarouDiv">
+        <CastingCarou cast={cast} link={link1} /></div>
       <div className="synopsisFilm">
         <h3>Equipe technique</h3>
       </div>
-      <Casting cast={crew} link={link2} />
+      <div className="castingCarouDiv">
+        <CastingCarou cast={crew} link={link2} /></div>
+
     </div>
   );
 }
