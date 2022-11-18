@@ -22,6 +22,10 @@ th {
   text-align: center;
 }
 
+.gras:hover {
+  font-weight: 700;
+}
+
 .credits {
   width: 100%;
   margin: 0;
@@ -39,8 +43,12 @@ th {
     margin: 40px 0 60px 0;
   }
 
+  .gras {
+    font-weight: 700;
+  }
+
   .ii {
-    font-size: 20px;
+    font-size: 25px;
   }
 
   .link {
@@ -50,5 +58,11 @@ th {
 
   .credits {
     border-bottom: none;
+    transition: all 0.5s 0s ease;
+
+    &:hover {
+      font-size: 17px;
+      color: $tertiary-color;
+    }
   }
 }
