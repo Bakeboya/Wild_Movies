@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 function DirectorMoviesCard({ movieImg, movieTitle, date, id, type }) {
-  const year = date.substring(0, 4);
+  const year = date?.substring(0, 4);
 
   return (
     <div className="directorMoviesCard">
