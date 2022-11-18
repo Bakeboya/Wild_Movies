@@ -78,7 +78,12 @@ function ActorImg({
 
       <div className="actorBio">
         <h3> Biographie </h3>
-        {textShow === false ? (
+        {biography === "" ? (
+          <p className="emptyBio">
+            {" "}
+            Désolé il n'y a pas de biographie disponible pour cette personne.
+          </p>
+        ) : textShow === false ? (
           <>
             <p className="cache">{`${biocut} (...)`}</p>
             <button
