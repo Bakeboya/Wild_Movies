@@ -74,10 +74,9 @@
 .synopsisFilm {
   display: flex;
   flex-direction: column;
-  gap: 15px;
-  margin-bottom: 10px;
 
   h3 {
+    margin-top: 10px;
     font-size: 2.5em;
     font-weight: 700;
   }
