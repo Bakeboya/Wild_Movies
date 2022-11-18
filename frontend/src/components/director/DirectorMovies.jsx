@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Carousel from "react-multi-carousel";
+import C from "react-multi-carousel";
 import DirectorMoviesCard from "./DirectorMoviesCard";
 import "react-multi-carousel/lib/styles.css";
 
@@ -24,13 +24,15 @@ const responsive = {
 };
 
 function DirectorMovies({ idDirector }) {
+
+  const Carousel = C.default ? C.default : C
+
   const [directorDataCut, setDirectorDataCut] = useState([]);
 
   const getDirectorMovies = () => {
     axios
       .get(
-        `https://api.themoviedb.org/3/person/${idDirector}/combined_credits?api_key=${
-          import.meta.env.VITE_API_KEY
+        `https://api.themoviedb.org/3/person/${idDirector}/combined_credits?api_key=${import.meta.env.VITE_API_KEY
         }&language=en-US`
       )
       .then((res) => {
