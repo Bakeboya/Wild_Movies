@@ -2,11 +2,24 @@ import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import MdOptions from "@meronex/icons/ios/MdOptions";
 import Slider from "./Slider";
 
-function Header({ search, setSearch, searchText, setSearchText }) {
+function Header({
+  setSearch,
+  searchText,
+  setSearchText,
+  searchType,
+  setSearchType,
+  showModal,
+  setShowModal,
+}) {
   const [poster, setPoster] = useState();
+  const [modalToggle, setModalToggle] = useState(false);
+  const [toggleIndex, setToggleIndex] = useState(1);
+
   const page = 1;
+
   useEffect(() => {
     axios
       .get(
@@ -33,6 +46,34 @@ function Header({ search, setSearch, searchText, setSearchText }) {
     }
   };
 
+  const openCloseModal = () => {
+    setShowModal(!showModal);
+  };
+
+  const filterModal = () => {
+    setModalToggle(!modalToggle);
+  };
+
+  const handleFilter1 = () => {
+    setSearchType("multi");
+    setToggleIndex(1);
+  };
+
+  const handleFilter2 = () => {
+    setSearchType("movie");
+    setToggleIndex(2);
+  };
+
+  const handleFilter3 = () => {
+    setSearchType("tv");
+    setToggleIndex(3);
+  };
+
+  const handleFilter4 = () => {
+    setSearchType("person");
+    setToggleIndex(4);
+  };
+
   return (
     <header className="header">
       {poster && <Slider poster={poster} />}
@@ -52,11 +93,9 @@ function Header({ search, setSearch, searchText, setSearchText }) {
           </p>
         </div>
 
-        <div>
-          <button type="button" className="searchButton">
-            RECHERCHER
-          </button>
-        </div>
+        <button type="button" className="searchButton" onClick={openCloseModal}>
+          RECHERCHER
+        </button>
       </div>
 
       <div className="deskBox">
@@ -67,11 +106,54 @@ function Header({ search, setSearch, searchText, setSearchText }) {
         </div>
         <div className="searchBar">
           <input
-            placeholder="Rechercher un film, une série"
+            placeholder="Rechercher un film, une série ou une personne"
             value={searchText}
             onChange={handleChange}
             onKeyPress={handleKeypress}
           />
+          <button
+            type="button"
+            className="filterButtonDesktop"
+            onClick={filterModal}
+          >
+            <MdOptions />
+          </button>
+          <div
+            className={
+              modalToggle
+                ? "filterOptionsModal optionsModalOpen"
+                : "filterOptionsModal"
+            }
+          >
+            <button
+              className={toggleIndex === 1 ? "selected" : ""}
+              type="button"
+              onClick={handleFilter1}
+            >
+              Tout
+            </button>
+            <button
+              className={toggleIndex === 2 ? "selected" : ""}
+              type="button"
+              onClick={handleFilter2}
+            >
+              Films
+            </button>
+            <button
+              className={toggleIndex === 3 ? "selected" : ""}
+              type="button"
+              onClick={handleFilter3}
+            >
+              Séries
+            </button>
+            <button
+              className={toggleIndex === 4 ? "selected" : ""}
+              type="button"
+              onClick={handleFilter4}
+            >
+              Personnes
+            </button>
+          </div>
           <button
             type="button"
             className="searchButtonDesktop"
@@ -88,8 +170,11 @@ function Header({ search, setSearch, searchText, setSearchText }) {
 export default Header;
 
 Header.propTypes = {
-  search: PropTypes.string.isRequired,
   setSearch: PropTypes.func.isRequired,
   searchText: PropTypes.string.isRequired,
   setSearchText: PropTypes.func.isRequired,
+  searchType: PropTypes.string.isRequired,
+  setSearchType: PropTypes.func.isRequired,
+  showModal: PropTypes.bool.isRequired,
+  setShowModal: PropTypes.func.isRequired,
 };

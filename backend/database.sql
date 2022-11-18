@@ -1,6 +1,7 @@
-CREATE TABLE item (
-  id int(11) UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
-  title varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-INSERT INTO item (title) VALUES ('Stuff'), ('Doodads');
+DROP TABLE IF EXISTS users;
+CREATE TABLE users (
+    `id` INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    `email` VARCHAR(80) NOT NULL,
+    `password` VARCHAR(20) NOT NULL,
+    `favorite` INT NULL
+);

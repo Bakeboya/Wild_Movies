@@ -13,25 +13,39 @@ export const useSearch = () => {
   const [results, setResults] = useState([]);
   const [resultsTotal, setResultsTotal] = useState("");
   const [searchPage, setSearchPage] = useState(1);
+  const [searchType, setSearchType] = useState("multi");
 
-  useEffect(() => {
+  const getSearch = () => {
+    const source = axios.CancelToken.source();
+
     axios
       .get(
-        `https://api.themoviedb.org/3/search/movie?api_key=${
+        `https://api.themoviedb.org/3/search/${searchType}?api_key=${
           import.meta.env.VITE_API_KEY
-        }&language=${lang}&page=${searchPage}&include_adult=false&query=${search}`
+        }&language=${lang}&page=${searchPage}&include_adult=false&query=${search}`,
+        { cancelToken: source.token }
       )
       .then((res) => {
-        console.log(res.data.results);
         setResultsTotal(res.data);
         setResults(res.data.results);
       });
-  }, [search, searchPage, lang]);
+
+    return () => {
+      source.cancel("Component got unmounted");
+    };
+  };
+
+  useEffect(() => {
+    getSearch();
+  }, [search, searchPage, setSearchPage, searchType, lang]);
+
   return {
     searchText,
     setSearchText,
     search,
     setSearch,
+    searchType,
+    setSearchType,
     results,
     setResults,
     resultsTotal,
@@ -50,21 +64,34 @@ export const useDiscover = () => {
   const [discoverDuration, setDiscoverDuration] = useState("");
   const [discoverProvider, setDiscoverProvider] = useState("");
   const [discoverCertification, setDiscoverCertification] = useState("");
-  const [filtersPage, setFiltersPage] = useState(1);
   const [filtersTotal, setFiltersTotal] = useState("");
+  const [filtersPage, setFiltersPage] = useState(1);
+  const [type, setType] = useState("");
 
-  useEffect(() => {
+  const getDiscover = () => {
+    const source = axios.CancelToken.source();
+
     axios
       .get(
-        `https://api.themoviedb.org/3/discover/movie?api_key=${
+        `https://api.themoviedb.org/3/discover/${type}?api_key=${
           import.meta.env.VITE_API_KEY
-        }&language=${lang}&sort_by=${sorting}&include_adult=false&include_video=false&page=${filtersPage}${discoverGenre}${discoverRating}${discoverDecade}${discoverDuration}${discoverProvider}${discoverCertification}&vote_count.gte=10&with_watch_monetization_types=flatrate`
+        }&language=${lang}&sort_by=${sorting}&include_adult=false&include_video=false&page=${filtersPage}${discoverGenre}${discoverRating}${discoverDecade}${discoverDuration}${discoverProvider}${discoverCertification}&vote_count.gte=10&with_watch_monetization_types=flatrate`,
+        { cancelToken: source.token }
       )
       .then((res) => {
         setFiltersTotal(res.data);
         setDiscover(res.data.results);
       });
+
+    return () => {
+      source.cancel("Component got unmounted");
+    };
+  };
+
+  useEffect(() => {
+    getDiscover();
   }, [
+    type,
     sorting,
     filtersPage,
     discoverGenre,
@@ -74,9 +101,14 @@ export const useDiscover = () => {
     discoverProvider,
     discoverCertification,
   ]);
+
   return {
+    type,
+    setType,
+    sorting,
     setSorting,
     filtersTotal,
+    filtersPage,
     setFiltersPage,
     discover,
     discoverGenre,
@@ -99,35 +131,60 @@ export const useMoviesPopular = () => {
   const [moviesPopular, setMoviesPopular] = useState([]);
   const [moviesPopularPage, setMoviesPopularPage] = useState(1);
 
-  useEffect(() => {
+  const getMoviesPopular = () => {
+    const source = axios.CancelToken.source();
+
     axios
       .get(
         `https://api.themoviedb.org/3/discover/movie?api_key=${
           import.meta.env.VITE_API_KEY
-        }&language=${lang}&sort_by=popularity.desc&include_adult=false&include_video=false&page=${moviesPopularPage}&vote_count.gte=10&with_watch_monetization_types=flatrate`
+        }&language=${lang}&sort_by=popularity.desc&include_adult=false&include_video=false&page=${moviesPopularPage}&vote_count.gte=10&with_watch_monetization_types=flatrate`,
+        { cancelToken: source.token }
       )
       .then((res) => {
         setMoviesPopular(res.data.results);
       });
+
+    return () => {
+      source.cancel("Component got unmounted");
+    };
+  };
+
+  useEffect(() => {
+    getMoviesPopular();
   }, []);
+
   return { moviesPopular };
 };
 
 export const useTrending = () => {
+  const { lang } = useLanguage();
   const [trending, setTrending] = useState([]);
   const [trendingTime, setTrendingTime] = useState("day");
 
-  useEffect(() => {
+  const getTrending = () => {
+    const source = axios.CancelToken.source();
+
     axios
       .get(
         `https://api.themoviedb.org/3/trending/all/${trendingTime}?api_key=${
           import.meta.env.VITE_API_KEY
-        }`
+        }&language=${lang}`,
+        { cancelToken: source.token }
       )
       .then((res) => {
         setTrending(res.data.results);
       });
+
+    return () => {
+      source.cancel("Component got unmounted");
+    };
+  };
+
+  useEffect(() => {
+    getTrending();
   }, [trendingTime]);
+
   return { trending, trendingTime, setTrendingTime };
 };
 
@@ -136,17 +193,29 @@ export const useMoviesTop = () => {
   const [moviesTop, setMoviesTop] = useState([]);
   const [moviesTopPage, setMoviesTopPage] = useState(1);
 
-  useEffect(() => {
+  const getMoviesTop = () => {
+    const source = axios.CancelToken.source();
+
     axios
       .get(
         `https://api.themoviedb.org/3/discover/movie?api_key=${
           import.meta.env.VITE_API_KEY
-        }&language=${lang}&sort_by=vote_average.desc&include_adult=false&include_video=false&page=${moviesTopPage}&vote_count.gte=300&with_watch_monetization_types=flatrate`
+        }&language=${lang}&sort_by=vote_average.desc&include_adult=false&include_video=false&page=${moviesTopPage}&vote_count.gte=300&with_watch_monetization_types=flatrate`,
+        { cancelToken: source.token }
       )
       .then((res) => {
         setMoviesTop(res.data.results);
       });
+
+    return () => {
+      source.cancel("Component got unmounted");
+    };
+  };
+
+  useEffect(() => {
+    getMoviesTop();
   }, [moviesTopPage, lang]);
+
   return { moviesTop, moviesTopPage, setMoviesTopPage };
 };
 
@@ -155,17 +224,29 @@ export const useSeriesTop = () => {
   const [seriesTop, setSeriesTop] = useState([]);
   const [seriesTopPage, setSeriesTopPage] = useState(1);
 
-  useEffect(() => {
+  const getSeriesTop = () => {
+    const source = axios.CancelToken.source();
+
     axios
       .get(
         `https://api.themoviedb.org/3/discover/tv?api_key=${
           import.meta.env.VITE_API_KEY
-        }&language=${lang}&sort_by=vote_average.desc&page=${seriesTopPage}&vote_count.gte=100&include_null_first_air_dates=false&with_watch_monetization_types=flatrate`
+        }&language=${lang}&sort_by=vote_average.desc&page=${seriesTopPage}&vote_count.gte=100&include_null_first_air_dates=false&with_watch_monetization_types=flatrate`,
+        { cancelToken: source.token }
       )
       .then((res) => {
         setSeriesTop(res.data.results);
       });
+
+    return () => {
+      source.cancel("Component got unmounted");
+    };
+  };
+
+  useEffect(() => {
+    getSeriesTop();
   }, [seriesTopPage, lang]);
+
   return { seriesTop, seriesTopPage, setSeriesTopPage };
 };
 
@@ -173,67 +254,59 @@ export const useUpcoming = () => {
   const { lang } = useLanguage();
   const [moviesUpcomingPage, setMoviesUpcomingPage] = useState(1);
   const [moviesUpcoming, setMoviesUpcoming] = useState([]);
-  useEffect(() => {
+
+  const getUpcoming = () => {
+    const source = axios.CancelToken.source();
+
     axios
       .get(
         `https://api.themoviedb.org/3/movie/upcoming?api_key=${
           import.meta.env.VITE_API_KEY
-        }&language=${lang}&page=1`
+        }&language=${lang}&page=1`,
+        { cancelToken: source.token }
       )
       .then((res) => {
         setMoviesUpcoming(res.data.results);
       });
+
+    return () => {
+      source.cancel("Component got unmounted");
+    };
+  };
+
+  useEffect(() => {
+    getUpcoming();
   }, [moviesUpcomingPage]);
+
   return { moviesUpcoming, moviesUpcomingPage, setMoviesUpcomingPage };
 };
 
 export const useSeriesPopular = () => {
   const { lang } = useLanguage();
   const [seriesPopular, setSeriesPopular] = useState([]);
-  useEffect(() => {
+
+  const getSeriesPopular = () => {
+    const source = axios.CancelToken.source();
+
     axios
       .get(
         ` https://api.themoviedb.org/3/tv/popular?api_key=${
           import.meta.env.VITE_API_KEY
-        }&language=${lang}&page=1`
+        }&language=${lang}&page=1`,
+        { cancelToken: source.token }
       )
       .then((res) => {
         setSeriesPopular(res.data.results);
       });
+
+    return () => {
+      source.cancel("Component got unmounted");
+    };
+  };
+
+  useEffect(() => {
+    getSeriesPopular();
   }, []);
+
   return { seriesPopular };
-};
-
-export const useMoviesCategories = () => {
-  const [moviesCategories, setMoviesCategories] = useState([]);
-  useEffect(() => {
-    axios
-      .get(
-        `https://api.themoviedb.org/3/genre/movie/list?api_key=${
-          import.meta.env.VITE_API_KEY
-        }&language=en-US
-`
-      )
-      .then((res) => {
-        setMoviesCategories(res.data.genres);
-      });
-  }, []);
-  return { moviesCategories, setMoviesCategories };
-};
-
-export const useSeriesCategories = () => {
-  const [seriesCategories, setSeriesCategories] = useState([]);
-  useEffect(() => {
-    axios
-      .get(
-        `https://api.themoviedb.org/3/genre/tv/list?api_key=${
-          import.meta.env.VITE_API_KEY
-        }&language=en-US
-    `
-      )
-      .then((res) => {
-        setSeriesCategories(res.data.results);
-      });
-  }, []);
-  return { seriesCategories, setSeriesCategories };
 };

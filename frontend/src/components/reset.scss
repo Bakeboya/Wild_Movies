@@ -104,6 +104,9 @@ html {
   font-size: 10px;
   font-family: $font-text;
   overflow-x: hidden;
+  scroll-behavior: smooth;
+  cursor: default;
+  background: #f9f9f9;
 }
 body {
   line-height: 1;
@@ -130,6 +133,13 @@ q:after {
 table {
   border-collapse: collapse;
   border-spacing: 0;
+}
+
+.ReactModal__Body--open {
+  #root {
+    overflow-y: hidden;
+    height: 0;
+  }
 }
 
 @media screen and (max-width: 600px) {
