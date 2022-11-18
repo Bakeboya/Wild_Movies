@@ -5,9 +5,9 @@ import ContentCard from "@components/filters/components/ContentCard";
 import Navbar from "@components/navbar/Navbar";
 import Inputs from "@components/filters/components/Inputs";
 import Sorting from "@components/filters/components/Sorting";
+import BsFillGridFill from "@meronex/icons/bs/BsFillGridFill";
+import BsListUl from "@meronex/icons/bs/BsListUl";
 import { useDiscover } from "../data/DataFetch";
-import BsFillGridFill from '@meronex/icons/bs/BsFillGridFill';
-import BsListUl from '@meronex/icons/bs/BsListUl';
 
 function Discover() {
   const { type } = useParams();
@@ -28,7 +28,7 @@ function Discover() {
     setDiscoverCertification,
   } = useDiscover();
 
-  const [displayToggle, setDisplayToggle] = useState(1)
+  const [displayToggle, setDisplayToggle] = useState(1);
 
   useEffect(() => {
     setType(type);
@@ -40,14 +40,12 @@ function Discover() {
   };
 
   const handleDisplay1 = () => {
-    setDisplayToggle(1)
-  }
+    setDisplayToggle(1);
+  };
 
   const handleDisplay2 = () => {
-    setDisplayToggle(2)
-  }
-
-  console.log(discover)
+    setDisplayToggle(2);
+  };
 
   return (
     <>
@@ -71,15 +69,27 @@ function Discover() {
               {filtersTotal.total_results} résultats
             </p>
             <div className="filteredDisplay">
-              <button type="button" onClick={handleDisplay1} className={displayToggle === 1 ? "selected" : ""}>
+              <button
+                type="button"
+                onClick={handleDisplay1}
+                className={displayToggle === 1 ? "selected" : ""}
+              >
                 <BsFillGridFill />
               </button>
-              <button type="button" onClick={handleDisplay2} className={displayToggle === 2 ? "selected" : ""}>
+              <button
+                type="button"
+                onClick={handleDisplay2}
+                className={displayToggle === 2 ? "selected" : ""}
+              >
                 <BsListUl />
               </button>
             </div>
           </div>
-          <ul className={displayToggle === 1 ? "filteredList" : "filteredList columnList"}>
+          <ul
+            className={
+              displayToggle === 1 ? "filteredList" : "filteredList columnList"
+            }
+          >
             {discover.map((r) => (
               <ContentCard displayToggle={displayToggle} c={r} />
             ))}

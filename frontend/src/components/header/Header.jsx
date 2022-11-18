@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import MdOptions from "@meronex/icons/ios/MdOptions";
 import Slider from "./Slider";
-import MdOptions from '@meronex/icons/ios/MdOptions';
 
 function Header({
   setSearch,
@@ -14,7 +14,6 @@ function Header({
   showModal,
   setShowModal,
 }) {
-
   const [poster, setPoster] = useState();
   const [modalToggle, setModalToggle] = useState(false);
   const [toggleIndex, setToggleIndex] = useState(1);
@@ -52,30 +51,28 @@ function Header({
   };
 
   const filterModal = () => {
-    setModalToggle(!modalToggle)
-  }
+    setModalToggle(!modalToggle);
+  };
 
   const handleFilter1 = () => {
-    setSearchType('multi')
-    setToggleIndex(1)
-  }
+    setSearchType("multi");
+    setToggleIndex(1);
+  };
 
   const handleFilter2 = () => {
-    setSearchType('movie')
-    setToggleIndex(2)
-  }
+    setSearchType("movie");
+    setToggleIndex(2);
+  };
 
   const handleFilter3 = () => {
-    setSearchType('tv')
-    setToggleIndex(3)
-  }
+    setSearchType("tv");
+    setToggleIndex(3);
+  };
 
   const handleFilter4 = () => {
-    setSearchType('person')
-    setToggleIndex(4)
-  }
-
-  console.log(searchType)
+    setSearchType("person");
+    setToggleIndex(4);
+  };
 
   return (
     <header className="header">
@@ -114,20 +111,46 @@ function Header({
             onChange={handleChange}
             onKeyPress={handleKeypress}
           />
-          <button type="button" className="filterButtonDesktop" onClick={filterModal}>
+          <button
+            type="button"
+            className="filterButtonDesktop"
+            onClick={filterModal}
+          >
             <MdOptions />
           </button>
-          <div className={modalToggle ? "filterOptionsModal optionsModalOpen" : "filterOptionsModal"}>
-            <button className={toggleIndex === 1 ? "selected" : ""} type="button" onClick={handleFilter1}>
+          <div
+            className={
+              modalToggle
+                ? "filterOptionsModal optionsModalOpen"
+                : "filterOptionsModal"
+            }
+          >
+            <button
+              className={toggleIndex === 1 ? "selected" : ""}
+              type="button"
+              onClick={handleFilter1}
+            >
               Tout
             </button>
-            <button className={toggleIndex === 2 ? "selected" : ""} type="button" onClick={handleFilter2}>
+            <button
+              className={toggleIndex === 2 ? "selected" : ""}
+              type="button"
+              onClick={handleFilter2}
+            >
               Films
             </button>
-            <button className={toggleIndex === 3 ? "selected" : ""} type="button" onClick={handleFilter3}>
+            <button
+              className={toggleIndex === 3 ? "selected" : ""}
+              type="button"
+              onClick={handleFilter3}
+            >
               Séries
             </button>
-            <button className={toggleIndex === 4 ? "selected" : ""} type="button" onClick={handleFilter4}>
+            <button
+              className={toggleIndex === 4 ? "selected" : ""}
+              type="button"
+              onClick={handleFilter4}
+            >
               Personnes
             </button>
           </div>
@@ -150,6 +173,8 @@ Header.propTypes = {
   setSearch: PropTypes.func.isRequired,
   searchText: PropTypes.string.isRequired,
   setSearchText: PropTypes.func.isRequired,
+  searchType: PropTypes.string.isRequired,
+  setSearchType: PropTypes.func.isRequired,
   showModal: PropTypes.bool.isRequired,
   setShowModal: PropTypes.func.isRequired,
 };

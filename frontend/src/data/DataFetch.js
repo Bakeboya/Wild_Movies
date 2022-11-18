@@ -13,14 +13,15 @@ export const useSearch = () => {
   const [results, setResults] = useState([]);
   const [resultsTotal, setResultsTotal] = useState("");
   const [searchPage, setSearchPage] = useState(1);
-  const [searchType, setSearchType] = useState('multi')
+  const [searchType, setSearchType] = useState("multi");
 
   const getSearch = () => {
     const source = axios.CancelToken.source();
 
     axios
       .get(
-        `https://api.themoviedb.org/3/search/${searchType}?api_key=${import.meta.env.VITE_API_KEY
+        `https://api.themoviedb.org/3/search/${searchType}?api_key=${
+          import.meta.env.VITE_API_KEY
         }&language=${lang}&page=${searchPage}&include_adult=false&query=${search}`,
         { cancelToken: source.token }
       )
@@ -72,7 +73,8 @@ export const useDiscover = () => {
 
     axios
       .get(
-        `https://api.themoviedb.org/3/discover/${type}?api_key=${import.meta.env.VITE_API_KEY
+        `https://api.themoviedb.org/3/discover/${type}?api_key=${
+          import.meta.env.VITE_API_KEY
         }&language=${lang}&sort_by=${sorting}&include_adult=false&include_video=false&page=${filtersPage}${discoverGenre}${discoverRating}${discoverDecade}${discoverDuration}${discoverProvider}${discoverCertification}&vote_count.gte=10&with_watch_monetization_types=flatrate`,
         { cancelToken: source.token }
       )
@@ -134,7 +136,8 @@ export const useMoviesPopular = () => {
 
     axios
       .get(
-        `https://api.themoviedb.org/3/discover/movie?api_key=${import.meta.env.VITE_API_KEY
+        `https://api.themoviedb.org/3/discover/movie?api_key=${
+          import.meta.env.VITE_API_KEY
         }&language=${lang}&sort_by=popularity.desc&include_adult=false&include_video=false&page=${moviesPopularPage}&vote_count.gte=10&with_watch_monetization_types=flatrate`,
         { cancelToken: source.token }
       )
@@ -164,7 +167,8 @@ export const useTrending = () => {
 
     axios
       .get(
-        `https://api.themoviedb.org/3/trending/all/${trendingTime}?api_key=${import.meta.env.VITE_API_KEY
+        `https://api.themoviedb.org/3/trending/all/${trendingTime}?api_key=${
+          import.meta.env.VITE_API_KEY
         }&language=${lang}`,
         { cancelToken: source.token }
       )
@@ -194,7 +198,8 @@ export const useMoviesTop = () => {
 
     axios
       .get(
-        `https://api.themoviedb.org/3/discover/movie?api_key=${import.meta.env.VITE_API_KEY
+        `https://api.themoviedb.org/3/discover/movie?api_key=${
+          import.meta.env.VITE_API_KEY
         }&language=${lang}&sort_by=vote_average.desc&include_adult=false&include_video=false&page=${moviesTopPage}&vote_count.gte=300&with_watch_monetization_types=flatrate`,
         { cancelToken: source.token }
       )
@@ -224,7 +229,8 @@ export const useSeriesTop = () => {
 
     axios
       .get(
-        `https://api.themoviedb.org/3/discover/tv?api_key=${import.meta.env.VITE_API_KEY
+        `https://api.themoviedb.org/3/discover/tv?api_key=${
+          import.meta.env.VITE_API_KEY
         }&language=${lang}&sort_by=vote_average.desc&page=${seriesTopPage}&vote_count.gte=100&include_null_first_air_dates=false&with_watch_monetization_types=flatrate`,
         { cancelToken: source.token }
       )
@@ -254,7 +260,8 @@ export const useUpcoming = () => {
 
     axios
       .get(
-        `https://api.themoviedb.org/3/movie/upcoming?api_key=${import.meta.env.VITE_API_KEY
+        `https://api.themoviedb.org/3/movie/upcoming?api_key=${
+          import.meta.env.VITE_API_KEY
         }&language=${lang}&page=1`,
         { cancelToken: source.token }
       )
@@ -283,7 +290,8 @@ export const useSeriesPopular = () => {
 
     axios
       .get(
-        ` https://api.themoviedb.org/3/tv/popular?api_key=${import.meta.env.VITE_API_KEY
+        ` https://api.themoviedb.org/3/tv/popular?api_key=${
+          import.meta.env.VITE_API_KEY
         }&language=${lang}&page=1`,
         { cancelToken: source.token }
       )

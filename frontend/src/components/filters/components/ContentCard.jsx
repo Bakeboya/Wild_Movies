@@ -3,11 +3,11 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 export default function ContentCard({ c, displayToggle }) {
-
   const [type, setType] = useState(c.title === undefined ? "tv" : "movie");
   const imgPath = `https://image.tmdb.org/t/p/w200${c.poster_path}`;
   const profilePath = `https://image.tmdb.org/t/p/w185${c.profile_path}`;
-  const emptyPath = "https://placeholder.pics/svg/175x262.5/FFFFFF/FFFFFF/No%20picture%20found";
+  const emptyPath =
+    "https://placeholder.pics/svg/175x262.5/FFFFFF/FFFFFF/No%20picture%20found";
 
   const moviePath = `/${type}/${c.id}`;
   const actorPath = `/actor/${c.id}`;
@@ -15,37 +15,29 @@ export default function ContentCard({ c, displayToggle }) {
 
   const imgCover = () => {
     if (c.poster_path) {
-      return imgPath
-    } else if (c.profile_path) {
-      return profilePath
-    } else {
-      return emptyPath
+      return imgPath;
     }
-  }
+    if (c.profile_path) {
+      return profilePath;
+    }
+    return emptyPath;
+  };
 
   const linkPath = () => {
     if (c.poster_path) {
-      return moviePath
-    } else if (c.known_for_department === "Acting") {
-      return actorPath
-    } else if (c.known_for_department !== "Acting") {
-      return directorPath
+      return moviePath;
     }
-  }
+    if (c.known_for_department === "Acting") {
+      return actorPath;
+    }
+    return directorPath;
+  };
 
   return (
     <li>
-      <Link
-        to={linkPath()}
-        className="imgPoster"
-        title={c.title || c.name}
-      >
-        <img
-          src={imgCover()}
-          alt={c.title}
-          loading="lazy"
-        />
-        {c.vote_average !== undefined &&
+      <Link to={linkPath()} className="imgPoster" title={c.title || c.name}>
+        <img src={imgCover()} alt={c.title} loading="lazy" />
+        {c.vote_average !== undefined && (
           <p
             style={{
               backgroundColor: (() => {
@@ -64,22 +56,16 @@ export default function ContentCard({ c, displayToggle }) {
           >
             {c.vote_average.toFixed(1).toString().replace(/^0\.0/g, "NN")}
           </p>
-        }
+        )}
         <h3>{c.title || c.name}</h3>
       </Link>
-      {displayToggle === 2 &&
+      {displayToggle === 2 && (
         <div className="listDisplayInfo">
-          <Link to={linkPath()}>
-            {c.title || c.name}
-          </Link>
-          <p className="listOverview">
-            {c.overview}
-          </p>
-          <p className="listRelease">
-            {c.release_date || c.first_air_date}
-          </p>
+          <Link to={linkPath()}>{c.title || c.name}</Link>
+          <p className="listOverview">{c.overview}</p>
+          <p className="listRelease">{c.release_date || c.first_air_date}</p>
         </div>
-      }
+      )}
     </li>
   );
 }
@@ -103,4 +89,5 @@ ContentCard.propTypes = {
       PropTypes.number,
     ])
   ).isRequired,
+  displayToggle: PropTypes.number.isRequired,
 };

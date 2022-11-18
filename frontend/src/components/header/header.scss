@@ -110,6 +110,10 @@
       5px 5px 15px 5px rgba(0, 0, 0, 0);
     box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
 
+    &:has(input:focus) {
+      outline: 3px solid $primary-color;
+    }
+
     input {
       border: 3px solid transparent;
       color: $primary-color;
@@ -157,14 +161,14 @@
     .filterOptionsModal {
       display: none;
       position: absolute;
-      bottom: 2rem;
+      bottom: 3rem;
       width: 90%;
       margin: 0 auto;
       justify-content: space-around;
 
       button {
         padding: 0.5rem 1rem;
-        border: none;
+        border: 1px solid $primary-color;
         border-radius: 4px;
         background-color: $tertiary-color;
         color: $secondary-color;
@@ -176,6 +180,7 @@
 
       .selected {
         filter: grayscale(0);
+        color: $primary-color;
       }
     }
 

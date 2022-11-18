@@ -59,14 +59,19 @@ function Navbar({
           setWindowFavori={setWindowFavori}
           email={email}
           fav={fav}
-          closeFavori={closeFavori} />
+          closeFavori={closeFavori}
+        />
       )}
       <div className="LoginDiv">
         <div className="Login">
-          {connected && <>
-            <button type='button' onClick={displayFavori}>Favoris</button>
-            <p>{email}</p>
-          </>}
+          {connected && (
+            <>
+              <button type="button" onClick={displayFavori}>
+                Favoris
+              </button>
+              <p>{email}</p>
+            </>
+          )}
           <UserIcon
             setEmail={setEmail}
             email={email}

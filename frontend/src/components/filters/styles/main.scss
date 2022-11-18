@@ -153,7 +153,6 @@
 .home {
   min-height: 100vh;
   color: $primary-color;
-  background-color: #ffffff;
   padding: 3rem 0;
   margin-bottom: 10rem;
 
@@ -264,7 +263,7 @@
         background-image: linear-gradient(
           to right,
           rgba(255, 255, 255, 0) 0%,
-          #ffffff 100%
+          #f9f9f9 100%
         );
       }
 

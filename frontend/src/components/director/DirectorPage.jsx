@@ -14,7 +14,8 @@ function DirectorPage() {
   const getDirectorInfo = () => {
     axios
       .get(
-        `https://api.themoviedb.org/3/person/${id}?api_key=${import.meta.env.VITE_API_KEY
+        `https://api.themoviedb.org/3/person/${id}?api_key=${
+          import.meta.env.VITE_API_KEY
         }&language=en-US`
       )
       .then((res) => {

@@ -1,9 +1,9 @@
 import React from "react";
+import BilFacebook from "@meronex/icons/bi/BilFacebook";
+import BilTwitter from "@meronex/icons/bi/BilTwitter";
+import BilInstagramAlt from "@meronex/icons/bi/BilInstagramAlt";
+import FiArrowUpCircle from "@meronex/icons/fi/FiArrowUpCircle";
 import logoWildmovies from "../../assets/logo footer/wildmovies.svg";
-import BilFacebook from '@meronex/icons/bi/BilFacebook';
-import BilTwitter from '@meronex/icons/bi/BilTwitter';
-import BilInstagramAlt from '@meronex/icons/bi/BilInstagramAlt';
-import FiArrowUpCircle from '@meronex/icons/fi/FiArrowUpCircle';
 
 function Footer() {
   return (
@@ -35,7 +35,15 @@ function Footer() {
             </a>
           </div>
         </div>
-        <button className="btnToTop" onClick={() => { window.scrollTo(0, 0) }}><FiArrowUpCircle /></button>
+        <button
+          type="button"
+          className="btnToTop"
+          onClick={() => {
+            window.scrollTo(0, 0);
+          }}
+        >
+          <FiArrowUpCircle />
+        </button>
       </div>
       <p className="text">© Team Movies. All rights reserved.</p>
     </footer>
