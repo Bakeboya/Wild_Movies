@@ -30,11 +30,15 @@ h3 {
   flex-direction: column;
   gap: 10px;
   margin: 15px 0 15px 0;
-  font-size: 13px;
+  font-size: 15px;
 }
 
 .actorBio {
-  font-size: 13px;
+  font-size: 15px;
+}
+
+.emptyBio {
+  font-size: 15px;
 }
 
 .bioDesktop {
@@ -83,6 +87,10 @@ h3 {
     font-size: 15px;
     word-spacing: 3px;
     line-height: 1.6;
+  }
+
+  .emptyBio {
+    font-size: 15px;
   }
 
   .lire {
