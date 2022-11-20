@@ -2,8 +2,8 @@ import imgTemp from "@assets/fiche/imgTemp.webp";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
-function DirectorMoviesCard({ movieImg, movieTitle, date, id, type }) {
-  const year = date.substring(0, 4);
+function DirectorMoviesCard({ movieImg, movieTitle, date, id, type, job }) {
+  const year = date?.substring(0, 4);
 
   return (
     <div className="directorMoviesCard">
@@ -27,6 +27,7 @@ function DirectorMoviesCard({ movieImg, movieTitle, date, id, type }) {
 
       <div className="directorMoviesCard_title">
         <p className="directorMoviesCard_title_name">{movieTitle}</p>
+        <p className="directorMoviesCard_title_year">{job}</p>
         <p className="directorMoviesCard_title_year">{year}</p>
       </div>
     </div>
@@ -39,6 +40,7 @@ DirectorMoviesCard.propTypes = {
   date: PropTypes.isRequired,
   id: PropTypes.isRequired,
   type: PropTypes.isRequired,
+  job: PropTypes.isRequired,
 };
 
 export default DirectorMoviesCard;

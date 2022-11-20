@@ -14,8 +14,7 @@ function DirectorPage() {
   const getDirectorInfo = () => {
     axios
       .get(
-        `https://api.themoviedb.org/3/person/${id}?api_key=${
-          import.meta.env.VITE_API_KEY
+        `https://api.themoviedb.org/3/person/${id}?api_key=${import.meta.env.VITE_API_KEY
         }&language=en-US`
       )
       .then((res) => {
@@ -41,7 +40,7 @@ function DirectorPage() {
         >
           X
         </button>
-        <div>
+        <div className="directorPage_profile">
           {directorInfo && (
             <DirectorProfile
               pic={directorInfo.profile_path}
@@ -56,9 +55,11 @@ function DirectorPage() {
         </div>
 
         <div>
-          <p className="directorProfile_casting">
+          {/* {directorInfo.name !== undefined && */}
+          <p className="directorPage_casting">
             {directorInfo && directorInfo.name} est célèbre pour :
           </p>
+          {/* } */}
         </div>
 
         <div className="directorPage_movies">

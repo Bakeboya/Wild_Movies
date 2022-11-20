@@ -38,9 +38,10 @@ function DirectorMovies({ idDirector }) {
       .then((res) => {
         const directorData = [];
 
-        res.data.cast.map((element) => {
+        res.data.crew.map((element) => {
           return directorData.push({
             id: element.id,
+            job: element.job,
             media_type: element.media_type,
             release_date: element.release_date,
             original_title: element.original_title,
@@ -48,7 +49,7 @@ function DirectorMovies({ idDirector }) {
           });
         });
 
-        setDirectorDataCut(directorData && directorData.slice(0, 19));
+        setDirectorDataCut(directorData && directorData.slice(0, 50));
       });
   };
 
@@ -73,6 +74,7 @@ function DirectorMovies({ idDirector }) {
                   id={infos.id}
                   date={infos.release_date}
                   type={infos.media_type}
+                  job={infos.job}
                 />
               </div>
             );
