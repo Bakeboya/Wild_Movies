@@ -36,7 +36,7 @@ function DirectorProfile({ pic, name, birthday, alias, city, bio, deathday }) {
         </div>
 
         <div className="persoBox">
-          {alias === "" ? (
+          {alias <= 0 ? (
             <div>
               <p className="persoBox_Title">Alias</p>
               <p className="persoBox_Text">Non renseigné</p>
@@ -92,29 +92,36 @@ function DirectorProfile({ pic, name, birthday, alias, city, bio, deathday }) {
 
         <div className="bioBox">
           <p className="bioBox_Title">Biographie :</p>
-
-          {textShow === false ? (
-            <>
-              <p className="bioBox_Little">{bio}</p>
-              <button
-                type="button"
-                className="bioBox_Button"
-                onClick={() => setTextShow(true)}
-              >
-                lire plus
-              </button>
-            </>
+          {bio === "" ? (
+            <p className="bioBox_Big">
+              Aucune biographie n'a été rédigée pour {name}.
+            </p>
           ) : (
-            <>
-              <p className="bioBox_Big">{bio}</p>
-              <button
-                type="button"
-                className="bioBox_Button"
-                onClick={() => setTextShow(false)}
-              >
-                lire moins
-              </button>
-            </>
+            <div>
+              {textShow === false ? (
+                <>
+                  <p className="bioBox_Little">{bio}</p>
+                  <button
+                    type="button"
+                    className="bioBox_Button"
+                    onClick={() => setTextShow(true)}
+                  >
+                    lire plus
+                  </button>
+                </>
+              ) : (
+                <>
+                  <p className="bioBox_Big">{bio}</p>
+                  <button
+                    type="button"
+                    className="bioBox_Button"
+                    onClick={() => setTextShow(false)}
+                  >
+                    lire moins
+                  </button>
+                </>
+              )}
+            </div>
           )}
 
           {bio === "" ? (
