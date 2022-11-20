@@ -31,13 +31,12 @@ function DirectorProfile({ pic, name, birthday, alias, city, bio, deathday }) {
       </div>
 
       <div className="directorProfile_Info">
-
         <div className="directorProfile_Info_Name">
           <h2>{name}</h2>
         </div>
 
         <div className="persoBox">
-          {alias == "" ? (
+          {alias === "" ? (
             <div>
               <p className="persoBox_Title">Alias</p>
               <p className="persoBox_Text">Non renseigné</p>
@@ -53,7 +52,7 @@ function DirectorProfile({ pic, name, birthday, alias, city, bio, deathday }) {
           )}
 
           <div>
-            {birthday !== "" ? (
+            {birthday !== null ? (
               <div>
                 {deathday ? (
                   <>
@@ -89,7 +88,6 @@ function DirectorProfile({ pic, name, birthday, alias, city, bio, deathday }) {
               <p className="persoBox_Text">{city}</p>
             )}
           </div>
-
         </div>
 
         <div className="bioBox">
@@ -120,11 +118,12 @@ function DirectorProfile({ pic, name, birthday, alias, city, bio, deathday }) {
           )}
 
           {bio === "" ? (
-            <p className="bioBox_Desktop">Aucune biographie n'a été rédigée pour {name}.</p>
+            <p className="bioBox_Desktop">
+              Aucune biographie n'a été rédigée pour {name}.
+            </p>
           ) : (
             <p className="bioBox_Desktop">{bio}</p>
-          )
-          }
+          )}
         </div>
       </div>
     </div>
