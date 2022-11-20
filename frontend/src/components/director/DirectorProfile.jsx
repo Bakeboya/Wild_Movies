@@ -31,43 +31,65 @@ function DirectorProfile({ pic, name, birthday, alias, city, bio, deathday }) {
       </div>
 
       <div className="directorProfile_Info">
+
         <div className="directorProfile_Info_Name">
           <h2>{name}</h2>
         </div>
 
         <div className="persoBox">
-          <div>
-            {alias && <p className="persoBox_Title">Alias</p>}
-            {alias &&
-              alias.map((element) => {
-                return <p className="persoBox_Text">{element}</p>;
-              })}
-          </div>
+          {alias == "" ? (
+            <div>
+              <p className="persoBox_Title">Alias</p>
+              <p className="persoBox_Text">Non renseigné</p>
+            </div>
+          ) : (
+            <div>
+              <p className="persoBox_Title">Alias</p>
+              {alias &&
+                alias.map((element) => {
+                  return <p className="persoBox_Text">{element}</p>;
+                })}
+            </div>
+          )}
 
           <div>
-            {deathday ? (
-              <>
-                <p className="persoBox_Title">Date de naissance</p>
-                <p className="persoBox_Text">{birthday}</p>
-                <p className="persoBox_Title">Date de décès</p>
-                <p className="persoBox_Text">
-                  {deathday} à {getAge()} ans
-                </p>
-              </>
+            {birthday !== "" ? (
+              <div>
+                {deathday ? (
+                  <>
+                    <p className="persoBox_Title">Date de naissance</p>
+                    <p className="persoBox_Text">{birthday}</p>
+                    <p className="persoBox_Title">Date de décès</p>
+                    <p className="persoBox_Text">
+                      {deathday} à {getAge()} ans
+                    </p>
+                  </>
+                ) : (
+                  <div>
+                    <p className="persoBox_Title">Date de naissance</p>
+                    <p className="persoBox_Text">
+                      {birthday} / {getAge()} ans
+                    </p>
+                  </div>
+                )}
+              </div>
             ) : (
               <>
                 <p className="persoBox_Title">Date de naissance</p>
-                <p className="persoBox_Text">
-                  {birthday} / {getAge()} ans
-                </p>
+                <p className="persoBox_Text">Non renseigné</p>
               </>
             )}
           </div>
 
           <div>
             <p className="persoBox_Title">Lieu de naissance</p>
-            <p className="persoBox_Text">{city}</p>
+            {city == null ? (
+              <p className="persoBox_Text">Non renseigné</p>
+            ) : (
+              <p className="persoBox_Text">{city}</p>
+            )}
           </div>
+
         </div>
 
         <div className="bioBox">
@@ -96,7 +118,13 @@ function DirectorProfile({ pic, name, birthday, alias, city, bio, deathday }) {
               </button>
             </>
           )}
-          <p className="bioBox_Desktop">{bio}</p>
+
+          {bio === "" ? (
+            <p className="bioBox_Desktop">Aucune biographie n'a été rédigée pour {name}.</p>
+          ) : (
+            <p className="bioBox_Desktop">{bio}</p>
+          )
+          }
         </div>
       </div>
     </div>
