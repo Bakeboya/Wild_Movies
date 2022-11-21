@@ -11,6 +11,7 @@
   &_img {
     width: 185px;
     object-fit: cover;
+    border-radius: 4px;
   }
 
   &_temp {
@@ -39,6 +40,7 @@
   .directorMoviesCard {
     &_img {
       width: 250px;
+      border-radius: 4px;
     }
 
     &_temp {
