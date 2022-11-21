@@ -19,7 +19,7 @@ h2 {
 }
 
 h3 {
-  font-size: 15px;
+  font-size: 16px;
   margin-bottom: 9px;
   margin-top: 15px;
   font-weight: 700;
@@ -30,19 +30,58 @@ h3 {
   flex-direction: column;
   gap: 10px;
   margin: 15px 0 15px 0;
-  font-size: 15px;
+  font-size: 12px;
 }
 
 .actorBio {
-  font-size: 15px;
+  font-size: 12px;
 }
 
 .emptyBio {
-  font-size: 15px;
+  font-size: 12px;
 }
 
 .bioDesktop {
-  display: none;
+  display: flex;
+  position: relative;
+  font-size: 12px;
+  line-height: 1.3;
+  max-height: calc(3) * 1em * 1.3;
+  overflow: hidden;
+
+  &:has(+ #expand:not(:checked))::before {
+    content: "";
+    position: absolute;
+    height: calc(1em * 1.3);
+    width: 100%;
+    bottom: 0;
+    pointer-events: none;
+    background: linear-gradient(to bottom, transparent, $secondary-color);
+  }
+
+  &:has(+ #expand:checked) {
+    max-height: none;
+  }
+}
+
+#expand {
+  padding: 0.5rem 1rem;
+  margin-top: 1rem;
+  appearance: none;
+  border: none;
+  border-radius: 4px;
+  background: $tertiary-color;
+  font-size: 16px;
+  font-weight: 700;
+  font-family: $font-text;
+  cursor: pointer;
+
+  &::before {
+    content: "Lire Plus";
+  }
+  &:checked::before {
+    content: "Lire Moins";
+  }
 }
 
 .lire {
@@ -54,10 +93,11 @@ h3 {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  font-size: 15px;
+  font-size: 12px;
 }
 
 .titles {
+  font-size: 16px;
   font-weight: 700;
   margin-bottom: 5px;
 }
@@ -93,16 +133,16 @@ h3 {
     font-size: 15px;
   }
 
+  .bioDesktop {
+    font-size: 12px;
+  }
+
   .lire {
     display: none;
   }
 
   .cache {
     display: none;
-  }
-
-  .bioDesktop {
-    display: flex;
   }
 
   .moreInfos {
@@ -113,7 +153,7 @@ h3 {
     text-align: center;
     margin: 75px 10% 0 10%;
     gap: 25px;
-    font-size: 15px;
+    font-size: 16px;
 
     .titles {
       font-size: 20px;

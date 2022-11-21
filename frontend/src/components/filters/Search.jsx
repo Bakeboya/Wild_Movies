@@ -117,17 +117,18 @@ function Search({
 
       <Modal isOpen={showSearchModal} style={customStyles} ariaHideApp={false}>
         {resultsTotal && (
-          <main className="homeList">
+          <main className="filteredResponsive">
+            <Sorting sorting={sorting} setSorting={setSorting} />
             {resultsTotal.total_results === 10000 ? (
-              <p className="resultsCount">
+              <p className="filteredCount">
                 {resultsTotal.total_results}+ résultats pour : '{search}'
               </p>
             ) : (
-              <p className="resultsCount">
+              <p className="filteredCount">
                 {resultsTotal.total_results} résultats pour '{search}'
               </p>
             )}
-            <ul className="resultsList">
+            <ul className="filteredList">
               {results.map((r) => (
                 <ContentCard c={r} />
               ))}

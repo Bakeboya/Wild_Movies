@@ -83,36 +83,12 @@ function ActorImg({
             {" "}
             Désolé il n'y a pas de biographie disponible pour cette personne.
           </p>
-        ) : textShow === false ? (
-          <>
-            <p className="cache">{`${biocut} (...)`}</p>
-            <button
-              type="button"
-              className="lire"
-              onClick={() => {
-                setTextShow(true);
-              }}
-            >
-              {" "}
-              Lire plus{" "}
-            </button>
-          </>
         ) : (
           <>
-            <p className="cache"> {biography}</p>
-            <button
-              type="button"
-              className="lire"
-              onClick={() => {
-                setTextShow(false);
-              }}
-            >
-              {" "}
-              Lire moins{" "}
-            </button>
+            <p className="bioDesktop">{biography}</p>
+            <input type="checkbox" name="expand" id="expand" />
           </>
         )}
-        <p className="bioDesktop"> {biography}</p>
       </div>
     </div>
   );

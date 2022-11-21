@@ -36,51 +36,86 @@
     .persoBox {
       width: 100%;
       display: flex;
-      flex-direction: row;
       justify-content: space-between;
       font-family: $font-text;
+
+      &:nth-child(2) {
+        div {
+          &:first-of-type {
+            margin-bottom: 1rem;
+          }
+        }
+      }
 
       &_Title {
         font-size: 12px;
         margin-bottom: 6px;
+        font-weight: 700;
       }
 
       &_Text {
-        font-size: 10px;
-      }
-    }
-
-    .bioBox {
-      @include column;
-      width: 100%;
-      gap: 7px;
-
-      &_Title {
-        font-size: 16px;
-      }
-
-      &_Little {
-        height: 44px;
-        font-size: 13px;
-        overflow: hidden;
-      }
-
-      &_Big {
-        font-size: 13px;
-      }
-
-      &_Button {
-        text-align: left;
-        background-color: $secondary-color;
-        border: none;
-        color: $tertiary-color;
+        margin-bottom: 1rem;
         font-size: 12px;
       }
-
-      &_Desktop {
-        display: none;
-      }
     }
+  }
+}
+
+.bioBox {
+  width: 90%;
+  margin: 3rem auto 0;
+
+  &_Title {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  &_Desktop {
+    display: flex;
+    position: relative;
+    font-size: 12px;
+    line-height: 1.3;
+    max-height: calc(3) * 1em * 1.3;
+    overflow: hidden;
+
+    &:has(+ #expand:not(:checked))::before {
+      content: "";
+      position: absolute;
+      height: calc(1em * 1.3);
+      width: 100%;
+      bottom: 0;
+      pointer-events: none;
+      background: linear-gradient(to bottom, transparent, $secondary-color);
+    }
+
+    &:has(+ #expand:checked) {
+      max-height: none;
+    }
+  }
+
+  #expand {
+    padding: 0.5rem 1rem;
+    margin-top: 1rem;
+    appearance: none;
+    border: none;
+    border-radius: 4px;
+    background: $tertiary-color;
+    font-size: 16px;
+    font-weight: 700;
+    font-family: $font-text;
+    cursor: pointer;
+
+    &::before {
+      content: "Lire Plus";
+    }
+    &:checked::before {
+      content: "Lire Moins";
+    }
+  }
+
+  &_Little {
+    display: none;
   }
 }
 
@@ -106,45 +141,28 @@
       }
 
       .persoBox {
-        margin-left: 30px;
-        justify-content: initial;
-        gap: 25%;
+        width: 90%;
+        margin: 0 auto;
+        gap: 3rem;
 
         &_Title {
           font-size: 20px;
           margin-bottom: 10px;
+          font-weight: 700;
         }
 
         &_Text {
-          font-size: 14px;
+          font-size: 16px;
         }
       }
-
-      .bioBox {
-        gap: 10px;
-        margin-left: 30px;
-
-        &_Title {
-          font-size: 20px;
-        }
-
-        &_Little {
-          display: none;
-        }
-
-        &_Big {
-          display: none;
-        }
-
-        &_Button {
-          display: none;
-        }
-
-        &_Desktop {
-          font-size: 18px;
-          display: flex;
-        }
-      }
+    }
+  }
+  .bioBox {
+    &_Title {
+      font-size: 20px;
+    }
+    &_Desktop {
+      font-size: 16px;
     }
   }
 }

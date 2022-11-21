@@ -76,14 +76,14 @@
         display: flex;
         gap: 2rem;
         .imgPoster {
-          img {
+          div {
             width: 178.5px;
             border-radius: 4px;
             border-bottom-right-radius: 0;
             border-top-right-radius: 0;
-          }
-          p {
-            border-bottom-left-radius: 4px;
+            p {
+              border-bottom-left-radius: 4px;
+            }
           }
           h3 {
             display: none;
@@ -144,16 +144,17 @@
     @include resultsList;
     display: grid;
     grid-template-columns: 1fr 1fr;
+    justify-items: center;
     li {
       width: 125px;
       height: 250px;
       .imgPoster {
-        img {
+        div {
           width: 125px;
           height: 187.5px;
-        }
-        p {
-          margin-bottom: 0;
+          p {
+            margin-bottom: 0;
+          }
         }
         h3 {
           height: calc(250px - 187.5px);

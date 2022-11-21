@@ -91,6 +91,7 @@ function CardText({
           {cast && link2 && <CastingCarou cast={crew} link={link2} />}
         </div>
       </div>
+
     </div>
   );
 }
