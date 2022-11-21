@@ -45,9 +45,7 @@
   }
 }
 
-
 @media screen and (max-width: 800px) {
-
   .castingCarouCard {
     width: 185px;
     height: fit-content;
@@ -56,7 +54,6 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-
 
     &:hover {
       transform: scale(0.85);
@@ -77,4 +74,3 @@
     }
   }
 }
-

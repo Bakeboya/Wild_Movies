@@ -41,7 +41,7 @@ function Inputs({
     setShowFiltersModal(true);
     setShowModal(false);
     if (type === "") {
-      setType("movie")
+      setType("movie");
     }
   };
 
