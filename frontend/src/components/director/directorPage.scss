@@ -38,6 +38,13 @@
     }
   }
 
+  &_casting {
+    color: $tertiary-color;
+    font-size: 33px;
+    font-family: $font-display;
+    margin-top: 20px;
+  }
+
   &_movies {
     height: 100%;
     width: 100%;
@@ -47,5 +54,9 @@
 @media screen and (min-width: 600px) {
   .directorPage {
     margin: 30px auto 30px;
+
+    &_profile {
+      width: 100%;
+    }
   }
 }

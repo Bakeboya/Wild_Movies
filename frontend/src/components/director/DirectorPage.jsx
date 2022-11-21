@@ -41,7 +41,7 @@ function DirectorPage() {
         >
           X
         </button>
-        <div>
+        <div className="directorPage_profile">
           {directorInfo && (
             <DirectorProfile
               pic={directorInfo.profile_path}
@@ -56,7 +56,7 @@ function DirectorPage() {
         </div>
 
         <div>
-          <p className="directorProfile_casting">
+          <p className="directorPage_casting">
             {directorInfo && directorInfo.name} est célèbre pour :
           </p>
         </div>

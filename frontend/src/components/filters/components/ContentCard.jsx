@@ -36,27 +36,32 @@ export default function ContentCard({ c, displayToggle }) {
   return (
     <li>
       <Link to={linkPath()} className="imgPoster" title={c.title || c.name}>
-        <img src={imgCover()} alt={c.title} loading="lazy" />
-        {c.vote_average !== undefined && (
-          <p
-            style={{
-              backgroundColor: (() => {
-                if (c.vote_average > 8) {
-                  return "green";
-                }
-                if (c.vote_average > 4) {
-                  return "orange";
-                }
-                if (c.vote_average > 0) {
-                  return "red";
-                }
-                return "gray";
-              })(),
-            }}
-          >
-            {c.vote_average.toFixed(1).toString().replace(/^0\.0/g, "NN")}
-          </p>
-        )}
+        <div
+          style={{ backgroundImage: `url(${imgCover()})` }}
+          alt={c.title}
+          loading="lazy"
+        >
+          {c.vote_average !== undefined && (
+            <p
+              style={{
+                backgroundColor: (() => {
+                  if (c.vote_average > 8) {
+                    return "green";
+                  }
+                  if (c.vote_average > 4) {
+                    return "orange";
+                  }
+                  if (c.vote_average > 0) {
+                    return "red";
+                  }
+                  return "gray";
+                })(),
+              }}
+            >
+              {c.vote_average.toFixed(1).toString().replace(/^0\.0/g, "NN")}
+            </p>
+          )}
+        </div>
         <h3>{c.title || c.name}</h3>
       </Link>
       {displayToggle === 2 && (
