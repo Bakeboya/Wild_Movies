@@ -40,6 +40,9 @@ function Inputs({
   const handleClick = () => {
     setShowFiltersModal(true);
     setShowModal(false);
+    if (type === "") {
+      setType("movie");
+    }
   };
 
   const handleSelectGenres = (option) => {

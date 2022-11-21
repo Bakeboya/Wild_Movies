@@ -77,17 +77,19 @@ function CardText({
         <h3>Synopsis</h3>
         <p>{overview}</p>
       </div>
-      <div className="synopsisFilm">
-        <h3>Distribution</h3>
-      </div>
-      <div className="castingCarouDiv">
-        <CastingCarou cast={cast} link={link1} />
-      </div>
-      <div className="synopsisFilm">
-        <h3>Equipe technique</h3>
-      </div>
-      <div className="castingCarouDiv">
-        <CastingCarou cast={crew} link={link2} />
+      <div className="divParenteCaroussel">
+        <div className="synopsisFilm">
+          <h3>Distribution</h3>
+        </div>
+        <div className="castingCarouDiv">
+          {cast && link1 && <CastingCarou cast={cast} link={link1} />}
+        </div>
+        <div className="synopsisFilm">
+          <h3>Equipe technique</h3>
+        </div>
+        <div className="castingCarouDiv">
+          {cast && link2 && <CastingCarou cast={crew} link={link2} />}
+        </div>
       </div>
     </div>
   );
