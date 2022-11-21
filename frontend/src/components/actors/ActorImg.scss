@@ -10,7 +10,7 @@
 }
 
 h2 {
-  font-size: 20px;
+  font-size: 35px;
   font-weight: 700;
   color: $tertiary-color;
   font-family: $font-display;
@@ -30,21 +30,21 @@ h3 {
   flex-direction: column;
   gap: 10px;
   margin: 15px 0 15px 0;
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .actorBio {
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .emptyBio {
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .bioDesktop {
   display: flex;
   position: relative;
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.3;
   max-height: calc(3) * 1em * 1.3;
   overflow: hidden;
@@ -71,7 +71,7 @@ h3 {
   border: none;
   border-radius: 4px;
   background: $tertiary-color;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 700;
   font-family: $font-text;
   cursor: pointer;
@@ -93,7 +93,7 @@ h3 {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .titles {
@@ -124,17 +124,17 @@ h3 {
 
   .actorBio {
     margin: 100px 0 30px 0;
-    font-size: 15px;
+    font-size: 16px;
     word-spacing: 3px;
     line-height: 1.6;
   }
 
   .emptyBio {
-    font-size: 15px;
+    font-size: 16px;
   }
 
   .bioDesktop {
-    font-size: 12px;
+    font-size: 16px;
   }
 
   .lire {
