@@ -36,7 +36,11 @@ export default function ContentCard({ c, displayToggle }) {
   return (
     <li>
       <Link to={linkPath()} className="imgPoster" title={c.title || c.name}>
-        <div style={{ backgroundImage: `url(${imgCover()})` }} alt={c.title} loading="lazy">
+        <div
+          style={{ backgroundImage: `url(${imgCover()})` }}
+          alt={c.title}
+          loading="lazy"
+        >
           {c.vote_average !== undefined && (
             <p
               style={{

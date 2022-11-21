@@ -36,7 +36,8 @@ function DirectorMovies({ idDirector }) {
   const getDirectorMovies = () => {
     axios
       .get(
-        `https://api.themoviedb.org/3/person/${idDirector}/combined_credits?api_key=${import.meta.env.VITE_API_KEY
+        `https://api.themoviedb.org/3/person/${idDirector}/combined_credits?api_key=${
+          import.meta.env.VITE_API_KEY
         }&language=en-US`
       )
       .then((res) => {

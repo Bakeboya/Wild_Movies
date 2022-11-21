@@ -79,14 +79,16 @@ function CardText({
       </div>
       <div className="synopsisFilm">
         <h3>Distribution</h3>
-      </div><div className="castingCarouDiv">
-        <CastingCarou cast={cast} link={link1} /></div>
+      </div>
+      <div className="castingCarouDiv">
+        <CastingCarou cast={cast} link={link1} />
+      </div>
       <div className="synopsisFilm">
         <h3>Equipe technique</h3>
       </div>
       <div className="castingCarouDiv">
-        <CastingCarou cast={crew} link={link2} /></div>
-
+        <CastingCarou cast={crew} link={link2} />
+      </div>
     </div>
   );
 }

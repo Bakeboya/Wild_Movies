@@ -72,8 +72,7 @@ function DirectorProfile({ pic, name, birthday, alias, city, bio, deathday }) {
                       <p className="persoBox_Title">Date de naissance</p>
                       <p className="persoBox_Text">
                         {birthday}
-                        <br />
-                        ({getAge()} ans)
+                        <br />({getAge()} ans)
                       </p>
                     </div>
                   )}
@@ -95,7 +94,6 @@ function DirectorProfile({ pic, name, birthday, alias, city, bio, deathday }) {
               )}
             </div>
           </div>
-
         </div>
       </div>
       <div className="bioBox">
