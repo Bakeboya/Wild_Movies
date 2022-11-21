@@ -88,6 +88,14 @@
   }
 }
 
+.divParenteCaroussel {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+}
+
 @media screen and (max-width: 600px) {
   .cardText {
     padding: 0;

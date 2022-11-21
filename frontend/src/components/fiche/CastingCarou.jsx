@@ -5,21 +5,29 @@ import "react-multi-carousel/lib/styles.css";
 import CastingCarouCard from "./CastingCarouCard";
 
 const responsive = {
-  desktop: {
-    breakpoint: { max: 4000, min: 1024 },
-    items: 4,
-    slidesToSlide: 4,
-  },
-  tablet: {
-    breakpoint: { max: 1024, min: 430 },
-    items: 2,
-    slidesToSlide: 2,
-  },
-  mobile: {
-    breakpoint: { max: 430, min: 0 },
-    items: 1,
-    slidesToSlide: 1,
-  },
+
+    desktop: {
+        breakpoint: { max: 4000, min: 1024 },
+        items: 4,
+        slidesToSlide: 4,
+    },
+    smallDesktop: {
+        breakpoint: { max: 1024, min: 800 },
+        items: 3,
+        slidesToSlide: 3,
+    },
+
+    tablet: {
+        breakpoint: { max: 800, min: 430 },
+        items: 2,
+        slidesToSlide: 2,
+    },
+    mobile: {
+        breakpoint: { max: 430, min: 0 },
+        items: 1,
+        slidesToSlide: 1,
+    },
+
 };
 
 function CastingCarou({ cast, link }) {
