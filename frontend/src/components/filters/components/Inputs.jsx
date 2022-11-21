@@ -40,7 +40,12 @@ function Inputs({
   const handleClick = () => {
     setShowFiltersModal(true);
     setShowModal(false);
+    if (type === "") {
+      setType("movie")
+    }
   };
+
+  console.log(type)
 
   const handleSelectGenres = (option) => {
     let genresQuery = "&with_genres=";
