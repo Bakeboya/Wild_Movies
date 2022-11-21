@@ -24,23 +24,24 @@ const responsive = {
 };
 
 function DirectorMovies({ idDirector }) {
-
-  const Carousel = C.default ? C.default : C
+  const Carousel = C.default ? C.default : C;
 
   const [directorDataCut, setDirectorDataCut] = useState([]);
 
   const getDirectorMovies = () => {
     axios
       .get(
-        `https://api.themoviedb.org/3/person/${idDirector}/combined_credits?api_key=${import.meta.env.VITE_API_KEY
+        `https://api.themoviedb.org/3/person/${idDirector}/combined_credits?api_key=${
+          import.meta.env.VITE_API_KEY
         }&language=en-US`
       )
       .then((res) => {
         const directorData = [];
 
-        res.data.cast.map((element) => {
+        res.data.crew.map((element) => {
           return directorData.push({
             id: element.id,
+            job: element.job,
             media_type: element.media_type,
             release_date: element.release_date,
             original_title: element.original_title,
@@ -48,7 +49,7 @@ function DirectorMovies({ idDirector }) {
           });
         });
 
-        setDirectorDataCut(directorData && directorData.slice(0, 19));
+        setDirectorDataCut(directorData && directorData.slice(0, 50));
       });
   };
 
@@ -73,6 +74,7 @@ function DirectorMovies({ idDirector }) {
                   id={infos.id}
                   date={infos.release_date}
                   type={infos.media_type}
+                  job={infos.job}
                 />
               </div>
             );

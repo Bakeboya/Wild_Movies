@@ -36,67 +36,101 @@ function DirectorProfile({ pic, name, birthday, alias, city, bio, deathday }) {
         </div>
 
         <div className="persoBox">
-          <div>
-            {alias && <p className="persoBox_Title">Alias</p>}
-            {alias &&
-              alias.map((element) => {
-                return <p className="persoBox_Text">{element}</p>;
-              })}
-          </div>
+          {alias <= 0 ? (
+            <div>
+              <p className="persoBox_Title">Alias</p>
+              <p className="persoBox_Text">Non renseigné</p>
+            </div>
+          ) : (
+            <div>
+              <p className="persoBox_Title">Alias</p>
+              {alias &&
+                alias.map((element) => {
+                  return <p className="persoBox_Text">{element}</p>;
+                })}
+            </div>
+          )}
 
           <div>
-            {deathday ? (
-              <>
-                <p className="persoBox_Title">Date de naissance</p>
-                <p className="persoBox_Text">{birthday}</p>
-                <p className="persoBox_Title">Date de décès</p>
-                <p className="persoBox_Text">
-                  {deathday} à {getAge()} ans
-                </p>
-              </>
+            {birthday !== null ? (
+              <div>
+                {deathday ? (
+                  <>
+                    <p className="persoBox_Title">Date de naissance</p>
+                    <p className="persoBox_Text">{birthday}</p>
+                    <p className="persoBox_Title">Date de décès</p>
+                    <p className="persoBox_Text">
+                      {deathday} à {getAge()} ans
+                    </p>
+                  </>
+                ) : (
+                  <div>
+                    <p className="persoBox_Title">Date de naissance</p>
+                    <p className="persoBox_Text">
+                      {birthday} / {getAge()} ans
+                    </p>
+                  </div>
+                )}
+              </div>
             ) : (
               <>
                 <p className="persoBox_Title">Date de naissance</p>
-                <p className="persoBox_Text">
-                  {birthday} / {getAge()} ans
-                </p>
+                <p className="persoBox_Text">Non renseigné</p>
               </>
             )}
           </div>
 
           <div>
             <p className="persoBox_Title">Lieu de naissance</p>
-            <p className="persoBox_Text">{city}</p>
+            {city == null ? (
+              <p className="persoBox_Text">Non renseigné</p>
+            ) : (
+              <p className="persoBox_Text">{city}</p>
+            )}
           </div>
         </div>
 
         <div className="bioBox">
           <p className="bioBox_Title">Biographie :</p>
-
-          {textShow === false ? (
-            <>
-              <p className="bioBox_Little">{bio}</p>
-              <button
-                type="button"
-                className="bioBox_Button"
-                onClick={() => setTextShow(true)}
-              >
-                lire plus
-              </button>
-            </>
+          {bio === "" ? (
+            <p className="bioBox_Big">
+              Aucune biographie n'a été rédigée pour {name}.
+            </p>
           ) : (
-            <>
-              <p className="bioBox_Big">{bio}</p>
-              <button
-                type="button"
-                className="bioBox_Button"
-                onClick={() => setTextShow(false)}
-              >
-                lire moins
-              </button>
-            </>
+            <div>
+              {textShow === false ? (
+                <>
+                  <p className="bioBox_Little">{bio}</p>
+                  <button
+                    type="button"
+                    className="bioBox_Button"
+                    onClick={() => setTextShow(true)}
+                  >
+                    lire plus
+                  </button>
+                </>
+              ) : (
+                <>
+                  <p className="bioBox_Big">{bio}</p>
+                  <button
+                    type="button"
+                    className="bioBox_Button"
+                    onClick={() => setTextShow(false)}
+                  >
+                    lire moins
+                  </button>
+                </>
+              )}
+            </div>
           )}
-          <p className="bioBox_Desktop">{bio}</p>
+
+          {bio === "" ? (
+            <p className="bioBox_Desktop">
+              Aucune biographie n'a été rédigée pour {name}.
+            </p>
+          ) : (
+            <p className="bioBox_Desktop">{bio}</p>
+          )}
         </div>
       </div>
     </div>
