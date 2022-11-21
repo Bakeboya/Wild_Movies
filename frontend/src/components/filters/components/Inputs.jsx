@@ -45,8 +45,6 @@ function Inputs({
     }
   };
 
-  console.log(type)
-
   const handleSelectGenres = (option) => {
     let genresQuery = "&with_genres=";
     option.map((o, i) => {
