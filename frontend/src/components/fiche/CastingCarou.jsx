@@ -10,8 +10,14 @@ const responsive = {
         items: 4,
         slidesToSlide: 4,
     },
+    smallDesktop: {
+        breakpoint: { max: 1024, min: 800 },
+        items: 3,
+        slidesToSlide: 3,
+    },
+
     tablet: {
-        breakpoint: { max: 1024, min: 430 },
+        breakpoint: { max: 800, min: 430 },
         items: 2,
         slidesToSlide: 2,
     },

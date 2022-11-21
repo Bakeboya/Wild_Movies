@@ -13,7 +13,7 @@ function Modal({ open, children, title, closeModal }) {
           <FaWindowClose onClick={closeModal} />
         </div>
       </div>
-      <div className="modalContent">{children}</div>
+      {children && <div className="modalContent">{children}</div>}
     </div>
   );
 }
