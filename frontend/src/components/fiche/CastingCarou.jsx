@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
-import Carousel from "react-multi-carousel";
+import C from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import CastingCarouCard from "./CastingCarouCard";
 
@@ -23,6 +23,9 @@ const responsive = {
 };
 
 function CastingCarou({ cast, link }) {
+
+    const Carousel = C.default ? C.default : C
+
     return (
         <div className="castingCarou">
             <Carousel
