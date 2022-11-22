@@ -4,6 +4,7 @@ import Favori from "@components/navbar/Favori";
 import PropTypes from "prop-types";
 import Loupe from "./Loupe";
 import WildMovies from "./WildMovies";
+import componentCoeur from "@assets/fiche/ComponentCoeur2.svg";
 
 function Navbar({
   setEmptySearch,
@@ -66,8 +67,8 @@ function Navbar({
         <div className="Login">
           {connected && (
             <>
-              <button type="button" onClick={displayFavori}>
-                Favoris
+              <button type="button" onClick={displayFavori} className='stealth'>
+                <img id="favoriHeart" src={componentCoeur} alt="logo favoris" />
               </button>
               <p>{email}</p>
             </>
