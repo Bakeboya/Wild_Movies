@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 function DirectorProfile({ pic, name, birthday, alias, city, bio, deathday }) {
   const imgLink = `http://image.tmdb.org/t/p/w500${pic}`;
   const imgName = `Image de ${name}`;
+  const [toggle, setToggle] = useState(false);
 
   function getAge() {
     const dt = new Date(birthday);
@@ -104,8 +105,16 @@ function DirectorProfile({ pic, name, birthday, alias, city, bio, deathday }) {
           </p>
         ) : (
           <>
-            <p className="bioBox_Desktop">{bio}</p>
-            <input type="checkbox" name="expand" id="expand" />
+            <p className={toggle ? "bioBox_Desktop open" : "bioBox_Desktop"}>
+              {bio}
+            </p>
+            <button
+              type="button"
+              className="expand"
+              onClick={() => setToggle(!toggle)}
+            >
+              Lire {toggle ? "moins" : "plus"}
+            </button>
           </>
         )}
       </div>

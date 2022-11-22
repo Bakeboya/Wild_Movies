@@ -13,7 +13,7 @@ function ActorImg({
   homepage,
 }) {
   const imgAct = `http://image.tmdb.org/t/p/h632/${actImg}`;
-  const [textShow, setTextShow] = useState(false);
+  const [toggle, setToggle] = useState(false);
 
   function getAge() {
     const dt = new Date(birthday);
@@ -27,8 +27,6 @@ function ActorImg({
     const age = new Date(diff);
     return Math.abs(age.getUTCFullYear() - 1970);
   }
-
-  const biocut = biography.slice(0, 205);
 
   return (
     <div className="actorsInfos">
@@ -90,8 +88,16 @@ function ActorImg({
           </p>
         ) : (
           <>
-            <p className="bioDesktop">{biography}</p>
-            <input type="checkbox" name="expand" id="expand" />
+            <p className={toggle ? "bioDesktop open" : "bioDesktop"}>
+              {biography}
+            </p>
+            <button
+              type="button"
+              className="expand"
+              onClick={() => setToggle(!toggle)}
+            >
+              Lire {toggle ? "moins" : "plus"}
+            </button>
           </>
         )}
       </div>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import ContentCard from "@components/filters/components/ContentCard";
 import Navbar from "@components/navbar/Navbar";
 import Inputs from "@components/filters/components/Inputs";
@@ -11,6 +11,7 @@ import { useDiscover } from "../data/DataFetch";
 
 function Discover() {
   const { type } = useParams();
+  const navigate = useNavigate();
 
   const {
     setType,
@@ -33,6 +34,10 @@ function Discover() {
   useEffect(() => {
     setType(type);
   }, []);
+
+  if (/^(?!.*(tv|movie)$)/gi.test(type)) {
+    navigate("/");
+  }
 
   const handleFiltersPage = (data) => {
     window.scrollTo(0, 0);
