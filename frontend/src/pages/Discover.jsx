@@ -33,7 +33,6 @@ function Discover() {
 
   useEffect(() => {
     setType(type);
-    console.log(type)
   }, []);
 
   if (/^(?!.*(tv|movie)$)/gi.test(type)) {

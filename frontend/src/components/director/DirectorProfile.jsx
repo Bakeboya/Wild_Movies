@@ -105,8 +105,16 @@ function DirectorProfile({ pic, name, birthday, alias, city, bio, deathday }) {
           </p>
         ) : (
           <>
-            <p className={toggle ? "bioBox_Desktop open" : "bioBox_Desktop"}>{bio}</p>
-            <button className="expand" onClick={() => setToggle(!toggle)}>Lire {toggle ? 'moins' : 'plus'}</button>
+            <p className={toggle ? "bioBox_Desktop open" : "bioBox_Desktop"}>
+              {bio}
+            </p>
+            <button
+              type="button"
+              className="expand"
+              onClick={() => setToggle(!toggle)}
+            >
+              Lire {toggle ? "moins" : "plus"}
+            </button>
           </>
         )}
       </div>
