@@ -45,11 +45,10 @@ const postUser = (req, res) => {
 };
 const updateUserById = (req, res) => {
   const id = parseInt(req.params.id, 10);
-  const { password, favorite } = req.body;
+  const { password } = req.body;
   connection
-    .query("UPDATE users SET password = ? favorite = ? WHERE id = ?", [
+    .query("UPDATE users SET password = ? WHERE id = ?", [
       password,
-      favorite,
       id,
     ])
     .then(([result]) => {

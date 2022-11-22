@@ -246,6 +246,8 @@ function User({
               propsGetEmail={getEmail}
               propsGetPassword={getPassword}
               connected={connected}
+              wrongPassword={wrongPassword}
+              setWrongPassword={setWrongPassword}
             />
           )}
           {inscription && (
