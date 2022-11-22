@@ -1,12 +1,12 @@
 @import "./variables.scss";
 @import "./reset.scss";
 
+@import "./user/user.scss";
+
 @import "./navbar/navbar.scss";
 @import "./header/header.scss";
 @import "./filters/styles/main.scss";
 @import "./footer/footer.scss";
-
-@import "./user/user.scss";
 
 @import "./filters/styles/discover.scss";
 @import "./filters/styles/pagination.scss";
