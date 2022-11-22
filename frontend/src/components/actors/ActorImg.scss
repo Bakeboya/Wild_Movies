@@ -79,6 +79,7 @@ h3 {
   &::before {
     content: "Lire Plus";
   }
+
   &:checked::before {
     content: "Lire Moins";
   }
@@ -134,7 +135,7 @@ h3 {
   }
 
   .bioDesktop {
-    font-size: 12px;
+    font-size: 16px;
   }
 
   .lire {
