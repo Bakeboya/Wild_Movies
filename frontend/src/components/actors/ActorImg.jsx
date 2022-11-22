@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import ImgTemp from '@assets/fiche/ImgTemp.png';
+import ImgTemp from "@assets/fiche/ImgTemp.png";
 
 function ActorImg({
   actImg,
@@ -33,9 +33,12 @@ function ActorImg({
   return (
     <div className="actorsInfos">
       <div className="imgNameInfos">
-
         <div className="picture">
-          <img className="actorImg" src={actImg != null ? imgAct : ImgTemp} alt={actName} />
+          <img
+            className="actorImg"
+            src={actImg != null ? imgAct : ImgTemp}
+            alt={actName}
+          />
         </div>
 
         <h2>{actName}</h2>
