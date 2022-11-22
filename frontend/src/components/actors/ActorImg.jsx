@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
+import ImgTemp from '@assets/fiche/ImgTemp.png';
 
 function ActorImg({
   actImg,
@@ -11,8 +12,9 @@ function ActorImg({
   deathday,
   homepage,
 }) {
+
   const imgAct = `http://image.tmdb.org/t/p/h632/${actImg}`;
-  const [textShow, setTextShow] = useState(false);
+  const [toggle, setToggle] = useState(false);
 
   function getAge() {
     const dt = new Date(birthday);
@@ -27,13 +29,12 @@ function ActorImg({
     return Math.abs(age.getUTCFullYear() - 1970);
   }
 
-  const biocut = biography.slice(0, 205);
-
   return (
     <div className="actorsInfos">
       <div className="imgNameInfos">
+
         <div className="picture">
-          <img className="actorImg" src={imgAct} alt={actName} />
+          <img className="actorImg" src={actImg != null ? imgAct : ImgTemp} alt={actName} />
         </div>
 
         <h2>{actName}</h2>
@@ -85,8 +86,8 @@ function ActorImg({
           </p>
         ) : (
           <>
-            <p className="bioDesktop">{biography}</p>
-            <input type="checkbox" name="expand" id="expand" />
+            <p className={toggle ? "bioDesktop open" : "bioDesktop"}>{biography}</p>
+            <button className="expand" onClick={() => setToggle(!toggle)}>Lire {toggle ? 'moins' : 'plus'}</button>
           </>
         )}
       </div>
