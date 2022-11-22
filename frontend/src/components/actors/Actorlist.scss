@@ -3,11 +3,12 @@
   background-color: $secondary-color;
   display: flex;
   flex-direction: column;
+  border-radius: 4px;
   gap: 10px;
   border-radius: 4px;
-  padding: 10px;
   width: 90%;
-  margin: 0 auto;
+  margin: 2rem auto 13rem;
+  padding: 0 2rem;
 
   .goBackBtn {
     display: inline;
