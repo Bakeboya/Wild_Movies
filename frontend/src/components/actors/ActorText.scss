@@ -1,17 +1,15 @@
 .displayText {
-  display: flex;
-  flex-direction: column;
+  width: 95%;
   border-radius: 4px;
   font-size: 13px;
   padding: 5px;
-  margin-bottom: 8.9rem;
 }
 
 th {
   width: 100%;
   text-align: center;
   padding: 15px;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 700;
 }
 
@@ -22,10 +20,6 @@ th {
   text-align: center;
 }
 
-.gras:hover {
-  font-weight: 700;
-}
-
 .credits {
   width: 100%;
   margin: 0;
@@ -34,17 +28,21 @@ th {
   padding: 10px 0 10px 5px;
 }
 
+.date {
+  width: 100px;
+}
+
+.gras {
+  font-weight: 700;
+}
+
 @media screen and (min-width: 600px) {
   .displayText {
     font-size: 16px;
   }
 
   .thead {
-    margin: 40px 0 60px 0;
-  }
-
-  .gras {
-    font-weight: 700;
+    margin: 40px 0 20px 0;
   }
 
   .ii {

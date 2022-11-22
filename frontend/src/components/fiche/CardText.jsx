@@ -1,9 +1,7 @@
 import React from "react";
 import componentCoeur from "@assets/fiche/ComponentCoeur.svg";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
-import FaWindowClose from "@meronex/icons/fa/FaWindowClose";
-import Casting from "./Casting";
+import { useNavigate } from "react-router-dom";
 import Pegi from "./Pegi";
 import LecteurBA from "./LecteurBA";
 import Time from "./Time";
@@ -27,12 +25,21 @@ function CardText({
 }) {
   const link1 = `/actor/`;
   const link2 = `/crew/`;
+
+  const navigate = useNavigate();
+
   return (
     <div className="cardText">
       <div className="close">
-        <Link to="/">
-          <FaWindowClose />
-        </Link>
+        <button
+          type="button"
+          className="goBackBtn"
+          onClick={() => {
+            navigate(-1);
+          }}
+        >
+          X
+        </button>
       </div>
       <div className="titleFilm">
         {title} ({releaseDate.split("-")[0]})

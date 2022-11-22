@@ -39,12 +39,14 @@ function ActorText({ cast }) {
                       interprétant{" "}
                       <span className="gras">{element.character} </span>
                     </td>
-                    <td>
+                    <td className="date">
                       <span className="gras">
-                        {" "}
                         {element.first_air_date === undefined
                           ? element.release_date.split("-")[0]
                           : element.first_air_date.split("-")[0]}
+                        {!element.first_air_date && !element.release_date &&
+                          <p>?</p>
+                        }
                       </span>
                     </td>
                   </tr>

@@ -74,44 +74,27 @@
   &_Desktop {
     display: flex;
     position: relative;
-    font-size: 12px;
+    font-size: 14px;
     line-height: 1.3;
     max-height: calc(3) * 1em * 1.3;
     overflow: hidden;
-
-    &:has(+ #expand:not(:checked))::before {
-      content: "";
-      position: absolute;
-      height: calc(1em * 1.3);
-      width: 100%;
-      bottom: 0;
-      pointer-events: none;
-      background: linear-gradient(to bottom, transparent, $secondary-color);
-    }
-
-    &:has(+ #expand:checked) {
-      max-height: none;
-    }
   }
-
-  #expand {
+  
+  .open {
+    max-height: none;
+  }
+  
+  .expand {
     padding: 0.5rem 1rem;
     margin-top: 1rem;
     appearance: none;
     border: none;
     border-radius: 4px;
     background: $tertiary-color;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 700;
     font-family: $font-text;
     cursor: pointer;
-
-    &::before {
-      content: "Lire Plus";
-    }
-    &:checked::before {
-      content: "Lire Moins";
-    }
   }
 
   &_Little {
