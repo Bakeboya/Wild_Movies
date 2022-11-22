@@ -7,6 +7,7 @@ const Discover = lazy(() => import("@pages/Discover"));
 const DirectorPage = lazy(() => import("@components/director/DirectorPage"));
 const Actorslist = lazy(() => import("@components/actors/Actorslist"));
 const Footer = lazy(() => import("@components/footer/Footer"));
+const Secret = lazy(() => import("@components/secret/SecretPage"));
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="/actor/:id" element={<Actorslist />} />
           <Route path="/:type/:id" element={<FicheFilm />} />
           <Route path="/:type" element={<Discover />} />
+          <Route path="/secret" element={<Secret />} />
         </Routes>
         <Footer />
       </Suspense>
