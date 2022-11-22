@@ -36,7 +36,7 @@ function WildMovies({
       </Link>
     </div>
   );
-};
+}
 
 export default WildMovies;
 

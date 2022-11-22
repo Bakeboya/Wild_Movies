@@ -58,7 +58,7 @@ function UserConnect({
       </div>
     </div>
   );
-};
+}
 UserConnect.propTypes = {
   handleClose: PropTypes.string.isRequired,
   propsConnect: PropTypes.string.isRequired,

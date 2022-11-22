@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import UserIcon from "@components/navbar/UserIcon";
 import Favori from "@components/navbar/Favori";
 import PropTypes from "prop-types";
+import componentCoeur from "@assets/fiche/ComponentCoeur2.svg";
 import Loupe from "./Loupe";
 import WildMovies from "./WildMovies";
-import componentCoeur from "@assets/fiche/ComponentCoeur2.svg";
 
 function Navbar({
   setEmptySearch,
@@ -67,7 +67,7 @@ function Navbar({
         <div className="Login">
           {connected && (
             <>
-              <button type="button" onClick={displayFavori} className='stealth'>
+              <button type="button" onClick={displayFavori} className="stealth">
                 <img id="favoriHeart" src={componentCoeur} alt="logo favoris" />
               </button>
               <p>{email}</p>

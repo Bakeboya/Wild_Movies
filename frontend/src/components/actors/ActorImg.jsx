@@ -51,6 +51,7 @@ function ActorImg({
           <div className="actorBirthday">
             <p className="titles"> Date de naissance </p>
             <p>{birthday}</p>
+            <p>{getAge()} ans</p>
           </div>
 
           <div className="placeBirth">

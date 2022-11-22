@@ -3,16 +3,19 @@ import BilFacebook from "@meronex/icons/bi/BilFacebook";
 import BilTwitter from "@meronex/icons/bi/BilTwitter";
 import BilInstagramAlt from "@meronex/icons/bi/BilInstagramAlt";
 import FiArrowUpCircle from "@meronex/icons/fi/FiArrowUpCircle";
+import { Link } from "react-router-dom";
 import logoWildmovies from "../../assets/logo footer/wildmovies.svg";
-import { Link } from 'react-router-dom';
 
 function Footer() {
   return (
     <footer className="footerApp">
       <div className="footerContainer">
-        <Link onClick={() => {
-          window.scrollTo(0, 0)
-        }} to='/'>
+        <Link
+          onClick={() => {
+            window.scrollTo(0, 0);
+          }}
+          to="/"
+        >
           <img src={logoWildmovies} alt="logoW" id="logoW" />
         </Link>
         <div className="textLogo">
@@ -50,7 +53,9 @@ function Footer() {
           <FiArrowUpCircle />
         </button>
       </div>
-      <p className="text">© Team <Link to='/secret'>M</Link>ovies. All rights reserved.</p>
+      <p className="text">
+        © Team <Link to="/secret">M</Link>ovies. All rights reserved.
+      </p>
     </footer>
   );
 }
