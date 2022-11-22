@@ -13,7 +13,15 @@ import UserPassword from "./UserPassword";
 import UserInscription from "./UserInscription";
 import UserConnect from "./UserConnect";
 
-function User({ handleActive, setEmail, email, connected, setConnected, fav, setFav }) {
+function User({
+  handleActive,
+  setEmail,
+  email,
+  connected,
+  setConnected,
+  fav,
+  setFav,
+}) {
   const [active, setActive] = useState(true);
   const [connect, setConnect] = useState(false);
   const [inscription, setInscription] = useState(false);
@@ -146,8 +154,7 @@ function User({ handleActive, setEmail, email, connected, setConnected, fav, set
                 <img src={wildmovies} alt="title" className="userTitle" />
                 <img src={logoConnect} alt="Connection" id="logoConnect" />
                 <p className="overlayTitle">Vous êtes connecté au compte</p>
-                <span className="messagePopUp">{email}
-                </span>
+                <span className="messagePopUp">{email}</span>
                 <button
                   type="submit"
                   className="linkClose"
@@ -239,6 +246,8 @@ function User({ handleActive, setEmail, email, connected, setConnected, fav, set
               propsGetEmail={getEmail}
               propsGetPassword={getPassword}
               connected={connected}
+              wrongPassword={wrongPassword}
+              setWrongPassword={setWrongPassword}
             />
           )}
           {inscription && (
@@ -270,5 +279,7 @@ User.propTypes = {
   email: PropTypes.string.isRequired,
   connected: PropTypes.string.isRequired,
   setConnected: PropTypes.string.isRequired,
+  fav: PropTypes.string.isRequired,
+  setFav: PropTypes.string.isRequired,
 };
 export default User;

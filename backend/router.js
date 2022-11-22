@@ -15,6 +15,7 @@ app.get("/users", usersHandlers.getUsers);
 app.get("/users/:id", usersHandlers.getUserById);
 app.post("/users", usersHandlers.postUser);
 app.put("/users/:id", usersHandlers.updateUserById);
+// app.put("users/:id", usersHandlers.updateFavById);
 app.delete("/users/:id", usersHandlers.deleteUserById);
 
 app.listen(port, (err) => {

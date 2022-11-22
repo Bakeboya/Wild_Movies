@@ -18,7 +18,7 @@ function WildMovies({ setResults }) {
       </Link>
     </div>
   );
-}
+};
 
 export default WildMovies;
 
