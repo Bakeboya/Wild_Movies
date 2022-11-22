@@ -32,13 +32,22 @@ function ActorText({ cast }) {
                 >
                   <tr>
                     <td className="credits">
-                      {element.title || element.name} interprétant{" "}
-                      {element.character}
+                      <span className="gras">
+                        {" "}
+                        {element.title || element.name}
+                      </span>{" "}
+                      interprétant{" "}
+                      <span className="gras">{element.character} </span>
                     </td>
-                    <td>
-                      {element.first_air_date === undefined
-                        ? element.release_date.split("-")[0]
-                        : element.first_air_date.split("-")[0]}
+                    <td className="date">
+                      <span className="gras">
+                        {element.first_air_date === undefined
+                          ? element.release_date.split("-")[0]
+                          : element.first_air_date.split("-")[0]}
+                        {!element.first_air_date && !element.release_date && (
+                          <p>?</p>
+                        )}
+                      </span>
                     </td>
                   </tr>
                 </Link>

@@ -273,6 +273,9 @@ function User({
     </div>
   );
 }
+
+export default User;
+
 User.propTypes = {
   handleActive: PropTypes.string.isRequired,
   setEmail: PropTypes.string.isRequired,
@@ -280,6 +283,5 @@ User.propTypes = {
   connected: PropTypes.string.isRequired,
   setConnected: PropTypes.string.isRequired,
   fav: PropTypes.string.isRequired,
-  setFav: PropTypes.string.isRequired,
+  setFav: PropTypes.func.isRequired,
 };
-export default User;

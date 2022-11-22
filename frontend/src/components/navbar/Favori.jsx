@@ -56,3 +56,4 @@ Favori.propTypes = {
     closeFavori: PropTypes.func.isRequired,
 };
 export default Favori;
+

@@ -1,14 +1,17 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import ContentCard from "@components/filters/components/ContentCard";
 import Navbar from "@components/navbar/Navbar";
 import Inputs from "@components/filters/components/Inputs";
 import Sorting from "@components/filters/components/Sorting";
+import BsFillGridFill from "@meronex/icons/bs/BsFillGridFill";
+import BsListUl from "@meronex/icons/bs/BsListUl";
 import { useDiscover } from "../data/DataFetch";
 
 function Discover() {
   const { type } = useParams();
+  const navigate = useNavigate();
 
   const {
     setType,
@@ -26,13 +29,27 @@ function Discover() {
     setDiscoverCertification,
   } = useDiscover();
 
+  const [displayToggle, setDisplayToggle] = useState(1);
+
   useEffect(() => {
     setType(type);
   }, []);
 
+  if (/^(?!.*(tv|movie)$)/gi.test(type)) {
+    navigate("/");
+  }
+
   const handleFiltersPage = (data) => {
     window.scrollTo(0, 0);
     setFiltersPage(data.selected + 1);
+  };
+
+  const handleDisplay1 = () => {
+    setDisplayToggle(1);
+  };
+
+  const handleDisplay2 = () => {
+    setDisplayToggle(2);
   };
 
   return (
@@ -52,12 +69,34 @@ function Discover() {
           />
         </section>
         <section className="filtered">
-          <p className="filteredCount">
-            {filtersTotal.total_results} résultats
-          </p>
-          <ul className="filteredList">
+          <div className="filteredParams">
+            <p className="filteredCount">
+              {filtersTotal.total_results} résultats
+            </p>
+            <div className="filteredDisplay">
+              <button
+                type="button"
+                onClick={handleDisplay1}
+                className={displayToggle === 1 ? "selected" : ""}
+              >
+                <BsFillGridFill />
+              </button>
+              <button
+                type="button"
+                onClick={handleDisplay2}
+                className={displayToggle === 2 ? "selected" : ""}
+              >
+                <BsListUl />
+              </button>
+            </div>
+          </div>
+          <ul
+            className={
+              displayToggle === 1 ? "filteredList" : "filteredList columnList"
+            }
+          >
             {discover.map((r) => (
-              <ContentCard c={r} />
+              <ContentCard displayToggle={displayToggle} c={r} />
             ))}
           </ul>
           <ReactPaginate

@@ -13,13 +13,14 @@ export const useSearch = () => {
   const [results, setResults] = useState([]);
   const [resultsTotal, setResultsTotal] = useState("");
   const [searchPage, setSearchPage] = useState(1);
+  const [searchType, setSearchType] = useState("multi");
 
   const getSearch = () => {
     const source = axios.CancelToken.source();
 
     axios
       .get(
-        `https://api.themoviedb.org/3/search/movie?api_key=${
+        `https://api.themoviedb.org/3/search/${searchType}?api_key=${
           import.meta.env.VITE_API_KEY
         }&language=${lang}&page=${searchPage}&include_adult=false&query=${search}`,
         { cancelToken: source.token }
@@ -27,7 +28,6 @@ export const useSearch = () => {
       .then((res) => {
         setResultsTotal(res.data);
         setResults(res.data.results);
-        console.log(`data search: ${search}`);
       });
 
     return () => {
@@ -37,13 +37,15 @@ export const useSearch = () => {
 
   useEffect(() => {
     getSearch();
-  }, [search, searchPage, setSearchPage, lang]);
+  }, [search, searchPage, setSearchPage, searchType, lang]);
 
   return {
     searchText,
     setSearchText,
     search,
     setSearch,
+    searchType,
+    setSearchType,
     results,
     setResults,
     resultsTotal,

@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import ReactPaginate from "react-paginate";
 import Modal from "react-modal";
 import Inputs from "@components/filters/components/Inputs";
 import Navbar from "@components/navbar/Navbar";
+import Sorting from "@components/filters/components/Sorting";
 import { useDiscover } from "../../data/DataFetch";
 import ContentCard from "./components/ContentCard";
 
@@ -40,6 +41,8 @@ function Search({
     setType,
     discover,
     filtersTotal,
+    sorting,
+    setSorting,
     setFiltersPage,
     setDiscoverGenre,
     setDiscoverRating,
@@ -114,17 +117,18 @@ function Search({
 
       <Modal isOpen={showSearchModal} style={customStyles} ariaHideApp={false}>
         {resultsTotal && (
-          <main className="homeList">
+          <main className="filteredResponsive">
+            <Sorting sorting={sorting} setSorting={setSorting} />
             {resultsTotal.total_results === 10000 ? (
-              <p className="resultsCount">
+              <p className="filteredCount">
                 {resultsTotal.total_results}+ résultats pour : '{search}'
               </p>
             ) : (
-              <p className="resultsCount">
+              <p className="filteredCount">
                 {resultsTotal.total_results} résultats pour '{search}'
               </p>
             )}
-            <ul className="resultsList">
+            <ul className="filteredList">
               {results.map((r) => (
                 <ContentCard c={r} />
               ))}
@@ -146,6 +150,7 @@ function Search({
       <Modal isOpen={showFiltersModal} style={customStyles} ariaHideApp={false}>
         {filtersTotal && (
           <main className="filteredResponsive">
+            <Sorting sorting={sorting} setSorting={setSorting} />
             <p className="filteredCount">
               {filtersTotal.total_results} résultats
             </p>

@@ -1,3 +1,7 @@
+.ReactModal__Overlay {
+  display: none;
+}
+
 .filtersInner {
   width: 90%;
   margin: 0 auto;
@@ -64,7 +68,7 @@
     }
   }
   &:first-of-type {
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
   }
   .responsiveButton {
     display: none;
@@ -184,6 +188,9 @@
 }
 
 @media screen and (max-width: 600px) {
+  .ReactModal__Overlay {
+    display: block;
+  }
   .responsiveSearch {
     .filtersInner {
       width: 100%;

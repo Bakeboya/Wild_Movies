@@ -1,13 +1,12 @@
 import React from "react";
 import componentCoeur from "@assets/fiche/ComponentCoeur.svg";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
-import FaWindowClose from "@meronex/icons/fa/FaWindowClose";
-import Casting from "./Casting";
+import { useNavigate } from "react-router-dom";
 import Pegi from "./Pegi";
 import LecteurBA from "./LecteurBA";
 import Time from "./Time";
 import VoteAverage from "./VoteAverage";
+import CastingCarou from "./CastingCarou";
 
 function CardText({
   releaseDate,
@@ -26,12 +25,21 @@ function CardText({
 }) {
   const link1 = `/actor/`;
   const link2 = `/crew/`;
+
+  const navigate = useNavigate();
+
   return (
     <div className="cardText">
       <div className="close">
-        <Link to="/">
-          <FaWindowClose />
-        </Link>
+        <button
+          type="button"
+          className="goBackBtn"
+          onClick={() => {
+            navigate(-1);
+          }}
+        >
+          X
+        </button>
       </div>
       <div className="titleFilm">
         {title} ({releaseDate.split("-")[0]})
@@ -76,14 +84,20 @@ function CardText({
         <h3>Synopsis</h3>
         <p>{overview}</p>
       </div>
-      <div className="synopsisFilm">
-        <h3>Distribution</h3>
+      <div className="divParenteCaroussel">
+        <div className="synopsisFilm">
+          <h3>Distribution</h3>
+        </div>
+        <div className="castingCarouDiv">
+          {cast && link1 && <CastingCarou cast={cast} link={link1} />}
+        </div>
+        <div className="synopsisFilm">
+          <h3>Equipe technique</h3>
+        </div>
+        <div className="castingCarouDiv">
+          {cast && link2 && <CastingCarou cast={crew} link={link2} />}
+        </div>
       </div>
-      <Casting cast={cast} link={link1} />
-      <div className="synopsisFilm">
-        <h3>Equipe technique</h3>
-      </div>
-      <Casting cast={crew} link={link2} />
     </div>
   );
 }

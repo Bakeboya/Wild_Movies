@@ -8,6 +8,7 @@
   .imgMulti {
     width: 100%;
     background-image: none;
+    border-radius: 5px;
 
     .imgFilm {
       display: flex;
@@ -15,6 +16,7 @@
 
       img {
         width: 100%;
+        border-radius: 5px;
         box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.5);
       }
     }
@@ -93,13 +95,13 @@
 
     .streamLogo {
       display: flex;
-      gap: 50%;
+      gap: 45px;
       justify-content: center;
       margin-bottom: 30px;
+      flex-wrap: wrap;
 
       .streaming {
         display: flex;
-        flex-wrap: wrap;
 
         p {
           display: none;
