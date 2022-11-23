@@ -34,7 +34,11 @@ export const genreSeriesOptions = [
   { value: "mystery", label: "Mystère", id: 9648 },
   { value: "crime", label: "Policier", id: 80 },
   { value: "reality", label: "Réalité", id: 10764 },
-  { value: "science fiction & fantasy", label: "Science Fiction & Fantaisie", id: 10765 },
+  {
+    value: "science fiction & fantasy",
+    label: "Science Fiction & Fantaisie",
+    id: 10765,
+  },
   { value: "talk", label: "Talk-Show", id: 10767 },
   { value: "western", label: "Western", id: 37 },
 ];

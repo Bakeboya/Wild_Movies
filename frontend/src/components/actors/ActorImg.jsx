@@ -48,10 +48,14 @@ function ActorImg({
             {gender === 1 ? <p> Femme </p> : <p> Homme </p>}
           </div>
 
-          <div className="actorBirthday">
-            <p className="titles"> Date de naissance </p>
-            <p>{birthday} / {getAge()} ans</p>
-          </div>
+          {birthday && (
+            <div className="actorBirthday">
+              <p className="titles"> Date de naissance </p>
+              <p>
+                {birthday} / {getAge()} ans
+              </p>
+            </div>
+          )}
 
           <div className="placeBirth">
             <p className="titles"> Lieu de naissance </p>

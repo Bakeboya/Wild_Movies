@@ -35,7 +35,7 @@ function WildMovies({
       </Link>
     </div>
   );
-};
+}
 export default WildMovies;
 WildMovies.propTypes = {
   setResults: PropTypes.func.isRequired,

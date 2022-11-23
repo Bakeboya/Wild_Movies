@@ -84,7 +84,7 @@ function Navbar({
       </div>
     </nav>
   );
-};
+}
 export default Navbar;
 Navbar.propTypes = {
   setResults: PropTypes.func.isRequired,

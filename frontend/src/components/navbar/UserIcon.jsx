@@ -26,7 +26,7 @@ function UserIcon({ setEmail, email, setConnected, connected, fav, setFav }) {
       )}
     </div>
   );
-};
+}
 UserIcon.propTypes = {
   setEmail: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,

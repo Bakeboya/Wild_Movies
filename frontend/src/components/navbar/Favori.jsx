@@ -12,7 +12,8 @@ function Favori({ email, fav, closeFavori }) {
   const getImage = () => {
     axios
       .get(
-        `https://api.themoviedb.org/3/movie/${fav}?api_key=${import.meta.env.VITE_API_KEY
+        `https://api.themoviedb.org/3/movie/${fav}?api_key=${
+          import.meta.env.VITE_API_KEY
         }&language=fr`
       )
       .then((res) => {
@@ -44,7 +45,7 @@ function Favori({ email, fav, closeFavori }) {
       </div>
     </div>
   );
-};
+}
 Favori.propTypes = {
   email: PropTypes.func.isRequired,
   fav: PropTypes.func.isRequired,

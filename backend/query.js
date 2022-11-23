@@ -1,4 +1,5 @@
 const connection = require("./connection");
+
 const getUsers = (req, res) => {
   connection
     .query("SELECT * FROM users")
@@ -46,10 +47,7 @@ const updateUserById = (req, res) => {
   const id = parseInt(req.params.id, 10);
   const { password } = req.body;
   connection
-    .query("UPDATE users SET password = ? WHERE id = ?", [
-      password,
-      id,
-    ])
+    .query("UPDATE users SET password = ? WHERE id = ?", [password, id])
     .then(([result]) => {
       res.location(`/users/${result.insertId}`).sendStatus(201);
     })

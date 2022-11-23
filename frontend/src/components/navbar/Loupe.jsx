@@ -30,7 +30,7 @@ function Loupe({
       </button>
     </div>
   );
-};
+}
 export default Loupe;
 Loupe.propTypes = {
   setEmptySearch: PropTypes.func.isRequired,

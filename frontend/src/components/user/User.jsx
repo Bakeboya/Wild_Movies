@@ -64,7 +64,7 @@ function User({
   };
   const createAccount = () => {
     const alreadyExist = users.find((element) => element.email === email);
-    if (email !== "" && password !== "" || !alreadyExist) {
+    if ((email !== "" && password !== "") || !alreadyExist) {
       if (activeCheck) {
         axios
           .post("http://localhost:5000/users", { email, password })
@@ -78,8 +78,8 @@ function User({
           });
       } else {
         setInscription(true);
-      };
-    };
+      }
+    }
     setHide(true);
     setHidePassword(true);
   };
