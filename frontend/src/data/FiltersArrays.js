@@ -20,6 +20,25 @@ export const genreOptions = [
   { value: "western", label: "Western", id: 37 },
 ];
 
+export const genreSeriesOptions = [
+  { value: "action & adventure", label: "Action & Aventure", id: 10759 },
+  { value: "news", label: "Actualités", id: 10763 },
+  { value: "animation", label: "Animation", id: 16 },
+  { value: "comedy", label: "Comédie", id: 35 },
+  { value: "documentary", label: "Documentaire", id: 99 },
+  { value: "drama", label: "Drame", id: 18 },
+  { value: "kids", label: "Enfant", id: 14 },
+  { value: "family", label: "Familial", id: 10751 },
+  { value: "soap", label: "Feuilleton", id: 10766 },
+  { value: "war & politics", label: "Guerre & Politique", id: 53 },
+  { value: "mystery", label: "Mystère", id: 9648 },
+  { value: "crime", label: "Policier", id: 80 },
+  { value: "reality", label: "Réalité", id: 10764 },
+  { value: "science fiction & fantasy", label: "Science Fiction & Fantaisie", id: 10765 },
+  { value: "talk", label: "Talk-Show", id: 10767 },
+  { value: "western", label: "Western", id: 37 },
+];
+
 export const providerOptions = [
   { value: "netflix", label: "Netflix", id: 8 },
   { value: "disney_plus", label: "Disney Plus", id: 337 },

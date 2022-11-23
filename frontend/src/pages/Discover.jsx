@@ -60,6 +60,7 @@ function Discover() {
           <h2>{type === "tv" ? "Séries" : "Films"}</h2>
           <Sorting sorting={sorting} setSorting={setSorting} />
           <Inputs
+            type={type}
             setDiscoverCertification={setDiscoverCertification}
             setDiscoverGenre={setDiscoverGenre}
             setDiscoverDecade={setDiscoverDecade}

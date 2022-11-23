@@ -4,6 +4,7 @@ import MultiRangeSlider from "multi-range-slider-react";
 import Select from "react-select";
 import {
   genreOptions,
+  genreSeriesOptions,
   providerOptions,
   certificationOptions,
 } from "../../../data/FiltersArrays";
@@ -161,7 +162,7 @@ function Inputs({
         isClearable
         closeMenuOnSelect={false}
         name="genres"
-        options={genreOptions}
+        options={type === "movie" ? genreOptions : genreSeriesOptions}
         className="react-select-container"
         classNamePrefix="react-select"
         styles={customStyles}
