@@ -45,10 +45,10 @@ export default function ContentCard({ c, displayToggle }) {
             <p
               style={{
                 backgroundColor: (() => {
-                  if (c.vote_average > 8) {
+                  if (c.vote_average >= 8) {
                     return "green";
                   }
-                  if (c.vote_average > 4) {
+                  if (c.vote_average >= 4) {
                     return "orange";
                   }
                   if (c.vote_average > 0) {
