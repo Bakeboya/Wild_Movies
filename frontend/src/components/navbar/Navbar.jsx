@@ -23,7 +23,6 @@ function Navbar({
   const [email, setEmail] = useState("");
   const [fav, setFav] = useState("");
   const [windowFavori, setWindowFavori] = useState(false);
-
   const displayFavori = () => {
     setWindowFavori(true);
   };
@@ -85,10 +84,8 @@ function Navbar({
       </div>
     </nav>
   );
-}
-
+};
 export default Navbar;
-
 Navbar.propTypes = {
   setResults: PropTypes.func.isRequired,
   setEmptySearch: PropTypes.func.isRequired,

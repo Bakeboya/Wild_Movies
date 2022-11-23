@@ -27,7 +27,6 @@ function WildMovies({
     setShowFiltersModal(false);
     setEmptySearch("");
   };
-
   return (
     <div className="WildMoviesDiv">
       <Link to="/" className="WildMovies" onClick={handleReset}>
@@ -36,10 +35,8 @@ function WildMovies({
       </Link>
     </div>
   );
-}
-
+};
 export default WildMovies;
-
 WildMovies.propTypes = {
   setResults: PropTypes.func.isRequired,
   setEmptySearch: PropTypes.func.isRequired,

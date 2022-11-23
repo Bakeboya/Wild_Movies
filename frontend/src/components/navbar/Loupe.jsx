@@ -23,7 +23,6 @@ function Loupe({
     setShowFiltersModal(false);
     setEmptySearch("");
   };
-
   return (
     <div className="LoupeDiv">
       <button type="button" className="Loupe" onClick={openCloseModal}>
@@ -31,10 +30,8 @@ function Loupe({
       </button>
     </div>
   );
-}
-
+};
 export default Loupe;
-
 Loupe.propTypes = {
   setEmptySearch: PropTypes.func.isRequired,
   setSearch: PropTypes.func.isRequired,

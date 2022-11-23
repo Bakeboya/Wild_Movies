@@ -19,11 +19,9 @@ function Favori({ email, fav, closeFavori }) {
         setImage(res.data);
       });
   };
-
   useEffect(() => {
     getImage();
   }, []);
-
   return (
     <div className="divFavori">
       <div className="enteteForm">
@@ -46,7 +44,7 @@ function Favori({ email, fav, closeFavori }) {
       </div>
     </div>
   );
-}
+};
 Favori.propTypes = {
   email: PropTypes.func.isRequired,
   fav: PropTypes.func.isRequired,

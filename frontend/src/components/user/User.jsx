@@ -34,7 +34,6 @@ function User({
   const [displayPopUpCreate, setDisplayPopUpCreate] = useState(false);
   const [displayPopUpSend, setDisplayPopUpSend] = useState(false);
   const [users, setUsers] = useState([]);
-
   useEffect(() => {
     axios
       .get("http://localhost:5000/users")
@@ -65,9 +64,7 @@ function User({
   };
   const createAccount = () => {
     const alreadyExist = users.find((element) => element.email === email);
-    if (alreadyExist) {
-      // alert(`Ce nom d'utilisateur existe déjà`);
-    } else if (email !== "" && password !== "") {
+    if (email !== "" && password !== "" || !alreadyExist) {
       if (activeCheck) {
         axios
           .post("http://localhost:5000/users", { email, password })
@@ -80,26 +77,20 @@ function User({
             console.error(err);
           });
       } else {
-        // alert(`Veuillez accepter la politique de confidentialité.`);
         setInscription(true);
-      }
-    } else {
-      // alert("Veuillez renseigner vos identifiants.");
-    }
+      };
+    };
     setHide(true);
     setHidePassword(true);
   };
   const connectAccount = () => {
     const autorisation = users.find((element) => element.email === email);
-    if (!autorisation) {
-      // alert(`Ce compte utilisateur n'existe pas.`);
-    } else if (autorisation.password === password) {
+    if (autorisation.password === password || autorisation) {
       setFav(autorisation.favorite);
       setConnect(false);
       setDisplayPopUpConnect(true);
       setConnected(true);
     } else {
-      // alert(`Votre mot de passe n'est pas valide.`);
       setConnect(true);
     }
     setInscription(false);
@@ -130,8 +121,6 @@ function User({
       setInscription(false);
       setHide(true);
       setHidePassword(true);
-    } else {
-      // alert("Veuillez renseigner une adresse email.");
     }
   };
   const exitNews = () => {
@@ -271,9 +260,7 @@ function User({
     </div>
   );
 }
-
 export default User;
-
 User.propTypes = {
   handleActive: PropTypes.string.isRequired,
   setEmail: PropTypes.string.isRequired,

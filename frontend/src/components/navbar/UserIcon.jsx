@@ -5,11 +5,9 @@ import User from "../user/User";
 
 function UserIcon({ setEmail, email, setConnected, connected, fav, setFav }) {
   const [active, setActive] = useState(false);
-
   const handleActive = () => {
     setActive(!active);
   };
-
   return (
     <div className="UserDiv">
       <button type="submit" className="User" onClick={handleActive}>
@@ -28,7 +26,7 @@ function UserIcon({ setEmail, email, setConnected, connected, fav, setFav }) {
       )}
     </div>
   );
-}
+};
 UserIcon.propTypes = {
   setEmail: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
