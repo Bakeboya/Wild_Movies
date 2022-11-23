@@ -1,9 +1,15 @@
 
 ![WildMovies](https://github.com/Lucas-wcs/Movies/blob/main/frontend/src/assets/logo3_wildmovies.svg)
 
-Découvrez de nouveaux films et séries ou trouvez les détails de vos films, séries et personnalitées préférées
+<div align="center">
+  Découvrez de nouveaux films et séries ou trouvez les détails de vos films, séries et personnalitées préférées
+</div>
 
-[LIVE](https://wild-movies.netlify.app/)
+<div align="center">
+
+  [LIVE](https://wild-movies.netlify.app/)
+</div>
+
 ## Langages
 
 - React JS : Vite
