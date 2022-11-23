@@ -1,5 +1,4 @@
 const connection = require("./connection");
-
 const getUsers = (req, res) => {
   connection
     .query("SELECT * FROM users")
@@ -75,7 +74,6 @@ const deleteUserById = (req, res) => {
       res.status(405).send("Error deleting the user");
     });
 };
-
 module.exports = {
   getUsers,
   getUserById,
